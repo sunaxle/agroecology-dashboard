@@ -13,6 +13,4 @@ Drop raw links, unstructured notes, and half-formed ideas here. As we process th
 ## General Brainstorming Space
 *Use this area to type out wild ideas, copy-paste quotes, or draft new concepts. Don't worry about formatting!*
 
-- 
-- 
-- 
+- [FUTURE STRATEGY] Hospital Sub-Grant (Health Outcomes): Use the recent 'Departmental Outdoor Exposure' tracking metric as a prototype to pitch a $75k-$100k grant to a local hospital board. Target: +60 mins of structured outdoor engagement.
