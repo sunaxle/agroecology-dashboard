@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Monitoring Protocols & Assessment | UTRGV Agroecology</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .protocols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.2s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-card a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .resource-card a:hover {
+            background: #abcb40;
+        }
+
+        .form-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .submit-btn {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand-left">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+        <div class="title">Resource Library & Assessments</div>
+        <div class="brand-right">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+    </header>
+
+    <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a
+            class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link active" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="community_impact.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+    <main class="page-container" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+        <div style="margin-bottom: 40px; text-align: center;">
+            <p style="font-size: 18px; color: var(--text);">Download standardized field monitoring protocols for
+                student-led ecosystem service collection across the 14 participating campuses.</p>
+        </div>
+
+        <h2 style="margin-bottom: 20px; color: var(--primary);">Field Monitoring Manuals</h2>
+
+        <div class="protocols-grid">
+            <div class="resource-card" style="border-left-color: #f44336;">
+                <h3>Air & Surface Temp Protocol</h3>
+                <p style="font-size: 14px; margin-top: 10px; color: #555;">Detailed manual on how to properly shoot FLIR
+                    thermal imagery and log HOBO air temperatures without solar radiation bias.</p>
+                <a href="#" onclick="alert('PDF Manual Download Started'); return false;">⬇ Download PDF</a>
+            </div>
+
+            <div class="resource-card" style="border-left-color: #2196F3;">
+                <h3>Soil Moisture Protocol</h3>
+                <p style="font-size: 14px; margin-top: 10px; color: #555;">Instructions on using standard soil moisture
+                    depth probes under canopy versus exposed fields.</p>
+                <a href="#" onclick="alert('PDF Manual Download Started'); return false;">⬇ Download PDF</a>
+            </div>
+
+            <div class="resource-card" style="border-left-color: #FF9800;">
+                <h3>Albedo & Heat Protocol</h3>
+                <p style="font-size: 14px; margin-top: 10px; color: #555;">Methods for measuring reflective light
+                    indexes on varying urban and natural surfaces using lux meters.</p>
+                <a href="#" onclick="alert('PDF Manual Download Started'); return false;">⬇ Download PDF</a>
+            </div>
+
+            <div class="resource-card" style="border-left-color: #4CAF50;">
+                <h3>Biodiversity Survey Protocol</h3>
+                <p style="font-size: 14px; margin-top: 10px; color: #555;">Guidance on conducting point-count bird
+                    surveys and macroinvertebrate sampling in leaf litter.</p>
+                <a href="#" onclick="alert('PDF Manual Download Started'); return false;">⬇ Download PDF</a>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 50px; margin-bottom: 20px; color: var(--primary);">Teacher Pre/Post Assessment Gateway
+        </h2>
+
+        <div class="form-section">
+            <p style="margin-bottom: 25px;">Use this form to log your class's aggregate data or submit your programmatic
+                evaluation results back to the grant administrators.</p>
+
+            <form onsubmit="alert('Assessment data securely submitted to UTRGV servers.'); return false;">
+                <div class="protocols-grid">
+                    <div class="form-group">
+                        <label for="campusSelect">Participating Campus</label>
+                        <select id="campusSelect" required>
+                            <option value="">-- Select Campus --</option>
+                            <option value="donna">J.W. Caceres & M. Rivas Academy</option>
+                            <option value="econ">Economedes High School</option>
+                            <option value="rowe">Nikki Rowe High School</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="assessType">Assessment Stage</label>
+                        <select id="assessType" required>
+                            <option value="pre">Pre-Program Baseline</option>
+                            <option value="mid">Mid-Year Check-in</option>
+                            <option value="post">Post-Program Conclusion (Year 2)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="studentCount">Number of Student Participants</label>
+                    <input type="number" id="studentCount" placeholder="e.g. 24" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="keyFindings">Key Observational Findings</label>
+                    <textarea id="keyFindings" rows="5"
+                        placeholder="Summarize your class's primary findings regarding temperature shifts or biodiversity sightings..."
+                        required></textarea>
+                </div>
+
+                <div class="form-group" style="margin-bottom: 30px;">
+                    <label>Upload Raw Data Sheets (Optional)</label>
+                    <input type="file" style="padding: 5px;">
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Assessment Data</button>
+            </form>
+        </div>
+
+    </main>
+
+    <script src="config.js"></script>
+    <script>
+        // Auto-select campus if stored
+        document.addEventListener("DOMContentLoaded", () => {
+            const campusId = localStorage.getItem("activeCampusId");
+            const select = document.getElementById("campusSelect");
+            if (campusId === "donna_jw_caceres") select.value = "donna";
+            if (campusId === "edinburg_econ") select.value = "econ";
+            if (campusId === "mcallen_rowe") select.value = "rowe";
+        });
+    </script>
+</body>
+
+</html>

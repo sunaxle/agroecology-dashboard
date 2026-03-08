@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biodiversity Tracking</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+    <style>
+        .bio-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            height: calc(100vh - var(--header-height) - var(--nav-height));
+            overflow: hidden;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #bioMap {
+            flex: 1;
+            min-height: 45vh;
+        }
+
+        .bio-panel {
+            background: #fff;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .bio-panel h2 {
+            color: var(--green-dark);
+            margin-bottom: 5px;
+        }
+
+        .bio-panel p {
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 8px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #777;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .tab-btn.active {
+            background: var(--green);
+            color: white;
+        }
+
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .species-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fafafa;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .species-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .species-img {
+            height: 160px;
+            background: #e0e0e0;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .species-info {
+            padding: 12px;
+            flex-grow: 1;
+        }
+
+        .species-info h4 {
+            margin: 0 0 4px 0;
+            font-size: 15px;
+            color: var(--green-dark);
+        }
+
+        .species-info p.scientific {
+            margin: 0 0 10px 0;
+            font-size: 12px;
+            color: #777;
+            font-style: italic;
+        }
+
+        .observations-badge {
+            display: inline-block;
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--green-dark);
+        }
+
+        .sync-btn {
+            width: 100%;
+            padding: 12px;
+            font-weight: bold;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .sync-btn:hover {
+            background: #333;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand-left">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+        <div class="title">Biodiversity Tracking</div>
+        <div class="brand-right">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+    </header>
+
+    <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link active" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="community_impact.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+    <main class="bio-layout">
+        <aside class="panel left">
+            <section class="card">
+                <h2>Campus Setup</h2>
+                <label>Target School</label>
+                <select disabled>
+                    <option>J.W. Caceres & M. Rivas Academy</option>
+                </select>
+                <p class="hint">Location: Donna, TX</p>
+            </section>
+
+            <section class="card">
+                <h3>iNaturalist Sync</h3>
+                <p style="font-size: 13px; color: #555;">Data synced from local community bounding boxes in South Texas.
+                </p>
+                <button class="sync-btn" onclick="alert('Syncing latest observations from iNaturalist API limits...')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.59-9.2L21.5 8"></path>
+                    </svg>
+                    Refresh Data
+                </button>
+            </section>
+
+            <section class="card">
+                <h3>Total Species Logged</h3>
+                <div style="font-size: 28px; font-weight: bold; color: var(--green);">70</div>
+                <p style="font-size: 13px; color: #777; margin-top: 4px;">Unique flora and fauna identified.</p>
+            </section>
+        </aside>
+
+        <div class="main-content">
+            <!-- ArcGIS Map sitting at the top -->
+            <div id="bioMap"></div>
+
+            <!-- The gallery feed sitting below the map -->
+            <div class="bio-panel">
+                <h2 style="margin-top: 0;">Microforest Ecology Log</h2>
+                <p>A living catalog of bird, plant, and insect species slowly returning to the campus as the canopy
+                    grows.</p>
+
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="birds">Birds (20)</button>
+                    <button class="tab-btn" data-tab="plants">Plants & Trees (25)</button>
+                    <button class="tab-btn" data-tab="insects">Insects & Pollinators (25)</button>
+                </div>
+
+                <div id="speciesContent" class="species-grid">
+                    <!-- Populated by JS -->
+                    <div class="empty-state">Loading iNaturalist data...</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="biodiversity.js"></script>
+    <script src="https://js.arcgis.com/4.29/"></script>
+</body>
+
+</html>

@@ -1,0 +1,1265 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "category": "birds",
+        "common_name": "Plain Chachalaca",
+        "scientific_name": "Ortalis vetula",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/61287530/medium.jpg",
+        "observations": 3626
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06771,
+          26.16758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "category": "birds",
+        "common_name": "Great Kiskadee",
+        "scientific_name": "Pitangus sulphuratus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/1766279/medium.jpg",
+        "observations": 2856
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06959,
+          26.16547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "category": "birds",
+        "common_name": "Green Jay",
+        "scientific_name": "Cyanocorax yncas",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/186227042/medium.jpg",
+        "observations": 2496
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06781,
+          26.16632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4,
+        "category": "birds",
+        "common_name": "Golden-fronted Woodpecker",
+        "scientific_name": "Melanerpes aurifrons",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/248378790/medium.jpg",
+        "observations": 1960
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06903,
+          26.16843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5,
+        "category": "birds",
+        "common_name": "Altamira Oriole",
+        "scientific_name": "Icterus gularis",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/225780/medium.jpg",
+        "observations": 1922
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07232,
+          26.16549
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6,
+        "category": "birds",
+        "common_name": "Inca Dove",
+        "scientific_name": "Columbina inca",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/1442236/medium.jpg",
+        "observations": 1598
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06902,
+          26.16853
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7,
+        "category": "birds",
+        "common_name": "Great-tailed Grackle",
+        "scientific_name": "Quiscalus mexicanus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/191985938/medium.jpg",
+        "observations": 1593
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07328,
+          26.16593
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8,
+        "category": "birds",
+        "common_name": "Buff-bellied Hummingbird",
+        "scientific_name": "Amazilia yucatanensis",
+        "image_url": "https://static.inaturalist.org/photos/4600879/medium.jpg",
+        "observations": 1549
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07072,
+          26.16547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9,
+        "category": "birds",
+        "common_name": "Clay-colored Thrush",
+        "scientific_name": "Turdus grayi",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/3772811/medium.jpg",
+        "observations": 1530
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07183,
+          26.16909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10,
+        "category": "birds",
+        "common_name": "Northern Cardinal",
+        "scientific_name": "Cardinalis cardinalis",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/189434971/medium.jpg",
+        "observations": 1400
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06912,
+          26.16592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11,
+        "category": "birds",
+        "common_name": "Northern Mockingbird",
+        "scientific_name": "Mimus polyglottos",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/101226350/medium.jpg",
+        "observations": 1396
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07389,
+          26.16626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12,
+        "category": "birds",
+        "common_name": "Black-bellied Whistling-Duck",
+        "scientific_name": "Dendrocygna autumnalis",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/411123026/medium.jpg",
+        "observations": 1303
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07104,
+          26.16545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13,
+        "category": "birds",
+        "common_name": "Long-billed Thrasher",
+        "scientific_name": "Toxostoma longirostre",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5682/medium.jpg",
+        "observations": 1253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06826,
+          26.16695
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 14,
+        "category": "birds",
+        "common_name": "Common Pauraque",
+        "scientific_name": "Nyctidromus albicollis",
+        "image_url": "https://static.inaturalist.org/photos/352431299/medium.jpg",
+        "observations": 1212
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06917,
+          26.16835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 15,
+        "category": "birds",
+        "common_name": "Orange-crowned Warbler",
+        "scientific_name": "Leiothlypis celata",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/227039/medium.jpg",
+        "observations": 1158
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07345,
+          26.16636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 16,
+        "category": "birds",
+        "common_name": "Curve-billed Thrasher",
+        "scientific_name": "Toxostoma curvirostre",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/235837/medium.jpg",
+        "observations": 1130
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06921,
+          26.1658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 17,
+        "category": "birds",
+        "common_name": "White-tipped Dove",
+        "scientific_name": "Leptotila verreauxi",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/268175748/medium.jpeg",
+        "observations": 1083
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07346,
+          26.16644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 18,
+        "category": "birds",
+        "common_name": "Least Grebe",
+        "scientific_name": "Tachybaptus dominicus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/181506813/medium.jpg",
+        "observations": 997
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06839,
+          26.16655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 19,
+        "category": "birds",
+        "common_name": "Black-crested Titmouse",
+        "scientific_name": "Baeolophus atricristatus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/246488617/medium.jpg",
+        "observations": 980
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07341,
+          26.16831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 20,
+        "category": "birds",
+        "common_name": "White-winged Dove",
+        "scientific_name": "Zenaida asiatica",
+        "image_url": "https://static.inaturalist.org/photos/57871916/medium.jpg",
+        "observations": 975
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07082,
+          26.16898
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 21,
+        "category": "plants",
+        "common_name": "Anacahuita",
+        "scientific_name": "Cordia boissieri",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/7101933/medium.jpeg",
+        "observations": 1522
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06966,
+          26.16765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 22,
+        "category": "plants",
+        "common_name": "Turk's cap",
+        "scientific_name": "Malvaviscus arboreus",
+        "image_url": "https://static.inaturalist.org/photos/57441599/medium.jpeg",
+        "observations": 1136
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07009,
+          26.16791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23,
+        "category": "plants",
+        "common_name": "Mexican palo verde",
+        "scientific_name": "Parkinsonia aculeata",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/175632736/medium.jpg",
+        "observations": 911
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07108,
+          26.16715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 24,
+        "category": "plants",
+        "common_name": "Texas Ebony",
+        "scientific_name": "Ebenopsis ebano",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/57175721/medium.jpeg",
+        "observations": 842
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0717,
+          26.16808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 25,
+        "category": "plants",
+        "common_name": "silverleaf nightshade",
+        "scientific_name": "Solanum elaeagnifolium",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/134218705/medium.jpeg",
+        "observations": 775
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07067,
+          26.16727
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 26,
+        "category": "plants",
+        "common_name": "honey mesquite",
+        "scientific_name": "Neltuma glandulosa",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/263622625/medium.jpg",
+        "observations": 748
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07144,
+          26.16675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 27,
+        "category": "plants",
+        "common_name": "Anacua",
+        "scientific_name": "Ehretia anacua",
+        "image_url": "https://static.inaturalist.org/photos/528396/medium.jpg",
+        "observations": 741
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07007,
+          26.16649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 28,
+        "category": "plants",
+        "common_name": "Tropical sage",
+        "scientific_name": "Salvia coccinea",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/14351934/medium.jpg",
+        "observations": 734
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07104,
+          26.16653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 29,
+        "category": "plants",
+        "common_name": "spiny hackberry",
+        "scientific_name": "Celtis pallida",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/60525996/medium.jpg",
+        "observations": 675
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06976,
+          26.16834
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30,
+        "category": "plants",
+        "common_name": "pigeonberry",
+        "scientific_name": "Rivina humilis",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5454569/medium.jpg",
+        "observations": 671
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07083,
+          26.16716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31,
+        "category": "plants",
+        "common_name": "cenizo",
+        "scientific_name": "Leucophyllum frutescens",
+        "image_url": "https://static.inaturalist.org/photos/88766871/medium.jpg",
+        "observations": 632
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07124,
+          26.16757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 32,
+        "category": "plants",
+        "common_name": "Siam weed",
+        "scientific_name": "Chromolaena odorata",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/63410243/medium.jpeg",
+        "observations": 613
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07116,
+          26.16662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 33,
+        "category": "plants",
+        "common_name": "Common Sunflower",
+        "scientific_name": "Helianthus annuus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/323768723/medium.jpg",
+        "observations": 600
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07107,
+          26.16762
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 34,
+        "category": "plants",
+        "common_name": "Berlandier's Fiddlewood",
+        "scientific_name": "Citharexylum berlandieri",
+        "image_url": "https://static.inaturalist.org/photos/2530747/medium.JPG",
+        "observations": 583
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07137,
+          26.16579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 35,
+        "category": "plants",
+        "common_name": "Sweet acacia",
+        "scientific_name": "Vachellia farnesiana",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/113725146/medium.jpeg",
+        "observations": 553
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0716,
+          26.16691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 36,
+        "category": "plants",
+        "common_name": "wild leadwort",
+        "scientific_name": "Plumbago zeylanica",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/59226898/medium.jpeg",
+        "observations": 524
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07061,
+          26.16647
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 37,
+        "category": "plants",
+        "common_name": "Coral Vine",
+        "scientific_name": "Antigonon leptopus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/25523058/medium.jpg",
+        "observations": 516
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06989,
+          26.168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 38,
+        "category": "plants",
+        "common_name": "Skeletonleaf Goldeneye",
+        "scientific_name": "Sidneya tenuifolia",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/234873372/medium.jpg",
+        "observations": 507
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07136,
+          26.16674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 39,
+        "category": "plants",
+        "common_name": "Santa Maria feverfew",
+        "scientific_name": "Parthenium hysterophorus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/466882371/medium.jpeg",
+        "observations": 502
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07134,
+          26.16789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 40,
+        "category": "plants",
+        "common_name": "Triangle cactus",
+        "scientific_name": "Acanthocereus tetragonus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/4853738/medium.jpeg",
+        "observations": 486
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07063,
+          26.16885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 41,
+        "category": "plants",
+        "common_name": "potato tree",
+        "scientific_name": "Solanum erianthum",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/472246301/medium.jpeg",
+        "observations": 458
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06856,
+          26.16589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 42,
+        "category": "plants",
+        "common_name": "whitemouth dayflower",
+        "scientific_name": "Commelina erecta",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/481102528/medium.jpg",
+        "observations": 441
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07056,
+          26.16644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 43,
+        "category": "plants",
+        "common_name": "three-lobe false mallow",
+        "scientific_name": "Malvastrum coromandelianum",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/132720729/medium.jpeg",
+        "observations": 421
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07176,
+          26.16763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 44,
+        "category": "plants",
+        "common_name": "Brasil",
+        "scientific_name": "Condalia hookeri",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/11298055/medium.jpeg",
+        "observations": 413
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07054,
+          26.16683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 45,
+        "category": "plants",
+        "common_name": "wild crapemyrtle",
+        "scientific_name": "Malpighia glabra",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/295369708/medium.jpg",
+        "observations": 408
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0709,
+          26.16712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 46,
+        "category": "insects",
+        "common_name": "Queen",
+        "scientific_name": "Danaus gilippus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/163708904/medium.jpeg",
+        "observations": 3171
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07418,
+          26.16856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 47,
+        "category": "insects",
+        "common_name": "Laviana White-Skipper",
+        "scientific_name": "Heliopetes laviana",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/329777553/medium.jpg",
+        "observations": 2155
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07251,
+          26.16819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 48,
+        "category": "insects",
+        "common_name": "Mallow Scrub-Hairstreak",
+        "scientific_name": "Strymon istapa",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/480565/medium.jpg",
+        "observations": 2101
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07152,
+          26.16571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 49,
+        "category": "insects",
+        "common_name": "White Peacock",
+        "scientific_name": "Anartia jatrophae",
+        "image_url": "https://static.inaturalist.org/photos/99559750/medium.jpeg",
+        "observations": 2046
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06771,
+          26.16666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 50,
+        "category": "insects",
+        "common_name": "Bordered Patch",
+        "scientific_name": "Chlosyne lacinia",
+        "image_url": "https://static.inaturalist.org/photos/8615586/medium.jpeg",
+        "observations": 2000
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07415,
+          26.16593
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 51,
+        "category": "insects",
+        "common_name": "Clouded Skipper",
+        "scientific_name": "Lerema accius",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/91274744/medium.jpg",
+        "observations": 1928
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07048,
+          26.16885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 52,
+        "category": "insects",
+        "common_name": "Tropical Checkered-Skipper",
+        "scientific_name": "Burnsius oileus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/93331444/medium.jpeg",
+        "observations": 1918
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07019,
+          26.16818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 53,
+        "category": "insects",
+        "common_name": "Phaon Crescent",
+        "scientific_name": "Phyciodes phaon",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/394207627/medium.jpg",
+        "observations": 1888
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07428,
+          26.16622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 54,
+        "category": "insects",
+        "common_name": "Fiery Skipper",
+        "scientific_name": "Hylephila phyleus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/2611412/medium.jpg",
+        "observations": 1884
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06961,
+          26.16688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55,
+        "category": "insects",
+        "common_name": "Gulf Fritillary",
+        "scientific_name": "Dione vanillae",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/2937112/medium.jpg",
+        "observations": 1827
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07,
+          26.16808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 56,
+        "category": "insects",
+        "common_name": "Tawny Emperor",
+        "scientific_name": "Asterocampa clyton",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5338006/medium.jpg",
+        "observations": 1803
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07147,
+          26.16557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 57,
+        "category": "insects",
+        "common_name": "Brown Longtail",
+        "scientific_name": "Spicauda procne",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/61904738/medium.jpg",
+        "observations": 1793
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06798,
+          26.16635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 58,
+        "category": "insects",
+        "common_name": "American Snout",
+        "scientific_name": "Libytheana carinenta",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/382711074/medium.jpg",
+        "observations": 1740
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06828,
+          26.1681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 59,
+        "category": "insects",
+        "common_name": "Large Orange Sulphur",
+        "scientific_name": "Phoebis agarithe",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/27509589/medium.jpeg",
+        "observations": 1716
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07065,
+          26.16892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 60,
+        "category": "insects",
+        "common_name": "Mexican Bluewing",
+        "scientific_name": "Myscelia ethusa",
+        "image_url": "https://static.inaturalist.org/photos/97567174/medium.jpg",
+        "observations": 1623
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07344,
+          26.16635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 61,
+        "category": "insects",
+        "common_name": "Ceraunus Blue",
+        "scientific_name": "Hemiargus ceraunus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/3069808/medium.JPG",
+        "observations": 1581
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06838,
+          26.1673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 62,
+        "category": "insects",
+        "common_name": "Gray Hairstreak",
+        "scientific_name": "Strymon melinus",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/4703357/medium.jpeg",
+        "observations": 1573
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07035,
+          26.16648
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 63,
+        "category": "insects",
+        "common_name": "Roseate Skimmer",
+        "scientific_name": "Orthemis ferruginea",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/25056/medium.jpg",
+        "observations": 1468
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07186,
+          26.16613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 64,
+        "category": "insects",
+        "common_name": "Lyside Sulphur",
+        "scientific_name": "Kricogonia lyside",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/374863941/medium.jpg",
+        "observations": 1466
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0716,
+          26.16744
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 65,
+        "category": "insects",
+        "common_name": "Fatal Metalmark",
+        "scientific_name": "Calephelis nemesis",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/249799/medium.jpg",
+        "observations": 1358
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07191,
+          26.16539
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 66,
+        "category": "insects",
+        "common_name": "Western Giant Swallowtail",
+        "scientific_name": "Heraclides rumiko",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/2898067/medium.jpg",
+        "observations": 1294
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06981,
+          26.16545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 67,
+        "category": "insects",
+        "common_name": "Little Yellow",
+        "scientific_name": "Eurema lisa",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/250850/medium.jpg",
+        "observations": 1291
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07,
+          26.16617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 68,
+        "category": "insects",
+        "common_name": "Red-bordered Pixie",
+        "scientific_name": "Melanis pixe",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/7066058/medium.jpg",
+        "observations": 1278
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06822,
+          26.16715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 69,
+        "category": "insects",
+        "common_name": "Sickle-winged Skipper",
+        "scientific_name": "Eantis tamenund",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/29136091/medium.jpeg",
+        "observations": 1252
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06898,
+          26.16805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70,
+        "category": "insects",
+        "common_name": "Empress Leilia",
+        "scientific_name": "Asterocampa leilia",
+        "image_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5101600/medium.jpeg",
+        "observations": 1215
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06977,
+          26.16568
+        ]
+      }
+    }
+  ]
+}

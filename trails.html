@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Walkable Distance & Trails</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+    <style>
+        .app-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            height: calc(100vh - var(--header-height) - var(--nav-height));
+        }
+
+        #trailsMap {
+            width: 100%;
+            height: 100%;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .metric-box {
+            background: #f8f8f8;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .metric-box .val {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--green-dark);
+            margin: 5px 0;
+        }
+
+        .metric-box .lbl {
+            font-size: 11px;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .legend-line {
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .line-concrete {
+            background: #808080;
+        }
+
+        .line-dirt {
+            background: #8B4513;
+            border: 1px dashed rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand-left">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV logo" />
+        </div>
+        <div class="title">Walkable Distance & Trails</div>
+        <div class="brand-right">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV logo" />
+        </div>
+    </header>
+
+    <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a
+            class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link active" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="community_impact.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+    <main class="app-layout">
+        <aside class="panel left">
+            <section class="card">
+                <h2>Pathways Overview</h2>
+                <p class="hint" style="margin-bottom: 15px;">Analyzing shade equity and surface permeability across the
+                    J.W. Caceres property pathways.</p>
+
+                <label>Filter Trails</label>
+                <select id="trailFilter" style="margin-bottom: 20px; width: 100%;">
+                    <option value="all">Show All Trails</option>
+                    <option value="permeable">Permeable Only (Dirt/Granite)</option>
+                    <option value="impermeable">Impermeable Only (Concrete)</option>
+                </select>
+
+                <h4 style="margin-top: 15px; margin-bottom: 10px;">Ecosystem Service Layers (Bolund 1999)</h4>
+                <div style="margin-bottom: 20px; text-align: left;">
+                    <label style="display: block; margin-bottom: 8px; font-size: 14px; cursor: pointer;">
+                        <input type="checkbox" id="layerAcoustic" checked>
+                        🔇 Acoustic Dampening Zones
+                    </label>
+                    <label style="display: block; margin-bottom: 8px; font-size: 14px; cursor: pointer;">
+                        <input type="checkbox" id="layerAir" checked>
+                        🍃 Air Filtration Interception
+                    </label>
+                    <label style="display: block; font-size: 14px; cursor: pointer;">
+                        <input type="checkbox" id="layerStudents" checked>
+                        🏃🏽‍♀️ Active Recreation Tracking
+                    </label>
+                </div>
+
+                <h4>Trail Legend</h4>
+                <div class="legend-item">
+                    <div class="legend-line line-concrete"></div>
+                    <span>Impermeable / Existing Sidewalks</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-line line-dirt"></div>
+                    <span>Permeable / Successional Forest Trail</span>
+                </div>
+            </section>
+
+            <section class="card">
+                <h3>Walkability Analytics</h3>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="lbl">Total Tracking</div>
+                        <div class="val">1.2 mi</div>
+                        <div class="lbl" style="font-size: 9px; color: #999;">~6,410 sq ft</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="lbl">Permeable Surface</div>
+                        <div class="val">48%</div>
+                        <div class="lbl" style="font-size: 9px; color: #999;">Water absorbing</div>
+                    </div>
+                </div>
+
+                <div class="metric-box" style="margin-top: 12px;">
+                    <div class="lbl">Shade Equity (Covered Paths)</div>
+                    <div class="val" style="color: #2E8B57;">31.5%</div>
+                    <div class="lbl" style="font-size: 9px; color: #999;">Based on 2:00 PM sun angle & Year 15 Canopy
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <!-- ArcGIS Map Container -->
+        <div id="trailsMap"></div>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script src="trails.js"></script>
+</body>
+
+</html>

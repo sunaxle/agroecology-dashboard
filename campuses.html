@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Participating Campuses | UTRGV Agroecology</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css" />
+    <style>
+        .campus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .campus-card {
+            background: #ffffff;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .campus-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .campus-header {
+            background: var(--green-light);
+            padding: 15px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .campus-header h2 {
+            margin: 0 0 5px 0;
+            color: var(--green-dark);
+            font-size: 1.2rem;
+        }
+
+        .campus-header p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .campus-body {
+            padding: 15px;
+            flex: 1;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .status-active {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+
+        .status-pending {
+            background: #fff3e0;
+            color: #e65100;
+            border: 1px solid #ffe0b2;
+        }
+
+        .metrics-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .metric-mini-box {
+            background: #fcfcfc;
+            border: 1px solid #eee;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .metric-mini-box .val {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--green);
+        }
+
+        .metric-mini-box .lbl {
+            font-size: 0.7rem;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        .campus-action {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--green);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            border-top: 2px solid var(--border);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .campus-action:hover {
+            background: var(--green-dark);
+        }
+
+        .global-map-container {
+            height: 400px;
+            width: 100%;
+            border-bottom: 4px solid var(--green-dark);
+        }
+
+        .section-title {
+            padding: 20px 20px 0 20px;
+            margin: 0;
+            color: var(--green-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand-left">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV logo" />
+        </div>
+        <div class="title">Participating Campuses</div>
+        <div class="brand-right">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV logo" />
+        </div>
+    </header>
+
+    <nav class="app-nav">
+        <a class="nav-link active" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="community_impact.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+    <div class="global-map-container" id="overviewMap"></div>
+
+    <h2 class="section-title">Cohort 1: Microforest Sites (14 Selected)</h2>
+    <div class="campus-grid" id="campusGridContainer">
+        <!-- Cards injected via campuses.js -->
+    </div>
+
+    <!-- ArcGIS API -->
+    <script src="https://js.arcgis.com/4.28/"></script>
+    <script src="campuses.js"></script>
+</body>
+
+</html>

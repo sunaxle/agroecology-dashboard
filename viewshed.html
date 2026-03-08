@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Viewshed Analysis | UTRGV Agroecology</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand-left">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+        <div class="title">Viewshed Greenery Analysis</div>
+        <div class="brand-right">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+    </header>
+    <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a
+            class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link active" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="community_impact.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+    <main class="canopy-layout">
+        <aside class="panel left">
+            <section class="card">
+                <h2>Sightline Controls</h2>
+                <label for="speciesFilter">Filter by Tree Species</label>
+                <select id="speciesFilter" style="margin-bottom: 15px;">
+                    <option value="All">All Species</option>
+                    <option value="Bur Oak">Bur Oak</option>
+                    <option value="Live Oak">Live Oak</option>
+                    <option value="Montezuma Bald Cypress">Montezuma Bald Cypress</option>
+                    <option value="Texas Pecan">Texas Pecan</option>
+                    <option value="Mexican Sycamore">Mexican Sycamore</option>
+                </select>
+
+                <label for="windowSelect">Select Classroom Block</label>
+                <select id="windowSelect">
+                    <option value="east">East Facing (Science)</option>
+                    <option value="south">South Facing (Main Hall)</option>
+                    <option value="west">West Facing</option>
+                </select>
+                <p class="hint">Select a classroom window location to map its visible line of sight toward the canopy vs
+                    concrete.</p>
+            </section>
+
+            <section class="card">
+                <h3>Species Legend</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px;">
+                    <li style="margin-bottom: 4px;"><span
+                            style="display:inline-block; width: 12px; height: 12px; background-color: rgb(139, 69, 19); margin-right: 8px;"></span>Bur
+                        Oak</li>
+                    <li style="margin-bottom: 4px;"><span
+                            style="display:inline-block; width: 12px; height: 12px; background-color: rgb(34, 139, 34); margin-right: 8px;"></span>Live
+                        Oak</li>
+                    <li style="margin-bottom: 4px;"><span
+                            style="display:inline-block; width: 12px; height: 12px; background-color: rgb(85, 107, 47); margin-right: 8px;"></span>Bald
+                        Cypress</li>
+                    <li style="margin-bottom: 4px;"><span
+                            style="display:inline-block; width: 12px; height: 12px; background-color: rgb(210, 105, 30); margin-right: 8px;"></span>Texas
+                        Pecan</li>
+                    <li style="margin-bottom: 4px;"><span
+                            style="display:inline-block; width: 12px; height: 12px; background-color: rgb(189, 183, 107); margin-right: 8px;"></span>Mexican
+                        Sycamore</li>
+                </ul>
+            </section>
+
+            <section class="card status">
+                <h3>Green View Score</h3>
+                <div class="metric-value" id="greenScoreValue"
+                    style="font-size: 32px; color: var(--green); text-align: center; font-weight: bold; margin-bottom: 15px;">
+                    --%</div>
+                <p id="viewshedSummaryText" style="font-size: 13px; text-align: center;">Percentage of visual field
+                    filled by greenery.</p>
+            </section>
+        </aside>
+
+        <section class="map-panel">
+            <div id="viewshedMap" style="width: 100%; height: 100%;"></div>
+        </section>
+
+        <aside class="panel right">
+            <section class="card">
+                <h3 id="targetSchoolTitle">Target Campus</h3>
+                <p><strong>J.W. Caceres & M. Rivas Academy</strong><br>Donna, TX</p>
+            </section>
+
+            <section class="card">
+                <h3>Viewshed Notes</h3>
+                <textarea id="viewshedNotes" rows="6"
+                    placeholder="Record which classrooms desperately need visual access to nature...">Future Roadmap Notes (Saved):
+1. Exact Distances: Measure precise distances from exact window locations to trees once building models are fully defined.
+2. Green View Equity: Greatly expand the N, S, E, W directional filter to isolate and calculate the precise volume of green sightlines each student facade receives.</textarea>
+                <button id="saveViewshedNotes"
+                    style="width: 100%; padding: 8px; margin-top: 6px; border: 1px solid var(--border); cursor: pointer;"
+                    type="button">Save Notes</button>
+            </section>
+        </aside>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script src="viewshed.js"></script>
+</body>
+
+</html>

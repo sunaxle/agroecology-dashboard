@@ -1,0 +1,39 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "J.W. Caceres & M. Rivas Academy Property Boundary",
+                "type": "School Campus"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -98.0745,
+                            26.1700
+                        ],
+                        [
+                            -98.0675,
+                            26.1700
+                        ],
+                        [
+                            -98.0675,
+                            26.1650
+                        ],
+                        [
+                            -98.0745,
+                            26.1650
+                        ],
+                        [
+                            -98.0745,
+                            26.1700
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
+}

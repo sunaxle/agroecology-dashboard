@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>3D Microclimate Modeling</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .app-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            height: calc(100vh - var(--header-height) - var(--nav-height));
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: #e0f7fa;
+            /* Light sky blue background to act as the sky */
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #canvasContainer1 {
+            flex: 0 0 450px;
+            /* give it a fixed minimum height so it doesn't shrink when scrolling */
+            width: 100%;
+            border-bottom: 4px solid var(--green-dark);
+            position: relative;
+        }
+
+        #canvasContainer2 {
+            flex: 0 0 450px;
+            width: 100%;
+            border-bottom: 4px solid var(--green-dark);
+            position: relative;
+        }
+
+        #canvasContainer3 {
+            flex: 0 0 450px;
+            width: 100%;
+            position: relative;
+        }
+
+        .canvas-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: var(--green-dark);
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Time Slider Panel fixed between layouts */
+        #timeSliderContainer {
+            position: relative;
+            margin: 20px auto;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #yearSliderContainer {
+            position: relative;
+            margin: 20px auto;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #sunSlider {
+            flex: 1;
+            cursor: pointer;
+        }
+
+        #timeDisplay {
+            font-weight: bold;
+            font-size: 20px;
+            color: var(--green-dark);
+            min-width: 90px;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .metric-box {
+            background: #f8f8f8;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .metric-box .val-hot {
+            font-size: 26px;
+            font-weight: bold;
+            color: #d84315;
+            /* Deep Orange */
+            margin: 5px 0;
+        }
+
+        .metric-box .val-cool {
+            font-size: 26px;
+            font-weight: bold;
+            color: #0277bd;
+            /* Light Blue */
+            margin: 5px 0;
+        }
+
+        .metric-box .lbl {
+            font-size: 11px;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        .differential {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2e7d32;
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            background: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand-left">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV logo" />
+        </div>
+        <div class="title">3D Microclimate Modeling</div>
+        <div class="brand-right">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV logo" />
+        </div>
+    </header>
+
+    <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="community_impact.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+    <main class="app-layout">
+        <aside class="panel left">
+            <section class="card">
+                <h2>Orbital Shadow Simulation</h2>
+                <p class="hint" style="margin-bottom: 15px;">A 3D simulation of a mature Montezuma Cypress tree. Drag
+                    the slider to track the sun arc and observe real-time cooling effects from the canopy shade.</p>
+                <p class="hint" style="color:var(--green)"><strong>Controls:</strong> Click and drag the model window to
+                    orbit 360&deg; around the tree. Scroll to zoom.</p>
+            </section>
+
+            <section class="card">
+                <h3>South Texas Microclimate (Mock)</h3>
+
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="lbl">Asphalt / Ground Exposed</div>
+                        <div class="val-hot" id="tempExposed">72°F</div>
+                        <div class="lbl" style="font-size: 9px; color: #999;">Direct Solar Radiation</div>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="lbl">Under Cypress Canopy</div>
+                        <div class="val-cool" id="tempShaded">72°F</div>
+                        <div class="lbl" style="font-size: 9px; color: #999;">Evapotranspiration Cooling</div>
+                    </div>
+                </div>
+
+                <div class="differential" id="tempDiff">
+                    0°F Shading Effect
+                </div>
+            </section>
+
+            <section class="card" style="margin-top:20px;">
+                <h3>2025 - 2060 Climate Projection</h3>
+                <p class="hint">Visualizing rising baseline temperatures vs mitigated microforest shading.</p>
+                <div style="width:100%; height:200px; margin-top:10px;">
+                    <canvas id="tempChart"></canvas>
+                </div>
+            </section>
+        </aside>
+
+        <div class="main-content">
+            <!-- ThreeJS Targets -->
+            <div id="canvasContainer1">
+                <div class="canvas-label">Single Canopy: Montezuma Cypress</div>
+            </div>
+
+            <div id="canvasContainer2">
+                <div class="canvas-label">Mixed Microforest Layout</div>
+            </div>
+
+            <div id="timeSliderContainer">
+                <button id="playBtn"
+                    style="background:#2e7d32; color:white; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; font-weight:bold;">Play
+                    Daily Cycle</button>
+                <span style="font-size: 14px; color: #555; white-space: nowrap; margin-left: 10px;">6:00 AM</span>
+                <input type="range" id="sunSlider" min="6" max="18" value="8" step="0.25" />
+                <span style="font-size: 14px; color: #555; white-space: nowrap;">6:00 PM</span>
+
+                <div id="timeDisplay" style="margin-left:auto;">8:00 AM</div>
+            </div>
+
+            <div id="canvasContainer3">
+                <div class="canvas-label">2025 - 2060 Microforest Mitigation Projection</div>
+            </div>
+
+            <div id="yearSliderContainer">
+                <button id="playYearBtn"
+                    style="background:#0277bd; color:white; border:none; padding:8px 16px; border-radius:4px; cursor:pointer; font-weight:bold;">Play
+                    35-Year Timeline</button>
+                <span style="font-size: 14px; color: #555; white-space: nowrap; margin-left: 10px;">2025</span>
+                <input type="range" id="yearSlider" min="2025" max="2060" value="2025" step="1" style="flex:1" />
+                <span style="font-size: 14px; color: #555; white-space: nowrap;">2060</span>
+
+                <div id="yearDisplay" style="margin-left:auto; font-weight:bold; font-size:20px; color:#0277bd;">2025
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Three.js + OrbitControls + Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="tree_3d.js"></script>
+</body>
+
+</html>

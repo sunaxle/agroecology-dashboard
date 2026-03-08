@@ -1,0 +1,101 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "T1",
+        "name": "Main Building Loop",
+        "type": "Impermeable",
+        "material": "Concrete",
+        "length_ft": 2450,
+        "shaded_percent": 15
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -98.07249999999999,
+            26.16875
+          ],
+          [
+            -98.0695,
+            26.16875
+          ],
+          [
+            -98.0695,
+            26.16575
+          ],
+          [
+            -98.07249999999999,
+            26.16575
+          ],
+          [
+            -98.07249999999999,
+            26.16875
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "T2",
+        "name": "Microforest Nature Walk",
+        "type": "Permeable",
+        "material": "Decomposed Granite / Dirt",
+        "length_ft": 3120,
+        "shaded_percent": 80
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -98.07,
+            26.16825
+          ],
+          [
+            -98.069,
+            26.16975
+          ],
+          [
+            -98.0675,
+            26.169249999999998
+          ],
+          [
+            -98.067,
+            26.167749999999998
+          ],
+          [
+            -98.068,
+            26.166249999999998
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "T3",
+        "name": "Front Entrance Access",
+        "type": "Impermeable",
+        "material": "Concrete Sidewalk",
+        "length_ft": 840,
+        "shaded_percent": 5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -98.074,
+            26.16725
+          ],
+          [
+            -98.07249999999999,
+            26.16725
+          ]
+        ]
+      }
+    }
+  ]
+}

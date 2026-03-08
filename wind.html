@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wind Directional Analysis | UTRGV Agroecology</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand-left">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+        <div class="title">Wind Directional Analysis</div>
+        <div class="brand-right">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+    </header>
+    <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link active" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="community_impact.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+    <main class="canopy-layout">
+        <aside class="panel left">
+            <section class="card">
+                <h2>Wind Controls</h2>
+                <label for="windSpeed">Wind Speed (mph)</label>
+                <input id="windSpeed" type="range" min="0" max="40" step="1" value="15" />
+                <div class="year-readout" id="windSpeedReadout">15 mph</div>
+
+                <label for="windDirection">Primary Direction</label>
+                <select id="windDirection">
+                    <option value="SE">South-East (Prevailing)</option>
+                    <option value="N">North (Winter Fronts)</option>
+                    <option value="S">South (Summer Breezes)</option>
+                </select>
+                <p class="hint">Adjust the wind parameters to see how the canopy blocks wind flows into the campus.</p>
+            </section>
+
+            <section class="card">
+                <h3>Analysis</h3>
+                <button id="toggleWindbreaksBtn" class="field-tools button"
+                    style="width: 100%; padding: 8px; background: var(--green-light); border: 1px solid var(--border); cursor: pointer;">Show
+                    Windbreaks</button>
+                <p id="windSummaryText" style="margin-top: 10px; font-size: 14px;">Toggle to see which areas of J.W.
+                    Caceres are shielded by the Microforest.</p>
+            </section>
+        </aside>
+
+        <section class="map-panel">
+            <div id="windMap" style="width: 100%; height: 100%;"></div>
+        </section>
+
+        <aside class="panel right">
+            <section class="card">
+                <h3 id="targetSchoolTitle">Target Campus</h3>
+                <p><strong>J.W. Caceres & M. Rivas Academy</strong><br>Donna, TX</p>
+            </section>
+
+            <section class="card">
+                <h3>Wind Notes</h3>
+                <textarea id="windNotes" rows="6"
+                    placeholder="Record observations on wind funnels or break impacts..."></textarea>
+                <button id="saveWindNotes"
+                    style="width: 100%; padding: 8px; margin-top: 6px; border: 1px solid var(--border); cursor: pointer;"
+                    type="button">Save Notes</button>
+            </section>
+        </aside>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script src="wind.js"></script>
+</body>
+
+</html>

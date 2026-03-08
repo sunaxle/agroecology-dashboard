@@ -1,0 +1,3065 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790862480000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06931,
+          26.16672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790867040000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07017,
+          26.16805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790870280000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07021,
+          26.16797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790873640000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07113,
+          26.16782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790877900000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07173,
+          26.16696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790881920000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07337,
+          26.16606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790885220000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07113,
+          26.16625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790887680000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07086,
+          26.16807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_1",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790891160000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06916,
+          26.16711
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790862900000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06999,
+          26.16637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790866740000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07115,
+          26.16806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790870760000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06813,
+          26.16913
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790874120000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07101,
+          26.16736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790878140000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07202,
+          26.16758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790881620000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06738,
+          26.1688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790885400000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07149,
+          26.16767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790887980000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07139,
+          26.16766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_2",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790892120000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06924,
+          26.167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790864100000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07,
+          26.16679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790866860000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07005,
+          26.1665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790870400000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07103,
+          26.16657
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790873760000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07017,
+          26.16781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790878260000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0724,
+          26.16761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790881920000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07351,
+          26.16882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790885280000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07022,
+          26.16696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790887680000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07033,
+          26.16677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_3",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790891820000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06906,
+          26.16722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790862660000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06917,
+          26.16654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790866320000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07047,
+          26.16725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790869800000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06796,
+          26.16966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790874780000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07005,
+          26.16602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790878140000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07206,
+          26.16676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790882040000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06975,
+          26.1687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790885220000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07032,
+          26.1675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790888460000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07019,
+          26.16788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_4",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790891640000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06946,
+          26.16628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790864100000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06968,
+          26.1672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790866500000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07125,
+          26.16822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790870520000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07125,
+          26.16589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790873880000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07021,
+          26.16596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790878380000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07242,
+          26.16763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790881500000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0728,
+          26.16792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790884860000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07108,
+          26.16758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790888760000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07057,
+          26.16576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_5",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790891100000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06958,
+          26.16661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790863380000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06957,
+          26.16678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790867700000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07005,
+          26.16823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790870160000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06861,
+          26.16894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790873880000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07033,
+          26.16659
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790877060000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07177,
+          26.16713
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790882100000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06956,
+          26.16951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790884020000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07048,
+          26.16788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790888040000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07045,
+          26.16607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_6",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790891520000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06937,
+          26.1664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790863620000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06911,
+          26.16711
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790867520000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07066,
+          26.1669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790869620000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07086,
+          26.16772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790873760000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07107,
+          26.16668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790878200000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07239,
+          26.16724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790880780000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07265,
+          26.16867
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790884740000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07048,
+          26.16678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790888460000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07136,
+          26.16598
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_7",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790892420000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06903,
+          26.1665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790863800000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06909,
+          26.16718
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790866560000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07124,
+          26.16751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790870880000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06874,
+          26.16832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790874420000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0704,
+          26.16692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790878380000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07211,
+          26.16687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790881920000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06936,
+          26.1694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790884260000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07121,
+          26.1674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790887740000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07099,
+          26.16723
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_8",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790891280000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06993,
+          26.1671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790863140000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06999,
+          26.16635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790867460000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07061,
+          26.16584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790870880000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07135,
+          26.1671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790873340000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07036,
+          26.16644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790878200000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07234,
+          26.16687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790881620000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0729,
+          26.16665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790884500000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07065,
+          26.16602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790888700000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07123,
+          26.16822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_9",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790892840000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06946,
+          26.16649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790862960000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06914,
+          26.16643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790866680000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07,
+          26.1674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790871180000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06912,
+          26.16972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790874360000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07033,
+          26.16637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790878200000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07152,
+          26.16742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790881680000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0676,
+          26.16902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790884980000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0707,
+          26.16604
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790888520000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07038,
+          26.16599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_10",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790891820000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06957,
+          26.1664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790863500000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06902,
+          26.16687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790866020000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07026,
+          26.16581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790870940000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07061,
+          26.16656
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790874660000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0709,
+          26.16661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790876940000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07214,
+          26.16739
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790881260000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07376,
+          26.16629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790884080000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0706,
+          26.16758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790889120000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07008,
+          26.16726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_11",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790891340000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06975,
+          26.1664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790863140000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06974,
+          26.16709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790866020000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07043,
+          26.16653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790871300000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06888,
+          26.16836
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790874300000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07077,
+          26.16822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790878500000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07167,
+          26.16774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790880360000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06905,
+          26.16906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790884860000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07099,
+          26.16592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790888100000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0708,
+          26.16594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_12",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790891700000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06949,
+          26.16658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790863440000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06938,
+          26.16723
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790866200000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07089,
+          26.16653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790869860000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07044,
+          26.16764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790874720000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07003,
+          26.168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790878080000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07173,
+          26.16772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790881200000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07398,
+          26.16601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790885520000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07125,
+          26.16815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790887740000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07034,
+          26.16772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_13",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790891460000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06934,
+          26.16709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790863140000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06931,
+          26.16677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790866560000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07042,
+          26.16751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790871300000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06977,
+          26.16899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790873940000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07106,
+          26.16676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790877780000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07219,
+          26.16709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790881500000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06938,
+          26.16845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790885040000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07142,
+          26.16823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790888400000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07101,
+          26.16803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_14",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790892480000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06999,
+          26.16707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790862480000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06917,
+          26.16628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790867220000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07077,
+          26.16621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790870640000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07075,
+          26.16739
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790874600000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07047,
+          26.16731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790877960000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07198,
+          26.16749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790881980000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07276,
+          26.16787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790884380000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07076,
+          26.16617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790887680000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07099,
+          26.166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_15",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790892300000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0697,
+          26.16707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790863920000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06936,
+          26.16667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790866740000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07107,
+          26.16586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790871180000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06724,
+          26.16965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790873340000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07008,
+          26.16663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790877600000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0719,
+          26.1672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790880660000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06832,
+          26.16961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790885160000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07074,
+          26.16722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790889240000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07021,
+          26.16612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_16",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790892420000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06925,
+          26.16693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790862960000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06918,
+          26.16682
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790866500000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07128,
+          26.16601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790870160000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07123,
+          26.16635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790874000000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07101,
+          26.16765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790877840000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07248,
+          26.16704
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790881320000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07323,
+          26.16882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790884320000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07132,
+          26.16597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790887740000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07099,
+          26.16707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_17",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790892720000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06944,
+          26.16691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790863260000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0696,
+          26.16696
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790867280000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0703,
+          26.1668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790870520000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06748,
+          26.16876
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790874420000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07055,
+          26.16807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790878380000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07155,
+          26.1668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790881380000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06801,
+          26.16934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790884500000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07109,
+          26.16797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790889240000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07104,
+          26.1668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_18",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790892180000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06988,
+          26.1667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 8,
+        "timestamp": 1790863620000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06934,
+          26.16719
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 9,
+        "timestamp": 1790867400000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0708,
+          26.16714
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 10,
+        "timestamp": 1790869560000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07115,
+          26.16681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 11,
+        "timestamp": 1790873100000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07051,
+          26.16614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 12,
+        "timestamp": 1790876760000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07232,
+          26.16775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 13,
+        "timestamp": 1790880720000,
+        "zone_desc": "field"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07344,
+          26.16689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 14,
+        "timestamp": 1790884380000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0711,
+          26.16733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 15,
+        "timestamp": 1790888760000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0714,
+          26.1679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_19",
+        "group": "B",
+        "hour_of_day": 16,
+        "timestamp": 1790892660000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0693,
+          26.16676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 8,
+        "timestamp": 1790863080000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06932,
+          26.16692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 9,
+        "timestamp": 1790866980000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07119,
+          26.16705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 10,
+        "timestamp": 1790869980000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06957,
+          26.16974
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 11,
+        "timestamp": 1790874420000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07043,
+          26.16815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 12,
+        "timestamp": 1790877180000,
+        "zone_desc": "courtyard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07152,
+          26.16769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 13,
+        "timestamp": 1790880480000,
+        "zone_desc": "microforest"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0698,
+          26.16897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 14,
+        "timestamp": 1790885160000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07111,
+          26.16782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 15,
+        "timestamp": 1790888160000,
+        "zone_desc": "indoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07047,
+          26.16738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "student_id": "Student_20",
+        "group": "A",
+        "hour_of_day": 16,
+        "timestamp": 1790891820000,
+        "zone_desc": "entrance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.06904,
+          26.1665
+        ]
+      }
+    }
+  ]
+}

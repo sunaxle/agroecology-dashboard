@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Albedo & Heat Reflection | UTRGV Agroecology</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+    <style>
+        .legend-box {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+            border-radius: 3px;
+            vertical-align: text-bottom;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand-left">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+        <div class="title">Albedo & Heat Reflection</div>
+        <div class="brand-right">
+            <img class="brand-logo" src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology logo" />
+        </div>
+    </header>
+    <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link" href="index.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link active" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="community_impact.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+    <main class="canopy-layout">
+        <aside class="panel left">
+            <section class="card">
+                <h2>Surface Material Impact</h2>
+                <p class="hint">Albedo is the measure of how much solar radiation a surface reflects. Dark surfaces
+                    (asphalt) absorb heat, creating Urban Heat Islands. Light surfaces and vegetation reflect or
+                    dissipate it.</p>
+
+                <div style="margin-top: 15px;">
+                    <label>Highlight Material Type:</label>
+                    <select id="albedoTypeSelect"
+                        style="width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                        <option value="all">View All Surfaces</option>
+                        <option value="parking">High Absorption (Asphalt/Parking)</option>
+                        <option value="roof">Moderate Absorption (Rooftops)</option>
+                        <option value="veg">Cooling (Vegetation/Canopy)</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="card status">
+                <h3>Campus Heat Island Risk</h3>
+                <div class="metric-value" id="riskValue"
+                    style="font-size: 32px; color: #d9534f; text-align: center; font-weight: bold; margin-bottom: 5px;">
+                    High</div>
+                <p id="riskText" style="font-size: 13px; text-align: center;">Large continuous expanses of asphalt
+                    increase ambient temperatures by 5-8°F.</p>
+            </section>
+        </aside>
+
+        <section class="map-panel">
+            <div id="albedoMap" style="width: 100%; height: 100%;"></div>
+            <div
+                style="position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.9); padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;">
+                <h4 style="margin: 0 0 5px 0; font-size: 14px;">Albedo Map</h4>
+                <div style="font-size: 12px; margin-bottom: 3px;"><span class="legend-box"
+                        style="background: rgba(244, 67, 54, 0.7);"></span> High Absorption (Asphalt)</div>
+                <div style="font-size: 12px; margin-bottom: 3px;"><span class="legend-box"
+                        style="background: rgba(255, 152, 0, 0.6);"></span> Moderate (Roofs/Dirt)</div>
+                <div style="font-size: 12px;"><span class="legend-box"
+                        style="background: rgba(76, 175, 80, 0.6);"></span> Cooling (Grass/Canopy)</div>
+            </div>
+        </section>
+
+        <aside class="panel right">
+            <section class="card">
+                <h3 id="targetSchoolTitle">Target Campus</h3>
+                <p><strong><span id="campusNameDisplay">J.W. Caceres & M. Rivas Academy</span></strong><br>Donna, TX</p>
+            </section>
+
+            <section class="card">
+                <h3>Mitigation Strategies</h3>
+                <ul style="font-size: 13px; padding-left: 20px; color: var(--text);">
+                    <li style="margin-bottom: 5px;">Depave unused parking zones and replace with permeable pavers or
+                        grass.</li>
+                    <li style="margin-bottom: 5px;">Plant shade trees strategically to block afternoon sun on exposed
+                        concrete.</li>
+                    <li>Apply highly reflective coatings to school rooftops.</li>
+                </ul>
+            </section>
+        </aside>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script src="albedo.js"></script>
+</body>
+
+</html>
