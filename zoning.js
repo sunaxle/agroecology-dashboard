@@ -84,12 +84,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Area calculation engine
                 let areaText = `Area ${idx + 1}`;
                 try {
-                    const acres = Math.abs(geometryEngine.geodesicArea(polygon, "acres"));
-                    const sqft = Math.abs(geometryEngine.geodesicArea(polygon, "square-feet"));
-                    if (acres > 0) {
-                        areaText = `<strong>${acres.toFixed(2)} Acres</strong> <span style="color:#999;font-size:0.9em;">(${sqft.toLocaleString(undefined, { maximumFractionDigits: 0 })} sq ft)</span>`;
+                    let calcPoly = polygon;
+                    // geodesicArea strictly requires standard geographic coordinates (WGS84). 
+                    // If the rings are in WebMercator (huge numbers > 180), we MUST project them first or the engine will lock up.
+                    if (calcPoly.spatialReference && calcPoly.spatialReference.isWebMercator) {
+                        calcPoly = webMercatorUtils.webMercatorToGeographic(calcPoly);
+                    } else if (polygon.rings[0][0][0] && Math.abs(polygon.rings[0][0][0]) > 180) {
+                        const tempPoly = new Polygon({ rings: polygon.rings, spatialReference: { wkid: 3857 } });
+                        calcPoly = webMercatorUtils.webMercatorToGeographic(tempPoly);
                     }
-                } catch (e) { }
+
+                    const acres = Math.abs(geometryEngine.geodesicArea(calcPoly, "acres"));
+                    const sqft = Math.abs(geometryEngine.geodesicArea(calcPoly, "square-feet"));
+                    if (acres > 0) {
+                        areaText = `<strong>${acres.toFixed(3)} Acres</strong> <span style="color:#999;font-size:0.9em;">(${sqft.toLocaleString(undefined, { maximumFractionDigits: 0 })} sq ft)</span>`;
+                    }
+                } catch (e) {
+                    console.warn("Area calculation skipped/failed", e);
+                }
 
                 const graphic = new Graphic({
                     geometry: polygon,
