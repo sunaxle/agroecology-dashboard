@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 2. Define Category Styling
     const zoneStyles = {
+        "Campus Boundary": { color: [156, 39, 176, 0.1], outline: [156, 39, 176, 1] }, // Purple outline
         "Rooftop": { color: [158, 158, 158, 0.5], outline: [97, 97, 97, 1] },       // Grey
         "Parking Lot": { color: [66, 66, 66, 0.4], outline: [33, 33, 33, 1] },      // Dark Grey
         "Courtyard": { color: [255, 193, 7, 0.3], outline: [255, 160, 0, 1] },      // Amber
@@ -35,8 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "esri/widgets/Sketch",
         "esri/Graphic",
         "esri/geometry/Polygon",
-        "esri/geometry/support/webMercatorUtils"
-    ], function (Map, MapView, GraphicsLayer, Sketch, Graphic, Polygon, webMercatorUtils) {
+        "esri/geometry/support/webMercatorUtils",
+        "esri/geometry/geometryEngine"
+    ], function (Map, MapView, GraphicsLayer, Sketch, Graphic, Polygon, webMercatorUtils, geometryEngine) {
 
         const map = new Map({ basemap: "satellite" });
 
@@ -77,13 +79,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 const style = zoneStyles[z.category];
 
                 // Map Graphic
-                const polygon = new Polygon({ rings: z.geometry.rings });
+                const polygon = new Polygon({ rings: z.geometry.rings, spatialReference: view.spatialReference });
+
+                // Area calculation engine
+                let areaText = `Area ${idx + 1}`;
+                try {
+                    const acres = Math.abs(geometryEngine.geodesicArea(polygon, "acres"));
+                    const sqft = Math.abs(geometryEngine.geodesicArea(polygon, "square-feet"));
+                    if (acres > 0) {
+                        areaText = `<strong>${acres.toFixed(2)} Acres</strong> <span style="color:#999;font-size:0.9em;">(${sqft.toLocaleString(undefined, { maximumFractionDigits: 0 })} sq ft)</span>`;
+                    }
+                } catch (e) { }
+
                 const graphic = new Graphic({
                     geometry: polygon,
                     symbol: {
                         type: "simple-fill",
                         color: style.color,
-                        outline: { color: style.outline, width: 2 }
+                        outline: { color: style.outline, width: z.category === "Campus Boundary" ? 4 : 2 }
                     },
                     attributes: z
                 });
@@ -97,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div>
                         <span class="zone-color-swatch" style="background-color: ${rgb};"></span>
                         <strong>${z.category}</strong>
-                        <div style="font-size: 0.8em; color: #666; margin-left:24px;">Area ${idx + 1}</div>
+                        <div style="font-size: 0.85em; color: var(--green-dark); margin-left:24px; margin-top: 3px;">${areaText}</div>
                     </div>
                     <button class="btn btn-danger" style="padding: 4px 8px; width: auto; min-width: 60px;" onclick="window.deleteZone(${idx})">Delete</button>
                 `;
