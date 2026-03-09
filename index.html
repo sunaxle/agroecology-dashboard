@@ -59,7 +59,8 @@
     </header>
 
     <nav class="app-nav">
-        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link" href="dashboard_map.html">Dashboard</a>
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a
+            class="nav-link" href="dashboard_map.html">Dashboard</a>
         <a class="nav-link" href="canopy.html">Canopy Over Time</a>
         <a class="nav-link" href="trails.html">Trail Analysis</a>
         <a class="nav-link" href="wind.html">Wind Analysis</a>
@@ -76,6 +77,7 @@
         <a class="nav-link active" href="index.html">Community Impact</a>
         <a class="nav-link" href="student_tracking.html">Student Tracking</a>
         <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+        <a class="nav-link" href="maintenance.html">Structural Maint.</a>
         <a class="nav-link" href="survey.html">Wellbeing Survey</a>
     </nav>
 
@@ -189,12 +191,16 @@
                     space, but as a living socio-ecological network maintained by students (Campbell, 2022).</p>
             </div>
 
-            <div class="impact-card">
+            <div class="impact-card" style="position: relative;">
                 <div class="impact-icon">📋</div>
                 <div class="impact-value" id="valMaint">15-Yr Plan</div>
                 <h3 style="font-size: 16px;">Structural Maintenance</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Visualizes long-term pruning rotations,
+                <p style="font-size: 13px; color: #666; margin-top: 10px; margin-bottom: 35px;">Visualizes long-term
+                    pruning rotations,
                     adaptive watering, and expected natural canopy mortality rates (Schoeneman, 1994).</p>
+                <a href="maintenance.html"
+                    style="position: absolute; bottom: 15px; left: 20px; right: 20px; display: block; text-align: center; padding: 6px; background: var(--green); color: white; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold;">Launch
+                    Tracker</a>
             </div>
 
             <div class="impact-card">
@@ -327,7 +333,7 @@
                 document.getElementById('valPlay').textContent = "+" + Math.round(45 * progressRatio) + " mins";
                 document.getElementById('valEdu').textContent = "+" + Math.round(12 * progressRatio) + "%";
             });
-        });
+     );
     </script>
 </body>
 
