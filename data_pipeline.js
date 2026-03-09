@@ -121,17 +121,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // Derive color loosely based on category config in zoning.js
                     let c = [255, 255, 255, 0.2];
-                    if (z.category === "Rooftop") c = [158, 158, 158, 0.5];
-                    if (z.category === "Parking Lot") c = [66, 66, 66, 0.4];
-                    if (z.category === "Courtyard") c = [255, 193, 7, 0.3];
-                    if (z.category === "Open Land") c = [76, 175, 80, 0.3];
+                    let outlineColor = [255, 255, 255, 0.8];
+                    let outlineWidth = 1;
+
+                    if (z.category === "Campus Boundary") {
+                        c = [156, 39, 176, 0.05];
+                        outlineColor = [156, 39, 176, 1];
+                        outlineWidth = 2;
+                    }
+                    else if (z.category === "Rooftop") c = [158, 158, 158, 0.5];
+                    else if (z.category === "Parking Lot") c = [66, 66, 66, 0.4];
+                    else if (z.category === "Courtyard") c = [255, 193, 7, 0.3];
+                    else if (z.category === "Open Land") c = [76, 175, 80, 0.3];
 
                     const graphic = new Graphic({
                         geometry: polygon,
                         symbol: {
                             type: "simple-fill",
                             color: c,
-                            outline: { width: 1, color: [255, 255, 255, 0.8] }
+                            outline: { width: outlineWidth, color: outlineColor }
                         },
                         popupTemplate: { title: "Delineated Area", content: `Zone Type: **${z.category}**` }
                     });

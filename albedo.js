@@ -123,13 +123,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (filterType === "parking" && z.category === "Parking Lot") show = true;
                 if (filterType === "roof" && z.category === "Rooftop") show = true;
                 if (filterType === "veg" && (z.category === "Open Land" || z.category === "Courtyard" || z.category === "Front Yard")) show = true;
+                if (z.category === "Campus Boundary") show = true; // Always show the master boundary
 
                 if (!show) return;
 
                 // Color based on Albedo (Heat Absorption)
+                let outlineColor = [255, 255, 255, 0.8];
+                let outlineWidth = 1;
+
                 if (z.category === "Parking Lot") color = [244, 67, 54, 0.7]; // Red = Hot/Low Albedo
                 else if (z.category === "Rooftop") color = [255, 152, 0, 0.6]; // Orange = Warm/Med Albedo
                 else if (z.category === "Open Land" || z.category === "Front Yard" || z.category === "Courtyard") color = [76, 175, 80, 0.6]; // Green = Cool/High Albedo
+                else if (z.category === "Campus Boundary") {
+                    color = [156, 39, 176, 0.05]; // Extremely faint purple fill
+                    outlineColor = [156, 39, 176, 1]; // Solid purple outline
+                    outlineWidth = 3;
+                }
                 else color = [255, 255, 255, 0.3]; // Default unknown
 
                 let wkid = 4326;
@@ -145,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     symbol: {
                         type: "simple-fill",
                         color: color,
-                        outline: { width: 1, color: [255, 255, 255, 0.8] }
+                        outline: { width: outlineWidth, color: outlineColor }
                     },
                     popupTemplate: { title: "Surface Material", content: `<strong>Category:</strong> ${z.category}` }
                 });
