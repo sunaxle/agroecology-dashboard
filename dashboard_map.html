@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rio Grande Schools Environmental Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="brand-left">
+      </div>
+    <div class="title">Shaded Re-LEAF in the Rio Grande</div>
+    <div class="brand-right">
+      </div>
+  </header>
+  <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link active" href="dashboard_map.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="index.html">Community Impact</a>
+            <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+    </nav>
+
+  <main class="app-grid">
+    <aside class="panel left">
+      <section class="card about">
+        <h2>About</h2>
+        <p>
+          This dashboard shows environmental indicators for Mercedes CSID and
+          Donna ISD, including canopy coverage, albedo, and temperature.
+        </p>
+      </section>
+
+      <section class="card selector">
+        <label for="districtSelect">Select a District</label>
+        <select id="districtSelect"></select>
+      </section>
+
+      <section class="card status">
+        <h3>Status</h3>
+        <p id="statusBox">Step 1: Click a school point to select it.</p>
+      </section>
+
+      <section class="card field-tools">
+        <h3>Field Data</h3>
+        <div class="field-row">
+          <span>Active school:</span>
+          <strong id="activeSchoolName">None selected</strong>
+        </div>
+        <button id="drawAreaBtn" type="button">Draw School Area</button>
+        <button id="finishDrawingBtn" type="button">Finish Drawing</button>
+        <button id="cancelDrawingBtn" type="button">Cancel Drawing</button>
+        <button id="addObservationBtn" type="button">Add Tree Observation</button>
+        <button id="downloadAreasBtn" type="button">Download Areas (GeoJSON)</button>
+        <button id="downloadObservationsBtn" type="button">Download Observations (GeoJSON)</button>
+        <button id="downloadObservationsCsvBtn" type="button">Download Observations (CSV)</button>
+        <small id="fieldStatus"></small>
+      </section>
+    </aside>
+
+    <section class="map-panel">
+      <div id="mapView"></div>
+      <div class="layer-panel">
+        <div class="layer-panel-header">
+          <span>Layers</span>
+          <button id="layerPanelToggle" type="button">×</button>
+        </div>
+        <div id="layerListContainer"></div>
+      </div>
+    </section>
+
+    <aside class="panel right">
+      <section class="card district-title">
+        <h2 id="districtName">District</h2>
+      </section>
+
+      <section class="card metric">
+        <h3>Estimated Canopy Percentage</h3>
+        <div class="metric-value" id="canopyValue">--</div>
+      </section>
+
+      <section class="card metric">
+        <h3>Percent Below 0.20 Albedo</h3>
+        <div class="metric-value" id="albedoValue">--</div>
+      </section>
+
+      <section class="card metric">
+        <h3>Average Seasonal Land Surface Temperature</h3>
+        <div class="season-grid">
+          <div class="season">
+            <span>Summer</span>
+            <strong id="lstSummer">--</strong>
+          </div>
+          <div class="season">
+            <span>Spring</span>
+            <strong id="lstSpring">--</strong>
+          </div>
+          <div class="season">
+            <span>Fall</span>
+            <strong id="lstFall">--</strong>
+          </div>
+          <div class="season">
+            <span>Winter</span>
+            <strong id="lstWinter">--</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="card legend">
+        <h3>Legend</h3>
+        <div id="legendContainer"></div>
+      </section>
+
+      <section class="card table">
+        <h3>School Areas</h3>
+        <p id="areasTableHint">Select a school to start a new area.</p>
+        <div id="areasTableContainer"></div>
+      </section>
+
+      <section class="card table">
+        <h3>Tree Observations</h3>
+        <p id="observationsTableHint">Add observations to see them here.</p>
+        <div id="tableContainer"></div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="https://js.arcgis.com/4.29/"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
