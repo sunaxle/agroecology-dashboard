@@ -25,10 +25,17 @@ with open(zones_path, 'r') as f:
     zones_data = json.load(f)
 
 boundary_coords = []
+excluded_polygons = []
+excluded_categories = ['Rooftop', 'Parking Lot', 'Corridor']
+
 for feature in zones_data.get('features', []):
-    if feature.get('properties', {}).get('category') == 'Campus Boundary':
-        boundary_coords = feature['geometry']['coordinates'][0]
-        break
+    cat = feature.get('properties', {}).get('category')
+    coords = feature.get('geometry', {}).get('coordinates', [[]])[0]
+    
+    if cat == 'Campus Boundary':
+        boundary_coords = coords
+    elif cat in excluded_categories and coords:
+        excluded_polygons.append(coords)
 
 if not boundary_coords:
     # Fallback bounding box if no boundary is defined
@@ -57,6 +64,15 @@ while len(features) < total_trees:
     lat = random.uniform(min_lat, max_lat)
     
     if boundary_coords and not point_in_polygon(lon, lat, boundary_coords):
+        continue
+        
+    in_excluded = False
+    for ex_poly in excluded_polygons:
+        if point_in_polygon(lon, lat, ex_poly):
+            in_excluded = True
+            break
+            
+    if in_excluded:
         continue
         
     species = random.choice(species_list)
