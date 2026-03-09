@@ -132,7 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 else if (z.category === "Open Land" || z.category === "Front Yard" || z.category === "Courtyard") color = [76, 175, 80, 0.6]; // Green = Cool/High Albedo
                 else color = [255, 255, 255, 0.3]; // Default unknown
 
-                const polygon = new Polygon({ rings: z.geometry.rings });
+                let wkid = 4326;
+                try {
+                    if (z.geometry.rings[0][0][0] && Math.abs(z.geometry.rings[0][0][0]) > 180) {
+                        wkid = 3857;
+                    }
+                } catch (e) { }
+
+                const polygon = new Polygon({ rings: z.geometry.rings, spatialReference: { wkid: wkid } });
                 const graphic = new Graphic({
                     geometry: polygon,
                     symbol: {
