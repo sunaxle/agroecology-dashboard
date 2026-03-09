@@ -6,15 +6,16 @@
       "properties": {
         "id": 1,
         "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 43
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.6,
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0702,
-          26.1665
+          -98.0688,
+          26.1673
         ]
       }
     },
@@ -22,16 +23,17 @@
       "type": "Feature",
       "properties": {
         "id": 2,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.2,
-        "maxRadiusFeet": 45
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.6,
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0723,
-          26.1662
+          -98.0694,
+          26.1667
         ]
       }
     },
@@ -39,16 +41,17 @@
       "type": "Feature",
       "properties": {
         "id": 3,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.1,
-        "maxRadiusFeet": 36
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 2.6,
+        "maxRadiusFeet": 36,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0717,
-          26.1679
+          -98.0721,
+          26.1667
         ]
       }
     },
@@ -56,151 +59,16 @@
       "type": "Feature",
       "properties": {
         "id": 4,
-        "species": "Live Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 42
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0708,
-          26.168
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 5,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.0,
-        "maxRadiusFeet": 38
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.07,
-          26.1674
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 6,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 44
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0709,
-          26.1663
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 7,
         "species": "Texas Pecan",
         "plantYear": 2025,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 35
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 47,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0709,
-          26.1663
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 8,
-        "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.7,
-        "maxRadiusFeet": 54
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0724,
-          26.1662
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 9,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.8,
-        "maxRadiusFeet": 41
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0701,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 10,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 55
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0723,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 11,
-        "species": "Live Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 42
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0723,
-          26.1666
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 12,
-        "species": "Live Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.5,
-        "maxRadiusFeet": 49
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0714,
+          -98.0706,
           26.1678
         ]
       }
@@ -208,33 +76,17 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 13,
-        "species": "Texas Pecan",
+        "id": 5,
+        "species": "Live Oak",
         "plantYear": 2025,
-        "baseRadiusFeet": 3.9,
-        "maxRadiusFeet": 46
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0722,
-          26.1689
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 14,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.3,
-        "maxRadiusFeet": 40
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.072,
+          -98.0702,
           26.1671
         ]
       }
@@ -242,96 +94,84 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 15,
-        "species": "Montezuma Bald Cypress",
+        "id": 6,
+        "species": "Mexican Sycamore",
         "plantYear": 2024,
-        "baseRadiusFeet": 2.5,
-        "maxRadiusFeet": 48
+        "baseRadiusFeet": 2.8,
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0719,
-          26.1686
+          -98.0696,
+          26.1668
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 16,
-        "species": "Texas Pecan",
+        "id": 7,
+        "species": "Mexican Sycamore",
         "plantYear": 2025,
-        "baseRadiusFeet": 2.9,
-        "maxRadiusFeet": 41
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0712,
-          26.1662
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 17,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
         "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 55
+        "maxRadiusFeet": 52,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0719,
-          26.1672
+          -98.0691,
+          26.1676
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 18,
-        "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.3,
-        "maxRadiusFeet": 44
+        "id": 8,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.8,
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0713,
-          26.1682
+          -98.0695,
+          26.1664
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 19,
-        "species": "Texas Pecan",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.7,
-        "maxRadiusFeet": 39
+        "id": 9,
+        "species": "Live Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0708,
-          26.1687
+          -98.0694,
+          26.1661
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 20,
-        "species": "Bur Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 50
+        "id": 10,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.8,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
@@ -344,33 +184,125 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 21,
+        "id": 11,
         "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.2,
-        "maxRadiusFeet": 42
+        "plantYear": 2024,
+        "baseRadiusFeet": 4.3,
+        "maxRadiusFeet": 36,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0722,
-          26.1668
+          -98.071,
+          26.1663
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 22,
-        "species": "Live Oak",
+        "id": 12,
+        "species": "Mexican Sycamore",
         "plantYear": 2024,
-        "baseRadiusFeet": 2.8,
-        "maxRadiusFeet": 40
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 36,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0717,
+          -98.0716,
+          26.1678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2025,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 49,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0698,
+          26.1662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 14,
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.0,
+        "maxRadiusFeet": 45,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0712,
+          26.1669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 15,
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.6,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.072,
+          26.1676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 16,
+        "species": "Texas Pecan",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0718,
+          26.1681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 17,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.6,
+        "maxRadiusFeet": 41,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0692,
           26.1675
         ]
       }
@@ -378,17 +310,108 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 23,
+        "id": 18,
         "species": "Bur Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.3,
-        "maxRadiusFeet": 43
+        "plantYear": 2025,
+        "baseRadiusFeet": 2.6,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0716,
-          26.1681
+          -98.0701,
+          26.1668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 19,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.7,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0695,
+          26.167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 20,
+        "species": "Mexican Sycamore",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.2,
+        "maxRadiusFeet": 40,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0691,
+          26.1668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 21,
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.9,
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.071,
+          26.167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 22,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 47,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0715,
+          26.1667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0722,
+          26.1664
         ]
       }
     },
@@ -398,14 +421,15 @@
         "id": 24,
         "species": "Montezuma Bald Cypress",
         "plantYear": 2026,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 39
+        "baseRadiusFeet": 3.0,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0724,
-          26.1663
+          -98.0707,
+          26.1662
         ]
       }
     },
@@ -413,16 +437,17 @@
       "type": "Feature",
       "properties": {
         "id": 25,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 49
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 46,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0722,
-          26.1669
+          -98.0709,
+          26.1667
         ]
       }
     },
@@ -430,16 +455,17 @@
       "type": "Feature",
       "properties": {
         "id": 26,
-        "species": "Texas Pecan",
+        "species": "Montezuma Bald Cypress",
         "plantYear": 2025,
-        "baseRadiusFeet": 4.3,
-        "maxRadiusFeet": 41
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0723,
-          26.1669
+          -98.072,
+          26.1664
         ]
       }
     },
@@ -447,32 +473,16 @@
       "type": "Feature",
       "properties": {
         "id": 27,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.7,
-        "maxRadiusFeet": 51
+        "species": "Live Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.2,
+        "maxRadiusFeet": 41,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0704,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 28,
-        "species": "Bur Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.6,
-        "maxRadiusFeet": 36
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0722,
+          -98.0695,
           26.1673
         ]
       }
@@ -480,11 +490,138 @@
     {
       "type": "Feature",
       "properties": {
+        "id": 28,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 38,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0691,
+          26.1663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": 29,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.0,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0697,
+          26.1665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30,
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0699,
+          26.1676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.5,
+        "maxRadiusFeet": 42,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0704,
+          26.1674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 32,
         "species": "Bur Oak",
-        "plantYear": 2024,
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0708,
+          26.1663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 33,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.3,
+        "maxRadiusFeet": 53,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0693,
+          26.1672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 34,
+        "species": "Live Oak",
+        "plantYear": 2025,
         "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 47
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0688,
+          26.1673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 35,
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.2,
+        "maxRadiusFeet": 45,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
@@ -497,119 +634,18 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 30,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.9,
-        "maxRadiusFeet": 51
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0707,
-          26.168
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 31,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.3,
-        "maxRadiusFeet": 44
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.07,
-          26.168
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 32,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.0,
-        "maxRadiusFeet": 45
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0718,
-          26.1669
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 33,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 36
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0707,
-          26.1666
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 34,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 52
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0715,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 35,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.6,
-        "maxRadiusFeet": 54
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0704,
-          26.168
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": 36,
-        "species": "Live Oak",
-        "plantYear": 2024,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
         "baseRadiusFeet": 2.8,
-        "maxRadiusFeet": 54
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0709,
-          26.1661
+          -98.0712,
+          26.1662
         ]
       }
     },
@@ -617,10 +653,11 @@
       "type": "Feature",
       "properties": {
         "id": 37,
-        "species": "Bur Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.3,
-        "maxRadiusFeet": 46
+        "species": "Live Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.1,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
@@ -634,168 +671,16 @@
       "type": "Feature",
       "properties": {
         "id": 38,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.9,
-        "maxRadiusFeet": 43
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0709,
-          26.1668
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 39,
         "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 40
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0711,
-          26.1682
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 40,
-        "species": "Mexican Sycamore",
-        "plantYear": 2025,
-        "baseRadiusFeet": 2.9,
-        "maxRadiusFeet": 54
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0705,
-          26.1662
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 41,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.2,
-        "maxRadiusFeet": 35
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0705,
-          26.1688
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 42,
-        "species": "Bur Oak",
         "plantYear": 2024,
-        "baseRadiusFeet": 2.9,
-        "maxRadiusFeet": 39
+        "baseRadiusFeet": 4.0,
+        "maxRadiusFeet": 46,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.071,
-          26.1661
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 43,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 52
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0707,
-          26.169
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 44,
-        "species": "Live Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.2,
-        "maxRadiusFeet": 43
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0703,
-          26.1677
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 45,
-        "species": "Live Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.0,
-        "maxRadiusFeet": 51
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0722,
-          26.1669
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 46,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.3,
-        "maxRadiusFeet": 52
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0719,
-          26.1661
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 47,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.9,
-        "maxRadiusFeet": 55
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0703,
+          -98.0697,
           26.1671
         ]
       }
@@ -803,17 +688,180 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 48,
-        "species": "Bur Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.7,
-        "maxRadiusFeet": 37
+        "id": 39,
+        "species": "Live Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.6,
+        "maxRadiusFeet": 47,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0716,
-          26.169
+          -98.0712,
+          26.167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 40,
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 36,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0699,
+          26.1678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 41,
+        "species": "Live Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 52,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0712,
+          26.1662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 42,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0718,
+          26.1681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 43,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.5,
+        "maxRadiusFeet": 40,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.069,
+          26.1663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 44,
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.0,
+        "maxRadiusFeet": 43,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0706,
+          26.1663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 45,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.0,
+        "maxRadiusFeet": 46,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0689,
+          26.1662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 46,
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.6,
+        "maxRadiusFeet": 47,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0688,
+          26.1674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 47,
+        "species": "Bur Oak",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.6,
+        "maxRadiusFeet": 52,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0709,
+          26.1678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 48,
+        "species": "Live Oak",
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0712,
+          26.1672
         ]
       }
     },
@@ -822,15 +870,16 @@
       "properties": {
         "id": 49,
         "species": "Bur Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.1,
-        "maxRadiusFeet": 50
+        "plantYear": 2024,
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.072,
-          26.1665
+          -98.0721,
+          26.1675
         ]
       }
     },
@@ -838,16 +887,17 @@
       "type": "Feature",
       "properties": {
         "id": 50,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 51
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.2,
+        "maxRadiusFeet": 41,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0721,
-          26.1671
+          -98.0696,
+          26.1677
         ]
       }
     },
@@ -855,16 +905,17 @@
       "type": "Feature",
       "properties": {
         "id": 51,
-        "species": "Texas Pecan",
+        "species": "Mexican Sycamore",
         "plantYear": 2025,
-        "baseRadiusFeet": 2.6,
-        "maxRadiusFeet": 55
+        "baseRadiusFeet": 3.2,
+        "maxRadiusFeet": 50,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.071,
-          26.1664
+          -98.0692,
+          26.1677
         ]
       }
     },
@@ -873,15 +924,16 @@
       "properties": {
         "id": 52,
         "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.5,
-        "maxRadiusFeet": 39
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.1,
+        "maxRadiusFeet": 38,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0722,
-          26.1663
+          -98.0696,
+          26.1662
         ]
       }
     },
@@ -889,16 +941,17 @@
       "type": "Feature",
       "properties": {
         "id": 53,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 43
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 46,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0707,
-          26.1677
+          -98.0698,
+          26.166
         ]
       }
     },
@@ -909,63 +962,13 @@
         "species": "Bur Oak",
         "plantYear": 2025,
         "baseRadiusFeet": 3.6,
-        "maxRadiusFeet": 39
+        "maxRadiusFeet": 40,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0719,
-          26.1661
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 55,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.6,
-        "maxRadiusFeet": 39
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0704,
-          26.1662
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 56,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 43
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.07,
-          26.1666
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 57,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.5,
-        "maxRadiusFeet": 43
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0713,
+          -98.0705,
           26.1674
         ]
       }
@@ -973,17 +976,72 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 58,
-        "species": "Live Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 38
+        "id": 55,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 53,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0712,
-          26.1683
+          -98.0706,
+          26.1678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 56,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.8,
+        "maxRadiusFeet": 38,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0721,
+          26.1675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 57,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0723,
+          26.1668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 58,
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 41,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0691,
+          26.1674
         ]
       }
     },
@@ -993,8 +1051,369 @@
         "id": 59,
         "species": "Montezuma Bald Cypress",
         "plantYear": 2026,
-        "baseRadiusFeet": 4.2,
-        "maxRadiusFeet": 51
+        "baseRadiusFeet": 4.3,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0706,
+          26.1674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 60,
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 52,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.071,
+          26.1662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 61,
+        "species": "Live Oak",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 36,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.071,
+          26.1666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 62,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.5,
+        "maxRadiusFeet": 49,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.072,
+          26.1675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 63,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.7,
+        "maxRadiusFeet": 50,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0693,
+          26.1677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 64,
+        "species": "Texas Pecan",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 43,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0708,
+          26.1665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 65,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2025,
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0692,
+          26.1663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 66,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0711,
+          26.1672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 67,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0714,
+          26.1665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 68,
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0709,
+          26.1664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 69,
+        "species": "Live Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.9,
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.069,
+          26.1667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70,
+        "species": "Mexican Sycamore",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.3,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0723,
+          26.167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.1,
+        "maxRadiusFeet": 41,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0695,
+          26.1677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 72,
+        "species": "Live Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.3,
+        "maxRadiusFeet": 45,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0724,
+          26.1666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 73,
+        "species": "Texas Pecan",
+        "plantYear": 2024,
+        "baseRadiusFeet": 4.3,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0706,
+          26.1666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 74,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.9,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.072,
+          26.1671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 75,
+        "species": "Live Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.0,
+        "maxRadiusFeet": 53,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0707,
+          26.1679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 76,
+        "species": "Texas Pecan",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0694,
+          26.1675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 77,
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.8,
+        "maxRadiusFeet": 52,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0691,
+          26.1663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 78,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.069,
+          26.1658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 79,
+        "species": "Bur Oak",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.2,
+        "maxRadiusFeet": 42,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
@@ -1007,357 +1426,18 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 60,
-        "species": "Live Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.2,
-        "maxRadiusFeet": 44
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0724,
-          26.1684
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 61,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 52
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.07,
-          26.1688
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 62,
-        "species": "Mexican Sycamore",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 55
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0705,
-          26.1671
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 63,
+        "id": 80,
         "species": "Live Oak",
         "plantYear": 2024,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 45
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0714,
-          26.1678
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 64,
-        "species": "Texas Pecan",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 50
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0706,
-          26.1686
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 65,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.9,
-        "maxRadiusFeet": 43
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.07,
-          26.1675
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 66,
-        "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.9,
-        "maxRadiusFeet": 55
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0701,
-          26.1688
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 67,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
         "baseRadiusFeet": 4.5,
-        "maxRadiusFeet": 35
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.071,
-          26.1675
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 68,
-        "species": "Texas Pecan",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 41
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0701,
-          26.1664
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 69,
-        "species": "Bur Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.5,
-        "maxRadiusFeet": 35
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.072,
-          26.1689
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 70,
-        "species": "Mexican Sycamore",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.5,
-        "maxRadiusFeet": 41
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0718,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 71,
-        "species": "Mexican Sycamore",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.5,
-        "maxRadiusFeet": 45
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0707,
-          26.1665
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 72,
-        "species": "Texas Pecan",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.9,
-        "maxRadiusFeet": 38
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0706,
-          26.1666
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 73,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.1,
-        "maxRadiusFeet": 36
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0709,
-          26.1681
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 74,
-        "species": "Mexican Sycamore",
-        "plantYear": 2025,
-        "baseRadiusFeet": 2.8,
-        "maxRadiusFeet": 37
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0706,
-          26.1673
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 75,
-        "species": "Bur Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 38
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0724,
-          26.1687
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 76,
-        "species": "Mexican Sycamore",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 40
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           -98.0703,
-          26.1666
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 77,
-        "species": "Bur Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 38
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0723,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 78,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.6,
-        "maxRadiusFeet": 55
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0712,
-          26.1686
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 79,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 42
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0708,
-          26.1663
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 80,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 54
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0701,
-          26.1684
+          26.1671
         ]
       }
     },
@@ -1365,16 +1445,17 @@
       "type": "Feature",
       "properties": {
         "id": 81,
-        "species": "Live Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.5,
-        "maxRadiusFeet": 51
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.3,
+        "maxRadiusFeet": 44,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0723,
-          26.1673
+          -98.0708,
+          26.1664
         ]
       }
     },
@@ -1382,16 +1463,17 @@
       "type": "Feature",
       "properties": {
         "id": 82,
-        "species": "Mexican Sycamore",
+        "species": "Bur Oak",
         "plantYear": 2024,
-        "baseRadiusFeet": 3.9,
-        "maxRadiusFeet": 36
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0706,
-          26.1671
+          -98.0699,
+          26.1676
         ]
       }
     },
@@ -1399,16 +1481,17 @@
       "type": "Feature",
       "properties": {
         "id": 83,
-        "species": "Texas Pecan",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 55
+        "species": "Mexican Sycamore",
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.5,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0722,
-          26.1665
+          -98.072,
+          26.1667
         ]
       }
     },
@@ -1416,16 +1499,17 @@
       "type": "Feature",
       "properties": {
         "id": 84,
-        "species": "Texas Pecan",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.7,
-        "maxRadiusFeet": 48
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 47,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0712,
-          26.167
+          -98.0694,
+          26.1671
         ]
       }
     },
@@ -1433,16 +1517,17 @@
       "type": "Feature",
       "properties": {
         "id": 85,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.6,
-        "maxRadiusFeet": 46
+        "species": "Texas Pecan",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.3,
+        "maxRadiusFeet": 46,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0708,
-          26.1676
+          -98.0699,
+          26.166
         ]
       }
     },
@@ -1451,15 +1536,16 @@
       "properties": {
         "id": 86,
         "species": "Mexican Sycamore",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 48
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 43,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0723,
-          26.1686
+          -98.0696,
+          26.1672
         ]
       }
     },
@@ -1467,16 +1553,17 @@
       "type": "Feature",
       "properties": {
         "id": 87,
-        "species": "Montezuma Bald Cypress",
+        "species": "Mexican Sycamore",
         "plantYear": 2026,
-        "baseRadiusFeet": 3.7,
-        "maxRadiusFeet": 44
+        "baseRadiusFeet": 3.8,
+        "maxRadiusFeet": 43,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0711,
-          26.1666
+          -98.0712,
+          26.1677
         ]
       }
     },
@@ -1484,16 +1571,17 @@
       "type": "Feature",
       "properties": {
         "id": 88,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.0,
-        "maxRadiusFeet": 40
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.2,
+        "maxRadiusFeet": 43,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0702,
-          26.1662
+          -98.0716,
+          26.1674
         ]
       }
     },
@@ -1502,15 +1590,16 @@
       "properties": {
         "id": 89,
         "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.0,
-        "maxRadiusFeet": 49
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0713,
-          26.168
+          -98.0703,
+          26.167
         ]
       }
     },
@@ -1520,14 +1609,15 @@
         "id": 90,
         "species": "Mexican Sycamore",
         "plantYear": 2024,
-        "baseRadiusFeet": 3.7,
-        "maxRadiusFeet": 51
+        "baseRadiusFeet": 4.3,
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0707,
-          26.1662
+          -98.0692,
+          26.1667
         ]
       }
     },
@@ -1535,16 +1625,17 @@
       "type": "Feature",
       "properties": {
         "id": 91,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 53
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.8,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0712,
-          26.1675
+          -98.07,
+          26.1662
         ]
       }
     },
@@ -1552,16 +1643,17 @@
       "type": "Feature",
       "properties": {
         "id": 92,
-        "species": "Montezuma Bald Cypress",
+        "species": "Mexican Sycamore",
         "plantYear": 2024,
-        "baseRadiusFeet": 2.6,
-        "maxRadiusFeet": 42
+        "baseRadiusFeet": 2.8,
+        "maxRadiusFeet": 44,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0705,
-          26.1682
+          -98.0707,
+          26.1679
         ]
       }
     },
@@ -1570,14 +1662,15 @@
       "properties": {
         "id": 93,
         "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.8,
-        "maxRadiusFeet": 51
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0707,
+          -98.0705,
           26.1662
         ]
       }
@@ -1586,16 +1679,17 @@
       "type": "Feature",
       "properties": {
         "id": 94,
-        "species": "Bur Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 40
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 45,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0701,
-          26.1671
+          -98.0713,
+          26.1669
         ]
       }
     },
@@ -1604,15 +1698,16 @@
       "properties": {
         "id": 95,
         "species": "Live Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.3,
-        "maxRadiusFeet": 53
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.2,
+        "maxRadiusFeet": 50,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0708,
-          26.1685
+          -98.0719,
+          26.1662
         ]
       }
     },
@@ -1620,16 +1715,17 @@
       "type": "Feature",
       "properties": {
         "id": 96,
-        "species": "Bur Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.1,
-        "maxRadiusFeet": 53
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.1,
+        "maxRadiusFeet": 40,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0709,
-          26.1677
+          -98.071,
+          26.1669
         ]
       }
     },
@@ -1637,16 +1733,17 @@
       "type": "Feature",
       "properties": {
         "id": 97,
-        "species": "Texas Pecan",
+        "species": "Live Oak",
         "plantYear": 2024,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 38
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0713,
-          26.167
+          -98.0718,
+          26.1679
         ]
       }
     },
@@ -1656,14 +1753,15 @@
         "id": 98,
         "species": "Bur Oak",
         "plantYear": 2026,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 55
+        "baseRadiusFeet": 4.0,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0701,
-          26.1662
+          -98.0719,
+          26.1673
         ]
       }
     },
@@ -1672,15 +1770,16 @@
       "properties": {
         "id": 99,
         "species": "Live Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.1,
-        "maxRadiusFeet": 51
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.3,
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           -98.0703,
-          26.1672
+          26.1676
         ]
       }
     },
@@ -1688,16 +1787,17 @@
       "type": "Feature",
       "properties": {
         "id": 100,
-        "species": "Bur Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 38
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.0,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0714,
-          26.1688
+          -98.0716,
+          26.168
         ]
       }
     },
@@ -1705,16 +1805,17 @@
       "type": "Feature",
       "properties": {
         "id": 101,
-        "species": "Mexican Sycamore",
+        "species": "Live Oak",
         "plantYear": 2026,
-        "baseRadiusFeet": 2.6,
-        "maxRadiusFeet": 54
+        "baseRadiusFeet": 4.0,
+        "maxRadiusFeet": 50,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.072,
-          26.1685
+          -98.0712,
+          26.1665
         ]
       }
     },
@@ -1722,16 +1823,17 @@
       "type": "Feature",
       "properties": {
         "id": 102,
-        "species": "Live Oak",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.2,
-        "maxRadiusFeet": 50
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.6,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0708,
-          26.1661
+          -98.0698,
+          26.1669
         ]
       }
     },
@@ -1740,15 +1842,16 @@
       "properties": {
         "id": 103,
         "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 40
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.6,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0708,
-          26.1681
+          -98.0693,
+          26.1677
         ]
       }
     },
@@ -1756,16 +1859,17 @@
       "type": "Feature",
       "properties": {
         "id": 104,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 41
+        "species": "Live Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0723,
-          26.1681
+          -98.0692,
+          26.1676
         ]
       }
     },
@@ -1774,82 +1878,15 @@
       "properties": {
         "id": 105,
         "species": "Bur Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.3,
-        "maxRadiusFeet": 35
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0702,
-          26.1672
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 106,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.5,
-        "maxRadiusFeet": 49
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0709,
-          26.1682
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 107,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.2,
-        "maxRadiusFeet": 40
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0717,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 108,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.7,
-        "maxRadiusFeet": 49
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0719,
-          26.1671
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 109,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
+        "plantYear": 2025,
         "baseRadiusFeet": 3.6,
-        "maxRadiusFeet": 50
+        "maxRadiusFeet": 50,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0706,
+          -98.0699,
           26.1667
         ]
       }
@@ -1857,17 +1894,90 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 110,
-        "species": "Texas Pecan",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.7,
-        "maxRadiusFeet": 47
+        "id": 106,
+        "species": "Bur Oak",
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0711,
-          26.1665
+          -98.0715,
+          26.168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 107,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0703,
+          26.1674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 108,
+        "species": "Live Oak",
+        "plantYear": 2024,
+        "baseRadiusFeet": 4.2,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0691,
+          26.1661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 109,
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.2,
+        "maxRadiusFeet": 37,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0709,
+          26.1669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 110,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.0,
+        "maxRadiusFeet": 52,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0693,
+          26.1668
         ]
       }
     },
@@ -1875,16 +1985,17 @@
       "type": "Feature",
       "properties": {
         "id": 111,
-        "species": "Bur Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 54
+        "species": "Texas Pecan",
+        "plantYear": 2025,
+        "baseRadiusFeet": 2.8,
+        "maxRadiusFeet": 46,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0717,
-          26.1679
+          -98.0701,
+          26.1673
         ]
       }
     },
@@ -1892,16 +2003,17 @@
       "type": "Feature",
       "properties": {
         "id": 112,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.9,
-        "maxRadiusFeet": 49
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 54,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0709,
-          26.1666
+          -98.0704,
+          26.1661
         ]
       }
     },
@@ -1910,14 +2022,15 @@
       "properties": {
         "id": 113,
         "species": "Texas Pecan",
-        "plantYear": 2025,
-        "baseRadiusFeet": 2.7,
-        "maxRadiusFeet": 35
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.0,
+        "maxRadiusFeet": 42,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0707,
+          -98.0692,
           26.1677
         ]
       }
@@ -1926,372 +2039,16 @@
       "type": "Feature",
       "properties": {
         "id": 114,
-        "species": "Bur Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.7,
-        "maxRadiusFeet": 45
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0714,
-          26.1689
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 115,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 39
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0702,
-          26.1682
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 116,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.9,
-        "maxRadiusFeet": 45
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0713,
-          26.1689
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 117,
-        "species": "Texas Pecan",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.7,
-        "maxRadiusFeet": 51
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0711,
-          26.167
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 118,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.5,
-        "maxRadiusFeet": 41
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.072,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 119,
-        "species": "Bur Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.6,
-        "maxRadiusFeet": 36
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0706,
-          26.169
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 120,
-        "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.5,
-        "maxRadiusFeet": 44
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0707,
-          26.1679
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 121,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.3,
-        "maxRadiusFeet": 50
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0702,
-          26.1672
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 122,
-        "species": "Bur Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.2,
-        "maxRadiusFeet": 51
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0723,
-          26.1665
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 123,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.6,
-        "maxRadiusFeet": 45
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0709,
-          26.1689
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 124,
-        "species": "Bur Oak",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.8,
-        "maxRadiusFeet": 46
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0702,
-          26.1677
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 125,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 48
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0704,
-          26.1673
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 126,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.7,
-        "maxRadiusFeet": 46
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0718,
-          26.1687
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 127,
-        "species": "Texas Pecan",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 53
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.07,
-          26.1687
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 128,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.3,
-        "maxRadiusFeet": 54
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0702,
-          26.1689
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 129,
         "species": "Live Oak",
         "plantYear": 2025,
-        "baseRadiusFeet": 2.9,
-        "maxRadiusFeet": 50
+        "baseRadiusFeet": 3.8,
+        "maxRadiusFeet": 44,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0708,
-          26.1685
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 130,
-        "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.3,
-        "maxRadiusFeet": 49
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0711,
-          26.1671
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 131,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 35
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0714,
-          26.1675
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 132,
-        "species": "Mexican Sycamore",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.6,
-        "maxRadiusFeet": 54
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0706,
-          26.1677
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 133,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.0,
-        "maxRadiusFeet": 46
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0711,
-          26.1675
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 134,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 45
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0711,
-          26.1675
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 135,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 43
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0701,
+          -98.0695,
           26.1669
         ]
       }
@@ -2299,79 +2056,12 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 136,
+        "id": 115,
         "species": "Mexican Sycamore",
         "plantYear": 2025,
         "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 45
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0701,
-          26.1674
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 137,
-        "species": "Bur Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 2.6,
-        "maxRadiusFeet": 50
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0722,
-          26.1677
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 138,
-        "species": "Texas Pecan",
-        "plantYear": 2026,
-        "baseRadiusFeet": 3.6,
-        "maxRadiusFeet": 38
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0721,
-          26.1681
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 139,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.3,
-        "maxRadiusFeet": 53
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0713,
-          26.1674
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 140,
-        "species": "Texas Pecan",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.2,
-        "maxRadiusFeet": 39
+        "maxRadiusFeet": 45,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
@@ -2384,33 +2074,17 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 141,
-        "species": "Texas Pecan",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.0,
-        "maxRadiusFeet": 38
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -98.0712,
-          26.1678
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 142,
+        "id": 116,
         "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.0,
-        "maxRadiusFeet": 47
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0702,
+          -98.0718,
           26.167
         ]
       }
@@ -2418,67 +2092,89 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 143,
-        "species": "Texas Pecan",
+        "id": 117,
+        "species": "Mexican Sycamore",
         "plantYear": 2024,
-        "baseRadiusFeet": 2.7,
-        "maxRadiusFeet": 53
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 41,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0711,
-          26.1685
+          -98.0722,
+          26.1674
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 144,
+        "id": 118,
         "species": "Live Oak",
         "plantYear": 2024,
-        "baseRadiusFeet": 4.0,
-        "maxRadiusFeet": 45
+        "baseRadiusFeet": 4.1,
+        "maxRadiusFeet": 46,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0709,
-          26.1671
+          -98.0697,
+          26.1673
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 145,
+        "id": 119,
         "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 49
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.2,
+        "maxRadiusFeet": 44,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0705,
-          26.1662
+          -98.0694,
+          26.1676
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "id": 146,
+        "id": 120,
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.9,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0715,
+          26.1668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 121,
         "species": "Montezuma Bald Cypress",
         "plantYear": 2026,
         "baseRadiusFeet": 3.2,
-        "maxRadiusFeet": 46
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0711,
+          -98.0695,
           26.1675
         ]
       }
@@ -2486,16 +2182,467 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 147,
+        "id": 122,
+        "species": "Live Oak",
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 47,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07,
+          26.1665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 123,
+        "species": "Live Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0702,
+          26.1661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 124,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.3,
+        "maxRadiusFeet": 41,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0701,
+          26.1665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 125,
         "species": "Texas Pecan",
         "plantYear": 2026,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 44
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 50,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0718,
+          26.1675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 126,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.1,
+        "maxRadiusFeet": 41,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0715,
+          26.1673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 127,
+        "species": "Texas Pecan",
+        "plantYear": 2024,
+        "baseRadiusFeet": 4.2,
+        "maxRadiusFeet": 45,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0702,
+          26.1676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 128,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 49,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07,
+          26.166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 129,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.5,
+        "maxRadiusFeet": 53,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0723,
+          26.1666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 130,
+        "species": "Bur Oak",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.4,
+        "maxRadiusFeet": 42,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0691,
+          26.1662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 131,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.6,
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0705,
+          26.1663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 132,
+        "species": "Live Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 53,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0714,
+          26.1675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 133,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0696,
+          26.1673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 134,
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.7,
+        "maxRadiusFeet": 42,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.07,
+          26.166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 135,
+        "species": "Live Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.8,
+        "maxRadiusFeet": 39,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0714,
+          26.1671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 136,
+        "species": "Texas Pecan",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.2,
+        "maxRadiusFeet": 38,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0695,
+          26.1678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 137,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.2,
+        "maxRadiusFeet": 45,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0689,
+          26.1671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138,
+        "species": "Mexican Sycamore",
+        "plantYear": 2024,
+        "baseRadiusFeet": 4.4,
+        "maxRadiusFeet": 47,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0699,
+          26.1673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 139,
+        "species": "Mexican Sycamore",
+        "plantYear": 2024,
+        "baseRadiusFeet": 4.0,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0716,
+          26.1677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 140,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.6,
+        "maxRadiusFeet": 50,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0708,
+          26.1673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 141,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 49,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.071,
+          26.1677
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 142,
+        "species": "Live Oak",
+        "plantYear": 2024,
+        "baseRadiusFeet": 4.2,
+        "maxRadiusFeet": 49,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0715,
+          26.168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 143,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.6,
+        "maxRadiusFeet": 47,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           -98.0704,
+          26.1667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 144,
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.6,
+        "maxRadiusFeet": 52,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.072,
+          26.1663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 145,
+        "species": "Mexican Sycamore",
+        "plantYear": 2025,
+        "baseRadiusFeet": 4.2,
+        "maxRadiusFeet": 36,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0707,
+          26.1661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 146,
+        "species": "Mexican Sycamore",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 45,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0718,
+          26.1676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 147,
+        "species": "Montezuma Bald Cypress",
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.0709,
           26.1668
         ]
       }
@@ -2504,16 +2651,17 @@
       "type": "Feature",
       "properties": {
         "id": 148,
-        "species": "Mexican Sycamore",
-        "plantYear": 2024,
-        "baseRadiusFeet": 4.4,
-        "maxRadiusFeet": 42
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 53,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0724,
-          26.1663
+          -98.0718,
+          26.1666
         ]
       }
     },
@@ -2521,16 +2669,17 @@
       "type": "Feature",
       "properties": {
         "id": 149,
-        "species": "Live Oak",
-        "plantYear": 2024,
-        "baseRadiusFeet": 3.0,
-        "maxRadiusFeet": 39
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.8,
+        "maxRadiusFeet": 38,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0701,
-          26.1678
+          -98.0699,
+          26.167
         ]
       }
     },
@@ -2540,14 +2689,15 @@
         "id": 150,
         "species": "Bur Oak",
         "plantYear": 2024,
-        "baseRadiusFeet": 2.5,
-        "maxRadiusFeet": 51
+        "baseRadiusFeet": 2.8,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.072,
-          26.1665
+          -98.0723,
+          26.1677
         ]
       }
     },
@@ -2555,16 +2705,17 @@
       "type": "Feature",
       "properties": {
         "id": 151,
-        "species": "Montezuma Bald Cypress",
+        "species": "Bur Oak",
         "plantYear": 2025,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 49
+        "baseRadiusFeet": 3.0,
+        "maxRadiusFeet": 43,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0721,
-          26.1673
+          -98.0692,
+          26.1665
         ]
       }
     },
@@ -2573,15 +2724,16 @@
       "properties": {
         "id": 152,
         "species": "Montezuma Bald Cypress",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.8,
-        "maxRadiusFeet": 35
+        "plantYear": 2024,
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 38,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0719,
-          26.169
+          -98.0707,
+          26.1675
         ]
       }
     },
@@ -2590,15 +2742,16 @@
       "properties": {
         "id": 153,
         "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.8,
-        "maxRadiusFeet": 35
+        "plantYear": 2025,
+        "baseRadiusFeet": 2.9,
+        "maxRadiusFeet": 48,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0712,
-          26.1669
+          -98.0722,
+          26.1677
         ]
       }
     },
@@ -2608,14 +2761,15 @@
         "id": 154,
         "species": "Live Oak",
         "plantYear": 2025,
-        "baseRadiusFeet": 3.4,
-        "maxRadiusFeet": 37
+        "baseRadiusFeet": 3.1,
+        "maxRadiusFeet": 53,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0705,
-          26.1684
+          -98.0691,
+          26.1659
         ]
       }
     },
@@ -2623,16 +2777,17 @@
       "type": "Feature",
       "properties": {
         "id": 155,
-        "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 4.1,
-        "maxRadiusFeet": 47
+        "species": "Texas Pecan",
+        "plantYear": 2024,
+        "baseRadiusFeet": 3.7,
+        "maxRadiusFeet": 55,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0713,
-          26.1679
+          -98.0696,
+          26.1664
         ]
       }
     },
@@ -2640,16 +2795,17 @@
       "type": "Feature",
       "properties": {
         "id": 156,
-        "species": "Texas Pecan",
-        "plantYear": 2025,
-        "baseRadiusFeet": 4.2,
-        "maxRadiusFeet": 45
+        "species": "Bur Oak",
+        "plantYear": 2026,
+        "baseRadiusFeet": 2.7,
+        "maxRadiusFeet": 35,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0707,
-          26.1688
+          -98.0708,
+          26.1664
         ]
       }
     },
@@ -2658,15 +2814,16 @@
       "properties": {
         "id": 157,
         "species": "Montezuma Bald Cypress",
-        "plantYear": 2025,
-        "baseRadiusFeet": 3.1,
-        "maxRadiusFeet": 50
+        "plantYear": 2026,
+        "baseRadiusFeet": 3.7,
+        "maxRadiusFeet": 51,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0705,
-          26.1672
+          -98.0717,
+          26.1667
         ]
       }
     },
@@ -2675,15 +2832,16 @@
       "properties": {
         "id": 158,
         "species": "Montezuma Bald Cypress",
-        "plantYear": 2026,
-        "baseRadiusFeet": 2.8,
-        "maxRadiusFeet": 48
+        "plantYear": 2025,
+        "baseRadiusFeet": 3.5,
+        "maxRadiusFeet": 44,
+        "campus": "J.W. Caceres & M. Rivas Academy"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -98.0707,
-          26.1673
+          -98.0725,
+          26.1665
         ]
       }
     }
