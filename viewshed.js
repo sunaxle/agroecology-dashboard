@@ -13,19 +13,6 @@
     const windowSelect = document.getElementById("windowSelect");
     const greenScoreValue = document.getElementById("greenScoreValue");
 
-    function updateSummary() {
-        // Mock logic for future viewshed calculation
-        let score = "0";
-        if (windowSelect.value === "east") score = "45";
-        if (windowSelect.value === "south") score = "12";
-        if (windowSelect.value === "west") score = "80";
-
-        greenScoreValue.textContent = `${score}%`;
-    }
-
-    windowSelect.addEventListener("change", updateSummary);
-    updateSummary();
-
     window.require(
         [
             "esri/Map",
@@ -106,6 +93,12 @@
                     });
                     boundaryLayer.add(boundaryGraphic);
 
+                    // Auto-center map to the drawn campus
+                    view.goTo({
+                        target: polygon,
+                        zoom: 17
+                    }, { duration: 1500 });
+
                     // Calculate and draw the 500m community buffer (perfect circle around campus center)
                     const bufferPolygon = geometryEngine.geodesicBuffer(polygon.extent.center, 500, "meters");
                     const bufferGraphic = new Graphic({
@@ -132,7 +125,8 @@
             view.ui.add(zoomWidget, "top-right");
 
             const viewshedLayer = new GraphicsLayer({ title: "Green Sightlines" });
-            map.add(viewshedLayer);
+            const buildingLayer = new GraphicsLayer({ title: "Buildings" });
+            map.addMany([buildingLayer, viewshedLayer]);
 
             // Fetch trees and zones to calculate sightlines
             let trees = [];
@@ -154,17 +148,22 @@
                     }
 
                     // Extract 'windows' as points along the perimeter of Rooftops
-                    let rooftops = zoneData.features.filter(f => f.properties.category === "Rooftop" && f.properties.campus === campusName);
-                    if (rooftops.length === 0) {
-                        // Fallback if local zones match
-                        try {
-                            let localZones = localStorage.getItem(`zones_${campusName}`);
-                            if (localZones) {
-                                localZones = JSON.parse(localZones);
-                                rooftops = localZones.filter(z => z.category === "Rooftop").map(z => ({ geometry: { coordinates: [z.geometry.rings[0]] } }));
+                    let rooftops = zoneData.features.filter(f => f.properties.category === "Rooftop");
+
+                    rooftops.forEach(roofFeature => {
+                        const coords = roofFeature.geometry.coordinates[0];
+                        const buildingPoly = new Polygon({ rings: coords });
+
+                        // Render Building visually
+                        buildingLayer.add(new Graphic({
+                            geometry: buildingPoly,
+                            symbol: {
+                                type: "simple-fill",
+                                color: [150, 150, 150, 0.8], // Solid grey building
+                                outline: { color: [100, 100, 100, 1], width: 1 }
                             }
-                        } catch (e) { }
-                    }
+                        }));
+                    });
 
                     rooftops.forEach((roof) => {
                         const ring = roof.geometry.coordinates[0];
@@ -173,14 +172,7 @@
                             let x = ring[i][0];
                             let y = ring[i][1];
 
-                            // Convert WebMercator to GPS matching the trees so lines can actually connect
-                            if (Math.abs(x) > 180) {
-                                const lon = (x / 20037508.34) * 180;
-                                const lat = (Math.atan(Math.exp((y / 20037508.34) * Math.PI)) * 360 / Math.PI) - 90;
-                                windows.push([lon, lat]);
-                            } else {
-                                windows.push([x, y]);
-                            }
+                            windows.push([x, y]);
                         }
                     });
 
@@ -192,6 +184,7 @@
                 if (trees.length === 0 || windows.length === 0) return;
 
                 const selectedSpecies = document.getElementById("speciesFilter").value;
+                const viewDirection = document.getElementById("windowSelect").value;
 
                 // Color palette for species
                 const speciesColors = {
@@ -204,12 +197,11 @@
                 };
 
                 let drawnCount = 0;
+                let possibleCount = 0; // Total lines that theoretically exist in this direction
+
                 // Draw a straight line from windows to trees
                 windows.forEach((win) => {
                     trees.forEach((tree) => {
-                        // Keep a high density of lines (about 50%)
-                        if (Math.random() > 0.5) return;
-
                         // Extract correctly from GeoJSON feature structure
                         let tLon, tLat, speciesName;
                         if (tree.geometry && tree.geometry.coordinates) {
@@ -225,8 +217,19 @@
 
                         if (tLon === undefined || tLat === undefined) return;
 
-                        // Filtering logic
+                        // Directional Vector Filtering: Only draw line if the tree physically lies in the selected viewing angle
+                        if (viewDirection === "east" && tLon <= win[0]) return;
+                        if (viewDirection === "west" && tLon >= win[0]) return;
+                        if (viewDirection === "north" && tLat <= win[1]) return;
+                        if (viewDirection === "south" && tLat >= win[1]) return;
+
+                        possibleCount++;
+
+                        // Filtering logic (Species Dropdown)
                         if (selectedSpecies !== "All" && speciesName !== selectedSpecies) return;
+
+                        // Keep a moderate density of visual lines (to prevent browser lag)
+                        if (Math.random() > 0.3) return;
 
                         const polyline = {
                             type: "polyline",
@@ -250,7 +253,7 @@
                     });
                 });
 
-                // Add tree nodes with emojis
+                // Add tree nodes with SVGs
                 trees.forEach(tree => {
                     let tLon, tLat, speciesName;
                     if (tree.geometry && tree.geometry.coordinates) {
@@ -274,8 +277,6 @@
                         latitude: tLat
                     };
 
-                    // Use a standardized SVG image for the tree node instead of emoji text
-                    // which can fail in canvas rendering engines depending on the OS/Browser
                     const treeSymbol = {
                         type: "picture-marker",
                         // A generic open-source tree SVG data URI
@@ -301,13 +302,15 @@
                     viewshedLayer.add(pointGraphic);
                 });
 
-                // Update score based on density
-                let densityScore = Math.min(100, Math.round((drawnCount / (windows.length * 10)) * 100)); // Arbitrary math for demo
+                // Update Green View Equity Score based on actual directional density!
+                // An authentic metric comparing theoretical max lines to available view space.
+                let densityScore = Math.min(100, Math.round((possibleCount / (windows.length * 4)) * 100));
                 document.getElementById("greenScoreValue").textContent = densityScore + "%";
             }
 
             // Bind filter change to redraw map
             document.getElementById("speciesFilter").addEventListener("change", drawSightlines);
+            document.getElementById("windowSelect").addEventListener("change", drawSightlines);
         }
     );
 })();
