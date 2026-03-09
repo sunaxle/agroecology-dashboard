@@ -1,39 +1,44 @@
 {
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "properties": {
-                "name": "J.W. Caceres & M. Rivas Academy Property Boundary",
-                "type": "School Campus"
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-                    [
-                        [
-                            -98.0745,
-                            26.1700
-                        ],
-                        [
-                            -98.0675,
-                            26.1700
-                        ],
-                        [
-                            -98.0675,
-                            26.1650
-                        ],
-                        [
-                            -98.0745,
-                            26.1650
-                        ],
-                        [
-                            -98.0745,
-                            26.1700
-                        ]
-                    ]
-                ]
-            }
-        }
-    ]
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "category": "Campus Boundary",
+        "campus": "J.W. Caceres & M. Rivas Academy",
+        "dateAdded": "2026-03-09T02:11:28.358Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -98.07254821467039,
+              26.16625940702799
+            ],
+            [
+              -98.07220327840014,
+              26.168215328607253
+            ],
+            [
+              -98.06862395428908,
+              26.1677205540179
+            ],
+            [
+              -98.0690146767054,
+              26.165738124571327
+            ],
+            [
+              -98.0722486244963,
+              26.166228356210034
+            ],
+            [
+              -98.07254821467039,
+              26.16625940702799
+            ]
+          ]
+        ]
+      }
+    }
+  ]
 }
