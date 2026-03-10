@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Water Table Depth Simulation | UTRGV Agroecology</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.29/esri/themes/light/main.css" />
+    <style>
+        .wt-layout {
+            display: flex;
+            height: calc(100vh - 60px - 45px);
+            /* Subtract Header/Nav */
+            width: 100%;
+        }
+
+        .wt-panel {
+            width: 350px;
+            background: #fff;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wt-map-container {
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .depth-control-box {
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .depth-readout {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1976D2;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+
+        /* Vertical Slider Container */
+        .slider-wrapper {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .soil-profile {
+            width: 80px;
+            height: 100%;
+            background: linear-gradient(to bottom, #8db600 0%, #795548 10%, #5D4037 40%, #3e2723 100%);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-right: 20px;
+        }
+
+        #waterLevelIndicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: rgba(33, 150, 243, 0.6);
+            border-top: 3px dashed #bbdefb;
+            transition: height 0.1s ease-out;
+        }
+
+        input[type="range"][orient="vertical"] {
+            -webkit-appearance: slider-vertical;
+            appearance: slider-vertical;
+            writing-mode: bt-lr;
+            height: 100%;
+            width: 20px;
+            cursor: pointer;
+        }
+
+        .stat-grid {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .kpi-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .kpi-card .val {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .kpi-card .lbl {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #666;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        #valThriving {
+            color: #4CAF50;
+        }
+
+        #valStressed {
+            color: #FF9800;
+        }
+
+        #valDrowning {
+            color: #9C27B0;
+        }
+
+        #valDying {
+            color: #F44336;
+        }
+
+        .species-guide {
+            padding: 20px;
+            font-size: 13px;
+            color: #444;
+            flex-grow: 1;
+        }
+
+        .species-guide h4 {
+            margin-top: 0;
+            color: var(--green-dark);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .species-guide ul {
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }
+
+        .legend-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .legend-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .legend-color {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- WILL BE REPLACED BY update_nav.py automatically -->
+    <header class="app-header">
+        <div class="brand-left"></div>
+        <div class="title">Water Table Simulation</div>
+        <div class="brand-right"></div>
+    </header>
+
+    <nav class="app-nav">
+        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link" href="dashboard_map.html">Dashboard</a>
+        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
+        <a class="nav-link" href="trails.html">Trail Analysis</a>
+        <a class="nav-link" href="wind.html">Wind Analysis</a>
+        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
+        <a class="nav-link" href="temperature.html">Temp Modeling</a>
+        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
+        <a class="nav-link" href="albedo.html">Albedo</a>
+        <a class="nav-link active" href="water_table.html">Water Table</a>
+        <a class="nav-link" href="zoning.html">Site Zoning</a>
+        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
+        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
+        <a class="nav-link" href="school.html">School Profile</a>
+        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
+        <a class="nav-link" href="protocols.html">Protocols</a>
+        <a class="nav-link" href="index.html">Community Impact</a>
+        <a class="nav-link" href="student_tracking.html">Student Tracking</a>
+        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
+        <a class="nav-link" href="maintenance.html">Structural Maint.</a>
+        <a class="nav-link" href="economics.html">Economic Ledger</a>
+        <a class="nav-link" href="correlations.html">Data Correlations</a>
+        <a class="nav-link" href="survey.html">Wellbeing Survey</a>
+    </nav>
+
+    <main class="wt-layout">
+        <aside class="wt-panel">
+            <div class="depth-control-box">
+                <h3 style="margin-top:0;">Groundwater Level</h3>
+                <div class="depth-readout" id="depthReadout">12.0 ft</div>
+                <div style="font-size: 12px; color: #666; text-align: center; margin-bottom:10px;">Simulation limits: 0
+                    ft (Flood) to 30 ft (Drought)</div>
+
+                <div class="slider-wrapper">
+                    <div class="soil-profile">
+                        <div id="waterLevelIndicator"></div>
+                    </div>
+                    <!-- Note: range slider is inverted. Max depth = 30ft, min = 0ft -->
+                    <input type="range" id="depthSlider" orient="vertical" min="0" max="30" step="0.5" value="12">
+                </div>
+            </div>
+
+            <div class="stat-grid">
+                <div class="kpi-card" style="border-left: 4px solid #4CAF50;">
+                    <div class="val" id="valThriving">0</div>
+                    <div class="lbl">Thriving</div>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #FF9800;">
+                    <div class="val" id="valStressed">0</div>
+                    <div class="lbl">Drought Stress</div>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #9C27B0;">
+                    <div class="val" id="valDrowning">0</div>
+                    <div class="lbl">Drowning / Rot</div>
+                </div>
+                <div class="kpi-card" style="border-left: 4px solid #F44336;">
+                    <div class="val" id="valDying">0</div>
+                    <div class="lbl">Critical Mortality</div>
+                </div>
+            </div>
+
+            <div class="species-guide">
+                <h4>Legend</h4>
+                <ul class="legend-list">
+                    <li><span class="legend-color" style="background:#4CAF50;"></span> Optimal Hydration</li>
+                    <li><span class="legend-color" style="background:#FF9800;"></span> Water Deficit (Roots too shallow)
+                    </li>
+                    <li><span class="legend-color" style="background:#9C27B0;"></span> Anoxic Stress (Roots drowned)
+                    </li>
+                    <li><span class="legend-color" style="background:#F44336; border-radius:0;"></span> Dead</li>
+                </ul>
+
+                <h4>Species Root Profiles</h4>
+                <p style="margin-bottom: 5px;"><strong>Montezuma Cypress:</strong> Obligate wetland. Thrives in 0-5ft
+                    water tables. Dies in deep drought.</p>
+                <p style="margin-bottom: 5px;"><strong>Texas Pecan / Live Oak:</strong> Deep taproots. Can reach water
+                    at 20-30ft. Highly drought resilient.</p>
+                <p style="margin-bottom: 0;"><strong>Mexican Sycamore:</strong> Riparian but adaptable. Thrives at
+                    5-15ft. Vulnerable to both extreme flooding and severe drought.</p>
+            </div>
+        </aside>
+
+        <section class="wt-map-container">
+            <div id="wtMap" style="width: 100%; height: 100%;"></div>
+        </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="https://js.arcgis.com/4.29/"></script>
+    <script src="water_table.js"></script>
+</body>
+
+</html>
