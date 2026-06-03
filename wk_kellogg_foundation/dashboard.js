@@ -51,17 +51,22 @@ document.addEventListener('DOMContentLoaded', () => {
     airtableGridBody.innerHTML = '';
     records.forEach(record => {
       const tr = document.createElement('tr');
+      const attendeeCount = record.attendees ? record.attendees.length : 0;
+      const attendeeNames = record.attendees ? record.attendees.map(a => a.name).join(', ') : 'N/A';
+      
       tr.innerHTML = `
         <td>${record.date}</td>
         <td><span class="tag tag-active">${record.type}</span></td>
         <td>${record.topic}</td>
         <td>
-          <div><strong>${record.attendeeName || 'N/A'}</strong></div>
-          <div style="font-size: 0.8rem; color: var(--text-secondary)">${record.attendeeContact || ''}</div>
+          <div title="${attendeeNames}"><strong>👤 ${attendeeCount} Attendee${attendeeCount !== 1 ? 's' : ''}</strong></div>
+          <div style="font-size: 0.75rem; color: var(--text-secondary); max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            ${attendeeNames}
+          </div>
         </td>
-        <td>${record.farm || 'N/A'}</td>
         <td>${record.status}</td>
         <td title="${record.story}">${record.story ? record.story.substring(0, 30) + '...' : 'None'}</td>
+        <td>${record.photoLink ? `<a href="${record.photoLink}" target="_blank" style="color: var(--primary-color); font-weight: 500; font-size: 0.85rem;">View Album</a>` : '<span style="color: var(--text-secondary); font-size: 0.85rem;">None</span>'}</td>
       `;
       airtableGridBody.appendChild(tr);
     });
@@ -71,20 +76,90 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial render
   renderGrid();
 
+  // Attendee Tabs Logic
+  const attendeeTabs = document.querySelectorAll('.attendee-tab');
+  const attendeeContents = document.querySelectorAll('.attendee-content');
+  
+  attendeeTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      attendeeTabs.forEach(t => t.classList.remove('active'));
+      attendeeContents.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+    });
+  });
+
+  // Manual Attendee Table Logic
+  const btnAddAttendee = document.getElementById('btnAddAttendee');
+  const attendeeTableBody = document.querySelector('#attendeeTable tbody');
+
+  function addAttendeeRow() {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="text" class="att-name" placeholder="Name"></td>
+      <td><input type="text" class="att-phone" placeholder="Phone"></td>
+      <td><input type="email" class="att-email" placeholder="Email"></td>
+      <td><input type="text" class="att-farm" placeholder="Location"></td>
+      <td><button type="button" class="btn-remove-row" title="Remove row">×</button></td>
+    `;
+    tr.querySelector('.btn-remove-row').addEventListener('click', () => {
+      tr.remove();
+    });
+    attendeeTableBody.appendChild(tr);
+  }
+  
+  if (btnAddAttendee) {
+    btnAddAttendee.addEventListener('click', addAttendeeRow);
+    addAttendeeRow(); // Add one initial empty row
+  }
+
   // Handle Form Submission
   if (reportingForm) {
     reportingForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
+      let attendeesList = [];
+      const activeTab = document.querySelector('.attendee-tab.active').getAttribute('data-tab');
+      
+      if (activeTab === 'manual') {
+        const rows = attendeeTableBody.querySelectorAll('tr');
+        rows.forEach(row => {
+          const name = row.querySelector('.att-name').value.trim();
+          if (name) {
+            attendeesList.push({
+              name: name,
+              phone: row.querySelector('.att-phone').value.trim(),
+              email: row.querySelector('.att-email').value.trim(),
+              location: row.querySelector('.att-farm').value.trim()
+            });
+          }
+        });
+      } else {
+        const bulkData = document.getElementById('r-bulk-attendees').value.trim();
+        if (bulkData) {
+          const lines = bulkData.split('\\n');
+          lines.forEach(line => {
+            const cols = line.split('\\t');
+            if (cols.length > 0 && cols[0].trim()) {
+              attendeesList.push({
+                name: cols[0] ? cols[0].trim() : '',
+                phone: cols[1] ? cols[1].trim() : '',
+                email: cols[2] ? cols[2].trim() : '',
+                location: cols[3] ? cols[3].trim() : ''
+              });
+            }
+          });
+        }
+      }
+
       const newRecord = {
         date: document.getElementById('r-date').value,
         type: document.getElementById('r-type').value,
         topic: document.getElementById('r-topic').value,
-        attendeeName: document.getElementById('r-name').value,
-        attendeeContact: document.getElementById('r-contact').value,
-        farm: document.getElementById('r-farm').value,
         status: document.getElementById('r-status').value,
         story: document.getElementById('r-story').value,
+        photoLink: document.getElementById('r-photo-link').value,
+        attendees: attendeesList
       };
 
       // Add to array and save
@@ -96,6 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Reset form (except date maybe, but full reset is standard)
       reportingForm.reset();
+      
+      // Reset manual table rows
+      attendeeTableBody.innerHTML = '';
+      addAttendeeRow();
       
       // Optional: show a quick success message (could be a toast, but alert is easy for now)
       // alert('Record successfully submitted to the workbook!');
