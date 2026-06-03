@@ -291,45 +291,58 @@
               <input type="text" id="r-topic" placeholder="e.g., Soil Health, Wholesale Readiness" required>
             </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label>Attendee Name</label>
-                <input type="text" id="r-name" placeholder="Full Name">
-              </div>
-              <div class="form-group">
-                <label>Contact Info</label>
-                <input type="text" id="r-contact" placeholder="Phone or Email">
-              </div>
+          <div class="form-group">
+            <label>Event Attendees</label>
+            <div class="attendee-tabs">
+              <button type="button" class="attendee-tab active" data-tab="manual">Manual Entry</button>
+              <button type="button" class="attendee-tab" data-tab="bulk">Bulk Paste (Excel)</button>
             </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label>Farm / Operation Name</label>
-                <input type="text" id="r-farm" placeholder="Operation Name (if applicable)">
-              </div>
-              <div class="form-group">
-                <label>Organic Transition Status</label>
-                <select id="r-status">
-                  <option value="N/A">N/A</option>
-                  <option value="Exploring">Exploring / Considering</option>
-                  <option value="In Transition">In Transition</option>
-                  <option value="Certified Organic">Certified Organic</option>
-                </select>
-              </div>
+            
+            <div class="attendee-content active" id="tab-manual">
+              <table class="attendee-table" id="attendeeTable">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Farm / Location</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Rows injected by JS -->
+                </tbody>
+              </table>
+              <button type="button" class="btn-secondary btn-sm" id="btnAddAttendee" style="margin-top: 0.5rem;">+ Add Attendee Row</button>
             </div>
+            
+            <div class="attendee-content" id="tab-bulk">
+              <p class="text-secondary" style="font-size: 0.8rem; margin-bottom: 0.5rem;">Copy and paste rows directly from Excel or Google Sheets. Expected columns: <strong>Name, Phone, Email, Location</strong>.</p>
+              <textarea id="r-bulk-attendees" rows="6" placeholder="Maria Gonzalez&#9;555-1234&#9;maria@email.com&#9;Gonzalez Farm..."></textarea>
+            </div>
+          </div>
 
+          <div class="form-row">
             <div class="form-group">
-              <label>Impact Story / Key Takeaways</label>
-              <textarea id="r-story" rows="3" placeholder="Share any success stories, challenges, or notable takeaways..."></textarea>
+              <label for="r-status">Primary Organic Transition Status (Overall Event)</label>
+              <select id="r-status">
+                <option value="N/A">N/A</option>
+                <option value="Exploring">Exploring / Considering</option>
+                <option value="In Transition">In Transition</option>
+                <option value="Certified">Certified Organic</option>
+              </select>
             </div>
+          </div>
 
-            <div class="form-group">
-              <label>Photo Upload</label>
-              <div class="file-upload-wrapper">
-                <input type="file" id="r-photo" accept="image/*" multiple>
-                <span class="file-hint">Choose files or drag & drop (JPG, PNG)</span>
-              </div>
-            </div>
+          <div class="form-group">
+            <label>Impact Story / Key Takeaways</label>
+            <textarea id="r-story" rows="3" placeholder="Share any success stories, challenges, or notable takeaways..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Google Drive Photo Album Link</label>
+            <input type="url" id="r-photo-link" placeholder="https://drive.google.com/drive/folders/...">
+          </div>
 
             <button type="submit" class="btn-submit">Submit Record</button>
           </form>
@@ -348,10 +361,10 @@
                   <th>Date</th>
                   <th>Type</th>
                   <th>Topic</th>
-                  <th>Attendee</th>
-                  <th>Farm</th>
+                  <th>Attendees</th>
                   <th>Status</th>
                   <th>Story/Notes</th>
+                  <th>Photo Album</th>
                 </tr>
               </thead>
               <tbody>
