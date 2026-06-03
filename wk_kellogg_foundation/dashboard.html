@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>W.K. Kellogg Foundation Project Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h1>W.K. Kellogg Foundation</h1>
+      <p>Project Deliverables Dashboard</p>
+    </div>
+    
+    <ul class="nav-links">
+      <li>
+        <a href="#checklist" class="nav-link active" data-target="checklist-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+          Deliverables Checklist
+        </a>
+      </li>
+      <li>
+        <a href="#calendar" class="nav-link" data-target="calendar-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          Month-by-Month Calendar
+        </a>
+      </li>
+      <li>
+        <a href="#reporting" class="nav-link" data-target="reporting-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Reporting Portal
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    
+    <!-- View 1: Checklist -->
+    <section id="checklist-view" class="view-section active">
+      <div class="section-header">
+        <h2 class="section-title">Project Deliverables</h2>
+        <p class="section-subtitle">Track the core deliverables by responsible party across the grant period.</p>
+      </div>
+
+      <div class="card-grid">
+        
+        <!-- Joint Deliverables -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon icon-joint">🤝</div>
+            <div class="card-title">Joint (UTRGV & Sentli)</div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-j1">
+              <label for="chk-j1" class="checklist-text"><strong>10 On-Site Trainings</strong> Conservation agriculture & sustainable farming practices across both sites.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-j2">
+              <label for="chk-j2" class="checklist-text"><strong>Bilingual Recruitment</strong> All recruitment in English/Spanish with live interpretation.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-j3">
+              <label for="chk-j3" class="checklist-text"><strong>20+ Graduates</strong> Minimum 20 participants complete program (10+ hours).</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-j4">
+              <label for="chk-j4" class="checklist-text"><strong>Farmers Markets</strong> Continue operations at both sites serving over 500 families (40+ markets annually).</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-j5">
+              <label for="chk-j5" class="checklist-text"><strong>3 Food Festivals</strong> Host 3 Farm-to-Family Food Festivals over the project period.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-j6">
+              <label for="chk-j6" class="checklist-text"><strong>Community TA</strong> Offer technical assistance to at least 5 local community centers.</label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- UTRGV Deliverables -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon icon-utrgv">🏛️</div>
+            <div class="card-title">UTRGV / SARA</div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-u1">
+              <label for="chk-u1" class="checklist-text"><strong>Certificates</strong> Issue university certificates to completing participants.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-u2">
+              <label for="chk-u2" class="checklist-text"><strong>MALL Outreach</strong> Deliver off-site training via MALL to 4 schools/centers and 80+ individuals.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-u3">
+              <label for="chk-u3" class="checklist-text"><strong>Educational Materials</strong> Publish nutrition/agroecology materials on rgvagroecology.com (50+ visits).</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-u4">
+              <label for="chk-u4" class="checklist-text"><strong>Incubator Support</strong> Access to land/water/tools for at least 5 small-scale farmers at Hub of Prosperity.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-u5">
+              <label for="chk-u5" class="checklist-text"><strong>SNAP Exploration</strong> Explore accepting SNAP at the Hub of Prosperity Farm.</label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sentli Deliverables -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon icon-sentli">🚜</div>
+            <div class="card-title">Sentli Center</div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-s1">
+              <label for="chk-s1" class="checklist-text"><strong>CSA Sourcing</strong> Maintain 8+ local producers selling to CSA, distributing across 5 cities.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-s2">
+              <label for="chk-s2" class="checklist-text"><strong>Wholesale TA</strong> Provide one-on-one technical assistance to at least 10 limited-resource farmers.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-s3">
+              <label for="chk-s3" class="checklist-text"><strong>SNAP/Double Up</strong> Accept SNAP and participate in Double Up Food Bucks Texas.</label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" class="checkbox" id="chk-s4">
+              <label for="chk-s4" class="checklist-text"><strong>Family Utilization</strong> Enable at least 30 families to use the SNAP/Double Up program.</label>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- View 2: Month-by-Month Calendar -->
+    <section id="calendar-view" class="view-section">
+      <div class="section-header">
+        <h2 class="section-title">Month-by-Month Game Plan</h2>
+        <p class="section-subtitle">A strategic timeline for executing deliverables evenly across the 15-month grant period.</p>
+      </div>
+
+      <div class="timeline">
+        
+        <!-- Summer 2026 -->
+        <div class="timeline-month">
+          <div class="month-marker off-season"></div>
+          <div class="month-title">Summer 2026 <span class="tag tag-low">Low Gear</span> <div class="countdown-timer" data-target-date="2026-08-31T23:59:59"></div></div>
+          <div class="month-subtitle">June - August 2026 • Off-Season Setup</div>
+          <div class="task-list">
+            <ul>
+              <li>
+                <span class="owner-badge badge-joint">Joint</span> 
+                <div>Finalize curriculum and recruit the 20+ participants for upcoming trainings. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div>
+              </li>
+              <li>
+                <span class="owner-badge badge-utrgv">UTRGV</span> 
+                <div>Recruit and onboard 5 incubator farmers at the Hub of Prosperity. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div>
+              </li>
+              <li>
+                <span class="owner-badge badge-sentli">Sentli</span> 
+                <div>Soft launch CSA distribution and map out wholesale logistics. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div>
+              </li>
+              <li>
+                <span class="owner-badge badge-utrgv">UTRGV</span> 
+                <div>Develop marketing and educational materials for the MALL. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Fall 2026 -->
+        <div class="timeline-month">
+          <div class="month-marker"></div>
+          <div class="month-title">Fall 2026 <span class="tag tag-active">Active Gear</span> <div class="countdown-timer" data-target-date="2026-11-30T23:59:59"></div></div>
+          <div class="month-subtitle">September - November 2026</div>
+          <div class="task-list">
+            <ul>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Launch weekly farmers markets across both sites. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Begin monthly on-site conservation agriculture trainings (Months 1-3). <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Host the 1st Farm-to-Family Food Festival (Fall Harvest). <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-utrgv">UTRGV</span> <div>Begin MALL outreach to schools and community centers. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-sentli">Sentli</span> <div>Full swing CSA distribution for Fall crops. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Winter 2026/2027 -->
+        <div class="timeline-month">
+          <div class="month-marker"></div>
+          <div class="month-title">Winter 2026/2027 <span class="tag tag-active">Steady Gear</span> <div class="countdown-timer" data-target-date="2027-02-28T23:59:59"></div></div>
+          <div class="month-subtitle">December 2026 - February 2027</div>
+          <div class="task-list">
+            <ul>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Maintain monthly training schedule (Months 4-6). <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-sentli">Sentli</span> <div>Launch one-on-one wholesale readiness for 10 limited-resource farmers. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-utrgv">UTRGV</span> <div>Finalize SNAP exploration at Hub of Prosperity. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-sentli">Sentli</span> <div>Ensure Double Up Food Bucks is active for 30+ families. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Spring 2027 -->
+        <div class="timeline-month">
+          <div class="month-marker"></div>
+          <div class="month-title">Spring 2027 <span class="tag tag-active">High Gear</span> <div class="countdown-timer" data-target-date="2027-05-31T23:59:59"></div></div>
+          <div class="month-subtitle">March - May 2027</div>
+          <div class="task-list">
+            <ul>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Host the 2nd and 3rd Farm-to-Family Food Festivals. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Host the Regional Training Session at the Annual RGV Food Summit (April). <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Hit the 10 on-site training goal (Months 7-10). <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-utrgv">UTRGV</span> <div>Graduate the 20+ training participants and issue university certificates. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Summer 2027 -->
+        <div class="timeline-month">
+          <div class="month-marker off-season"></div>
+          <div class="month-title">Summer 2027 <span class="tag tag-low">Low Gear</span> <div class="countdown-timer" data-target-date="2027-08-31T23:59:59"></div></div>
+          <div class="month-subtitle">June - August 2027 • Wrap Up</div>
+          <div class="task-list">
+            <ul>
+              <li><span class="owner-badge badge-sentli">Sentli</span> <div>Final CSA distributions for the summer season. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Consolidate survey data and civic agriculture participant information. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Review all checklist items for completion. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Post Grant -->
+        <div class="timeline-month">
+          <div class="month-marker deadline"></div>
+          <div class="month-title">Post-Grant Reporting <span class="tag tag-deadline">Reporting Deadline</span> <div class="countdown-timer" data-target-date="2027-11-30T23:59:59"></div></div>
+          <div class="month-subtitle">November 2027</div>
+          <div class="task-list">
+            <ul>
+              <li><span class="owner-badge badge-joint">Joint</span> <div>Final Narrative Report and Financial Statement due to W.K. Kellogg Foundation. <br><span class="assignee-label"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg> Assigned to: ______________</span></div></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- View 3: Reporting Portal (Airtable Style) -->
+    <section id="reporting-view" class="view-section">
+      <div class="section-header">
+        <h2 class="section-title">Data Collection & Reporting</h2>
+        <p class="section-subtitle">Log event details, attendee information, and submit photos to the central project workbook.</p>
+      </div>
+
+      <div class="reporting-container">
+        
+        <!-- Submission Form -->
+        <div class="report-form-card">
+          <h3 class="form-title">Submit New Record</h3>
+          <form id="reportingForm" class="reporting-form">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="r-date" required>
+              </div>
+              <div class="form-group">
+                <label>Activity Type</label>
+                <select id="r-type" required>
+                  <option value="">Select Type...</option>
+                  <option value="Workshop">Workshop</option>
+                  <option value="Field Day">Field Day</option>
+                  <option value="Technical Assistance">1-on-1 Technical Assistance</option>
+                  <option value="Food Festival">Farm-to-Family Food Festival</option>
+                  <option value="Farmers Market">Farmers Market</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Topic / Theme</label>
+              <input type="text" id="r-topic" placeholder="e.g., Soil Health, Wholesale Readiness" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Attendee Name</label>
+                <input type="text" id="r-name" placeholder="Full Name">
+              </div>
+              <div class="form-group">
+                <label>Contact Info</label>
+                <input type="text" id="r-contact" placeholder="Phone or Email">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Farm / Operation Name</label>
+                <input type="text" id="r-farm" placeholder="Operation Name (if applicable)">
+              </div>
+              <div class="form-group">
+                <label>Organic Transition Status</label>
+                <select id="r-status">
+                  <option value="N/A">N/A</option>
+                  <option value="Exploring">Exploring / Considering</option>
+                  <option value="In Transition">In Transition</option>
+                  <option value="Certified Organic">Certified Organic</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Impact Story / Key Takeaways</label>
+              <textarea id="r-story" rows="3" placeholder="Share any success stories, challenges, or notable takeaways..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>Photo Upload</label>
+              <div class="file-upload-wrapper">
+                <input type="file" id="r-photo" accept="image/*" multiple>
+                <span class="file-hint">Choose files or drag & drop (JPG, PNG)</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Submit Record</button>
+          </form>
+        </div>
+
+        <!-- Airtable Style Grid -->
+        <div class="airtable-grid-card">
+          <div class="grid-header">
+            <h3>Project Workbook Database</h3>
+            <span class="record-count" id="recordCount">0 Records</span>
+          </div>
+          <div class="table-responsive">
+            <table class="airtable" id="airtableGrid">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Topic</th>
+                  <th>Attendee</th>
+                  <th>Farm</th>
+                  <th>Status</th>
+                  <th>Story/Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Records will be injected here via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
