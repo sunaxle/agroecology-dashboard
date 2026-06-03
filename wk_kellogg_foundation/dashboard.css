@@ -688,3 +688,58 @@ body {
   font-size: 0.8rem;
 }
 
+/* Surveys View specific */
+.survey-tabs-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.survey-tab {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all 0.2s;
+}
+
+.survey-tab:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+.survey-tab.active {
+  background: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+.survey-panel {
+  display: none;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.survey-panel.active {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .survey-panel.active {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tag-primary {
+  background: var(--primary-color);
+  color: white;
+}
+
