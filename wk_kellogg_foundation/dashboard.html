@@ -30,9 +30,15 @@
         </a>
       </li>
       <li>
-        <a href="#reporting" class="nav-link" data-target="reporting-view">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+        <a href="#reports" class="nav-link" data-target="reporting-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
           Reporting Portal
+        </a>
+      </li>
+      <li>
+        <a href="#surveys" class="nav-link" data-target="surveys-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+          Target Surveys
         </a>
       </li>
     </ul>
@@ -376,6 +382,205 @@
 
       </div>
     </section>
+
+      <!-- SURVEYS VIEW -->
+      <section id="surveys-view" class="view-section">
+        <header class="section-header">
+          <h2>Target Surveys & KPIs</h2>
+          <p>Collect specific data required for the W.K. Kellogg Foundation grant metrics.</p>
+        </header>
+
+        <div class="survey-tabs-container">
+          <button class="survey-tab active" data-target="s-market">1. Market Incentives</button>
+          <button class="survey-tab" data-target="s-mall">2. MALL Demographics</button>
+          <button class="survey-tab" data-target="s-csa">3. CSA Distribution</button>
+          <button class="survey-tab" data-target="s-farmer">4. Farmer TA</button>
+        </div>
+
+        <div class="cards-grid">
+
+          <!-- 1. Market Incentives -->
+          <div class="survey-panel active" id="s-market">
+            <div class="card" style="margin-bottom: 2rem;">
+              <h3>Market Incentives Usage</h3>
+              <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 1rem;">Goal: 30 families using SNAP/Double-Up Food Bucks.</p>
+              <form id="formMarket">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="sm-date" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Location</label>
+                    <select id="sm-location">
+                      <option value="Sentli Farmers Market">Sentli Farmers Market</option>
+                      <option value="Hub of Prosperity">Hub of Prosperity</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Used SNAP / DUFB?</label>
+                    <select id="sm-used" required>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Amount Spent ($)</label>
+                    <input type="number" id="sm-amount" min="0" step="0.01" placeholder="e.g. 25.00">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>First-time buyer?</label>
+                  <select id="sm-first">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn-submit">Save Survey</button>
+              </form>
+            </div>
+            <div class="card">
+              <h3 style="margin-bottom: 1rem;">Collected Surveys: <span id="count-market" class="tag tag-primary">0</span></h3>
+              <table class="data-grid" id="gridMarket">
+                <thead><tr><th>Date</th><th>Location</th><th>SNAP/DUFB</th><th>Amount</th><th>First Time</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 2. MALL Outreach -->
+          <div class="survey-panel" id="s-mall">
+            <div class="card" style="margin-bottom: 2rem;">
+              <h3>MALL Outreach Demographics</h3>
+              <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 1rem;">Goal: 80 individuals learn where to purchase fresh produce.</p>
+              <form id="formMall">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="sl-date" required>
+                  </div>
+                  <div class="form-group">
+                    <label>School / Center Name</label>
+                    <input type="text" id="sl-location" placeholder="e.g. Edinburg High School" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Attendee Zip Code</label>
+                    <input type="text" id="sl-zip" placeholder="e.g. 78539">
+                  </div>
+                  <div class="form-group">
+                    <label>Learned where to buy produce?</label>
+                    <select id="sl-learned" required>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Materials Distributed</label>
+                  <input type="text" id="sl-materials" placeholder="e.g. Recipes, Market Guides">
+                </div>
+                <button type="submit" class="btn-submit">Save Survey</button>
+              </form>
+            </div>
+            <div class="card">
+              <h3 style="margin-bottom: 1rem;">Collected Surveys: <span id="count-mall" class="tag tag-primary">0</span></h3>
+              <table class="data-grid" id="gridMall">
+                <thead><tr><th>Date</th><th>Location</th><th>Zip</th><th>Learned?</th><th>Materials</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 3. CSA Distribution -->
+          <div class="survey-panel" id="s-csa">
+            <div class="card" style="margin-bottom: 2rem;">
+              <h3>CSA Distribution Reach</h3>
+              <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 1rem;">Goal: Distribution across 5 cities for low-income families.</p>
+              <form id="formCsa">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="sc-date" required>
+                  </div>
+                  <div class="form-group">
+                    <label>City of Residence</label>
+                    <input type="text" id="sc-city" placeholder="e.g. McAllen" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Household Size</label>
+                    <input type="number" id="sc-size" min="1" placeholder="e.g. 4">
+                  </div>
+                  <div class="form-group">
+                    <label>Enrolled in SNAP/WIC?</label>
+                    <select id="sc-enrolled" required>
+                      <option value="Yes">Yes</option>
+                      <option value="No">No</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn-submit">Save Survey</button>
+              </form>
+            </div>
+            <div class="card">
+              <h3 style="margin-bottom: 1rem;">Collected Surveys: <span id="count-csa" class="tag tag-primary">0</span></h3>
+              <table class="data-grid" id="gridCsa">
+                <thead><tr><th>Date</th><th>City</th><th>HH Size</th><th>SNAP/WIC</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 4. Farmer TA -->
+          <div class="survey-panel" id="s-farmer">
+            <div class="card" style="margin-bottom: 2rem;">
+              <h3>Farmer Technical Assistance</h3>
+              <p class="text-secondary" style="font-size: 0.85rem; margin-bottom: 1rem;">Goal: 10 limited-resource farmers on wholesale readiness.</p>
+              <form id="formFarmer">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="sf-date" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Farmer Name</label>
+                    <input type="text" id="sf-name" placeholder="Full Name" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Operation Size</label>
+                    <input type="text" id="sf-size" placeholder="e.g. 5 acres">
+                  </div>
+                  <div class="form-group">
+                    <label>Topics Covered</label>
+                    <input type="text" id="sf-topics" placeholder="Wholesale readiness, marketing..." required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Key Barriers Identified</label>
+                  <textarea id="sf-barriers" rows="2" placeholder="Lack of transport, GAP certification..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Save Survey</button>
+              </form>
+            </div>
+            <div class="card">
+              <h3 style="margin-bottom: 1rem;">Collected Surveys: <span id="count-farmer" class="tag tag-primary">0</span></h3>
+              <table class="data-grid" id="gridFarmer">
+                <thead><tr><th>Date</th><th>Farmer Name</th><th>Op Size</th><th>Topics</th><th>Barriers</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
 
   </main>
 

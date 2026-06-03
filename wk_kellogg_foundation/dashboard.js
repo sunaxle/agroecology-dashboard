@@ -182,6 +182,120 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
+  // Target Surveys Logic
+  // ==========================================
+  
+  // Tab Switching
+  const surveyTabsBtn = document.querySelectorAll('.survey-tab');
+  const surveyPanels = document.querySelectorAll('.survey-panel');
+  
+  surveyTabsBtn.forEach(tab => {
+    tab.addEventListener('click', () => {
+      surveyTabsBtn.forEach(t => t.classList.remove('active'));
+      surveyPanels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.getAttribute('data-target')).classList.add('active');
+    });
+  });
+
+  // Storage Keys
+  const KEYS = {
+    market: 'wkkf_surveys_market',
+    mall: 'wkkf_surveys_mall',
+    csa: 'wkkf_surveys_csa',
+    farmer: 'wkkf_surveys_farmer'
+  };
+
+  const getSurveys = (key) => JSON.parse(localStorage.getItem(key)) || [];
+  const saveSurveys = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+
+  // Render Functions
+  function renderSurveyGrid(key, tbodyId, countId, rowRenderer) {
+    const data = getSurveys(key);
+    const tbody = document.querySelector(`#${tbodyId} tbody`);
+    if(tbody) {
+      tbody.innerHTML = '';
+      data.forEach(item => tbody.appendChild(rowRenderer(item)));
+    }
+    const countSpan = document.getElementById(countId);
+    if(countSpan) countSpan.textContent = data.length;
+  }
+
+  const renderMarket = () => renderSurveyGrid(KEYS.market, 'gridMarket', 'count-market', (r) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.date}</td><td>${r.location}</td><td>${r.used}</td><td>${r.amount ? '$'+r.amount : 'N/A'}</td><td>${r.first}</td>`;
+    return tr;
+  });
+
+  const renderMall = () => renderSurveyGrid(KEYS.mall, 'gridMall', 'count-mall', (r) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.date}</td><td>${r.location}</td><td>${r.zip || 'N/A'}</td><td>${r.learned}</td><td>${r.materials || 'None'}</td>`;
+    return tr;
+  });
+
+  const renderCsa = () => renderSurveyGrid(KEYS.csa, 'gridCsa', 'count-csa', (r) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.date}</td><td>${r.city}</td><td>${r.size || 'N/A'}</td><td>${r.enrolled}</td>`;
+    return tr;
+  });
+
+  const renderFarmer = () => renderSurveyGrid(KEYS.farmer, 'gridFarmer', 'count-farmer', (r) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${r.date}</td><td>${r.name}</td><td>${r.size || 'N/A'}</td><td title="${r.topics}">${r.topics.substring(0, 20)}...</td><td title="${r.barriers}">${r.barriers ? r.barriers.substring(0, 20) + '...' : 'None'}</td>`;
+    return tr;
+  });
+
+  // Initial Render
+  renderMarket(); renderMall(); renderCsa(); renderFarmer();
+
+  // Form Submit Handlers
+  const bindForm = (formId, key, extractor, renderer) => {
+    const form = document.getElementById(formId);
+    if(form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newRecord = extractor();
+        const data = getSurveys(key);
+        data.unshift(newRecord);
+        saveSurveys(key, data);
+        renderer();
+        form.reset();
+      });
+    }
+  };
+
+  bindForm('formMarket', KEYS.market, () => ({
+    date: document.getElementById('sm-date').value,
+    location: document.getElementById('sm-location').value,
+    used: document.getElementById('sm-used').value,
+    amount: document.getElementById('sm-amount').value,
+    first: document.getElementById('sm-first').value
+  }), renderMarket);
+
+  bindForm('formMall', KEYS.mall, () => ({
+    date: document.getElementById('sl-date').value,
+    location: document.getElementById('sl-location').value,
+    zip: document.getElementById('sl-zip').value,
+    learned: document.getElementById('sl-learned').value,
+    materials: document.getElementById('sl-materials').value
+  }), renderMall);
+
+  bindForm('formCsa', KEYS.csa, () => ({
+    date: document.getElementById('sc-date').value,
+    city: document.getElementById('sc-city').value,
+    size: document.getElementById('sc-size').value,
+    enrolled: document.getElementById('sc-enrolled').value
+  }), renderCsa);
+
+  bindForm('formFarmer', KEYS.farmer, () => ({
+    date: document.getElementById('sf-date').value,
+    name: document.getElementById('sf-name').value,
+    size: document.getElementById('sf-size').value,
+    topics: document.getElementById('sf-topics').value,
+    barriers: document.getElementById('sf-barriers').value
+  }), renderFarmer);
+
+  // ==========================================
   // Live Countdown Logic
   // ==========================================
   const timers = document.querySelectorAll('.countdown-timer');
