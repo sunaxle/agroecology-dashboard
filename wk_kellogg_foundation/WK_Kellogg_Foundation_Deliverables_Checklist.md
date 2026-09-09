@@ -1,3 +1,5 @@
+[[work]]
+
 # W.K. Kellogg Foundation - Project Deliverables Checklist
 
 > [!NOTE]
