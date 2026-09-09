@@ -62,6 +62,57 @@ body {
   margin-top: 0.5rem;
 }
 
+.db-sync-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: #D8F3DC;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.db-sync-status .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #E9C46A;
+  box-shadow: 0 0 8px #E9C46A;
+  animation: pulse 1.5s infinite;
+}
+
+.db-sync-status.connected {
+  background: rgba(82, 183, 136, 0.2);
+  color: #D8F3DC;
+}
+
+.db-sync-status.connected .status-dot {
+  background-color: #52B788;
+  box-shadow: 0 0 8px #52B788;
+  animation: none;
+}
+
+.db-sync-status.error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #FCA5A5;
+}
+
+.db-sync-status.error .status-dot {
+  background-color: #EF4444;
+  box-shadow: 0 0 8px #EF4444;
+  animation: none;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -741,5 +792,133 @@ body {
 .tag-primary {
   background: var(--primary-color);
   color: white;
+}
+
+/* KPI Summary Grid */
+.kpi-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.kpi-card {
+  background: var(--surface-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.kpi-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-icon {
+  font-size: 1.25rem;
+}
+
+.kpi-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.kpi-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.kpi-value small {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: var(--border-color);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+.kpi-subtext {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* Season Live Events inside Calendar */
+.season-live-events {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.season-event-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(45, 106, 79, 0.08);
+  border-left: 3px solid var(--primary-color);
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  color: var(--text-primary);
+}
+
+.season-event-chip strong {
+  font-weight: 600;
+}
+
+/* Print Styles for PDF / Print Output */
+@media print {
+  body {
+    height: auto;
+    overflow: visible;
+    background: white;
+  }
+  .sidebar, .btn-submit, .btn-secondary, .filter-controls, .countdown-timer {
+    display: none !important;
+  }
+  .main-content {
+    padding: 0;
+    margin: 0;
+  }
+  .view-section {
+    display: block !important;
+    page-break-after: always;
+  }
+  .card, .airtable-grid-card, .kpi-card {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
 }
 

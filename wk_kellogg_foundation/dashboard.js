@@ -1,6 +1,77 @@
 document.addEventListener('DOMContentLoaded', () => {
-  
+
+  // ==========================================
+  // Firebase Configuration & Initialization
+  // ==========================================
+  const firebaseConfig = {
+    apiKey: "AIzaSyBnTnx7-DIPo2fv-q169akzKgJxVS2Jk4Q",
+    authDomain: "kellogg-dashboard.firebaseapp.com",
+    projectId: "kellogg-dashboard",
+    storageBucket: "kellogg-dashboard.firebasestorage.app",
+    messagingSenderId: "527209517018",
+    appId: "1:527209517018:web:15e9cb82173bd5e83e7ae3"
+  };
+
+  let db = null;
+  const isFirebaseAvailable = typeof firebase !== 'undefined' && firebase.firestore;
+
+  function updateSyncStatus(connected, message) {
+    const badge = document.getElementById('dbSyncStatus');
+    if (!badge) return;
+    const textEl = badge.querySelector('.status-text');
+    if (connected) {
+      badge.className = 'db-sync-status connected';
+      if (textEl) textEl.textContent = message || 'Live Cloud Sync Active';
+    } else {
+      badge.className = 'db-sync-status error';
+      if (textEl) textEl.textContent = message || 'Local Storage (Offline)';
+    }
+  }
+
+  if (isFirebaseAvailable) {
+    try {
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+      db = firebase.firestore();
+      updateSyncStatus(true, 'Live Cloud Sync Active');
+    } catch (err) {
+      console.warn("Firebase initialization error:", err);
+      updateSyncStatus(false, 'Local Storage (Offline)');
+    }
+  } else {
+    updateSyncStatus(false, 'Local Storage (Offline)');
+  }
+
+  // ==========================================
+  // Helper: Season & Month Identification
+  // ==========================================
+  function getSeasonFromDate(dateStr) {
+    if (!dateStr) return 'fall-2026';
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return 'fall-2026';
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // 1-12
+
+    if (year === 2026 && month >= 6 && month <= 8) return 'summer-2026';
+    if (year === 2026 && month >= 9 && month <= 11) return 'fall-2026';
+    if ((year === 2026 && month === 12) || (year === 2027 && (month === 1 || month === 2))) return 'winter-2026';
+    if (year === 2027 && month >= 3 && month <= 5) return 'spring-2027';
+    if (year === 2027 && month >= 6 && month <= 8) return 'summer-2027';
+    if (year >= 2027 && month >= 9) return 'post-grant';
+    return 'fall-2026';
+  }
+
+  function formatMonthName(dateStr) {
+    if (!dateStr) return 'N/A';
+    const d = new Date(dateStr + 'T00:00:00');
+    if (isNaN(d.getTime())) return dateStr;
+    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
+
+  // ==========================================
   // Tab Navigation Logic
+  // ==========================================
   const navLinks = document.querySelectorAll('.nav-link');
   const viewSections = document.querySelectorAll('.view-section');
 
@@ -8,73 +79,194 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       
-      // Remove active class from all links and sections
       navLinks.forEach(l => l.classList.remove('active'));
       viewSections.forEach(s => s.classList.remove('active'));
       
-      // Add active class to clicked link
       link.classList.add('active');
-      
-      // Show corresponding section
       const targetId = link.getAttribute('data-target');
-      document.getElementById(targetId).classList.add('active');
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+
+      if (targetId === 'compiled-view') {
+        updateCompiledReport();
+      }
     });
   });
 
-  // Local Storage Logic for Checkboxes
+  // ==========================================
+  // Deliverables Checklist (Live & Cached)
+  // ==========================================
   const checkboxes = document.querySelectorAll('.checkbox');
-  
-  // Load saved state
+
   checkboxes.forEach(checkbox => {
     const savedState = localStorage.getItem(`wkkf_chk_${checkbox.id}`);
     if (savedState === 'true') {
       checkbox.checked = true;
     }
-    
-    // Listen for changes and save
-    checkbox.addEventListener('change', (e) => {
-      localStorage.setItem(`wkkf_chk_${checkbox.id}`, e.target.checked);
+
+    checkbox.addEventListener('change', async (e) => {
+      const isChecked = e.target.checked;
+      localStorage.setItem(`wkkf_chk_${checkbox.id}`, isChecked);
+
+      if (db) {
+        try {
+          await db.collection('wkkf_meta').doc('checklist').set({
+            [checkbox.id]: isChecked,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
+        } catch (err) {
+          console.warn("Error saving checkbox to Firestore:", err);
+        }
+      }
+      updateCompiledReport();
     });
   });
 
+  if (db) {
+    db.collection('wkkf_meta').doc('checklist').onSnapshot((doc) => {
+      if (doc.exists) {
+        const data = doc.data();
+        checkboxes.forEach(checkbox => {
+          if (typeof data[checkbox.id] === 'boolean') {
+            checkbox.checked = data[checkbox.id];
+            localStorage.setItem(`wkkf_chk_${checkbox.id}`, data[checkbox.id]);
+          }
+        });
+        updateCompiledReport();
+      }
+    }, (err) => {
+      console.warn("Checklist sync warning:", err);
+    });
+  }
+
   // ==========================================
-  // Reporting Portal Logic
+  // Data Stores (In-Memory & Cache)
+  // ==========================================
+  const SURVEY_KEYS = {
+    market: 'wkkf_surveys_market',
+    mall: 'wkkf_surveys_mall',
+    csa: 'wkkf_surveys_csa',
+    farmer: 'wkkf_surveys_farmer'
+  };
+
+  const getCachedData = (key) => JSON.parse(localStorage.getItem(key)) || [];
+  const setCachedData = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+
+  let reports = getCachedData('wkkf_reports');
+  let currentSeasonFilter = 'all';
+
+  // ==========================================
+  // Reporting Portal (Airtable-style Live Grid)
   // ==========================================
   const reportingForm = document.getElementById('reportingForm');
   const airtableGridBody = document.querySelector('#airtableGrid tbody');
   const recordCountSpan = document.getElementById('recordCount');
+  const filterReportingSeason = document.getElementById('filterReportingSeason');
 
-  // Load existing records from local storage
-  let records = JSON.parse(localStorage.getItem('wkkf_reports')) || [];
-
-  function renderGrid() {
+  function renderReportsGrid() {
+    if (!airtableGridBody) return;
     airtableGridBody.innerHTML = '';
-    records.forEach(record => {
+    
+    const filteredReports = reports.filter(r => {
+      if (currentSeasonFilter === 'all') return true;
+      return getSeasonFromDate(r.date) === currentSeasonFilter;
+    });
+
+    filteredReports.forEach(record => {
       const tr = document.createElement('tr');
       const attendeeCount = record.attendees ? record.attendees.length : 0;
-      const attendeeNames = record.attendees ? record.attendees.map(a => a.name).join(', ') : 'N/A';
+      const attendeeNames = record.attendees ? record.attendees.map(a => a.name || 'Unnamed').filter(Boolean).join(', ') : 'N/A';
       
       tr.innerHTML = `
-        <td>${record.date}</td>
-        <td><span class="tag tag-active">${record.type}</span></td>
-        <td>${record.topic}</td>
+        <td>${record.date || 'N/A'}</td>
+        <td><span class="tag tag-active">${record.type || 'General'}</span></td>
+        <td><strong>${record.topic || 'N/A'}</strong></td>
         <td>
           <div title="${attendeeNames}"><strong>👤 ${attendeeCount} Attendee${attendeeCount !== 1 ? 's' : ''}</strong></div>
           <div style="font-size: 0.75rem; color: var(--text-secondary); max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
             ${attendeeNames}
           </div>
         </td>
-        <td>${record.status}</td>
-        <td title="${record.story}">${record.story ? record.story.substring(0, 30) + '...' : 'None'}</td>
-        <td>${record.photoLink ? `<a href="${record.photoLink}" target="_blank" style="color: var(--primary-color); font-weight: 500; font-size: 0.85rem;">View Album</a>` : '<span style="color: var(--text-secondary); font-size: 0.85rem;">None</span>'}</td>
+        <td>${record.status || 'N/A'}</td>
+        <td title="${record.story || ''}">${record.story ? record.story.substring(0, 35) + '...' : 'None'}</td>
+        <td>${record.photoLink ? `<a href="${record.photoLink}" target="_blank" style="color: var(--primary-color); font-weight: 600; font-size: 0.85rem;">View Album</a>` : '<span style="color: var(--text-secondary); font-size: 0.85rem;">None</span>'}</td>
       `;
       airtableGridBody.appendChild(tr);
     });
-    recordCountSpan.textContent = `${records.length} Record${records.length !== 1 ? 's' : ''}`;
+
+    if (recordCountSpan) {
+      recordCountSpan.textContent = `${filteredReports.length} Record${filteredReports.length !== 1 ? 's' : ''}`;
+    }
+
+    updateCalendarLiveFeeds();
+    updateCompiledReport();
+  }
+
+  if (filterReportingSeason) {
+    filterReportingSeason.addEventListener('change', (e) => {
+      currentSeasonFilter = e.target.value;
+      renderReportsGrid();
+    });
+  }
+
+  // Update Live Calendar Month Feeds
+  function updateCalendarLiveFeeds() {
+    const seasonMap = {
+      'summer-2026': document.getElementById('season-events-summer2026'),
+      'fall-2026': document.getElementById('season-events-fall2026'),
+      'winter-2026': document.getElementById('season-events-winter2026'),
+      'spring-2027': document.getElementById('season-events-spring2027'),
+      'summer-2027': document.getElementById('season-events-summer2027')
+    };
+
+    Object.values(seasonMap).forEach(container => {
+      if (container) container.innerHTML = '';
+    });
+
+    reports.forEach(r => {
+      const season = getSeasonFromDate(r.date);
+      const targetContainer = seasonMap[season];
+      if (targetContainer) {
+        const attendeeCount = r.attendees ? r.attendees.length : 0;
+        const chip = document.createElement('div');
+        chip.className = 'season-event-chip';
+        chip.innerHTML = `
+          <span><strong>${r.date}:</strong> ${r.topic} (${r.type})</span>
+          <span>👥 ${attendeeCount}</span>
+        `;
+        targetContainer.appendChild(chip);
+      }
+    });
   }
 
   // Initial render
-  renderGrid();
+  renderReportsGrid();
+
+  // Live Firestore listener for Reports
+  if (db) {
+    db.collection('wkkf_reports').onSnapshot((snapshot) => {
+      const liveRecords = [];
+      snapshot.forEach(doc => {
+        liveRecords.push({ id: doc.id, ...doc.data() });
+      });
+
+      liveRecords.sort((a, b) => {
+        const timeA = a.createdAt ? (a.createdAt.toMillis ? a.createdAt.toMillis() : new Date(a.createdAt).getTime()) : new Date(a.date || 0).getTime();
+        const timeB = b.createdAt ? (b.createdAt.toMillis ? b.createdAt.toMillis() : new Date(b.date || 0).getTime()) : new Date(b.date || 0).getTime();
+        return timeB - timeA;
+      });
+
+      reports = liveRecords;
+      setCachedData('wkkf_reports', reports);
+      renderReportsGrid();
+      updateSyncStatus(true, 'Live Cloud Sync Active');
+    }, (err) => {
+      console.warn("Reports live listener warning:", err);
+      updateSyncStatus(false, 'Local Storage (Offline)');
+    });
+  }
 
   // Attendee Tabs Logic
   const attendeeTabs = document.querySelectorAll('.attendee-tab');
@@ -85,15 +277,16 @@ document.addEventListener('DOMContentLoaded', () => {
       attendeeTabs.forEach(t => t.classList.remove('active'));
       attendeeContents.forEach(c => c.classList.remove('active'));
       tab.classList.add('active');
-      document.getElementById('tab-' + tab.getAttribute('data-tab')).classList.add('active');
+      const tabTarget = document.getElementById('tab-' + tab.getAttribute('data-tab'));
+      if (tabTarget) tabTarget.classList.add('active');
     });
   });
 
-  // Manual Attendee Table Logic
   const btnAddAttendee = document.getElementById('btnAddAttendee');
   const attendeeTableBody = document.querySelector('#attendeeTable tbody');
 
   function addAttendeeRow() {
+    if (!attendeeTableBody) return;
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><input type="text" class="att-name" placeholder="Name"></td>
@@ -102,44 +295,50 @@ document.addEventListener('DOMContentLoaded', () => {
       <td><input type="text" class="att-farm" placeholder="Location"></td>
       <td><button type="button" class="btn-remove-row" title="Remove row">×</button></td>
     `;
-    tr.querySelector('.btn-remove-row').addEventListener('click', () => {
-      tr.remove();
-    });
+    tr.querySelector('.btn-remove-row').addEventListener('click', () => tr.remove());
     attendeeTableBody.appendChild(tr);
   }
   
   if (btnAddAttendee) {
     btnAddAttendee.addEventListener('click', addAttendeeRow);
-    addAttendeeRow(); // Add one initial empty row
+    addAttendeeRow();
   }
 
-  // Handle Form Submission
+  // Handle Reporting Form Submission
   if (reportingForm) {
-    reportingForm.addEventListener('submit', (e) => {
+    reportingForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
+      const submitBtn = reportingForm.querySelector('.btn-submit');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Saving Record...';
+      }
+
       let attendeesList = [];
-      const activeTab = document.querySelector('.attendee-tab.active').getAttribute('data-tab');
+      const activeTabEl = document.querySelector('.attendee-tab.active');
+      const activeTab = activeTabEl ? activeTabEl.getAttribute('data-tab') : 'manual';
       
       if (activeTab === 'manual') {
-        const rows = attendeeTableBody.querySelectorAll('tr');
+        const rows = attendeeTableBody ? attendeeTableBody.querySelectorAll('tr') : [];
         rows.forEach(row => {
-          const name = row.querySelector('.att-name').value.trim();
+          const nameInput = row.querySelector('.att-name');
+          const name = nameInput ? nameInput.value.trim() : '';
           if (name) {
             attendeesList.push({
               name: name,
-              phone: row.querySelector('.att-phone').value.trim(),
-              email: row.querySelector('.att-email').value.trim(),
-              location: row.querySelector('.att-farm').value.trim()
+              phone: row.querySelector('.att-phone')?.value.trim() || '',
+              email: row.querySelector('.att-email')?.value.trim() || '',
+              location: row.querySelector('.att-farm')?.value.trim() || ''
             });
           }
         });
       } else {
-        const bulkData = document.getElementById('r-bulk-attendees').value.trim();
+        const bulkData = document.getElementById('r-bulk-attendees')?.value.trim() || '';
         if (bulkData) {
-          const lines = bulkData.split('\\n');
+          const lines = bulkData.split('\n');
           lines.forEach(line => {
-            const cols = line.split('\\t');
+            const cols = line.split('\t');
             if (cols.length > 0 && cols[0].trim()) {
               attendeesList.push({
                 name: cols[0] ? cols[0].trim() : '',
@@ -153,39 +352,50 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const newRecord = {
-        date: document.getElementById('r-date').value,
-        type: document.getElementById('r-type').value,
-        topic: document.getElementById('r-topic').value,
-        status: document.getElementById('r-status').value,
-        story: document.getElementById('r-story').value,
-        photoLink: document.getElementById('r-photo-link').value,
+        date: document.getElementById('r-date')?.value || new Date().toISOString().split('T')[0],
+        type: document.getElementById('r-type')?.value || 'Workshop',
+        topic: document.getElementById('r-topic')?.value || '',
+        status: document.getElementById('r-status')?.value || 'N/A',
+        story: document.getElementById('r-story')?.value || '',
+        photoLink: document.getElementById('r-photo-link')?.value || '',
         attendees: attendeesList
       };
 
-      // Add to array and save
-      records.unshift(newRecord); // Add to top
-      localStorage.setItem('wkkf_reports', JSON.stringify(records));
-      
-      // Update UI
-      renderGrid();
-      
-      // Reset form (except date maybe, but full reset is standard)
-      reportingForm.reset();
-      
-      // Reset manual table rows
-      attendeeTableBody.innerHTML = '';
-      addAttendeeRow();
-      
-      // Optional: show a quick success message (could be a toast, but alert is easy for now)
-      // alert('Record successfully submitted to the workbook!');
+      try {
+        if (db) {
+          await db.collection('wkkf_reports').add({
+            ...newRecord,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        } else {
+          reports.unshift(newRecord);
+          setCachedData('wkkf_reports', reports);
+          renderReportsGrid();
+        }
+
+        reportingForm.reset();
+        if (attendeeTableBody) {
+          attendeeTableBody.innerHTML = '';
+          addAttendeeRow();
+        }
+      } catch (err) {
+        console.error("Error submitting report:", err);
+        alert("Saved locally (Cloud connection pending).");
+        reports.unshift(newRecord);
+        setCachedData('wkkf_reports', reports);
+        renderReportsGrid();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Record';
+        }
+      }
     });
   }
 
   // ==========================================
-  // Target Surveys Logic
+  // Target Surveys & KPIs (Live & Cached)
   // ==========================================
-  
-  // Tab Switching
   const surveyTabsBtn = document.querySelectorAll('.survey-tab');
   const surveyPanels = document.querySelectorAll('.survey-panel');
   
@@ -194,109 +404,458 @@ document.addEventListener('DOMContentLoaded', () => {
       surveyTabsBtn.forEach(t => t.classList.remove('active'));
       surveyPanels.forEach(p => p.classList.remove('active'));
       tab.classList.add('active');
-      document.getElementById(tab.getAttribute('data-target')).classList.add('active');
+      const targetPanel = document.getElementById(tab.getAttribute('data-target'));
+      if (targetPanel) targetPanel.classList.add('active');
     });
   });
 
-  // Storage Keys
-  const KEYS = {
-    market: 'wkkf_surveys_market',
-    mall: 'wkkf_surveys_mall',
-    csa: 'wkkf_surveys_csa',
-    farmer: 'wkkf_surveys_farmer'
-  };
-
-  const getSurveys = (key) => JSON.parse(localStorage.getItem(key)) || [];
-  const saveSurveys = (key, data) => localStorage.setItem(key, JSON.stringify(data));
-
-  // Render Functions
   function renderSurveyGrid(key, tbodyId, countId, rowRenderer) {
-    const data = getSurveys(key);
+    const data = getCachedData(key);
     const tbody = document.querySelector(`#${tbodyId} tbody`);
-    if(tbody) {
+    if (tbody) {
       tbody.innerHTML = '';
       data.forEach(item => tbody.appendChild(rowRenderer(item)));
     }
     const countSpan = document.getElementById(countId);
-    if(countSpan) countSpan.textContent = data.length;
+    if (countSpan) countSpan.textContent = data.length;
+    updateCompiledReport();
   }
 
-  const renderMarket = () => renderSurveyGrid(KEYS.market, 'gridMarket', 'count-market', (r) => {
+  const renderMarket = () => renderSurveyGrid(SURVEY_KEYS.market, 'gridMarket', 'count-market', (r) => {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${r.date}</td><td>${r.location}</td><td>${r.used}</td><td>${r.amount ? '$'+r.amount : 'N/A'}</td><td>${r.first}</td>`;
+    tr.innerHTML = `<td>${r.date || 'N/A'}</td><td>${r.location || 'N/A'}</td><td>${r.used || 'N/A'}</td><td>${r.amount ? '$'+r.amount : 'N/A'}</td><td>${r.first || 'N/A'}</td>`;
     return tr;
   });
 
-  const renderMall = () => renderSurveyGrid(KEYS.mall, 'gridMall', 'count-mall', (r) => {
+  const renderMall = () => renderSurveyGrid(SURVEY_KEYS.mall, 'gridMall', 'count-mall', (r) => {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${r.date}</td><td>${r.location}</td><td>${r.zip || 'N/A'}</td><td>${r.learned}</td><td>${r.materials || 'None'}</td>`;
+    tr.innerHTML = `<td>${r.date || 'N/A'}</td><td>${r.location || 'N/A'}</td><td>${r.zip || 'N/A'}</td><td>${r.learned || 'N/A'}</td><td>${r.materials || 'None'}</td>`;
     return tr;
   });
 
-  const renderCsa = () => renderSurveyGrid(KEYS.csa, 'gridCsa', 'count-csa', (r) => {
+  const renderCsa = () => renderSurveyGrid(SURVEY_KEYS.csa, 'gridCsa', 'count-csa', (r) => {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${r.date}</td><td>${r.city}</td><td>${r.size || 'N/A'}</td><td>${r.enrolled}</td>`;
+    tr.innerHTML = `<td>${r.date || 'N/A'}</td><td>${r.city || 'N/A'}</td><td>${r.size || 'N/A'}</td><td>${r.enrolled || 'N/A'}</td>`;
     return tr;
   });
 
-  const renderFarmer = () => renderSurveyGrid(KEYS.farmer, 'gridFarmer', 'count-farmer', (r) => {
+  const renderFarmer = () => renderSurveyGrid(SURVEY_KEYS.farmer, 'gridFarmer', 'count-farmer', (r) => {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${r.date}</td><td>${r.name}</td><td>${r.size || 'N/A'}</td><td title="${r.topics}">${r.topics.substring(0, 20)}...</td><td title="${r.barriers}">${r.barriers ? r.barriers.substring(0, 20) + '...' : 'None'}</td>`;
+    tr.innerHTML = `<td>${r.date || 'N/A'}</td><td>${r.name || 'N/A'}</td><td>${r.size || 'N/A'}</td><td title="${r.topics || ''}">${(r.topics || '').substring(0, 20)}...</td><td title="${r.barriers || ''}">${r.barriers ? r.barriers.substring(0, 20) + '...' : 'None'}</td>`;
     return tr;
   });
 
-  // Initial Render
+  // Initial renders
   renderMarket(); renderMall(); renderCsa(); renderFarmer();
 
-  // Form Submit Handlers
-  const bindForm = (formId, key, extractor, renderer) => {
-    const form = document.getElementById(formId);
-    if(form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const newRecord = extractor();
-        const data = getSurveys(key);
-        data.unshift(newRecord);
-        saveSurveys(key, data);
+  if (db) {
+    const surveyConfigs = [
+      { key: SURVEY_KEYS.market, renderer: renderMarket },
+      { key: SURVEY_KEYS.mall, renderer: renderMall },
+      { key: SURVEY_KEYS.csa, renderer: renderCsa },
+      { key: SURVEY_KEYS.farmer, renderer: renderFarmer }
+    ];
+
+    surveyConfigs.forEach(({ key, renderer }) => {
+      db.collection(key).onSnapshot((snapshot) => {
+        const liveData = [];
+        snapshot.forEach(doc => liveData.push({ id: doc.id, ...doc.data() }));
+        
+        liveData.sort((a, b) => {
+          const timeA = a.createdAt ? (a.createdAt.toMillis ? a.createdAt.toMillis() : new Date(a.createdAt).getTime()) : new Date(a.date || 0).getTime();
+          const timeB = b.createdAt ? (b.createdAt.toMillis ? b.createdAt.toMillis() : new Date(b.date || 0).getTime()) : new Date(b.date || 0).getTime();
+          return timeB - timeA;
+        });
+
+        setCachedData(key, liveData);
         renderer();
-        form.reset();
+      }, (err) => {
+        console.warn(`Survey live listener warning for ${key}:`, err);
       });
-    }
+    });
+  }
+
+  const bindSurveyForm = (formId, key, extractor, renderer) => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = form.querySelector('.btn-submit');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Saving...';
+      }
+
+      const newRecord = extractor();
+
+      try {
+        if (db) {
+          await db.collection(key).add({
+            ...newRecord,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        } else {
+          const localData = getCachedData(key);
+          localData.unshift(newRecord);
+          setCachedData(key, localData);
+          renderer();
+        }
+
+        form.reset();
+      } catch (err) {
+        console.error(`Error saving survey to ${key}:`, err);
+        const localData = getCachedData(key);
+        localData.unshift(newRecord);
+        setCachedData(key, localData);
+        renderer();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Save Survey';
+        }
+      }
+    });
   };
 
-  bindForm('formMarket', KEYS.market, () => ({
-    date: document.getElementById('sm-date').value,
-    location: document.getElementById('sm-location').value,
-    used: document.getElementById('sm-used').value,
-    amount: document.getElementById('sm-amount').value,
-    first: document.getElementById('sm-first').value
+  bindSurveyForm('formMarket', SURVEY_KEYS.market, () => ({
+    date: document.getElementById('sm-date')?.value || new Date().toISOString().split('T')[0],
+    location: document.getElementById('sm-location')?.value || '',
+    used: document.getElementById('sm-used')?.value || 'Yes',
+    amount: document.getElementById('sm-amount')?.value || '',
+    first: document.getElementById('sm-first')?.value || 'No'
   }), renderMarket);
 
-  bindForm('formMall', KEYS.mall, () => ({
-    date: document.getElementById('sl-date').value,
-    location: document.getElementById('sl-location').value,
-    zip: document.getElementById('sl-zip').value,
-    learned: document.getElementById('sl-learned').value,
-    materials: document.getElementById('sl-materials').value
+  bindSurveyForm('formMall', SURVEY_KEYS.mall, () => ({
+    date: document.getElementById('sl-date')?.value || new Date().toISOString().split('T')[0],
+    location: document.getElementById('sl-location')?.value || '',
+    zip: document.getElementById('sl-zip')?.value || '',
+    learned: document.getElementById('sl-learned')?.value || 'Yes',
+    materials: document.getElementById('sl-materials')?.value || ''
   }), renderMall);
 
-  bindForm('formCsa', KEYS.csa, () => ({
-    date: document.getElementById('sc-date').value,
-    city: document.getElementById('sc-city').value,
-    size: document.getElementById('sc-size').value,
-    enrolled: document.getElementById('sc-enrolled').value
+  bindSurveyForm('formCsa', SURVEY_KEYS.csa, () => ({
+    date: document.getElementById('sc-date')?.value || new Date().toISOString().split('T')[0],
+    city: document.getElementById('sc-city')?.value || '',
+    size: document.getElementById('sc-size')?.value || '',
+    enrolled: document.getElementById('sc-enrolled')?.value || 'Yes'
   }), renderCsa);
 
-  bindForm('formFarmer', KEYS.farmer, () => ({
-    date: document.getElementById('sf-date').value,
-    name: document.getElementById('sf-name').value,
-    size: document.getElementById('sf-size').value,
-    topics: document.getElementById('sf-topics').value,
-    barriers: document.getElementById('sf-barriers').value
+  bindSurveyForm('formFarmer', SURVEY_KEYS.farmer, () => ({
+    date: document.getElementById('sf-date')?.value || new Date().toISOString().split('T')[0],
+    name: document.getElementById('sf-name')?.value || '',
+    size: document.getElementById('sf-size')?.value || '',
+    topics: document.getElementById('sf-topics')?.value || '',
+    barriers: document.getElementById('sf-barriers')?.value || ''
   }), renderFarmer);
 
   // ==========================================
-  // Live Countdown Logic
+  // Compiled Executive Report Calculations
+  // ==========================================
+  function updateCompiledReport() {
+    const marketSurveys = getCachedData(SURVEY_KEYS.market);
+    const mallSurveys = getCachedData(SURVEY_KEYS.mall);
+    const csaSurveys = getCachedData(SURVEY_KEYS.csa);
+    const farmerSurveys = getCachedData(SURVEY_KEYS.farmer);
+
+    // 1. Trainings count & attendees
+    const trainingsCount = reports.length;
+    let totalAttendees = 0;
+    const attendeeSet = new Set();
+    reports.forEach(r => {
+      if (r.attendees && Array.isArray(r.attendees)) {
+        totalAttendees += r.attendees.length;
+        r.attendees.forEach(a => {
+          if (a.name) attendeeSet.add(a.name.trim().toLowerCase());
+        });
+      }
+    });
+
+    const elTrainingsCount = document.getElementById('kpi-trainings-count');
+    const elTrainingsBar = document.getElementById('kpi-trainings-bar');
+    const elAttendeesTotal = document.getElementById('kpi-attendees-total');
+    if (elTrainingsCount) elTrainingsCount.textContent = trainingsCount;
+    if (elTrainingsBar) elTrainingsBar.style.width = Math.min(100, Math.round((trainingsCount / 10) * 100)) + '%';
+    if (elAttendeesTotal) elAttendeesTotal.textContent = totalAttendees;
+
+    // 2. Graduates
+    const graduatesCount = attendeeSet.size;
+    const elGraduatesCount = document.getElementById('kpi-graduates-count');
+    const elGraduatesBar = document.getElementById('kpi-graduates-bar');
+    if (elGraduatesCount) elGraduatesCount.textContent = graduatesCount;
+    if (elGraduatesBar) elGraduatesBar.style.width = Math.min(100, Math.round((graduatesCount / 20) * 100)) + '%';
+
+    // 3. SNAP / DUFB Families
+    const snapFamilies = marketSurveys.length;
+    let totalSnapDollars = 0;
+    marketSurveys.forEach(s => {
+      if (s.amount) {
+        const val = parseFloat(s.amount);
+        if (!isNaN(val)) totalSnapDollars += val;
+      }
+    });
+    const elSnapFamilies = document.getElementById('kpi-snap-families');
+    const elSnapBar = document.getElementById('kpi-snap-bar');
+    const elSnapDollars = document.getElementById('kpi-snap-dollars');
+    if (elSnapFamilies) elSnapFamilies.textContent = snapFamilies;
+    if (elSnapBar) elSnapBar.style.width = Math.min(100, Math.round((snapFamilies / 30) * 100)) + '%';
+    if (elSnapDollars) elSnapDollars.textContent = `$${totalSnapDollars.toFixed(2)}`;
+
+    // 4. MALL Outreach Reach
+    const mallCount = mallSurveys.length;
+    const mallLocations = new Set();
+    mallSurveys.forEach(s => {
+      if (s.location) mallLocations.add(s.location.trim().toLowerCase());
+    });
+    const elMallCount = document.getElementById('kpi-mall-count');
+    const elMallBar = document.getElementById('kpi-mall-bar');
+    const elMallLocations = document.getElementById('kpi-mall-locations');
+    if (elMallCount) elMallCount.textContent = mallCount;
+    if (elMallBar) elMallBar.style.width = Math.min(100, Math.round((mallCount / 80) * 100)) + '%';
+    if (elMallLocations) elMallLocations.textContent = mallLocations.size;
+
+    // 5. CSA Distribution Reach
+    const csaCities = new Set();
+    let totalCsaHouseholds = 0;
+    csaSurveys.forEach(s => {
+      if (s.city) csaCities.add(s.city.trim().toLowerCase());
+      if (s.size) {
+        const val = parseInt(s.size, 10);
+        if (!isNaN(val)) totalCsaHouseholds += val;
+      } else {
+        totalCsaHouseholds += 1;
+      }
+    });
+    const elCsaCities = document.getElementById('kpi-csa-cities');
+    const elCsaBar = document.getElementById('kpi-csa-bar');
+    const elCsaHouseholds = document.getElementById('kpi-csa-households');
+    if (elCsaCities) elCsaCities.textContent = csaCities.size;
+    if (elCsaBar) elCsaBar.style.width = Math.min(100, Math.round((csaCities.size / 5) * 100)) + '%';
+    if (elCsaHouseholds) elCsaHouseholds.textContent = totalCsaHouseholds;
+
+    // 6. Farmer TA
+    const farmerCount = farmerSurveys.length;
+    const elFarmerCount = document.getElementById('kpi-farmer-count');
+    const elFarmerBar = document.getElementById('kpi-farmer-bar');
+    if (elFarmerCount) elFarmerCount.textContent = farmerCount;
+    if (elFarmerBar) elFarmerBar.style.width = Math.min(100, Math.round((farmerCount / 10) * 100)) + '%';
+
+    // 7. Monthly Aggregated Summary Breakdown Table
+    const monthlySummaryBody = document.querySelector('#compiledMonthlyTable tbody');
+    if (monthlySummaryBody) {
+      monthlySummaryBody.innerHTML = '';
+      const monthsMap = {};
+
+      const recordMonths = [...reports, ...marketSurveys, ...mallSurveys, ...csaSurveys, ...farmerSurveys];
+      recordMonths.forEach(item => {
+        const m = formatMonthName(item.date);
+        if (m !== 'N/A' && !monthsMap[m]) {
+          monthsMap[m] = { month: m, events: 0, attendees: 0, snap: 0, mall: 0, farmer: 0 };
+        }
+      });
+
+      reports.forEach(r => {
+        const m = formatMonthName(r.date);
+        if (monthsMap[m]) {
+          monthsMap[m].events += 1;
+          if (r.attendees) monthsMap[m].attendees += r.attendees.length;
+        }
+      });
+      marketSurveys.forEach(s => {
+        const m = formatMonthName(s.date);
+        if (monthsMap[m]) monthsMap[m].snap += 1;
+      });
+      mallSurveys.forEach(s => {
+        const m = formatMonthName(s.date);
+        if (monthsMap[m]) monthsMap[m].mall += 1;
+      });
+      farmerSurveys.forEach(s => {
+        const m = formatMonthName(s.date);
+        if (monthsMap[m]) monthsMap[m].farmer += 1;
+      });
+
+      const monthList = Object.values(monthsMap);
+      if (monthList.length === 0) {
+        monthlySummaryBody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 1.5rem;">No activity data recorded yet.</td></tr>`;
+      } else {
+        monthList.forEach(item => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong>${item.month}</strong></td>
+            <td><span class="tag tag-active">${item.events} Events</span></td>
+            <td>👥 ${item.attendees} Attendees</td>
+            <td>🥦 ${item.snap} Families</td>
+            <td>🚌 ${item.mall} Individuals</td>
+            <td>👩‍🌾 ${item.farmer} Sessions</td>
+          `;
+          monthlySummaryBody.appendChild(tr);
+        });
+      }
+    }
+
+    // 8. Master Activities & Surveys Log Table
+    const masterLogBody = document.querySelector('#masterLogTable tbody');
+    const masterLogCount = document.getElementById('masterLogCount');
+    if (masterLogBody) {
+      masterLogBody.innerHTML = '';
+      const allEntries = [];
+
+      reports.forEach(r => {
+        const count = r.attendees ? r.attendees.length : 0;
+        const names = r.attendees ? r.attendees.map(a => a.name).filter(Boolean).join(', ') : '';
+        allEntries.push({
+          date: r.date || 'N/A',
+          category: `Activity (${r.type || 'Event'})`,
+          focus: r.topic || 'N/A',
+          participants: `${count} Attendee${count !== 1 ? 's' : ''}${names ? ': ' + names : ''}`,
+          details: r.story || r.status || 'Completed',
+          photo: r.photoLink || ''
+        });
+      });
+
+      marketSurveys.forEach(s => {
+        allEntries.push({
+          date: s.date || 'N/A',
+          category: 'Market Survey',
+          focus: s.location || 'Farmers Market',
+          participants: `SNAP/DUFB Used: ${s.used || 'Yes'}`,
+          details: `Amount: $${s.amount || '0'} | First-time: ${s.first || 'No'}`,
+          photo: ''
+        });
+      });
+
+      mallSurveys.forEach(s => {
+        allEntries.push({
+          date: s.date || 'N/A',
+          category: 'MALL Outreach',
+          focus: s.location || 'Mobile Lab',
+          participants: `Zip: ${s.zip || 'N/A'}`,
+          details: `Learned: ${s.learned || 'Yes'} | Materials: ${s.materials || 'None'}`,
+          photo: ''
+        });
+      });
+
+      csaSurveys.forEach(s => {
+        allEntries.push({
+          date: s.date || 'N/A',
+          category: 'CSA Distribution',
+          focus: `City: ${s.city || 'N/A'}`,
+          participants: `Household Size: ${s.size || 'N/A'}`,
+          details: `SNAP/WIC: ${s.enrolled || 'Yes'}`,
+          photo: ''
+        });
+      });
+
+      farmerSurveys.forEach(s => {
+        allEntries.push({
+          date: s.date || 'N/A',
+          category: 'Farmer 1-on-1 TA',
+          focus: s.name || 'Farmer',
+          participants: `Op Size: ${s.size || 'N/A'}`,
+          details: `Topics: ${s.topics || 'Wholesale'} | Barriers: ${s.barriers || 'None'}`,
+          photo: ''
+        });
+      });
+
+      allEntries.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+      if (masterLogCount) {
+        masterLogCount.textContent = `${allEntries.length} Total Entries`;
+      }
+
+      if (allEntries.length === 0) {
+        masterLogBody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-secondary); padding: 1.5rem;">No master log records available.</td></tr>`;
+      } else {
+        allEntries.forEach(entry => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${entry.date}</td>
+            <td><span class="tag tag-primary">${entry.category}</span></td>
+            <td><strong>${entry.focus}</strong></td>
+            <td style="max-width: 200px; font-size: 0.8rem;">${entry.participants}</td>
+            <td style="max-width: 250px; font-size: 0.8rem;">${entry.details}</td>
+            <td>${entry.photo ? `<a href="${entry.photo}" target="_blank" style="color: var(--primary-color); font-weight: 600; font-size: 0.8rem;">View Album</a>` : '<span style="color: var(--text-secondary); font-size: 0.8rem;">None</span>'}</td>
+          `;
+          masterLogBody.appendChild(tr);
+        });
+      }
+    }
+  }
+
+  // ==========================================
+  // CSV Export Functions
+  // ==========================================
+  function downloadCsvFile(csvContent, filename) {
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', filename);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  const btnExportReportsCsv = document.getElementById('btnExportReportsCsv');
+  if (btnExportReportsCsv) {
+    btnExportReportsCsv.addEventListener('click', () => {
+      let csv = 'Date,Activity Type,Topic,Attendee Count,Attendee Names,Organic Status,Impact Story,Photo Link\n';
+      reports.forEach(r => {
+        const count = r.attendees ? r.attendees.length : 0;
+        const names = r.attendees ? r.attendees.map(a => `${a.name} (${a.location || ''})`).join('; ') : '';
+        const row = [
+          `"${r.date || ''}"`,
+          `"${r.type || ''}"`,
+          `"${(r.topic || '').replace(/"/g, '""')}"`,
+          count,
+          `"${names.replace(/"/g, '""')}"`,
+          `"${r.status || ''}"`,
+          `"${(r.story || '').replace(/"/g, '""')}"`,
+          `"${r.photoLink || ''}"`
+        ];
+        csv += row.join(',') + '\n';
+      });
+      downloadCsvFile(csv, `Kellogg_Project_Workbook_${new Date().toISOString().split('T')[0]}.csv`);
+    });
+  }
+
+  const btnExportAllCsv = document.getElementById('btnExportAllCsv');
+  if (btnExportAllCsv) {
+    btnExportAllCsv.addEventListener('click', () => {
+      let csv = 'Record Type,Date,Location/City/Name,Category/Topic,Detail 1,Detail 2,Detail 3\n';
+      
+      reports.forEach(r => {
+        const names = r.attendees ? r.attendees.map(a => a.name).join('; ') : '';
+        csv += `"Activity Event","${r.date || ''}","${r.status || ''}","${(r.topic || '').replace(/"/g, '""')}","Attendees: ${r.attendees ? r.attendees.length : 0}","${names.replace(/"/g, '""')}","${r.photoLink || ''}"\n`;
+      });
+
+      const marketSurveys = getCachedData(SURVEY_KEYS.market);
+      marketSurveys.forEach(s => {
+        csv += `"Market Survey","${s.date || ''}","${s.location || ''}","SNAP/DUFB: ${s.used || 'Yes'}","Amount: $${s.amount || '0'}","First-Time: ${s.first || 'No'}",""\n`;
+      });
+
+      const mallSurveys = getCachedData(SURVEY_KEYS.mall);
+      mallSurveys.forEach(s => {
+        csv += `"MALL Outreach","${s.date || ''}","${s.location || ''}","Zip: ${s.zip || ''}","Learned: ${s.learned || 'Yes'}","Materials: ${(s.materials || '').replace(/"/g, '""')}",""\n`;
+      });
+
+      const csaSurveys = getCachedData(SURVEY_KEYS.csa);
+      csaSurveys.forEach(s => {
+        csv += `"CSA Distribution","${s.date || ''}","${s.city || ''}","Household Size: ${s.size || ''}","SNAP/WIC: ${s.enrolled || 'Yes'}","",""\n`;
+      });
+
+      const farmerSurveys = getCachedData(SURVEY_KEYS.farmer);
+      farmerSurveys.forEach(s => {
+        csv += `"Farmer TA","${s.date || ''}","${s.name || ''}","Size: ${s.size || ''}","Topics: ${(s.topics || '').replace(/"/g, '""')}","Barriers: ${(s.barriers || '').replace(/"/g, '""')}",""\n`;
+      });
+
+      downloadCsvFile(csv, `WK_Kellogg_Compiled_Grant_Report_${new Date().toISOString().split('T')[0]}.csv`);
+    });
+  }
+
+  // ==========================================
+  // Live Countdown Timers
   // ==========================================
   const timers = document.querySelectorAll('.countdown-timer');
   
@@ -333,9 +892,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
-  // Run once immediately, then every hour (since we don't show seconds/minutes, we only need to update occasionally)
-  // Actually, updating every minute is safe and makes it feel "live" if someone leaves it open.
   updateTimers();
   setInterval(updateTimers, 60000);
 
+  // Initial compiled report trigger
+  updateCompiledReport();
+
 });
+
