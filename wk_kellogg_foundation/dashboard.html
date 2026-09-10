@@ -695,9 +695,68 @@
                 <li>Feel free to use photos of the farm if you have them, highlighting the community aspect!</li>
               </ul>
             </div>
-            <button class="btn-submit" onclick="navigator.clipboard.writeText(this.previousElementSibling.innerText); alert('Copied to clipboard!')" style="margin-top: 1.5rem;">Copy Instructions</button>
           </div>
 
+          <!-- Partner Farm & Media Photo Library -->
+          <div class="card" style="grid-column: 1 / -1; margin-bottom: 2rem;">
+            <div class="card-header">
+              <div class="card-icon icon-joint">📸</div>
+              <h3 class="card-title">Partner Photo Library (Sentli Center & Terra Preta Farm & Hub)</h3>
+            </div>
+            <p class="text-secondary" style="font-size: 0.9rem; margin-bottom: 1.25rem;">
+              Authentic high-resolution photo assets from our local partner farms in Edinburg, TX. Click any photo to enlarge in full-screen view.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;">
+              <div class="card" style="padding: 0.75rem; background: var(--bg-color); cursor: pointer;" onclick="openLightbox('./W.K. Kellogg Foundation Photos/sentli_farm_produce.jpg', 'Sentli Center — Farm2Go Fresh Harvest (Edinburg, TX)')">
+                <img src="./W.K. Kellogg Foundation Photos/sentli_farm_produce.jpg" alt="Sentli Produce" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong style="font-size: 0.85rem; display: block;">Sentli Center — Farm2Go Harvest</strong>
+                <span class="text-secondary" style="font-size: 0.75rem;">Edinburg, TX • Organic produce aggregator</span>
+              </div>
+
+              <div class="card" style="padding: 0.75rem; background: var(--bg-color); cursor: pointer;" onclick="openLightbox('./W.K. Kellogg Foundation Photos/sentli_farm_field.jpg', 'Sentli Center — Community Agroecology Farm (Edinburg, TX)')">
+                <img src="./W.K. Kellogg Foundation Photos/sentli_farm_field.jpg" alt="Sentli Farm Field" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong style="font-size: 0.85rem; display: block;">Sentli Center — Farm Field</strong>
+                <span class="text-secondary" style="font-size: 0.75rem;">Edinburg, TX • Educational & incubator beds</span>
+              </div>
+
+              <div class="card" style="padding: 0.75rem; background: var(--bg-color); cursor: pointer;" onclick="openLightbox('./W.K. Kellogg Foundation Photos/terra_preta_farm_harvest.jpg', 'Terra Preta Farm — Certified Organic Harvest (Edinburg, TX)')">
+                <img src="./W.K. Kellogg Foundation Photos/terra_preta_farm_harvest.jpg" alt="Terra Preta Harvest" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong style="font-size: 0.85rem; display: block;">Terra Preta Farm — Organic Harvest</strong>
+                <span class="text-secondary" style="font-size: 0.75rem;">Edinburg, TX • Juan & Shakera Raygoza</span>
+              </div>
+
+              <div class="card" style="padding: 0.75rem; background: var(--bg-color); cursor: pointer;" onclick="openLightbox('./W.K. Kellogg Foundation Photos/terra_preta_farm_crops.jpg', 'Terra Preta Farm — Regenerative Crop Rows (Edinburg, TX)')">
+                <img src="./W.K. Kellogg Foundation Photos/terra_preta_farm_crops.jpg" alt="Terra Preta Crops" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong style="font-size: 0.85rem; display: block;">Terra Preta Farm — Crop Rows</strong>
+                <span class="text-secondary" style="font-size: 0.75rem;">2806 E Rogers Rd, Edinburg, TX</span>
+              </div>
+
+              <div class="card" style="padding: 0.75rem; background: var(--bg-color); cursor: pointer;" onclick="openLightbox('./W.K. Kellogg Foundation Photos/terra_preta_farm_soil.jpg', 'Terra Preta Farm — Soil Health & Biological Vitality')">
+                <img src="./W.K. Kellogg Foundation Photos/terra_preta_farm_soil.jpg" alt="Terra Preta Soil" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong style="font-size: 0.85rem; display: block;">Terra Preta Farm — Soil Health</strong>
+                <span class="text-secondary" style="font-size: 0.75rem;">Edinburg, TX • High-organic matter soil</span>
+              </div>
+
+              <div class="card" style="padding: 0.75rem; background: var(--bg-color); cursor: pointer;" onclick="openLightbox('./W.K. Kellogg Foundation Photos/hub_harvest_baskets.jpg', 'Hub of Prosperity — Fresh Harvest Baskets (UTRGV)')">
+                <img src="./W.K. Kellogg Foundation Photos/hub_harvest_baskets.jpg" alt="Hub Harvest" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong style="font-size: 0.85rem; display: block;">Hub of Prosperity — Harvest Baskets</strong>
+                <span class="text-secondary" style="font-size: 0.75rem;">UTRGV Agroecology • Student farm</span>
+              </div>
+
+              <div class="card" style="padding: 0.75rem; background: var(--bg-color); cursor: pointer;" onclick="openLightbox('./W.K. Kellogg Foundation Photos/hub_field_crew.jpg', 'Hub of Prosperity — Farm Crew & Field Training (UTRGV)')">
+                <img src="./W.K. Kellogg Foundation Photos/hub_field_crew.jpg" alt="Hub Field Crew" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong style="font-size: 0.85rem; display: block;">Hub of Prosperity — Field Crew</strong>
+                <span class="text-secondary" style="font-size: 0.75rem;">UTRGV Agroecology • On-site training</span>
+              </div>
+
+              <div class="card" style="padding: 0.75rem; background: var(--bg-color); cursor: pointer;" onclick="openLightbox('./W.K. Kellogg Foundation Photos/hub_tomatoes.jpg', 'Hub of Prosperity — Organic Vine Tomatoes (UTRGV)')">
+                <img src="./W.K. Kellogg Foundation Photos/hub_tomatoes.jpg" alt="Hub Tomatoes" style="width: 100%; height: 150px; object-fit: cover; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                <strong style="font-size: 0.85rem; display: block;">Hub of Prosperity — Vine Tomatoes</strong>
+                <span class="text-secondary" style="font-size: 0.75rem;">Edinburg, TX • Certified production</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
