@@ -367,8 +367,21 @@
           </div>
 
           <div class="form-group">
-            <label>Google Drive Photo Album Link</label>
-            <input type="url" id="r-photo-link" placeholder="https://drive.google.com/drive/folders/..." value="https://drive.google.com/drive/folders/1EYUw7kQ5A8NI7CBFtUyw0IVpXBRulwoT">
+            <label>Event Photos & Documentation</label>
+            <div class="photo-upload-dropzone" id="photoDropzone">
+              <input type="file" id="r-photos" multiple accept="image/*" style="display: none;">
+              <div class="dropzone-content" onclick="document.getElementById('r-photos').click()">
+                <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <span><strong>Click to Upload Photos</strong> or drag & drop</span>
+                <small class="text-secondary">Direct phone camera & image uploads</small>
+              </div>
+            </div>
+            <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+          </div>
+
+          <div class="form-group">
+            <label style="font-size: 0.85rem; color: var(--text-secondary);">Google Drive Album Link (Optional Backup)</label>
+            <input type="url" id="r-photo-link" placeholder="https://drive.google.com/drive/folders/...">
           </div>
 
             <button type="submit" class="btn-submit">Submit Record</button>
@@ -833,9 +846,17 @@
 
   </main>
 
+  <!-- Photo Lightbox Modal -->
+  <div id="imageLightboxModal" class="image-lightbox-modal" onclick="this.classList.remove('active')">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImage" src="" alt="Event Photo View">
+    <div id="lightboxCaption" class="lightbox-caption"></div>
+  </div>
+
   <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
   <script src="dashboard.js"></script>
 </body>
 </html>
