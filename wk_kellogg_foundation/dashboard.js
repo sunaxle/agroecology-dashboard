@@ -158,12 +158,114 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentSeasonFilter = 'all';
 
   // ==========================================
+  // Lightbox & Photo Gallery Viewer
+  // ==========================================
+  function openLightbox(src, caption) {
+    const modal = document.getElementById('imageLightboxModal');
+    const img = document.getElementById('lightboxImage');
+    const cap = document.getElementById('lightboxCaption');
+    if (modal && img) {
+      img.src = src;
+      if (cap) cap.textContent = caption || '';
+      modal.classList.add('active');
+    }
+  }
+  window.openLightbox = openLightbox;
+
+  // Helper to render photo thumbnails in table rows
+  function renderPhotoCell(record) {
+    const photos = record.photos && Array.isArray(record.photos) && record.photos.length > 0 ? record.photos : [];
+    const link = record.photoLink || '';
+
+    if (photos.length > 0) {
+      let html = `<div class="table-photo-gallery">`;
+      photos.forEach(url => {
+        html += `<img src="${url}" class="table-thumbnail" onclick="openLightbox('${url}', '${(record.topic || '').replace(/'/g, "\\'")}')" alt="Event photo" title="Click to enlarge">`;
+      });
+      if (link && link.includes('drive.google.com')) {
+        html += `<a href="${link}" target="_blank" style="margin-left: 0.35rem; font-size: 0.75rem; color: var(--primary-color);">📁 Drive</a>`;
+      }
+      html += `</div>`;
+      return html;
+    } else if (link) {
+      if (link.match(/\.(jpeg|jpg|png|webp|gif)$/i) || link.startsWith('data:image') || link.includes('W.K. Kellogg Foundation Photos')) {
+        return `<div class="table-photo-gallery"><img src="${link}" class="table-thumbnail" onclick="openLightbox('${link}', '${(record.topic || '').replace(/'/g, "\\'")}')" alt="Event photo" title="Click to enlarge"></div>`;
+      }
+      return `<a href="${link}" target="_blank" style="color: var(--primary-color); font-weight: 600; font-size: 0.85rem;">View Album</a>`;
+    }
+    return `<span style="color: var(--text-secondary); font-size: 0.85rem;">None</span>`;
+  }
+
+  // ==========================================
   // Reporting Portal (Airtable-style Live Grid)
   // ==========================================
   const reportingForm = document.getElementById('reportingForm');
   const airtableGridBody = document.querySelector('#airtableGrid tbody');
   const recordCountSpan = document.getElementById('recordCount');
   const filterReportingSeason = document.getElementById('filterReportingSeason');
+
+  // Photo Dropzone and File Picker
+  let selectedPhotoFiles = [];
+  const photoFileInput = document.getElementById('r-photos');
+  const photoDropzone = document.getElementById('photoDropzone');
+  const photoPreviewGrid = document.getElementById('photoPreviewGrid');
+
+  function renderPhotoPreviews() {
+    if (!photoPreviewGrid) return;
+    photoPreviewGrid.innerHTML = '';
+    selectedPhotoFiles.forEach((file, index) => {
+      const item = document.createElement('div');
+      item.className = 'photo-preview-item';
+      
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      item.appendChild(img);
+
+      const btnRemove = document.createElement('button');
+      btnRemove.className = 'btn-remove-preview';
+      btnRemove.innerHTML = '&times;';
+      btnRemove.onclick = (e) => {
+        e.stopPropagation();
+        selectedPhotoFiles.splice(index, 1);
+        renderPhotoPreviews();
+      };
+      item.appendChild(btnRemove);
+
+      photoPreviewGrid.appendChild(item);
+    });
+  }
+
+  if (photoFileInput) {
+    photoFileInput.addEventListener('change', (e) => {
+      if (e.target.files) {
+        Array.from(e.target.files).forEach(f => selectedPhotoFiles.push(f));
+        renderPhotoPreviews();
+      }
+    });
+  }
+
+  if (photoDropzone) {
+    ['dragenter', 'dragover'].forEach(name => {
+      photoDropzone.addEventListener(name, (e) => {
+        e.preventDefault();
+        photoDropzone.classList.add('dragover');
+      });
+    });
+    ['dragleave', 'drop'].forEach(name => {
+      photoDropzone.addEventListener(name, (e) => {
+        e.preventDefault();
+        photoDropzone.classList.remove('dragover');
+      });
+    });
+    photoDropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer && e.dataTransfer.files) {
+        Array.from(e.dataTransfer.files).forEach(f => {
+          if (f.type.startsWith('image/')) selectedPhotoFiles.push(f);
+        });
+        renderPhotoPreviews();
+      }
+    });
+  }
 
   function renderReportsGrid() {
     if (!airtableGridBody) return;
@@ -191,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </td>
         <td>${record.status || 'N/A'}</td>
         <td title="${record.story || ''}">${record.story ? record.story.substring(0, 35) + '...' : 'None'}</td>
-        <td>${record.photoLink ? `<a href="${record.photoLink}" target="_blank" style="color: var(--primary-color); font-weight: 600; font-size: 0.85rem;">View Album</a>` : '<span style="color: var(--text-secondary); font-size: 0.85rem;">None</span>'}</td>
+        <td>${renderPhotoCell(record)}</td>
       `;
       airtableGridBody.appendChild(tr);
     });
@@ -351,13 +453,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      function readFileAsDataUrl(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      const uploadedPhotoUrls = [];
+      if (selectedPhotoFiles.length > 0) {
+        for (const file of selectedPhotoFiles) {
+          try {
+            if (typeof firebase !== 'undefined' && firebase.storage) {
+              const storageRef = firebase.storage().ref('event_photos/' + Date.now() + '_' + file.name.replace(/\s+/g, '_'));
+              const snapshot = await storageRef.put(file);
+              const downloadUrl = await snapshot.ref.getDownloadURL();
+              uploadedPhotoUrls.push(downloadUrl);
+            } else {
+              const base64 = await readFileAsDataUrl(file);
+              uploadedPhotoUrls.push(base64);
+            }
+          } catch (storageErr) {
+            console.warn("Storage upload fallback:", storageErr);
+            try {
+              const base64 = await readFileAsDataUrl(file);
+              uploadedPhotoUrls.push(base64);
+            } catch (readErr) {
+              console.error("Failed to read image file:", readErr);
+            }
+          }
+        }
+      }
+
+      const rawPhotoLink = document.getElementById('r-photo-link')?.value.trim() || '';
+
       const newRecord = {
         date: document.getElementById('r-date')?.value || new Date().toISOString().split('T')[0],
         type: document.getElementById('r-type')?.value || 'Workshop',
         topic: document.getElementById('r-topic')?.value || '',
         status: document.getElementById('r-status')?.value || 'N/A',
         story: document.getElementById('r-story')?.value || '',
-        photoLink: document.getElementById('r-photo-link')?.value || '',
+        photoLink: rawPhotoLink || (uploadedPhotoUrls.length > 0 ? uploadedPhotoUrls[0] : ''),
+        photos: uploadedPhotoUrls,
         attendees: attendeesList
       };
 
@@ -374,6 +513,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         reportingForm.reset();
+        selectedPhotoFiles = [];
+        renderPhotoPreviews();
         if (attendeeTableBody) {
           attendeeTableBody.innerHTML = '';
           addAttendeeRow();
@@ -707,9 +848,11 @@ document.addEventListener('DOMContentLoaded', () => {
           date: r.date || 'N/A',
           category: `Activity (${r.type || 'Event'})`,
           focus: r.topic || 'N/A',
+          topic: r.topic || '',
           participants: `${count} Attendee${count !== 1 ? 's' : ''}${names ? ': ' + names : ''}`,
           details: r.story || r.status || 'Completed',
-          photo: r.photoLink || ''
+          photoLink: r.photoLink || '',
+          photos: r.photos || []
         });
       });
 
@@ -718,9 +861,11 @@ document.addEventListener('DOMContentLoaded', () => {
           date: s.date || 'N/A',
           category: 'Market Survey',
           focus: s.location || 'Farmers Market',
+          topic: s.location || '',
           participants: `SNAP/DUFB Used: ${s.used || 'Yes'}`,
           details: `Amount: $${s.amount || '0'} | First-time: ${s.first || 'No'}`,
-          photo: ''
+          photoLink: '',
+          photos: []
         });
       });
 
@@ -729,9 +874,11 @@ document.addEventListener('DOMContentLoaded', () => {
           date: s.date || 'N/A',
           category: 'MALL Outreach',
           focus: s.location || 'Mobile Lab',
+          topic: s.location || '',
           participants: `Zip: ${s.zip || 'N/A'}`,
           details: `Learned: ${s.learned || 'Yes'} | Materials: ${s.materials || 'None'}`,
-          photo: ''
+          photoLink: '',
+          photos: []
         });
       });
 
@@ -740,9 +887,11 @@ document.addEventListener('DOMContentLoaded', () => {
           date: s.date || 'N/A',
           category: 'CSA Distribution',
           focus: `City: ${s.city || 'N/A'}`,
+          topic: s.city || '',
           participants: `Household Size: ${s.size || 'N/A'}`,
           details: `SNAP/WIC: ${s.enrolled || 'Yes'}`,
-          photo: ''
+          photoLink: '',
+          photos: []
         });
       });
 
@@ -751,9 +900,11 @@ document.addEventListener('DOMContentLoaded', () => {
           date: s.date || 'N/A',
           category: 'Farmer 1-on-1 TA',
           focus: s.name || 'Farmer',
+          topic: s.name || '',
           participants: `Op Size: ${s.size || 'N/A'}`,
           details: `Topics: ${s.topics || 'Wholesale'} | Barriers: ${s.barriers || 'None'}`,
-          photo: ''
+          photoLink: '',
+          photos: []
         });
       });
 
@@ -774,7 +925,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <td><strong>${entry.focus}</strong></td>
             <td style="max-width: 200px; font-size: 0.8rem;">${entry.participants}</td>
             <td style="max-width: 250px; font-size: 0.8rem;">${entry.details}</td>
-            <td>${entry.photo ? `<a href="${entry.photo}" target="_blank" style="color: var(--primary-color); font-weight: 600; font-size: 0.8rem;">View Album</a>` : '<span style="color: var(--text-secondary); font-size: 0.8rem;">None</span>'}</td>
+            <td>${renderPhotoCell(entry)}</td>
           `;
           masterLogBody.appendChild(tr);
         });
