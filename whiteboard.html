@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>🌱 Agroecology & SARA - Shared Residency Whiteboard</title>
+  <!-- Firebase Cloud Realtime Sync -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <style>
+    :root {
+      --primary: #1b4d2b;
+      --primary-dark: #12331c;
+      --primary-light: #e8f3ec;
+      --accent-gold: #c59b27;
+      --accent-coral: #d9534f;
+      --accent-blue: #2c7da0;
+      --bg: #f8faf8;
+      --card-bg: #ffffff;
+      --text-dark: #1c2826;
+      --text-muted: #5c6b64;
+      --border-subtle: #e2e8e3;
+      --radius: 12px;
+      --shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-dark);
+      padding-bottom: 80px;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .header-content {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .badge-sub {
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    p.subtitle {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    /* Action Bar (WhatsApp, Add Post & View Toggle) */
+    .action-bar {
+      max-width: 1080px;
+      margin: 16px auto 10px auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .view-switcher {
+      display: flex;
+      background: #e2e8e3;
+      padding: 3px;
+      border-radius: 10px;
+      gap: 2px;
+    }
+
+    .view-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .view-btn.active {
+      background: white;
+      color: var(--primary);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whatsapp:hover { background: #20bd5a; }
+
+    .btn-add {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-add:hover { background: var(--primary-dark); }
+
+    /* Filter Chips */
+    .filter-scroll {
+      max-width: 1080px;
+      margin: 10px auto;
+      padding: 0 16px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .filter-scroll::-webkit-scrollbar { display: none; }
+
+    .filter-chip {
+      padding: 6px 14px;
+      background: white;
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: 0.15s;
+    }
+    .filter-chip.active {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 8px 16px;
+    }
+
+    .info-banner {
+      background: #eef7f0;
+      border-left: 4px solid var(--primary);
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.45;
+      color: #1a4325;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+
+    .card.featured {
+      border: 2px solid var(--accent-gold);
+      background: linear-gradient(180deg, #fffef9 0%, #ffffff 100%);
+      grid-column: 1 / -1;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .tag-workshop { background: #fff3e0; color: #d85a00; }
+    .tag-travel { background: #e0f2fe; color: #0284c7; }
+    .tag-paper { background: #ede9fe; color: #6d28d9; }
+    .tag-meeting { background: #f0fdf4; color: #15803d; }
+
+    .card-date {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.35;
+    }
+
+    .card.featured .card-title {
+      font-size: 19px;
+      color: #1b4d2b;
+    }
+
+    .card-body {
+      font-size: 13.5px;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    .card-meta {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .meta-row strong {
+      color: var(--text-dark);
+      min-width: 65px;
+    }
+
+    .flyer-preview {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      background: #fdfaf0;
+      border: 1px dashed #d4b14d;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 4px;
+    }
+
+    .flyer-thumb {
+      width: 80px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-delete {
+      background: none;
+      border: none;
+      color: #a0aec0;
+      font-size: 12px;
+      cursor: pointer;
+      padding: 4px 6px;
+    }
+    .btn-delete:hover { color: var(--accent-coral); }
+
+    /* ========================================= */
+    /* Month View Calendar Grid Styling (Mobile Hardened) */
+    /* ========================================= */
+    .calendar-container {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .calendar-scroll-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .calendar-inner {
+      min-width: 580px; /* Ensures 7 columns never crush on narrow mobile screens */
+    }
+
+    .cal-header-bar {
+      padding: 14px 18px;
+      background: var(--primary-light);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cal-header-bar h2 {
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    .cal-legend {
+      display: flex;
+      gap: 12px;
+      font-size: 11.5px;
+      font-weight: 600;
+    }
+
+    .cal-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .cal-grid-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      background: #f1f5f2;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .cal-grid-cells {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: var(--border-subtle);
+      gap: 1px;
+    }
+
+    .cal-day-cell {
+      background: white;
+      min-height: 84px;
+      padding: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: background 0.1s;
+    }
+
+    .cal-day-cell.inactive {
+      background: #fafafa;
+      opacity: 0.4;
+    }
+
+    .cal-day-cell.residency-window {
+      background: #fbfdfb;
+    }
+
+    .cal-day-cell.event-highlight {
+      background: #fffdf5;
+      border: 1px solid #f6d365;
+    }
+
+    .day-num-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .day-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 4px;
+    }
+
+    .cal-pill {
+      font-size: 9.5px;
+      font-weight: 600;
+      padding: 2px 4px;
+      border-radius: 4px;
+      line-height: 1.2;
+      color: white;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+    }
+
+    .pill-workshop { background: #d85a00; }
+    .pill-travel { background: #0284c7; }
+    .pill-paper { background: #6d28d9; }
+    .pill-meeting { background: #15803d; }
+
+    /* Quarter Timeline View */
+    .quarter-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .quarter-col {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .quarter-col h3 {
+      font-size: 16px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary-light);
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .quarter-event-item {
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--bg);
+      border-left: 3px solid var(--primary);
+      font-size: 12.5px;
+      line-height: 1.4;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: white;
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .lightbox-img {
+      max-width: 95%;
+      max-height: 85vh;
+      border-radius: 8px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1c2826;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 2000;
+    }
+    #toast.show { opacity: 1; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+  <!-- App Header -->
+  <header>
+    <div class="header-content">
+      <div class="header-top">
+        <span class="badge-sub">UTRGV Agroecology & SARA</span>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <!-- Bilingual Toggle -->
+          <div style="background:rgba(0,0,0,0.25); border-radius:8px; padding:2px; display:flex; gap:2px; border:1px solid rgba(255,255,255,0.2); font-size:11px; font-weight:700;">
+            <button id="langBtnEn" onclick="setLanguage('en')" style="border:none; background:transparent; color:white; padding:3px 8px; border-radius:6px; cursor:pointer;">EN</button>
+            <button id="langBtnEs" onclick="setLanguage('es')" style="border:none; background:#2e7d32; color:white; padding:3px 8px; border-radius:6px; cursor:pointer;">ES</button>
+          </div>
+          <span style="font-size: 12px; font-weight: 600;" id="headerWindowBadge">29 Sep – 29 Oct, 2026</span>
+        </div>
+      </div>
+      <h1 id="headerTitle">🌱 Pizarra de Coordinación: Estancia Académica</h1>
+      <p class="subtitle" id="headerSubtitle">Coordinador en vivo para talleres, fechas de viaje, reuniones 1-a-1 y redacción del artículo</p>
+    </div>
+  </header>
+
+  <!-- Action Bar & View Switcher -->
+  <div class="action-bar">
+    <div class="view-switcher">
+      <button class="view-btn active" id="btnCards" onclick="changeView('cards')">📋 Cards</button>
+      <button class="view-btn" id="btnMonth" onclick="changeView('month')">📅 Month View (Oct)</button>
+      <button class="view-btn" id="btnQuarter" onclick="changeView('quarter')">🗓️ Q4 Horizon</button>
+    </div>
+    <div class="action-btns">
+      <button class="btn btn-whatsapp" id="btnCopyWhatsapp">
+        <span>💬</span> Copy for WhatsApp
+      </button>
+      <button class="btn btn-add" id="btnOpenAddModal">
+        <span>➕</span> Post Item
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main>
+
+    <!-- ============================================== -->
+    <!-- VIEW 1: CARDS VIEW -->
+    <!-- ============================================== -->
+    <div id="sectionCards">
+      <!-- Filter Chips -->
+      <div class="filter-scroll">
+        <button class="filter-chip active" data-category="ALL">All Items</button>
+        <button class="filter-chip" data-category="WORKSHOP">🌾 Workshops & Field</button>
+        <button class="filter-chip" data-category="TRAVEL">✈️ Travel & Flights</button>
+        <button class="filter-chip" data-category="PAPER">📝 Paper Deadlines</button>
+        <button class="filter-chip" data-category="MEETING">🤝 1-on-1s & Syncs</button>
+      </div>
+
+      <div class="info-banner">
+        💡 <strong>Live WhatsApp Sync:</strong> Tap <em>"Copy for WhatsApp"</em> anytime to grab the clean text digest and paste it straight into your group chat. Toggle between <strong>Month View</strong> or <strong>Q4 Horizon</strong> above!
+      </div>
+
+      <div class="cards-grid" id="cardsContainer">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- VIEW 2: MONTH VIEW (OCTOBER 2026) -->
+    <!-- ============================================== -->
+    <div id="sectionMonth" class="hidden">
+      <div class="calendar-container">
+        <div class="cal-header-bar">
+          <div>
+            <h2>October 2026</h2>
+            <span style="font-size: 12px; color: var(--text-muted);">Visiting Scholar 30-Day Residency (Sept 29 – Oct 29)</span>
+          </div>
+          <div class="cal-legend">
+            <span><span class="dot" style="background:#d85a00;"></span> Workshop</span>
+            <span><span class="dot" style="background:#0284c7;"></span> Travel</span>
+            <span><span class="dot" style="background:#6d28d9;"></span> Paper</span>
+            <span><span class="dot" style="background:#15803d;"></span> Team</span>
+          </div>
+        </div>
+
+        <div class="calendar-scroll-wrapper">
+          <div class="calendar-inner">
+            <div class="cal-grid-days">
+              <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            </div>
+
+            <div class="cal-grid-cells">
+          <!-- Sept 27-28 -->
+          <div class="cal-day-cell inactive"><span>27</span></div>
+          <div class="cal-day-cell inactive"><span>28</span></div>
+          
+          <!-- Sept 29: Day 1 Arrival -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>29</span><span class="day-badge" style="background:#e0f2fe; color:#0284c7;">DAY 1</span></div>
+            <div class="cal-pill pill-travel" title="Visiting Scholar Arrival">✈️ 10am Arrival</div>
+          </div>
+
+          <!-- Sept 30: Day 2 1-on-1s -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>30</span><span class="day-badge" style="background:#f0fdf4; color:#15803d;">DAY 2</span></div>
+            <div class="cal-pill pill-meeting">🤝 1-on-1s (Pt 1)</div>
+          </div>
+
+          <!-- Oct 1: Day 3 1-on-1s & RSVP -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>1</span><span class="day-badge" style="background:#f0fdf4; color:#15803d;">DAY 3</span></div>
+            <div class="cal-pill pill-meeting">🤝 1-on-1s (Pt 2)</div>
+            <div style="font-size: 8.5px; color: #d85a00; font-weight: bold;">⚠️ RSVP Due!</div>
+          </div>
+
+          <!-- Oct 2: Day 4 Welcome Lunch -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>2</span><span class="day-badge" style="background:#fff3e0; color:#d85a00;">DAY 4</span></div>
+            <div class="cal-pill pill-workshop">🌾 12pm Welcome Lunch</div>
+          </div>
+
+          <!-- Oct 3 -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>3</span></div>
+            <div style="font-size: 9px; color:#6d28d9;">✍️ Outline focus</div>
+          </div>
+
+          <!-- Oct 4 -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>4</span></div>
+            <div style="font-size: 9px; color:#6d28d9;">✍️ Datasets map</div>
+          </div>
+
+          <!-- Oct 5: Milestone 1 -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>5</span><span class="day-badge" style="background:#ede9fe; color:#6d28d9;">M1</span></div>
+            <div class="cal-pill pill-paper">📝 Outline Lock</div>
+          </div>
+
+          <!-- Oct 6 -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>6</span></div>
+            <div style="font-size: 9px; color:#15803d;">🔬 Soils lab assay</div>
+          </div>
+
+          <!-- Oct 7: Hub farm plots -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>7</span></div>
+            <div class="cal-pill pill-meeting">🌱 Hub Farm Plots</div>
+          </div>
+
+          <!-- Oct 8: Working Lands Workshop Day 1 -->
+          <div class="cal-day-cell event-highlight residency-window">
+            <div class="day-num-row"><span style="color:#d85a00;">8</span><span class="day-badge" style="background:#d85a00; color:white;">WKSHP</span></div>
+            <div class="cal-pill pill-workshop">🌾 Working Lands Wkshp</div>
+            <div style="font-size: 8.5px; color:#666;">Weslaco AgriLife</div>
+          </div>
+
+          <!-- Oct 9: Working Lands Workshop Day 2 -->
+          <div class="cal-day-cell event-highlight residency-window">
+            <div class="day-num-row"><span style="color:#d85a00;">9</span><span class="day-badge" style="background:#d85a00; color:white;">DEMOS</span></div>
+            <div class="cal-pill pill-workshop">🚜 Demos (La Sarra)</div>
+            <div style="font-size: 8.5px; color:#666;">Drone & Virtual Fence</div>
+          </div>
+
+          <!-- Oct 10 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>10</span></div><div style="font-size:9px; color:#6d28d9;">✍️ Lit review</div></div>
+          <!-- Oct 11 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>11</span></div><div style="font-size:9px; color:#6d28d9;">✍️ Methods verify</div></div>
+
+          <!-- Oct 12: Milestone 2 -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>12</span><span class="day-badge" style="background:#ede9fe; color:#6d28d9;">M2</span></div>
+            <div class="cal-pill pill-paper">📝 Methods Draft</div>
+          </div>
+
+          <!-- Oct 13 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>13</span></div><div style="font-size:9px; color:#15803d;">📊 Stats & PCA</div></div>
+
+          <!-- Oct 14: Mid-Residency Sync -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>14</span></div>
+            <div class="cal-pill pill-meeting">👥 Mid-Residency Sync</div>
+          </div>
+
+          <!-- Oct 15: Colloquium -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>15</span></div>
+            <div class="cal-pill pill-workshop">🎤 2pm Soil Lecture</div>
+          </div>
+
+          <!-- Oct 16 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>16</span></div><div style="font-size:9px; color:#15803d;">🌱 Greenhouse run</div></div>
+          <!-- Oct 17 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>17</span></div><div style="font-size:9px; color:#6d28d9;">✍️ Discussion draft</div></div>
+          <!-- Oct 18 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>18</span></div><div style="font-size:9px; color:#6d28d9;">✍️ Abstract synthesis</div></div>
+
+          <!-- Oct 19: Milestone 3 -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>19</span><span class="day-badge" style="background:#ede9fe; color:#6d28d9;">M3</span></div>
+            <div class="cal-pill pill-paper">📝 Results & Figures</div>
+          </div>
+
+          <!-- Oct 20 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>20</span></div><div style="font-size:9px; color:#0284c7;">🎓 Student Q&A</div></div>
+          <!-- Oct 21 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>21</span></div><div style="font-size:9px; color:#15803d;">👥 Author alignment</div></div>
+
+          <!-- Oct 22: Milestone 4 -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>22</span><span class="day-badge" style="background:#ede9fe; color:#6d28d9;">M4</span></div>
+            <div class="cal-pill pill-paper">📢 Full Draft Out</div>
+          </div>
+
+          <!-- Oct 23 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>23</span></div><div style="font-size:9px; color:#15803d;">🔬 Revision workshop</div></div>
+          <!-- Oct 24 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>24</span></div><div style="font-size:9px; color:#6d28d9;">✍️ Graphic polish</div></div>
+          <!-- Oct 25 -->
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span>25</span></div><div style="font-size:9px; color:#6d28d9;">✍️ Submission package</div></div>
+
+          <!-- Oct 26: Milestone 5 Submission -->
+          <div class="cal-day-cell residency-window" style="background:#f5f3ff; border:1px solid #c4b5fd;">
+            <div class="day-num-row"><span style="color:#6d28d9;">26</span><span class="day-badge" style="background:#6d28d9; color:white;">M5</span></div>
+            <div class="cal-pill pill-paper">🚀 Final Paper Submit!</div>
+          </div>
+
+          <!-- Oct 27: Exit Talk -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>27</span></div>
+            <div class="cal-pill pill-workshop">🎤 2pm Exit Talk</div>
+          </div>
+
+          <!-- Oct 28: Farewell Dinner -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>28</span></div>
+            <div class="cal-pill pill-meeting">🍷 6:30pm Farewell Dinner</div>
+          </div>
+
+          <!-- Oct 29: Departure -->
+          <div class="cal-day-cell residency-window">
+            <div class="day-num-row"><span>29</span><span class="day-badge" style="background:#e0f2fe; color:#0284c7;">END</span></div>
+            <div class="cal-pill pill-travel">✈️ 9am Airport Run</div>
+          </div>
+
+          <!-- Oct 30-31 -->
+          <div class="cal-day-cell"><span>30</span></div>
+          <div class="cal-day-cell"><span>31</span></div>
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- VIEW 3: QUARTER VIEW (OCT – DEC 2026) -->
+    <!-- ============================================== -->
+    <div id="sectionQuarter" class="hidden">
+      <div class="quarter-container">
+        
+        <!-- October Col -->
+        <div class="quarter-col">
+          <h3>
+            <span>October 2026</span>
+            <span style="font-size:11px; background:#e8f3ec; color:#1b4d2b; padding:2px 8px; border-radius:12px;">Visiting Residency</span>
+          </h3>
+          <div class="quarter-event-item" style="border-color:#0284c7;">
+            <strong>Sept 29:</strong> Scholar Arrival & Facility Orientation
+          </div>
+          <div class="quarter-event-item" style="border-color:#15803d;">
+            <strong>Sept 30 - Oct 1:</strong> 1-on-1 Touchpoint Marathon (11 members)
+          </div>
+          <div class="quarter-event-item" style="border-color:#d85a00;">
+            <strong>Oct 8–9:</strong> 🌾 Working Lands Workshop (Weslaco & Santa Rosa)
+          </div>
+          <div class="quarter-event-item" style="border-color:#6d28d9;">
+            <strong>Oct 5–26:</strong> 📝 5 Paper Milestones & Journal Submission
+          </div>
+          <div class="quarter-event-item" style="border-color:#15803d;">
+            <strong>Oct 27–29:</strong> Exit Colloquium, Farewell Dinner & Departure
+          </div>
+        </div>
+
+        <!-- November Col -->
+        <div class="quarter-col">
+          <h3>
+            <span>November 2026</span>
+            <span style="font-size:11px; background:#f2f2f2; color:#666; padding:2px 8px; border-radius:12px;">Field & Trials</span>
+          </h3>
+          <div class="quarter-event-item">
+            <strong>Nov 4:</strong> Hub of Prosperity Winter Planting & Inoculation
+          </div>
+          <div class="quarter-event-item">
+            <strong>Nov 9:</strong> Quarterly USDA Grant Progress Milestone Review
+          </div>
+          <div class="quarter-event-item">
+            <strong>Nov 12:</strong> Regional Sensor Network Calibration & Battery Servicing
+          </div>
+          <div class="quarter-event-item">
+            <strong>Nov 18:</strong> Community Food Sovereignty Workshop & Farm Tour
+          </div>
+          <div class="quarter-event-item">
+            <strong>Nov 23:</strong> Pre-Thanksgiving Trial Status Review
+          </div>
+        </div>
+
+        <!-- December Col -->
+        <div class="quarter-col">
+          <h3>
+            <span>December 2026</span>
+            <span style="font-size:11px; background:#f2f2f2; color:#666; padding:2px 8px; border-radius:12px;">Wrap & Retrospective</span>
+          </h3>
+          <div class="quarter-event-item">
+            <strong>Dec 7:</strong> Journal Reviewer Feedback & Portal Status Sync
+          </div>
+          <div class="quarter-event-item">
+            <strong>Dec 10:</strong> Semester-End Soil & Water Biomass Assay Blitz
+          </div>
+          <div class="quarter-event-item">
+            <strong>Dec 14:</strong> Graduate Research Presentations & Poster Session
+          </div>
+          <div class="quarter-event-item" style="border-color:#15803d;">
+            <strong>Dec 18:</strong> Annual Agroecology Program Retrospective & Celebration
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Add Modal -->
+  <div class="modal-overlay" id="addModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>Post New Item to Board</h2>
+        <button class="modal-close" id="btnCloseAddModal">&times;</button>
+      </div>
+      <form id="addItemForm">
+        <div class="form-group">
+          <label>Category</label>
+          <select id="itemCategory" required>
+            <option value="WORKSHOP">🌾 Workshop / Field Demo / Lecture</option>
+            <option value="TRAVEL">✈️ Travel / Flight / Pickup</option>
+            <option value="PAPER">📝 Paper Writing / Milestone</option>
+            <option value="MEETING">🤝 1-on-1 / Team Check-in</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Title / Activity</label>
+          <input type="text" id="itemTitle" placeholder="e.g. Flight Arrival & Pickup" required>
+        </div>
+        <div class="form-group">
+          <label>Date & Time</label>
+          <input type="text" id="itemDateTime" placeholder="e.g. Thu, Oct 8 @ 8:00 AM" required>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="itemLocation" placeholder="e.g. Weslaco AgriLife Center">
+        </div>
+        <div class="form-group">
+          <label>Lead / Host</label>
+          <input type="text" id="itemHost" placeholder="e.g. Desiderio Romero, Dr. Racelis">
+        </div>
+        <div class="form-group">
+          <label>Notes / Links</label>
+          <textarea id="itemNotes" rows="3" placeholder="Key topics, RSVP links, contact info..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-add" style="width: 100%; margin-top: 8px;">
+          Post to Shared Board
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-overlay" id="lightboxModal">
+    <img src="assets/working_lands_workshop_2026.png" alt="Flyer" class="lightbox-img" id="lightboxImg">
+  </div>
+
+  <div id="toast">Message copied!</div>
+
+  <script>
+    const DEFAULT_EVENTS = [
+      {
+        id: "feat-1",
+        category: "WORKSHOP",
+        title: "South Texas Grazing Land Coalition: Working Lands Workshop",
+        dateTime: "Thu-Fri, Oct 8–9, 2026 @ 8:00 AM Daily",
+        location: "Day 1: Weslaco AgriLife Center | Day 2: La Sarra Ranch, Santa Rosa",
+        host: "USDA NRCS, SARA, Texas A&M AgriLife, Grassroots Carbon",
+        notes: "Key Topics: Climate trends, screwworm updates, soil health & grazing management, drone spraying demo, virtual fencing, AI monitoring, rancher panel. Fee: $20. RSVP by Oct 1 for catering.",
+        link: "https://tinyurl.com/workinglandsworkshop",
+        hasFlyer: true,
+        featured: true
+      },
+      {
+        id: "trv-1",
+        category: "TRAVEL",
+        title: "Visiting Scholar Arrival & Airport Welcome",
+        dateTime: "Tue, Sep 29, 2026 @ 10:00 AM",
+        location: "Valley Int'l Airport (HRL) ➔ Edinburg Campus",
+        host: "Desiderio Romero",
+        notes: "Airport pickup, guest office check-in, keycard issuance & lab computer setup.",
+        featured: false
+      },
+      {
+        id: "mtg-1",
+        category: "MEETING",
+        title: "Lab Member 1-on-1s Marathon (Days 2–3)",
+        dateTime: "Wed-Thu, Sep 30 – Oct 1, 2026",
+        location: "Agroecology Meeting Room & Offices",
+        host: "All 10–11 Team Members",
+        notes: "45-min slots for Dr. Racelis, Stephanie Kasper, Mario Fierro, Desi, Dr. Soti, Dr. Moreno, Dr. Christoffersen, and graduate students. Front-loads all alignment so scholar has protected writing rest of the month!",
+        featured: false
+      },
+      {
+        id: "wrk-1",
+        category: "WORKSHOP",
+        title: "Agroecology Team Welcome Lunch & Research Roundtable",
+        dateTime: "Fri, Oct 2, 2026 @ 12:00 PM – 1:30 PM",
+        location: "SEEMS Conference Room",
+        host: "Dr. Alexis Racelis & Lab Team",
+        notes: "Informal welcome lunch & introductory roundtable on research data and regional priorities.",
+        featured: false
+      },
+      {
+        id: "pap-1",
+        category: "PAPER",
+        title: "Paper Milestone 1: Outline & Dataset Lock",
+        dateTime: "Mon, Oct 5, 2026",
+        location: "Visiting Scholar Office",
+        host: "Reviewers: Dr. Alexis Racelis & Dr. Pushpa Soti",
+        notes: "Deliverable: Final paper outline, target journal selection, and consolidated soil carbon / cover crop datasets.",
+        featured: false
+      },
+      {
+        id: "wrk-2",
+        category: "WORKSHOP",
+        title: "Departmental Colloquium: Soil Health & Climate Resilience",
+        dateTime: "Thu, Oct 15, 2026 @ 2:00 PM",
+        location: "Science Lecture Hall 1.102",
+        host: "Visiting Scholar",
+        notes: "Public lecture for undergraduate/graduate students, faculty, and regional conservation partners.",
+        featured: false
+      },
+      {
+        id: "pap-2",
+        category: "PAPER",
+        title: "Paper Milestone 2: Methods & Lit Review Draft",
+        dateTime: "Mon, Oct 12, 2026",
+        location: "Visiting Scholar Office",
+        host: "Reviewers: Stephanie Kasper & Dr. Bradley Christoffersen",
+        notes: "Complete methodology, study site descriptions, and regional literature matrix.",
+        featured: false
+      },
+      {
+        id: "pap-3",
+        category: "PAPER",
+        title: "Paper Milestone 3: Results, Figures & Discussion",
+        dateTime: "Mon, Oct 19, 2026",
+        location: "Visiting Scholar Office",
+        host: "Reviewers: Dr. Carlo Moreno & Roberto Reyna",
+        notes: "Complete draft of analytical figures, PCA plots, and discussion section.",
+        featured: false
+      },
+      {
+        id: "pap-4",
+        category: "PAPER",
+        title: "Paper Milestone 4: Full Draft Out for Co-Author Review",
+        dateTime: "Thu, Oct 22, 2026",
+        location: "Google Drive / Shared Folder",
+        host: "All Lab Co-Authors",
+        notes: "48-hour internal review cycle across all team co-authors.",
+        featured: false
+      },
+      {
+        id: "pap-5",
+        category: "PAPER",
+        title: "Paper Milestone 5: Final Submission & Pre-Print Archive",
+        dateTime: "Mon, Oct 26, 2026",
+        location: "Journal Portal / AgriRxiv",
+        host: "Dr. Alexis Racelis & Visiting Scholar",
+        notes: "Target journal manuscript upload & open-access pre-print deposit.",
+        featured: false
+      },
+      {
+        id: "wrk-3",
+        category: "WORKSHOP",
+        title: "Residency Exit Colloquium & Research Presentation",
+        dateTime: "Tue, Oct 27, 2026 @ 2:00 PM",
+        location: "SEEMS Lecture Hall",
+        host: "Visiting Scholar",
+        notes: "Presentation of research findings and paper insights to college faculty & students.",
+        featured: false
+      },
+      {
+        id: "trv-2",
+        category: "TRAVEL",
+        title: "Residency Farewell Dinner Celebration",
+        dateTime: "Wed, Oct 28, 2026 @ 6:30 PM",
+        location: "McAllen / Edinburg Restaurant",
+        host: "Dr. Alexis Racelis",
+        notes: "Team celebration honoring the visiting professor's 30-day residency.",
+        featured: false
+      },
+      {
+        id: "trv-3",
+        category: "TRAVEL",
+        title: "Airport Departure & Closeout Logistics",
+        dateTime: "Thu, Oct 29, 2026 @ 9:00 AM",
+        location: "Edinburg Campus ➔ Valley Int'l Airport (HRL)",
+        host: "Desiderio Romero",
+        notes: "Transit to airport and official conclusion of 30-day residency program.",
+        featured: false
+      }
+    ];
+
+    function getStoredEvents() {
+      const stored = localStorage.getItem("agroecology_whiteboard_events");
+      if (stored) {
+        try { return JSON.parse(stored); } catch(e) { return DEFAULT_EVENTS; }
+      }
+      return DEFAULT_EVENTS;
+    }
+
+    function saveEvents(events) {
+      localStorage.setItem("agroecology_whiteboard_events", JSON.stringify(events));
+    }
+
+    let activeFilter = "ALL";
+    let events = getStoredEvents();
+    const container = document.getElementById("cardsContainer");
+
+    function renderCards() {
+      container.innerHTML = "";
+      const filtered = events.filter(ev => activeFilter === "ALL" || ev.category === activeFilter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">No items in this category.</div>`;
+        return;
+      }
+
+      filtered.forEach(ev => {
+        const card = document.createElement("div");
+        card.className = `card ${ev.featured ? 'featured' : ''}`;
+
+        let tagClass = "tag-workshop";
+        let tagLabel = "🌾 WORKSHOP";
+        if (ev.category === "TRAVEL") { tagClass = "tag-travel"; tagLabel = "✈️ TRAVEL"; }
+        if (ev.category === "PAPER") { tagClass = "tag-paper"; tagLabel = "📝 PAPER"; }
+        if (ev.category === "MEETING") { tagClass = "tag-meeting"; tagLabel = "🤝 1-ON-1 / SYNC"; }
+
+        let flyerHtml = "";
+        if (ev.hasFlyer) {
+          flyerHtml = `
+            <div class="flyer-preview">
+              <img src="assets/working_lands_workshop_2026.png" class="flyer-thumb" alt="Flyer" onclick="openLightbox()">
+              <div class="flyer-info">
+                <strong>📄 Official Workshop Flyer Attached</strong>
+                <span style="color: #666; font-size: 11.5px;">Tap flyer to view full schedule & QR code.</span>
+                ${ev.link ? `<a href="${ev.link}" target="_blank" style="color: #1b4d2b; font-weight: bold; text-decoration: underline; font-size: 12px; margin-top: 4px;">👉 Register Online ($20 / RSVP by Oct 1)</a>` : ''}
+              </div>
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          <div class="card-header">
+            <span class="card-tag ${tagClass}">${tagLabel}</span>
+            <span class="card-date">📅 ${ev.dateTime}</span>
+          </div>
+          <div class="card-title">${ev.title}</div>
+          <div class="card-body">${ev.notes || ''}</div>
+          ${flyerHtml}
+          <div class="card-meta">
+            ${ev.location ? `<div class="meta-row"><strong>📍 Location:</strong> <span>${ev.location}</span></div>` : ''}
+            ${ev.host ? `<div class="meta-row"><strong>👤 Host/Lead:</strong> <span>${ev.host}</span></div>` : ''}
+          </div>
+          <div class="card-footer">
+            <span style="font-size: 11px; color: #a0aec0;">ID: ${ev.id}</span>
+            <button class="btn-delete" onclick="deleteEvent('${ev.id}')">✕ Remove</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // View Switcher
+    window.changeView = function(viewName) {
+      document.querySelectorAll(".view-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById("sectionCards").classList.add("hidden");
+      document.getElementById("sectionMonth").classList.add("hidden");
+      document.getElementById("sectionQuarter").classList.add("hidden");
+
+      if (viewName === "cards") {
+        document.getElementById("btnCards").classList.add("active");
+        document.getElementById("sectionCards").classList.remove("hidden");
+      } else if (viewName === "month") {
+        document.getElementById("btnMonth").classList.add("active");
+        document.getElementById("sectionMonth").classList.remove("hidden");
+      } else if (viewName === "quarter") {
+        document.getElementById("btnQuarter").classList.add("active");
+        document.getElementById("sectionQuarter").classList.remove("hidden");
+      }
+    };
+
+    // Filters
+    document.querySelectorAll(".filter-chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        activeFilter = chip.getAttribute("data-category");
+        renderCards();
+      });
+    });
+
+    // Firebase Configuration & Initialization
+    let db = null;
+    try {
+      const firebaseConfig = {
+        projectId: "kellogg-dashboard",
+        appId: "1:527209517018:web:15e9cb82173bd5e83e7ae3",
+        storageBucket: "kellogg-dashboard.firebasestorage.app",
+        apiKey: "AIzaSyBnTnx7-DIPo2fv-q169akzKgJxVS2Jk4Q",
+        authDomain: "kellogg-dashboard.firebaseapp.com",
+        messagingSenderId: "527209517018"
+      };
+      if (typeof firebase !== "undefined") {
+        firebase.initializeApp(firebaseConfig);
+        db = firebase.firestore();
+
+        // Realtime Cloud Listener
+        db.collection("residency_whiteboard_events").onSnapshot((snapshot) => {
+          const cloudEvents = [];
+          snapshot.forEach(doc => {
+            cloudEvents.push({ id: doc.id, ...doc.data() });
+          });
+          if (cloudEvents.length > 0) {
+            events = cloudEvents.sort((a,b) => (a.order || 999) - (b.order || 999));
+            saveEvents(events);
+            renderCards();
+          }
+        }, (err) => {
+          console.warn("Firestore listener notice:", err.message);
+        });
+      }
+    } catch (e) {
+      console.warn("Using local fallback:", e.message);
+    }
+
+    window.deleteEvent = function(id) {
+      const confirmMsg = currentLang === 'es' ? '¿Eliminar este elemento de la pizarra compartida?' : 'Remove this item from the shared board?';
+      if (confirm(confirmMsg)) {
+        events = events.filter(e => e.id !== id);
+        saveEvents(events);
+        renderCards();
+
+        if (db) {
+          db.collection("residency_whiteboard_events").doc(id).delete().catch(e => console.warn(e));
+        }
+        showToast(currentLang === 'es' ? 'Elemento eliminado.' : 'Item removed.');
+      }
+    };
+
+    // Modal
+    const addModal = document.getElementById("addModal");
+    document.getElementById("btnOpenAddModal").addEventListener("click", () => addModal.classList.add("open"));
+    document.getElementById("btnCloseAddModal").addEventListener("click", () => addModal.classList.remove("open"));
+    addModal.addEventListener("click", (e) => { if (e.target === addModal) addModal.classList.remove("open"); });
+
+    document.getElementById("addItemForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const newItem = {
+        category: document.getElementById("itemCategory").value,
+        title: document.getElementById("itemTitle").value.trim(),
+        dateTime: document.getElementById("itemDateTime").value.trim(),
+        location: document.getElementById("itemLocation").value.trim(),
+        host: document.getElementById("itemHost").value.trim(),
+        notes: document.getElementById("itemNotes").value.trim(),
+        featured: false,
+        order: 0,
+        createdAt: new Date().toISOString()
+      };
+
+      if (db) {
+        db.collection("residency_whiteboard_events").add(newItem).then((docRef) => {
+          newItem.id = docRef.id;
+        }).catch(err => console.warn("Firestore write fallback:", err));
+      } else {
+        newItem.id = "item-" + Date.now();
+      }
+
+      events.unshift(newItem);
+      saveEvents(events);
+      renderCards();
+      addModal.classList.remove("open");
+      document.getElementById("addItemForm").reset();
+      showToast(currentLang === 'es' ? "✅ ¡Publicado en vivo para todo el equipo!" : "✅ Posted live for everyone!");
+      changeView("cards");
+    });
+
+    const lightboxModal = document.getElementById("lightboxModal");
+    window.openLightbox = function() { lightboxModal.classList.add("open"); };
+    lightboxModal.addEventListener("click", () => lightboxModal.classList.remove("open"));
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2800);
+    }
+
+    let currentLang = localStorage.getItem("agroecology_lang") || 'es';
+
+    window.setLanguage = function(lang) {
+      currentLang = lang;
+      localStorage.setItem("agroecology_lang", lang);
+
+      const isEs = lang === 'es';
+      document.getElementById('headerTitle').textContent = isEs ? '🌱 Pizarra de Coordinación: Estancia Académica' : '🌱 Visiting Scholar & Operations Board';
+      document.getElementById('headerSubtitle').textContent = isEs ? 'Coordinador en vivo para talleres, fechas de viaje, reuniones 1-a-1 y redacción del artículo' : 'Shared live coordinator for workshops, travel, 1-on-1s & paper milestones';
+      document.getElementById('headerWindowBadge').textContent = isEs ? '29 Sep – 29 Oct, 2026' : 'Q4 2026 Horizon';
+      
+      document.getElementById('btnCards').textContent = isEs ? '📋 Tarjetas' : '📋 Cards';
+      document.getElementById('btnMonth').textContent = isEs ? '📅 Mes (Octubre)' : '📅 Month View (Oct)';
+      document.getElementById('btnQuarter').textContent = isEs ? '🗓️ Horizonte T4' : '🗓️ Q4 Horizon';
+      
+      document.getElementById('btnCopyWhatsapp').innerHTML = isEs ? '<span>💬</span> Copiar para WhatsApp' : '<span>💬</span> Copy for WhatsApp';
+      document.getElementById('btnOpenAddModal').innerHTML = isEs ? '<span>➕</span> Publicar' : '<span>➕</span> Post Item';
+
+      const btnEn = document.getElementById('langBtnEn');
+      const btnEs = document.getElementById('langBtnEs');
+      if (isEs) {
+        btnEs.style.background = '#2e7d32';
+        btnEn.style.background = 'transparent';
+      } else {
+        btnEn.style.background = '#2e7d32';
+        btnEs.style.background = 'transparent';
+      }
+    };
+
+    document.getElementById("btnCopyWhatsapp").addEventListener("click", () => {
+      let text = "";
+      if (currentLang === 'es') {
+        text = `🌱 *PIZARRA DE OPERACIONES Y RESIDENCIA ACADÉMICA - UTRGV AGROECOLOGÍA & SARA*\n` +
+          `📅 Ventana: 29 de septiembre – 29 de octubre de 2026\n\n` +
+          `⭐ *TALLER DESTACADO:*\n` +
+          `🌾 *Taller de Tierras Productivas* (8 y 9 de oct @ 8:00 AM)\n` +
+          `📍 Día 1: Weslaco AgriLife | Día 2: Rancho La Sarra, Santa Rosa\n` +
+          `Temas: Gusano barrenador, salud del suelo, cercado virtual, monitoreo con IA y aspersión con drones en vivo.\n` +
+          `Inscripción ($20 antes del 1 de oct): tinyurl.com/workinglandsworkshop\n\n` +
+          `✈️ *LOGÍSTICA Y VIAJES:*\n` +
+          `• Mar 29 sep @ 10:00 AM: Llegada y recogida en aeropuerto HRL (Desi)\n` +
+          `• Mié 28 oct @ 6:30 PM: Cena de despedida y celebración del equipo\n` +
+          `• Jue 29 oct @ 9:00 AM: Traslado al aeropuerto y regreso (Desi)\n\n` +
+          `🎤 *TALLERES Y COLOQUIOS:*\n` +
+          `• Vie 2 oct @ 12:00 PM: Almuerzo de bienvenida y mesa redonda\n` +
+          `• Jue 15 oct @ 2:00 PM: Coloquio departamental de suelo y clima\n` +
+          `• Mar 27 oct @ 2:00 PM: Coloquio de clausura de la estancia\n\n` +
+          `📝 *METAS DEL ARTÍCULO CIENTÍFICO (Sprint de 30 días):*\n` +
+          `• 5 oct: Esquema final y cierre de bases de datos\n` +
+          `• 12 oct: Borrador de metodología y revisión bibliográfica\n` +
+          `• 19 oct: Resultados, figuras y discusión\n` +
+          `• 22 oct: Borrador completo a coautores (revisión 48h)\n` +
+          `• 26 oct: Envío formal a la revista y depósito pre-print\n\n` +
+          `🤝 *MARATÓN 1-A-1:*\n` +
+          `• Mié 30 sep y Jue 1 oct: Sesiones de 45 min con los 11 miembros del lab.\n\n` +
+          `👉 _¡Pizarra viva y compartida para el equipo de Agroecología & SARA!_`;
+      } else {
+        text = `🌱 *UTRGV AGROECOLOGY & SARA RESIDENCY BOARD*\n` +
+          `📅 Window: Sept 29 – Oct 29, 2026\n\n` +
+          `⭐ *FEATURED WORKSHOP:*\n` +
+          `🌾 *Working Lands Workshop* (Oct 8–9 @ 8:00 AM)\n` +
+          `📍 Day 1: Weslaco AgriLife | Day 2: La Sarra Ranch, Santa Rosa\n` +
+          `Topics: Screwworm updates, soil health, virtual fencing, AI & drone spraying demo.\n` +
+          `RSVP ($20 by Oct 1): tinyurl.com/workinglandsworkshop\n\n` +
+          `✈️ *KEY TRAVEL & LOGISTICS:*\n` +
+          `• Tue Sep 29 @ 10:00 AM: Arrival & HRL Airport Pickup (Desi)\n` +
+          `• Wed Oct 28 @ 6:30 PM: Team Farewell Celebration Dinner\n` +
+          `• Thu Oct 29 @ 9:00 AM: Airport Departure (Desi)\n\n` +
+          `🎤 *TALKS & WORKSHOPS:*\n` +
+          `• Fri Oct 2 @ 12:00 PM: Team Welcome Lunch & Roundtable\n` +
+          `• Thu Oct 15 @ 2:00 PM: Departmental Soil & Climate Colloquium\n` +
+          `• Tue Oct 27 @ 2:00 PM: Residency Exit Colloquium\n\n` +
+          `📝 *PAPER MILESTONES (30-Day Sprint):*\n` +
+          `• Oct 5: Outline & Dataset Lock\n` +
+          `• Oct 12: Methods & Lit Review Draft\n` +
+          `• Oct 19: Results, Figures & Discussion\n` +
+          `• Oct 22: Full Draft to Co-Authors (48h review)\n` +
+          `• Oct 26: Final Submission & Pre-Print Archive\n\n` +
+          `🤝 *1-ON-1s MARATHON:*\n` +
+          `• Wed Sep 30 & Thu Oct 1: 45-min slots for all 10–11 lab members.\n\n` +
+          `👉 _Shared live coordinator for Agroecology & SARA!_`;
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(currentLang === 'es' ? "📋 ¡Copiado al portapapeles!" : "📋 Copied WhatsApp summary!"));
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast(currentLang === 'es' ? "📋 ¡Copiado al portapapeles!" : "📋 Copied WhatsApp summary!");
+      }
+    });
+
+    // Initialize with current language
+    setLanguage(currentLang);
+    renderCards();
+  </script>
+</body>
+</html>
