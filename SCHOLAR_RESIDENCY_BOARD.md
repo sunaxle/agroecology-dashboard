@@ -15,7 +15,19 @@
 
 ---
 
-## 🌾 2. Workshops, Field Demos & Major Talks
+### 🌾 2. Workshops, Field Demos & Major Talks
+
+### 📍 Pre-Residency Community Workshops (Saturday, September 26, 2026)
+* **🌱 Beginner Gardening 101 (10:00 AM – 12:00 PM)**
+  * **Location:** Hub of Prosperity Farm (3707 W University Dr, Edinburg, TX)
+  * **Hosts:** UTRGV Agroecology, SARA & West/Southwest Transition to Organic Partnership Program (TOPP)
+  * **Topics:** Organic growing practices, small space/container gardening tips, and native plant implementation.
+* **🌱 Transplant Production Workshop (6:30 PM)**
+  * **Location:** Sentli Center (2806 E Rogers Rd, Edinburg, TX 78542)
+  * **Host:** Sentli Center & Community Partners
+  * **Topics:** Growing your own seedlings, organic transplant production, hands-on potting mix creation. *Free seeds and tray per attendee while supplies last!*
+
+---
 
 ### 📍 Featured Partner Event: South Texas Grazing Land Coalition – Working Lands Workshop
 * **Dates:** Thursday, October 8 & Friday, October 9, 2026 (Starts 8:00 AM daily)
@@ -38,6 +50,8 @@
 
 | Date | Time | Event Title | Location | Audience / Partners | Host / Lead |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Sat, Sep 26** | 10:00 AM | **Beginner Gardening 101** | Hub of Prosperity Farm | Community Gardeners & Students | UTRGV Agroecology / SARA / TOPP |
+| **Sat, Sep 26** | 6:30 PM | **Transplant Production Workshop** | Sentli Center | Regional Growers & Families | Sentli Center |
 | **Fri, Oct 2** | 12:00 PM | **Agroecology Welcome Lunch & Roundtable** | SEEMS Conference Room | Lab Members & Grad Students | Dr. Alexis Racelis |
 | **Thu, Oct 8** | 8:00 AM | **Working Lands Workshop (Day 1 - Sessions)** | Weslaco AgriLife Extension | Ranchers, SARA, NRCS, TAMU | AgriLife / SARA |
 | **Fri, Oct 9** | 8:00 AM | **Working Lands Workshop (Day 2 - Field Demos)** | La Sarra Ranch, Santa Rosa | Regional Producers & Researchers | Grazing Coalition |
@@ -48,33 +62,43 @@
 
 ## 📝 3. Research Paper Sprint (Deadlines Only)
 *Goal: Protect 3.5–4 hours of daily writing focus. Meetings capped at $\le 4$ hours/day.*
+*🛡️ Weekend Rule: Weekends are protected rest time with no work scheduled.*
 
 * **🎯 Milestone 1 (Mon, Oct 5):** Finalize Paper Outline, Datasets & Target Journal  
-  * *Reviewers:* Dr. Alexis Racelis & Dr. Pushpa Soti
+  * *Reviewers:* ____________________ [TBD]
 * **🎯 Milestone 2 (Mon, Oct 12):** Complete Methods, Study Sites & Literature Review  
-  * *Reviewers:* Stephanie Kasper & Dr. Bradley Christoffersen
+  * *Reviewers:* ____________________ [TBD]
 * **🎯 Milestone 3 (Mon, Oct 19):** Complete Draft of Results, Figures & Discussion  
-  * *Reviewers:* Dr. Carlo Moreno & Roberto Reyna Oviedo
+  * *Reviewers:* ____________________ [TBD]
 * **🎯 Milestone 4 (Thu, Oct 22):** Distribute Full Manuscript Draft for 48h Co-Author Review  
-  * *Reviewers:* All Co-Authors
+  * *Reviewers:* ____________________ [TBD]
 * **🎯 Milestone 5 (Mon, Oct 26):** Final Manuscript Submission & Pre-Print Archive  
-  * *Lead:* Dr. Alexis Racelis & Visiting Scholar
+  * *Reviewers / Leads:* ____________________ [TBD]
 
 ---
 
-## 🤝 4. Team 1-on-1 Touchpoint Sign-Up (Days 2–3)
-*45-minute introductory check-ins to front-load collaboration.*
+## 🔄 4. Standing Weekly Cadence (Reuniones Semanales Recurrentes)
 
-* **Wed, Sep 30 (1:00 PM - 1:45 PM):** Dr. Alexis Racelis *(Program vision, grant alignments)*
-* **Wed, Sep 30 (2:00 PM - 2:45 PM):** Stephanie Kasper *(Hub farm site datasets & cover crops)*
-* **Wed, Sep 30 (3:00 PM - 3:45 PM):** Mario Fierro *(Outreach, bilingual curriculum, education)*
-* **Wed, Sep 30 (4:00 PM - 4:45 PM):** Desiderio Romero *(Field trials, sensor logs, silvopasture)*
-* **Thu, Oct 1 (1:00 PM - 1:45 PM):** Dr. Pushpa Soti *(Biogeochemistry, soil respiration, mycorrhizae)*
-* **Thu, Oct 1 (2:00 PM - 2:45 PM):** Dr. Carlo Moreno *(Organic brassica & reduced-tillage)*
-* **Thu, Oct 1 (3:00 PM - 3:45 PM):** Dr. Bradley Christoffersen *(Ecohydrology, sap flow, water budget)*
-* **Fri, Oct 2 (9:00 AM - 10:00 AM):** Graduate Researchers *(Roberto Reyna Oviedo & Katie Lavallee)*
-* **Fri, Oct 2 (10:00 AM - 11:00 AM):** Student Researchers *(Savannah Rugg & Matt Kutugata)*
+### 🗓️ Every Monday (Todos los Lunes)
+* **8:00 AM - 9:00 AM: Farm Meeting**  
+  * *Lead:* Maria & Farm Crew  
+  * *Focus:* Hub of Prosperity farm operations, harvest planning, crop rotations & field labor coordination.
+* **9:00 AM - 10:00 AM: SARA Team Meeting**  
+  * *Lead:* SARA Staff  
+  * *Focus:* Center for Sustainable Agriculture & Rural Advancement operations, grant status & regional producer outreach.
+
+### 🗓️ Every Wednesday (Todos los Miércoles)
+* **1:00 PM - 2:00 PM: 1-1 Tree Meeting**  
+  * *Lead:* Tree & Urban Forestry Lead  
+  * *Focus:* Silvopasture canopy trials, Tree Campus USA initiatives & microclimate temperature sensing.
+* **2:00 PM - 3:15 PM: Agroecology General Team Meeting**  
+  * *Lead:* Dr. Alexis Racelis & All Lab Members  
+  * *Focus:* Core lab all-hands, student researcher tracking, research trial updates & visiting scholar check-in.
+* **3:30 PM - 4:15 PM: 1-1 Q Meeting**  
+  * *Lead:* Q & Dr. Alexis Racelis  
+  * *Focus:* Dedicated 1-on-1 research progress and project sprint coordination.
 
 ---
 
-*To copy a quick summary to WhatsApp, use the companion web whiteboard: `whiteboard.html`*
+*To copy a quick summary to WhatsApp or view the real-time calendar, open: `whiteboard.html`*
+*Live GitHub Pages URL:* `https://sunaxle.github.io/agroecology-dashboard/whiteboard.html`
