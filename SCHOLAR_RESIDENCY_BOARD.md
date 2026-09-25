@@ -9,7 +9,7 @@
 | Date | Time | Activity / Movement | Location / Route | Lead / Coordinator | Status / Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Tue, Sep 29** | 10:00 AM | **Visiting Scholar Arrival & Airport Pickup** | Valley Int'l Airport (HRL) ➔ Edinburg Campus | Desiderio Romero | Confirmed. Guest office setup & keycard access. |
-| **Tue, Sep 29** | 2:00 PM | **Campus & Lab Facility Orientation** | Agroecology Lab & Greenhouse Suite | Stephanie Kasper | Tour of wet lab, analytical ovens, soil prep area. |
+| **Tue, Sep 29** | 2:00 PM | **Campus & Lab Facility Orientation** | Agroecology Lab & Greenhouse Suite | Desiderio Romero & Lab Staff | Tour of wet lab, analytical ovens, soil prep area. |
 | **Wed, Oct 28** | 6:30 PM | **Residency Farewell Celebration Dinner** | Regional Restaurant (McAllen / Edinburg) | Dr. Alexis Racelis | Team & partner retrospective dinner. |
 | **Thu, Oct 29** | 9:00 AM | **Airport Departure & Program Closeout** | Edinburg Campus ➔ Valley Int'l Airport (HRL) | Desiderio Romero | Safe travels & transit back. |
 
