@@ -3,25 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>🌱 Agroecology & SARA - Shared Residency Whiteboard</title>
+  <title>Agroecology & SARA - Shared Residency Whiteboard</title>
   <!-- Firebase Cloud Realtime Sync -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <style>
+    /* =========================================
+       FIELD NOTEBOOK / COMMUNITY BOARD AESTHETIC
+       Warm earth tones, serif type, paper feel
+       ========================================= */
+    @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
     :root {
-      --primary: #1b4d2b;
-      --primary-dark: #12331c;
-      --primary-light: #e8f3ec;
-      --accent-gold: #c59b27;
-      --accent-coral: #d9534f;
-      --accent-blue: #2c7da0;
-      --bg: #f8faf8;
-      --card-bg: #ffffff;
-      --text-dark: #1c2826;
-      --text-muted: #5c6b64;
-      --border-subtle: #e2e8e3;
-      --radius: 12px;
-      --shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      --primary: #4a6741;
+      --primary-dark: #344a2f;
+      --primary-light: #e8ede6;
+      --accent-warm: #b5651d;
+      --accent-clay: #a0522d;
+      --accent-water: #5b7e8a;
+      --accent-plum: #6b5b7b;
+      --bg: #f5f0e8;
+      --bg-paper: #faf7f2;
+      --card-bg: #fdfcf9;
+      --text-dark: #3b3226;
+      --text-body: #4a4239;
+      --text-muted: #7a7064;
+      --border-subtle: #ddd5c8;
+      --border-rule: #cec4b4;
+      --radius: 4px;
+      --shadow: 0 1px 3px rgba(59, 50, 38, 0.08);
     }
 
     * {
@@ -32,28 +42,30 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: 'Source Sans 3', 'Georgia', 'Times New Roman', serif;
       background-color: var(--bg);
-      color: var(--text-dark);
+      color: var(--text-body);
       padding-bottom: 80px;
+      line-height: 1.55;
     }
 
+    /* ---- HEADER ---- */
     header {
-      background: var(--primary);
-      color: white;
-      padding: 16px 20px;
+      background: var(--bg-paper);
+      color: var(--text-dark);
+      padding: 14px 20px;
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      border-bottom: 2px solid var(--border-rule);
     }
 
     .header-content {
-      max-width: 1080px;
+      max-width: 960px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .header-top {
@@ -63,31 +75,36 @@
     }
 
     .badge-sub {
-      background: rgba(255, 255, 255, 0.2);
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 20px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
+      padding: 2px 8px;
+      border: 1px solid var(--border-rule);
+      border-radius: 2px;
       font-weight: 600;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
+      color: var(--text-muted);
       display: inline-block;
     }
 
     h1 {
-      font-size: 20px;
+      font-family: 'Lora', 'Georgia', serif;
+      font-size: 19px;
       font-weight: 700;
-      letter-spacing: -0.3px;
+      color: var(--text-dark);
+      letter-spacing: -0.2px;
     }
 
     p.subtitle {
       font-size: 13px;
-      opacity: 0.9;
+      color: var(--text-muted);
+      font-style: italic;
     }
 
-    /* Action Bar (WhatsApp, Add Post & View Toggle) */
+    /* ---- ACTION BAR ---- */
     .action-bar {
-      max-width: 1080px;
-      margin: 16px auto 10px auto;
+      max-width: 960px;
+      margin: 12px auto 8px auto;
       padding: 0 16px;
       display: flex;
       justify-content: space-between;
@@ -98,28 +115,28 @@
 
     .view-switcher {
       display: flex;
-      background: #e2e8e3;
-      padding: 3px;
-      border-radius: 10px;
-      gap: 2px;
+      border: 1px solid var(--border-rule);
+      border-radius: 3px;
+      overflow: hidden;
     }
 
     .view-btn {
       padding: 6px 12px;
-      border-radius: 8px;
       border: none;
-      background: transparent;
-      font-size: 13px;
+      border-right: 1px solid var(--border-rule);
+      background: var(--bg-paper);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: background 0.15s;
     }
+    .view-btn:last-child { border-right: none; }
 
     .view-btn.active {
-      background: white;
-      color: var(--primary);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      background: var(--primary);
+      color: #faf7f2;
     }
 
     .action-btns {
@@ -132,48 +149,51 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 9px 14px;
-      border-radius: 8px;
-      font-size: 13.5px;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 3px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
-      border: none;
-      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      transition: all 0.15s;
       text-decoration: none;
     }
 
     .btn-whatsapp {
-      background: #25D366;
-      color: #ffffff;
-      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+      background: var(--bg-paper);
+      color: var(--text-dark);
+      border-color: var(--border-rule);
     }
-    .btn-whatsapp:hover { background: #20bd5a; }
+    .btn-whatsapp:hover { background: var(--primary-light); }
 
     .btn-add {
       background: var(--primary);
-      color: white;
+      color: #faf7f2;
+      border-color: var(--primary-dark);
     }
     .btn-add:hover { background: var(--primary-dark); }
 
-    /* Filter Chips */
+    /* ---- FILTER CHIPS ---- */
     .filter-scroll {
-      max-width: 1080px;
-      margin: 10px auto;
+      max-width: 960px;
+      margin: 8px auto;
       padding: 0 16px;
       display: flex;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
       scrollbar-width: none;
     }
     .filter-scroll::-webkit-scrollbar { display: none; }
 
     .filter-chip {
-      padding: 6px 14px;
-      background: white;
+      padding: 5px 12px;
+      background: var(--bg-paper);
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      font-size: 13px;
+      border-radius: 2px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12.5px;
       font-weight: 500;
       color: var(--text-muted);
       cursor: pointer;
@@ -183,49 +203,50 @@
     .filter-chip.active {
       background: var(--primary-light);
       border-color: var(--primary);
-      color: var(--primary);
+      color: var(--primary-dark);
       font-weight: 600;
     }
 
     main {
-      max-width: 1080px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 8px 16px;
+      padding: 6px 16px;
     }
 
     .info-banner {
-      background: #eef7f0;
-      border-left: 4px solid var(--primary);
-      border-radius: 6px;
-      padding: 12px 14px;
-      margin-bottom: 16px;
-      font-size: 13px;
-      line-height: 1.45;
-      color: #1a4325;
+      background: var(--bg-paper);
+      border-left: 3px solid var(--border-rule);
+      border-radius: 0;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      font-style: italic;
     }
 
-    /* Cards Grid */
+    /* ---- CARDS (INDEX CARD FEEL) ---- */
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: var(--radius);
       border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
       position: relative;
     }
 
     .card.featured {
-      border: 2px solid var(--accent-gold);
-      background: linear-gradient(180deg, #fffef9 0%, #ffffff 100%);
+      border-left: 4px solid var(--accent-warm);
+      background: var(--bg-paper);
       grid-column: 1 / -1;
     }
 
@@ -233,96 +254,100 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 10px;
+      gap: 8px;
     }
 
     .card-tag {
-      font-size: 11px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 4px 8px;
-      border-radius: 6px;
-      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 2px;
+      letter-spacing: 0.8px;
     }
 
-    .tag-workshop { background: #fff3e0; color: #d85a00; }
-    .tag-travel { background: #e0f2fe; color: #0284c7; }
-    .tag-paper { background: #ede9fe; color: #6d28d9; }
-    .tag-meeting { background: #f0fdf4; color: #15803d; }
+    .tag-workshop { background: #f0e6d3; color: #7a4a1c; }
+    .tag-travel { background: #dce8ec; color: #3d6068; }
+    .tag-paper { background: #e6e0ed; color: #544768; }
+    .tag-meeting { background: #dfe7dc; color: #3d5236; }
 
     .card-date {
-      font-size: 13px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 12.5px;
       font-weight: 600;
-      color: var(--primary);
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 4px;
     }
 
     .card-title {
-      font-size: 16px;
+      font-family: 'Lora', 'Georgia', serif;
+      font-size: 15.5px;
       font-weight: 700;
       color: var(--text-dark);
       line-height: 1.35;
     }
 
     .card.featured .card-title {
-      font-size: 19px;
-      color: #1b4d2b;
+      font-size: 17px;
     }
 
     .card-body {
-      font-size: 13.5px;
-      color: var(--text-dark);
-      line-height: 1.5;
+      font-size: 13px;
+      color: var(--text-body);
+      line-height: 1.55;
     }
 
     .card-meta {
       background: var(--bg);
-      border-radius: 8px;
-      padding: 10px 12px;
-      font-size: 12.5px;
+      border-radius: 2px;
+      padding: 8px 10px;
+      font-size: 12px;
       color: var(--text-muted);
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
+      border: 1px solid var(--border-subtle);
     }
 
     .meta-row {
       display: flex;
       align-items: flex-start;
-      gap: 8px;
+      gap: 6px;
     }
 
     .meta-row strong {
       color: var(--text-dark);
-      min-width: 65px;
+      min-width: 60px;
+      font-family: 'Source Sans 3', sans-serif;
     }
 
     .flyer-preview {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       align-items: center;
-      background: #fdfaf0;
-      border: 1px dashed #d4b14d;
-      border-radius: 8px;
-      padding: 10px;
+      background: var(--bg-paper);
+      border: 1px dashed var(--border-rule);
+      border-radius: 3px;
+      padding: 8px;
       margin-top: 4px;
     }
 
     .flyer-thumb {
-      width: 80px;
-      height: 110px;
+      width: 72px;
+      height: 100px;
       object-fit: cover;
-      border-radius: 6px;
+      border-radius: 2px;
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      box-shadow: 0 1px 4px rgba(59,50,38,0.12);
       flex-shrink: 0;
     }
 
     .card-footer {
       margin-top: auto;
-      padding-top: 8px;
+      padding-top: 6px;
       border-top: 1px solid var(--border-subtle);
       display: flex;
       justify-content: space-between;
@@ -332,23 +357,21 @@
     .btn-delete {
       background: none;
       border: none;
-      color: #a0aec0;
-      font-size: 12px;
+      color: var(--border-rule);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
       cursor: pointer;
-      padding: 4px 6px;
+      padding: 3px 5px;
     }
-    .btn-delete:hover { color: var(--accent-coral); }
+    .btn-delete:hover { color: #a04030; }
 
-    /* ========================================= */
-    /* Month View Calendar Grid Styling (Mobile Hardened) */
-    /* ========================================= */
+    /* ---- CALENDAR (WALL PLANNER FEEL) ---- */
     .calendar-container {
-      background: white;
+      background: var(--bg-paper);
+      border: 1px solid var(--border-rule);
       border-radius: var(--radius);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow);
       overflow: hidden;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .calendar-scroll-wrapper {
@@ -358,30 +381,33 @@
     }
 
     .calendar-inner {
-      min-width: 580px; /* Ensures 7 columns never crush on narrow mobile screens */
+      min-width: 580px;
     }
 
     .cal-header-bar {
-      padding: 14px 18px;
-      background: var(--primary-light);
+      padding: 12px 16px;
+      background: var(--bg);
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 2px solid var(--border-rule);
     }
 
     .cal-header-bar h2 {
-      font-size: 18px;
-      color: var(--primary);
+      font-family: 'Lora', 'Georgia', serif;
+      font-size: 17px;
+      color: var(--text-dark);
     }
 
     .cal-legend {
       display: flex;
-      gap: 12px;
-      font-size: 11.5px;
+      gap: 10px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
       font-weight: 600;
+      color: var(--text-muted);
     }
 
     .cal-legend span {
@@ -391,8 +417,8 @@
     }
 
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       display: inline-block;
     }
@@ -401,13 +427,15 @@
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       text-align: center;
-      background: #f1f5f2;
-      font-size: 11px;
+      background: var(--bg);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 10.5px;
       font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--border-subtle);
+      letter-spacing: 0.5px;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border-rule);
     }
 
     .cal-grid-cells {
@@ -418,50 +446,54 @@
     }
 
     .cal-day-cell {
-      background: white;
-      min-height: 84px;
-      padding: 6px;
+      background: var(--bg-paper);
+      min-height: 78px;
+      padding: 5px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      transition: background 0.1s;
+      gap: 3px;
     }
 
     .cal-day-cell.inactive {
-      background: #fafafa;
-      opacity: 0.4;
+      background: var(--bg);
+      opacity: 0.35;
     }
 
     .cal-day-cell.residency-window {
-      background: #fbfdfb;
+      background: var(--bg-paper);
     }
 
     .cal-day-cell.event-highlight {
-      background: #fffdf5;
-      border: 1px solid #f6d365;
+      background: #faf5e8;
+      border-left: 3px solid var(--accent-warm);
     }
 
     .day-num-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-family: 'Source Sans 3', sans-serif;
       font-size: 11px;
       font-weight: 700;
+      color: var(--text-dark);
     }
 
     .day-badge {
-      font-size: 9px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 8px;
       font-weight: 700;
       padding: 1px 4px;
-      border-radius: 4px;
+      border-radius: 2px;
+      letter-spacing: 0.3px;
     }
 
     .cal-pill {
-      font-size: 9.5px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 9px;
       font-weight: 600;
       padding: 2px 4px;
-      border-radius: 4px;
-      line-height: 1.2;
+      border-radius: 2px;
+      line-height: 1.25;
       color: white;
       white-space: nowrap;
       overflow: hidden;
@@ -469,34 +501,35 @@
       cursor: pointer;
     }
 
-    .pill-workshop { background: #d85a00; }
-    .pill-travel { background: #0284c7; }
-    .pill-paper { background: #6d28d9; }
-    .pill-meeting { background: #15803d; }
+    .pill-workshop { background: var(--accent-warm); }
+    .pill-travel { background: var(--accent-water); }
+    .pill-paper { background: var(--accent-plum); }
+    .pill-meeting { background: var(--primary); }
 
-    /* Quarter Timeline View */
+    /* ---- QUARTER TIMELINE ---- */
     .quarter-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
-      margin-top: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 8px;
     }
 
     .quarter-col {
-      background: white;
-      border-radius: var(--radius);
+      background: var(--bg-paper);
       border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .quarter-col h3 {
-      font-size: 16px;
-      color: var(--primary);
-      border-bottom: 2px solid var(--primary-light);
+      font-family: 'Lora', 'Georgia', serif;
+      font-size: 15px;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border-rule);
       padding-bottom: 6px;
       display: flex;
       justify-content: space-between;
@@ -504,19 +537,20 @@
     }
 
     .quarter-event-item {
-      padding: 8px 10px;
-      border-radius: 8px;
+      padding: 7px 9px;
+      border-radius: 2px;
       background: var(--bg);
       border-left: 3px solid var(--primary);
-      font-size: 12.5px;
-      line-height: 1.4;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--text-body);
     }
 
-    /* Modal Styling */
+    /* ---- MODAL ---- */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(59, 50, 38, 0.55);
       display: none;
       align-items: center;
       justify-content: center;
@@ -526,17 +560,18 @@
     .modal-overlay.open { display: flex; }
 
     .modal-box {
-      background: white;
+      background: var(--bg-paper);
       border-radius: var(--radius);
       width: 100%;
-      max-width: 480px;
+      max-width: 460px;
       max-height: 90vh;
       overflow-y: auto;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 18px;
+      border: 1px solid var(--border-rule);
+      box-shadow: 0 4px 20px rgba(59, 50, 38, 0.15);
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
     .modal-header {
@@ -545,10 +580,16 @@
       align-items: center;
     }
 
+    .modal-header h2 {
+      font-family: 'Lora', 'Georgia', serif;
+      font-size: 17px;
+      color: var(--text-dark);
+    }
+
     .modal-close {
       background: none;
       border: none;
-      font-size: 22px;
+      font-size: 20px;
       cursor: pointer;
       color: var(--text-muted);
     }
@@ -556,31 +597,42 @@
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 4px;
     }
 
     .form-group label {
-      font-size: 12px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--border-subtle);
-      font-size: 14px;
-      font-family: inherit;
+      padding: 8px 10px;
+      border-radius: 3px;
+      border: 1px solid var(--border-rule);
+      font-size: 13.5px;
+      font-family: 'Source Sans 3', sans-serif;
+      background: white;
+      color: var(--text-dark);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
     }
 
     .lightbox-img {
       max-width: 95%;
       max-height: 85vh;
-      border-radius: 8px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(59,50,38,0.4);
     }
 
     #toast {
@@ -588,11 +640,12 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      background: #1c2826;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 30px;
-      font-size: 14px;
+      background: var(--text-dark);
+      color: var(--bg-paper);
+      padding: 8px 18px;
+      border-radius: 3px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 13px;
       font-weight: 500;
       opacity: 0;
       pointer-events: none;
@@ -602,6 +655,17 @@
     #toast.show { opacity: 1; }
 
     .hidden { display: none !important; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 600px) {
+      h1 { font-size: 16px; }
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .card.featured {
+        grid-column: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -613,14 +677,14 @@
         <span class="badge-sub">UTRGV Agroecology & SARA</span>
         <div style="display:flex; align-items:center; gap:8px;">
           <!-- Bilingual Toggle -->
-          <div style="background:rgba(0,0,0,0.25); border-radius:8px; padding:2px; display:flex; gap:2px; border:1px solid rgba(255,255,255,0.2); font-size:11px; font-weight:700;">
-            <button id="langBtnEn" onclick="setLanguage('en')" style="border:none; background:transparent; color:white; padding:3px 8px; border-radius:6px; cursor:pointer;">EN</button>
-            <button id="langBtnEs" onclick="setLanguage('es')" style="border:none; background:#2e7d32; color:white; padding:3px 8px; border-radius:6px; cursor:pointer;">ES</button>
+          <div style="border:1px solid var(--border-rule); border-radius:3px; padding:1px; display:flex; gap:1px; font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:700;">
+            <button id="langBtnEn" onclick="setLanguage('en')" style="border:none; background:transparent; color:var(--text-muted); padding:3px 8px; border-radius:2px; cursor:pointer; font-family:inherit; font-size:inherit; font-weight:inherit;">EN</button>
+            <button id="langBtnEs" onclick="setLanguage('es')" style="border:none; background:var(--primary); color:#faf7f2; padding:3px 8px; border-radius:2px; cursor:pointer; font-family:inherit; font-size:inherit; font-weight:inherit;">ES</button>
           </div>
-          <span style="font-size: 12px; font-weight: 600;" id="headerWindowBadge">29 Sep – 29 Oct, 2026</span>
+          <span style="font-family:'Source Sans 3',sans-serif; font-size: 11px; font-weight: 600; color:var(--text-muted);" id="headerWindowBadge">29 Sep – 29 Oct, 2026</span>
         </div>
       </div>
-      <h1 id="headerTitle">🌱 Pizarra de Coordinación: Estancia Académica</h1>
+      <h1 id="headerTitle">Pizarra de Coordinación: Estancia Académica</h1>
       <p class="subtitle" id="headerSubtitle">Coordinador en vivo para talleres, fechas de viaje, reuniones 1-a-1 y redacción del artículo</p>
     </div>
   </header>
@@ -628,16 +692,16 @@
   <!-- Action Bar & View Switcher -->
   <div class="action-bar">
     <div class="view-switcher">
-      <button class="view-btn active" id="btnCards" onclick="changeView('cards')">📋 Cards</button>
-      <button class="view-btn" id="btnMonth" onclick="changeView('month')">📅 Month View (Oct)</button>
-      <button class="view-btn" id="btnQuarter" onclick="changeView('quarter')">🗓️ Q4 Horizon</button>
+      <button class="view-btn active" id="btnCards" onclick="changeView('cards')">Cards</button>
+      <button class="view-btn" id="btnMonth" onclick="changeView('month')">Month View (Oct)</button>
+      <button class="view-btn" id="btnQuarter" onclick="changeView('quarter')">Q4 Horizon</button>
     </div>
     <div class="action-btns">
       <button class="btn btn-whatsapp" id="btnCopyWhatsapp">
-        <span>💬</span> Copy for WhatsApp
+        <span>Copy for WhatsApp</span>
       </button>
       <button class="btn btn-add" id="btnOpenAddModal">
-        <span>➕</span> Post Item
+        <span>+ Post Item</span>
       </button>
     </div>
   </div>
@@ -652,14 +716,14 @@
       <!-- Filter Chips -->
       <div class="filter-scroll">
         <button class="filter-chip active" data-category="ALL">All Items</button>
-        <button class="filter-chip" data-category="WORKSHOP">🌾 Workshops & Field</button>
-        <button class="filter-chip" data-category="TRAVEL">✈️ Travel & Flights</button>
-        <button class="filter-chip" data-category="PAPER">📝 Paper Deadlines</button>
-        <button class="filter-chip" data-category="MEETING">🤝 1-on-1s & Syncs</button>
+        <button class="filter-chip" data-category="WORKSHOP">Workshops & Field</button>
+        <button class="filter-chip" data-category="TRAVEL">Travel & Flights</button>
+        <button class="filter-chip" data-category="PAPER">Paper Deadlines</button>
+        <button class="filter-chip" data-category="MEETING">Meetings & Syncs</button>
       </div>
 
       <div class="info-banner">
-        💡 <strong>Live WhatsApp Sync:</strong> Tap <em>"Copy for WhatsApp"</em> anytime to grab the clean text digest and paste it straight into your group chat. Toggle between <strong>Month View</strong> or <strong>Q4 Horizon</strong> above!
+        Tap "Copy for WhatsApp" to grab the digest and paste it into your group chat. Switch between Month View or Q4 Horizon above.
       </div>
 
       <div class="cards-grid" id="cardsContainer">
@@ -675,13 +739,13 @@
         <div class="cal-header-bar">
           <div>
             <h2>October 2026</h2>
-            <span style="font-size: 12px; color: var(--text-muted);">Visiting Scholar 30-Day Residency (Sept 29 – Oct 29)</span>
+            <span style="font-size: 11px; color: var(--text-muted); font-style: italic;">Visiting Scholar 30-Day Residency (Sept 29 – Oct 29)</span>
           </div>
           <div class="cal-legend">
-            <span><span class="dot" style="background:#d85a00;"></span> Workshop</span>
-            <span><span class="dot" style="background:#0284c7;"></span> Travel</span>
-            <span><span class="dot" style="background:#6d28d9;"></span> Paper</span>
-            <span><span class="dot" style="background:#15803d;"></span> Team</span>
+            <span><span class="dot" style="background:var(--accent-warm);"></span> Workshop</span>
+            <span><span class="dot" style="background:var(--accent-water);"></span> Travel</span>
+            <span><span class="dot" style="background:var(--accent-plum);"></span> Paper</span>
+            <span><span class="dot" style="background:var(--primary);"></span> Team</span>
           </div>
         </div>
 
@@ -701,13 +765,13 @@
           <div class="cal-day-cell inactive"><span>25</span></div>
           
           <!-- Sat, Sept 26: Community Workshops Day -->
-          <div class="cal-day-cell event-highlight" style="background:#f0fdf4; border:1.5px solid #16a34a;">
+          <div class="cal-day-cell event-highlight" style="border-left:3px solid var(--primary);">
             <div class="day-num-row">
-              <span style="font-weight:700; color:#15803d;">26 Sep</span>
-              <span class="day-badge" style="background:#15803d; color:white;">WORKSHOPS</span>
+              <span style="font-weight:700; color:var(--primary);">26 Sep</span>
+              <span class="day-badge" style="background:var(--primary); color:white;">WORKSHOPS</span>
             </div>
-            <div class="cal-pill pill-workshop" title="Beginner Gardening 101 @ Hub of Prosperity Farm">🌱 10am Hub: Gardening 101</div>
-            <div class="cal-pill pill-workshop" title="Transplant Production Workshop @ Sentli Center">🌱 6:30pm Sentli: Transplants</div>
+            <div class="cal-pill pill-workshop" title="Beginner Gardening 101 @ Hub of Prosperity Farm">10am Hub: Gardening 101</div>
+            <div class="cal-pill pill-workshop" title="Transplant Production Workshop @ Sentli Center">6:30pm Sentli: Transplants</div>
           </div>
 
           <!-- Sept 27-28: Rest & Prep (No work on weekends) -->
@@ -716,37 +780,37 @@
           
           <!-- Sept 29: Day 1 Arrival -->
           <div class="cal-day-cell residency-window">
-            <div class="day-num-row"><span>29</span><span class="day-badge" style="background:#e0f2fe; color:#0284c7;">DAY 1</span></div>
-            <div class="cal-pill pill-travel" title="Visiting Scholar Arrival">✈️ 10am Arrival (HRL)</div>
+            <div class="day-num-row"><span>29</span><span class="day-badge" style="background:var(--accent-water); color:white;">DAY 1</span></div>
+            <div class="cal-pill pill-travel" title="Visiting Scholar Arrival">10am Arrival (HRL)</div>
           </div>
 
           <!-- Sept 30: Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>30</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🌲 1pm Tree | 👥 2pm Team | 👤 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
           </div>
 
           <!-- Oct 1: RSVP Due -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>1</span></div>
-            <div style="font-size: 8.5px; color: #d85a00; font-weight: bold;">⚠️ RSVP Working Lands!</div>
+            <div style="font-size: 8.5px; color: var(--accent-warm); font-weight: bold;">RSVP Working Lands</div>
           </div>
 
           <!-- Oct 2: Welcome Lunch -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>2</span></div>
-            <div class="cal-pill pill-workshop">🌾 12pm Welcome Lunch</div>
+            <div class="cal-pill pill-workshop">12pm Welcome Lunch</div>
           </div>
 
           <!-- Oct 3-4 (Weekend - Protected Rest) -->
-          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#94a3b8;">3</span></div></div>
-          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#94a3b8;">4</span></div></div>
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#b0a898;">3</span></div></div>
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#b0a898;">4</span></div></div>
 
           <!-- Oct 5: Milestone 1 & Mon recurring -->
           <div class="cal-day-cell residency-window">
-            <div class="day-num-row"><span>5</span><span class="day-badge" style="background:#ede9fe; color:#6d28d9;">M1</span></div>
-            <div class="cal-pill pill-paper">📝 M1: Outline Lock</div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🚜 8am Farm (Maria) | 🌱 9am SARA</div>
+            <div class="day-num-row"><span>5</span><span class="day-badge" style="background:var(--accent-plum); color:white;">M1</span></div>
+            <div class="cal-pill pill-paper">M1: Outline Lock</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm · 9am SARA</div>
           </div>
 
           <!-- Oct 6 -->
@@ -757,32 +821,32 @@
           <!-- Oct 7: Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>7</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🌲 1pm Tree | 👥 2pm Team | 👤 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
           </div>
 
           <!-- Oct 8: Working Lands Workshop Day 1 -->
           <div class="cal-day-cell event-highlight residency-window">
-            <div class="day-num-row"><span style="color:#d85a00;">8</span><span class="day-badge" style="background:#d85a00; color:white;">WKSHP</span></div>
-            <div class="cal-pill pill-workshop">🌾 Working Lands Wkshp</div>
-            <div style="font-size: 8.5px; color:#666;">Weslaco AgriLife</div>
+            <div class="day-num-row"><span style="color:var(--accent-warm);">8</span><span class="day-badge" style="background:var(--accent-warm); color:white;">WKSHP</span></div>
+            <div class="cal-pill pill-workshop">Working Lands Wkshp</div>
+            <div style="font-size: 8px; color:var(--text-muted);">Weslaco AgriLife</div>
           </div>
 
           <!-- Oct 9: Working Lands Workshop Day 2 -->
           <div class="cal-day-cell event-highlight residency-window">
-            <div class="day-num-row"><span style="color:#d85a00;">9</span><span class="day-badge" style="background:#d85a00; color:white;">DEMOS</span></div>
-            <div class="cal-pill pill-workshop">🚜 Demos (La Sarra)</div>
-            <div style="font-size: 8.5px; color:#666;">Drone & Virtual Fence</div>
+            <div class="day-num-row"><span style="color:var(--accent-warm);">9</span><span class="day-badge" style="background:var(--accent-warm); color:white;">DEMOS</span></div>
+            <div class="cal-pill pill-workshop">Demos (La Sarra)</div>
+            <div style="font-size: 8px; color:var(--text-muted);">Drone & Virtual Fence</div>
           </div>
 
           <!-- Oct 10-11 (Weekend - Protected Rest) -->
-          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#94a3b8;">10</span></div></div>
-          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#94a3b8;">11</span></div></div>
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#b0a898;">10</span></div></div>
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#b0a898;">11</span></div></div>
 
           <!-- Oct 12: Milestone 2 & Mon recurring -->
           <div class="cal-day-cell residency-window">
-            <div class="day-num-row"><span>12</span><span class="day-badge" style="background:#ede9fe; color:#6d28d9;">M2</span></div>
-            <div class="cal-pill pill-paper">📝 M2: Methods Draft</div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🚜 8am Farm (Maria) | 🌱 9am SARA</div>
+            <div class="day-num-row"><span>12</span><span class="day-badge" style="background:var(--accent-plum); color:white;">M2</span></div>
+            <div class="cal-pill pill-paper">M2: Methods Draft</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm · 9am SARA</div>
           </div>
 
           <!-- Oct 13 -->
@@ -791,27 +855,27 @@
           <!-- Oct 14: Mid-Residency Sync & Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>14</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🌲 1pm Tree | 👥 2pm Team | 👤 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
           </div>
 
           <!-- Oct 15: Colloquium -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>15</span></div>
-            <div class="cal-pill pill-workshop">🎤 2pm Soil Lecture</div>
+            <div class="cal-pill pill-workshop">2pm Soil Lecture</div>
           </div>
 
           <!-- Oct 16 -->
           <div class="cal-day-cell residency-window"><div class="day-num-row"><span>16</span></div></div>
           
           <!-- Oct 17-18 (Weekend - Protected Rest) -->
-          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#94a3b8;">17</span></div></div>
-          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#94a3b8;">18</span></div></div>
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#b0a898;">17</span></div></div>
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#b0a898;">18</span></div></div>
 
           <!-- Oct 19: Milestone 3 & Mon recurring -->
           <div class="cal-day-cell residency-window">
-            <div class="day-num-row"><span>19</span><span class="day-badge" style="background:#ede9fe; color:#6d28d9;">M3</span></div>
-            <div class="cal-pill pill-paper">📝 M3: Results & Figures</div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🚜 8am Farm (Maria) | 🌱 9am SARA</div>
+            <div class="day-num-row"><span>19</span><span class="day-badge" style="background:var(--accent-plum); color:white;">M3</span></div>
+            <div class="cal-pill pill-paper">M3: Results & Figures</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm · 9am SARA</div>
           </div>
 
           <!-- Oct 20 -->
@@ -820,46 +884,46 @@
           <!-- Oct 21: Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>21</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🌲 1pm Tree | 👥 2pm Team | 👤 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
           </div>
 
           <!-- Oct 22: Milestone 4 -->
           <div class="cal-day-cell residency-window">
-            <div class="day-num-row"><span>22</span><span class="day-badge" style="background:#ede9fe; color:#6d28d9;">M4</span></div>
-            <div class="cal-pill pill-paper">📢 M4: Full Draft Out</div>
+            <div class="day-num-row"><span>22</span><span class="day-badge" style="background:var(--accent-plum); color:white;">M4</span></div>
+            <div class="cal-pill pill-paper">M4: Full Draft Out</div>
           </div>
 
           <!-- Oct 23 -->
           <div class="cal-day-cell residency-window"><div class="day-num-row"><span>23</span></div></div>
           
           <!-- Oct 24-25 (Weekend - Protected Rest) -->
-          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#94a3b8;">24</span></div></div>
-          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#94a3b8;">25</span></div></div>
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#b0a898;">24</span></div></div>
+          <div class="cal-day-cell residency-window"><div class="day-num-row"><span style="color:#b0a898;">25</span></div></div>
 
           <!-- Oct 26: Milestone 5 Submission & Mon recurring -->
-          <div class="cal-day-cell residency-window" style="background:#f5f3ff; border:1px solid #c4b5fd;">
-            <div class="day-num-row"><span style="color:#6d28d9;">26</span><span class="day-badge" style="background:#6d28d9; color:white;">M5</span></div>
-            <div class="cal-pill pill-paper">🚀 M5: Final Submit!</div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🚜 8am Farm (Maria) | 🌱 9am SARA</div>
+          <div class="cal-day-cell residency-window" style="background:#ebe6ed; border-left:3px solid var(--accent-plum);">
+            <div class="day-num-row"><span style="color:var(--accent-plum);">26</span><span class="day-badge" style="background:var(--accent-plum); color:white;">M5</span></div>
+            <div class="cal-pill pill-paper">M5: Final Submit</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm · 9am SARA</div>
           </div>
 
           <!-- Oct 27: Exit Talk -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>27</span></div>
-            <div class="cal-pill pill-workshop">🎤 2pm Exit Talk</div>
+            <div class="cal-pill pill-workshop">2pm Exit Talk</div>
           </div>
 
           <!-- Oct 28: Farewell Dinner & Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>28</span></div>
-            <div class="cal-pill pill-meeting">🍷 6:30pm Farewell Dinner</div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">🌲 1pm Tree | 👥 2pm Team | 👤 3:30pm Q</div>
+            <div class="cal-pill pill-meeting">6:30pm Farewell Dinner</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
           </div>
 
           <!-- Oct 29: Departure -->
           <div class="cal-day-cell residency-window">
-            <div class="day-num-row"><span>29</span><span class="day-badge" style="background:#e0f2fe; color:#0284c7;">END</span></div>
-            <div class="cal-pill pill-travel">✈️ 9am Airport Run</div>
+            <div class="day-num-row"><span>29</span><span class="day-badge" style="background:var(--accent-water); color:white;">END</span></div>
+            <div class="cal-pill pill-travel">9am Airport Run</div>
           </div>
 
           <!-- Oct 30-31 -->
@@ -881,21 +945,18 @@
         <div class="quarter-col">
           <h3>
             <span>October 2026</span>
-            <span style="font-size:11px; background:#e8f3ec; color:#1b4d2b; padding:2px 8px; border-radius:12px;">Visiting Residency</span>
+            <span style="font-family:'Source Sans 3',sans-serif; font-size:10px; background:var(--primary-light); color:var(--primary-dark); padding:2px 7px; border-radius:2px; font-weight:600;">Visiting Residency</span>
           </h3>
-          <div class="quarter-event-item" style="border-color:#0284c7;">
+          <div class="quarter-event-item" style="border-color:var(--accent-water);">
             <strong>Sept 29:</strong> Scholar Arrival & Facility Orientation
           </div>
-          <div class="quarter-event-item" style="border-color:#15803d;">
-            <strong>Sept 30 - Oct 1:</strong> 1-on-1 Touchpoint Marathon (11 members)
+          <div class="quarter-event-item" style="border-color:var(--accent-warm);">
+            <strong>Oct 8–9:</strong> Working Lands Workshop (Weslaco & Santa Rosa)
           </div>
-          <div class="quarter-event-item" style="border-color:#d85a00;">
-            <strong>Oct 8–9:</strong> 🌾 Working Lands Workshop (Weslaco & Santa Rosa)
+          <div class="quarter-event-item" style="border-color:var(--accent-plum);">
+            <strong>Oct 5–26:</strong> 5 Paper Milestones & Journal Submission
           </div>
-          <div class="quarter-event-item" style="border-color:#6d28d9;">
-            <strong>Oct 5–26:</strong> 📝 5 Paper Milestones & Journal Submission
-          </div>
-          <div class="quarter-event-item" style="border-color:#15803d;">
+          <div class="quarter-event-item" style="border-color:var(--primary);">
             <strong>Oct 27–29:</strong> Exit Colloquium, Farewell Dinner & Departure
           </div>
         </div>
@@ -904,7 +965,7 @@
         <div class="quarter-col">
           <h3>
             <span>November 2026</span>
-            <span style="font-size:11px; background:#f2f2f2; color:#666; padding:2px 8px; border-radius:12px;">Field & Trials</span>
+            <span style="font-family:'Source Sans 3',sans-serif; font-size:10px; background:var(--bg); color:var(--text-muted); padding:2px 7px; border-radius:2px; font-weight:600;">Field & Trials</span>
           </h3>
           <div class="quarter-event-item">
             <strong>Nov 4:</strong> Hub of Prosperity Winter Planting & Inoculation
@@ -927,7 +988,7 @@
         <div class="quarter-col">
           <h3>
             <span>December 2026</span>
-            <span style="font-size:11px; background:#f2f2f2; color:#666; padding:2px 8px; border-radius:12px;">Wrap & Retrospective</span>
+            <span style="font-family:'Source Sans 3',sans-serif; font-size:10px; background:var(--bg); color:var(--text-muted); padding:2px 7px; border-radius:2px; font-weight:600;">Wrap & Retrospective</span>
           </h3>
           <div class="quarter-event-item">
             <strong>Dec 7:</strong> Journal Reviewer Feedback & Portal Status Sync
@@ -938,7 +999,7 @@
           <div class="quarter-event-item">
             <strong>Dec 14:</strong> Graduate Research Presentations & Poster Session
           </div>
-          <div class="quarter-event-item" style="border-color:#15803d;">
+          <div class="quarter-event-item" style="border-color:var(--primary);">
             <strong>Dec 18:</strong> Annual Agroecology Program Retrospective & Celebration
           </div>
         </div>
@@ -952,17 +1013,17 @@
   <div class="modal-overlay" id="addModal">
     <div class="modal-box">
       <div class="modal-header">
-        <h2>Post New Item to Board</h2>
+        <h2>Post New Item</h2>
         <button class="modal-close" id="btnCloseAddModal">&times;</button>
       </div>
       <form id="addItemForm">
         <div class="form-group">
           <label>Category</label>
           <select id="itemCategory" required>
-            <option value="WORKSHOP">🌾 Workshop / Field Demo / Lecture</option>
-            <option value="TRAVEL">✈️ Travel / Flight / Pickup</option>
-            <option value="PAPER">📝 Paper Writing / Milestone</option>
-            <option value="MEETING">🤝 1-on-1 / Team Check-in</option>
+            <option value="WORKSHOP">Workshop / Field Demo / Lecture</option>
+            <option value="TRAVEL">Travel / Flight / Pickup</option>
+            <option value="PAPER">Paper Writing / Milestone</option>
+            <option value="MEETING">Meeting / Team Check-in</option>
           </select>
         </div>
         <div class="form-group">
@@ -985,8 +1046,8 @@
           <label>Notes / Links</label>
           <textarea id="itemNotes" rows="3" placeholder="Key topics, RSVP links, contact info..."></textarea>
         </div>
-        <button type="submit" class="btn btn-add" style="width: 100%; margin-top: 8px;">
-          Post to Shared Board
+        <button type="submit" class="btn btn-add" style="width: 100%; margin-top: 6px;">
+          Post to Board
         </button>
       </form>
     </div>
@@ -1307,7 +1368,7 @@
       const isEs = currentLang === 'es';
 
       if (filtered.length === 0) {
-        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">${isEs ? 'No hay elementos en esta categoría.' : 'No items in this category.'}</div>`;
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); font-style: italic;">${isEs ? 'No hay elementos en esta categoría.' : 'No items in this category.'}</div>`;
         return;
       }
 
@@ -1321,10 +1382,10 @@
         const host = (isEs && ev.hostEs) ? ev.hostEs : (ev.host || '');
 
         let tagClass = "tag-workshop";
-        let tagLabel = isEs ? "🌾 TALLER" : "🌾 WORKSHOP";
-        if (ev.category === "TRAVEL") { tagClass = "tag-travel"; tagLabel = isEs ? "✈️ VIAJE" : "✈️ TRAVEL"; }
-        if (ev.category === "PAPER") { tagClass = "tag-paper"; tagLabel = isEs ? "📝 ARTÍCULO" : "📝 PAPER"; }
-        if (ev.category === "MEETING") { tagClass = "tag-meeting"; tagLabel = isEs ? "🤝 REUNIÓN" : "🤝 MEETING"; }
+        let tagLabel = isEs ? "TALLER" : "WORKSHOP";
+        if (ev.category === "TRAVEL") { tagClass = "tag-travel"; tagLabel = isEs ? "VIAJE" : "TRAVEL"; }
+        if (ev.category === "PAPER") { tagClass = "tag-paper"; tagLabel = isEs ? "ARTÍCULO" : "PAPER"; }
+        if (ev.category === "MEETING") { tagClass = "tag-meeting"; tagLabel = isEs ? "REUNIÓN" : "MEETING"; }
 
         let flyerHtml = "";
         if (ev.hasFlyer) {
@@ -1333,9 +1394,9 @@
             <div class="flyer-preview">
               <img src="${flyerSrc}" class="flyer-thumb" alt="Flyer" onclick="openLightbox('${flyerSrc}')">
               <div class="flyer-info">
-                <strong>📄 ${isEs ? 'Afiche Oficial Adjunto' : 'Official Event Flyer Attached'}</strong>
-                <span style="color: #666; font-size: 11.5px;">${isEs ? 'Toca el afiche para ampliar en alta resolución.' : 'Tap flyer to view full resolution.'}</span>
-                ${ev.link ? `<a href="${ev.link}" target="_blank" style="color: #1b4d2b; font-weight: bold; text-decoration: underline; font-size: 12px; margin-top: 4px;">👉 ${isEs ? 'Inscribirse en línea' : 'Register Online'}</a>` : ''}
+                <strong style="font-size:12px;">${isEs ? 'Afiche adjunto' : 'Event flyer attached'}</strong>
+                <span style="color: var(--text-muted); font-size: 11px;">${isEs ? 'Toca para ampliar.' : 'Tap to view full size.'}</span>
+                ${ev.link ? `<a href="${ev.link}" target="_blank" style="color: var(--primary-dark); font-weight: 600; text-decoration: underline; font-size: 12px; margin-top: 4px;">${isEs ? 'Inscribirse en línea' : 'Register Online'}</a>` : ''}
               </div>
             </div>
           `;
@@ -1344,18 +1405,18 @@
         card.innerHTML = `
           <div class="card-header">
             <span class="card-tag ${tagClass}">${tagLabel}</span>
-            <span class="card-date">📅 ${dateTime}</span>
+            <span class="card-date">${dateTime}</span>
           </div>
           <div class="card-title">${title}</div>
           <div class="card-body">${notes}</div>
           ${flyerHtml}
           <div class="card-meta">
-            ${ev.location ? `<div class="meta-row"><strong>📍 ${isEs ? 'Lugar' : 'Location'}:</strong> <span>${ev.location}</span></div>` : ''}
-            ${host ? `<div class="meta-row"><strong>👤 ${isEs ? 'Líder / Revisor' : 'Host / Lead'}:</strong> <span>${host}</span></div>` : ''}
+            ${ev.location ? `<div class="meta-row"><strong>${isEs ? 'Lugar' : 'Location'}:</strong> <span>${ev.location}</span></div>` : ''}
+            ${host ? `<div class="meta-row"><strong>${isEs ? 'Líder' : 'Lead'}:</strong> <span>${host}</span></div>` : ''}
           </div>
           <div class="card-footer">
-            <span style="font-size: 11px; color: #a0aec0;">ID: ${ev.id}</span>
-            <button class="btn-delete" onclick="deleteEvent('${ev.id}')">✕ ${isEs ? 'Eliminar' : 'Remove'}</button>
+            <span style="font-size: 10px; color: var(--border-rule);">${ev.id}</span>
+            <button class="btn-delete" onclick="deleteEvent('${ev.id}')">${isEs ? 'eliminar' : 'remove'}</button>
           </div>
         `;
         container.appendChild(card);
@@ -1472,7 +1533,7 @@
       renderCards();
       addModal.classList.remove("open");
       document.getElementById("addItemForm").reset();
-      showToast(currentLang === 'es' ? "✅ ¡Publicado en vivo para todo el equipo!" : "✅ Posted live for everyone!");
+      showToast(currentLang === 'es' ? "Publicado para todo el equipo." : "Posted live for everyone.");
       changeView("cards");
     });
 
@@ -1499,25 +1560,29 @@
       localStorage.setItem("agroecology_lang", lang);
 
       const isEs = lang === 'es';
-      document.getElementById('headerTitle').textContent = isEs ? '🌱 Pizarra de Coordinación: Estancia Académica' : '🌱 Visiting Scholar & Operations Board';
+      document.getElementById('headerTitle').textContent = isEs ? 'Pizarra de Coordinación: Estancia Académica' : 'Visiting Scholar & Operations Board';
       document.getElementById('headerSubtitle').textContent = isEs ? 'Coordinador en vivo para talleres, fechas de viaje, reuniones 1-a-1 y redacción del artículo' : 'Shared live coordinator for workshops, travel, 1-on-1s & paper milestones';
       document.getElementById('headerWindowBadge').textContent = isEs ? '26 Sep – 29 Oct, 2026' : '26 Sep – 29 Oct, 2026';
       
-      document.getElementById('btnCards').textContent = isEs ? '📋 Tarjetas' : '📋 Cards';
-      document.getElementById('btnMonth').textContent = isEs ? '📅 Mes (Octubre)' : '📅 Month View (Oct)';
-      document.getElementById('btnQuarter').textContent = isEs ? '🗓️ Horizonte T4' : '🗓️ Q4 Horizon';
+      document.getElementById('btnCards').textContent = isEs ? 'Tarjetas' : 'Cards';
+      document.getElementById('btnMonth').textContent = isEs ? 'Mes (Octubre)' : 'Month View (Oct)';
+      document.getElementById('btnQuarter').textContent = isEs ? 'Horizonte T4' : 'Q4 Horizon';
       
-      document.getElementById('btnCopyWhatsapp').innerHTML = isEs ? '<span>💬</span> Copiar para WhatsApp' : '<span>💬</span> Copy for WhatsApp';
-      document.getElementById('btnOpenAddModal').innerHTML = isEs ? '<span>➕</span> Publicar' : '<span>➕</span> Post Item';
+      document.getElementById('btnCopyWhatsapp').innerHTML = isEs ? '<span>Copiar para WhatsApp</span>' : '<span>Copy for WhatsApp</span>';
+      document.getElementById('btnOpenAddModal').innerHTML = isEs ? '<span>+ Publicar</span>' : '<span>+ Post Item</span>';
 
       const btnEn = document.getElementById('langBtnEn');
       const btnEs = document.getElementById('langBtnEs');
       if (isEs) {
-        btnEs.style.background = '#2e7d32';
+        btnEs.style.background = 'var(--primary)';
+        btnEs.style.color = '#faf7f2';
         btnEn.style.background = 'transparent';
+        btnEn.style.color = 'var(--text-muted)';
       } else {
-        btnEn.style.background = '#2e7d32';
+        btnEn.style.background = 'var(--primary)';
+        btnEn.style.color = '#faf7f2';
         btnEs.style.background = 'transparent';
+        btnEs.style.color = 'var(--text-muted)';
       }
 
       renderCards();
@@ -1539,8 +1604,8 @@
           `📍 Weslaco AgriLife & Rancho La Sarra, Santa Rosa\n` +
           `Gusano barrenador, salud de suelo, drones y cercado virtual. (\$20 / confirmar antes de 1 oct: tinyurl.com/workinglandsworkshop)\n\n` +
           `🔄 *REUNIONES SEMANALES RECURRENTES:*\n` +
-          `• Lunes 8:00 AM: Reunión de Campo Hub of Prosperity (👤 María y equipo de campo)\n` +
-          `• Lunes 9:00 AM: Reunión de Equipo SARA (👤 Equipo de SARA)\n` +
+          `• Lunes 8:00 AM: Reunión de Campo Hub of Prosperity (María y equipo de campo)\n` +
+          `• Lunes 9:00 AM: Reunión de Equipo SARA (Equipo de SARA)\n` +
           `• Miércoles 1:00 PM: 1-1 Proyecto Forestal (Tree Meeting)\n` +
           `• Miércoles 2:00 PM: Reunión General del Laboratorio de Agroecología\n` +
           `• Miércoles 3:30 PM: 1-1 con Q\n\n` +
@@ -1554,8 +1619,8 @@
           `• 19 oct: Hito 3 - Resultados y figuras [Por definir]\n` +
           `• 22 oct: Hito 4 - Borrador completo a coautores (48h) [Por definir]\n` +
           `• 26 oct: Hito 5 - Envío final a revista y pre-print [Por definir]\n\n` +
-          `🛡️ _Nota: Fines de semana protegidos para descanso personal sin tareas asignadas, excepto talleres oficiales._\n` +
-          `👉 _Pizarra en vivo: https://sunaxle.github.io/agroecology-dashboard/whiteboard.html_`;
+          `_Nota: Fines de semana protegidos para descanso personal sin tareas asignadas, excepto talleres oficiales._\n` +
+          `_Pizarra en vivo: https://sunaxle.github.io/agroecology-dashboard/whiteboard.html_`;
       } else {
         text = `🌱 *UTRGV AGROECOLOGY & SARA OPERATIONS BOARD*\n` +
           `📅 Key Dates: Sept 26 – Oct 29, 2026\n\n` +
@@ -1570,8 +1635,8 @@
           `📍 Weslaco AgriLife & La Sarra Ranch, Santa Rosa\n` +
           `Screwworm updates, soil health, AI & drone spraying. (\$20 / RSVP by Oct 1: tinyurl.com/workinglandsworkshop)\n\n` +
           `🔄 *STANDING WEEKLY CADENCE:*\n` +
-          `• Mondays @ 8:00 AM: Hub Farm Operations Meeting (👤 Maria & Farm Crew)\n` +
-          `• Mondays @ 9:00 AM: SARA Team Meeting (👤 SARA Staff)\n` +
+          `• Mondays @ 8:00 AM: Hub Farm Operations Meeting (Maria & Farm Crew)\n` +
+          `• Mondays @ 9:00 AM: SARA Team Meeting (SARA Staff)\n` +
           `• Wednesdays @ 1:00 PM: 1-1 Tree Meeting\n` +
           `• Wednesdays @ 2:00 PM: Agroecology Lab Team Meeting\n` +
           `• Wednesdays @ 3:30 PM: 1-1 Q Meeting\n\n` +
@@ -1585,12 +1650,12 @@
           `• Oct 19: Milestone 3 - Results, Figures & Discussion [TBD]\n` +
           `• Oct 22: Milestone 4 - Full Draft to Co-Authors (48h review) [TBD]\n` +
           `• Oct 26: Milestone 5 - Final Submission & Pre-Print Archive [TBD]\n\n` +
-          `🛡️ _Note: Weekends are protected rest time with no work scheduled unless it is our official workshop._\n` +
-          `👉 _Live whiteboard: https://sunaxle.github.io/agroecology-dashboard/whiteboard.html_`;
+          `_Note: Weekends are protected rest time with no work scheduled unless it is our official workshop._\n` +
+          `_Live whiteboard: https://sunaxle.github.io/agroecology-dashboard/whiteboard.html_`;
       }
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => showToast(currentLang === 'es' ? "📋 ¡Copiado al portapapeles!" : "📋 Copied WhatsApp summary!"));
+        navigator.clipboard.writeText(text).then(() => showToast(currentLang === 'es' ? "Copiado al portapapeles." : "Copied WhatsApp summary."));
       } else {
         const ta = document.createElement("textarea");
         ta.value = text;
@@ -1598,7 +1663,7 @@
         ta.select();
         document.execCommand("copy");
         document.body.removeChild(ta);
-        showToast(currentLang === 'es' ? "📋 ¡Copiado al portapapeles!" : "📋 Copied WhatsApp summary!");
+        showToast(currentLang === 'es' ? "Copiado al portapapeles." : "Copied WhatsApp summary.");
       }
     });
 
