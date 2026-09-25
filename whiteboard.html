@@ -207,6 +207,78 @@
       font-weight: 600;
     }
 
+    /* Conflict & Split Coverage Indicators */
+    .badge-conflict {
+      background: #fdf0ed;
+      color: #a04030;
+      border: 1px solid #e8b4ac;
+      padding: 3px 7px;
+      border-radius: 2px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.3;
+    }
+
+    .badge-coverage {
+      background: #eff5ee;
+      color: #3b5a32;
+      border: 1px solid #c2d6bf;
+      padding: 3px 7px;
+      border-radius: 2px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.3;
+    }
+
+    .team-filter-bar {
+      max-width: 960px;
+      margin: 4px auto 8px auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .team-filter-bar::-webkit-scrollbar { display: none; }
+
+    .team-filter-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      margin-right: 2px;
+    }
+
+    .team-filter-chip {
+      padding: 3px 9px;
+      background: var(--bg-paper);
+      border: 1px solid var(--border-subtle);
+      border-radius: 2px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: 0.15s;
+    }
+    .team-filter-chip.active {
+      background: var(--primary);
+      color: #faf7f2;
+      border-color: var(--primary-dark);
+      font-weight: 600;
+    }
+
     main {
       max-width: 960px;
       margin: 0 auto;
@@ -713,7 +785,7 @@
     <!-- VIEW 1: CARDS VIEW -->
     <!-- ============================================== -->
     <div id="sectionCards">
-      <!-- Filter Chips -->
+      <!-- Category Filter Chips -->
       <div class="filter-scroll">
         <button class="filter-chip active" data-category="ALL">All Items</button>
         <button class="filter-chip" data-category="WORKSHOP">Workshops & Field</button>
@@ -722,8 +794,21 @@
         <button class="filter-chip" data-category="MEETING">Meetings & Syncs</button>
       </div>
 
-      <div class="info-banner">
-        Tap "Copy for WhatsApp" to grab the digest and paste it into your group chat. Switch between Month View or Q4 Horizon above.
+      <!-- Team Coverage / Member Filter -->
+      <div class="team-filter-bar">
+        <span class="team-filter-label" id="teamFilterLabel">Team:</span>
+        <button class="team-filter-chip active" data-member="ALL">All Collective</button>
+        <button class="team-filter-chip" data-member="Racelis">Dr. Racelis</button>
+        <button class="team-filter-chip" data-member="Scholar">Visiting Scholar</button>
+        <button class="team-filter-chip" data-member="Desi">Desi</button>
+        <button class="team-filter-chip" data-member="Maria">Maria (Farm)</button>
+        <button class="team-filter-chip" data-member="SARA">SARA Staff</button>
+        <button class="team-filter-chip" data-member="Q">Q</button>
+        <button class="team-filter-chip" data-member="Stephanie">Stephanie</button>
+      </div>
+
+      <div class="info-banner" id="cardsInfoBanner">
+        Tap "Copy for WhatsApp" to grab the digest and paste it into your group chat. Concurrent multi-org events feature split coverage tracking to avoid double bookings.
       </div>
 
       <div class="cards-grid" id="cardsContainer">
@@ -1048,8 +1133,16 @@
           <input type="text" id="itemLocation" placeholder="e.g. Weslaco AgriLife Center">
         </div>
         <div class="form-group">
+          <label>Host Organization / Entity</label>
+          <input type="text" id="itemOrg" placeholder="e.g. Hub of Prosperity, Sentli, SARA, TAMU AgriLife">
+        </div>
+        <div class="form-group">
           <label>Lead / Host</label>
           <input type="text" id="itemHost" placeholder="e.g. Desiderio Romero, Dr. Racelis">
+        </div>
+        <div class="form-group">
+          <label>Team Assigned / Cobertura (Split Coverage)</label>
+          <input type="text" id="itemAssigned" placeholder="e.g. Desi, Maria, Stephanie, Dr. Racelis">
         </div>
         <div class="form-group">
           <label>Notes / Links</label>
@@ -1074,13 +1167,16 @@
       {
         id: "hub-gardening-101",
         category: "WORKSHOP",
+        org: "Hub of Prosperity & SARA",
         title: "Beginner Gardening 101 @ Hub of Prosperity Farm",
         titleEs: "Taller de Jardinería para Principiantes 101 @ Hub of Prosperity",
         dateTime: "Sat, Sep 26, 2026 @ 10:00 AM – 12:00 PM",
         dateTimeEs: "Sábado 26 de sep de 2026 @ 10:00 AM – 12:00 PM",
         location: "Hub of Prosperity Farm, 3707 W University Dr, Edinburg TX",
-        host: "UTRGV Agroecology, SARA & TOPP (Transition to Organic)",
+        host: "UTRGV Agroecology, SARA & TOPP",
         hostEs: "UTRGV Agroecología, SARA y TOPP",
+        assigned: "Stephanie Kasper, Desi, Hub Crew",
+        assignedEs: "Stephanie Kasper, Desi, Equipo del Hub",
         notes: "Topics: Organic growing practices, small space/container gardening tips, native plant implementation.",
         notesEs: "Temas: Prácticas de cultivo orgánico, jardinería en macetas/espacios reducidos e implementación de plantas nativas.",
         hasFlyer: true,
@@ -1091,6 +1187,7 @@
       {
         id: "sentli-transplant-workshop",
         category: "WORKSHOP",
+        org: "Sentli Center",
         title: "Transplant Production Workshop @ Sentli Center",
         titleEs: "Taller de Producción de Trasplantes y Plántulas @ Sentli Center",
         dateTime: "Sat, Sep 26, 2026 @ 6:30 PM",
@@ -1098,6 +1195,8 @@
         location: "Sentli Center, 2806 E Rogers Rd, Edinburg, TX 78542",
         host: "Sentli Center & Community Partners",
         hostEs: "Centro Sentli y aliados comunitarios",
+        assigned: "Maria, Sentli Staff",
+        assignedEs: "María, Equipo Sentli",
         notes: "Topics: Save by growing your own transplants, organic transplant production, make your own potting mix hands-on. Free seeds and tray per attendee while supplies last!",
         notesEs: "Temas: Ahorra produciendo tus propios trasplantes, producción orgánica y elaboración práctica de sustrato. ¡Semillas y charola de germinación gratis por asistente hasta agotar existencias!",
         hasFlyer: true,
@@ -1108,12 +1207,15 @@
       {
         id: "feat-1",
         category: "WORKSHOP",
+        org: "USDA NRCS / SARA / TAMU",
         title: "South Texas Grazing Land Coalition: Working Lands Workshop",
         titleEs: "Taller de Tierras Productivas: South Texas Grazing Land Coalition",
         dateTime: "Thu-Fri, Oct 8–9, 2026 @ 8:00 AM Daily",
         dateTimeEs: "Jue-Vie, 8–9 de oct de 2026 @ 8:00 AM",
         location: "Day 1: Weslaco AgriLife Center | Day 2: La Sarra Ranch, Santa Rosa",
         host: "USDA NRCS, SARA, Texas A&M AgriLife, Grassroots Carbon",
+        assigned: "Dr. Alexis Racelis, Visiting Scholar, SARA Staff",
+        assignedEs: "Dr. Alexis Racelis, Académica Invitada, Personal SARA",
         notes: "Key Topics: Climate trends, screwworm updates, soil health & grazing management, drone spraying demo, virtual fencing, AI monitoring, rancher panel. Fee: $20. RSVP by Oct 1 for catering.",
         notesEs: "Temas: Gusano barrenador, salud del suelo, cercado virtual, monitoreo con IA y aspersión con drones en vivo. Cuota: $20. Registrarse antes del 1 de oct.",
         link: "https://tinyurl.com/workinglandsworkshop",
@@ -1125,12 +1227,15 @@
       {
         id: "trv-1",
         category: "TRAVEL",
+        org: "UTRGV Agroecology",
         title: "Visiting Scholar Arrival & Airport Welcome",
         titleEs: "Llegada del Académico Invitado y Bienvenida en Aeropuerto",
         dateTime: "Tue, Sep 29, 2026 @ 10:00 AM",
         dateTimeEs: "Mar 29 de sep de 2026 @ 10:00 AM",
         location: "Valley Int'l Airport (HRL) ➔ Edinburg Campus",
         host: "Desiderio Romero",
+        assigned: "Desiderio Romero & Visiting Scholar",
+        assignedEs: "Desiderio Romero y Académica Invitada",
         notes: "Airport pickup, guest office check-in, keycard issuance & lab computer setup.",
         notesEs: "Recogida en aeropuerto, entrega de oficina de invitados, llave de acceso y computadora.",
         featured: false,
@@ -1139,6 +1244,7 @@
       {
         id: "rec-mon-farm",
         category: "MEETING",
+        org: "Hub of Prosperity",
         title: "Every Monday: Farm Operations Meeting",
         titleEs: "Todos los Lunes: Reunión de Campo y Granja (Farm Meeting)",
         dateTime: "Every Mon (Todos los Lunes) @ 8:00 AM – 9:00 AM",
@@ -1146,6 +1252,8 @@
         location: "Hub of Prosperity / Farm Office",
         host: "Maria & Farm Crew",
         hostEs: "María y equipo de campo",
+        assigned: "Maria & Farm Crew",
+        assignedEs: "María y equipo de campo",
         notes: "Hub of Prosperity farm operations, harvest planning, crop rotations & field labor coordination.",
         notesEs: "Operaciones de la granja Hub of Prosperity, cosecha, rotaciones y labores de campo.",
         featured: false,
@@ -1154,6 +1262,7 @@
       {
         id: "rec-mon-sara",
         category: "MEETING",
+        org: "SARA Center",
         title: "Every Monday: SARA Team Meeting",
         titleEs: "Todos los Lunes: Reunión de Equipo SARA",
         dateTime: "Every Mon (Todos los Lunes) @ 9:00 AM – 10:00 AM",
@@ -1161,6 +1270,8 @@
         location: "SARA Office / Hybrid Zoom",
         host: "SARA Staff",
         hostEs: "Equipo de SARA",
+        assigned: "SARA Staff & Dr. Alexis Racelis",
+        assignedEs: "Equipo de SARA y Dr. Alexis Racelis",
         notes: "Center for Sustainable Agriculture & Rural Advancement operations, grant progress & producer technical assistance.",
         notesEs: "Operaciones del Centro SARA, avance de subvenciones y asistencia técnica a productores.",
         featured: false,
@@ -1169,6 +1280,7 @@
       {
         id: "rec-tue-class",
         category: "MEETING",
+        org: "UTRGV Classroom",
         title: "Every Tuesday: Dr. Racelis Class / Teaching Block",
         titleEs: "Todos los Martes: Clase con el Dr. Alexis Racelis",
         dateTime: "Every Tue (Todos los Martes) @ 9:00 AM – 12:30 PM",
@@ -1176,6 +1288,8 @@
         location: "Edinburg Campus / Classroom",
         host: "Dr. Alexis Racelis",
         hostEs: "Dr. Alexis Racelis",
+        assigned: "Dr. Alexis Racelis",
+        assignedEs: "Dr. Alexis Racelis",
         notes: "Undergraduate and graduate course teaching and instructional block.",
         notesEs: "Bloque de docencia e impartición de clases de licenciatura y posgrado.",
         featured: false,
@@ -1184,62 +1298,75 @@
       {
         id: "rec-wed-tree",
         category: "MEETING",
+        org: "Urban Forestry Lab",
         title: "Every Wednesday: 1-1 Tree Meeting",
         titleEs: "Todos los Miércoles: Reunión 1-a-1 Proyecto Forestal (Tree Meeting)",
         dateTime: "Every Wed (Todos los Miércoles) @ 1:00 PM – 2:00 PM",
         dateTimeEs: "Todos los Miércoles @ 1:00 PM – 2:00 PM",
         location: "SEEMS Urban Forestry Lab / Field Sites",
         host: "Tree & Agroforestry Lead",
+        assigned: "Tree Lead & Visiting Scholar",
+        assignedEs: "Líder Forestal y Académica Invitada",
         notes: "Silvopasture canopy trials, urban forestry microclimates & Tree Campus USA initiatives.",
         notesEs: "Ensayos de dosel silvopastoril, microclimas forestales e iniciativas Tree Campus USA.",
         featured: false,
-        order: 5
+        order: 6
       },
       {
         id: "rec-wed-team",
         category: "MEETING",
+        org: "Agroecology Lab",
         title: "Every Wednesday: Agroecology Lab Team Meeting",
         titleEs: "Todos los Miércoles: Reunión General del Laboratorio de Agroecología",
         dateTime: "Every Wed (Todos los Miércoles) @ 2:00 PM – 3:15 PM",
         dateTimeEs: "Todos los Miércoles @ 2:00 PM – 3:15 PM",
         location: "Agroecology Main Lab / Conference Room",
         host: "Dr. Alexis Racelis & All Lab Members",
+        assigned: "All Lab Members & Visiting Scholar",
+        assignedEs: "Todo el laboratorio y Académica Invitada",
         notes: "Core all-hands lab meeting: research trial progress, visiting scholar integration & student updates.",
         notesEs: "Reunión general del laboratorio: avances de parcelas, integración de la estancia y metas.",
         featured: false,
-        order: 6
+        order: 7
       },
       {
         id: "rec-wed-q",
         category: "MEETING",
+        org: "Agroecology Lab",
         title: "Every Wednesday: 1-1 Q Meeting",
         titleEs: "Todos los Miércoles: Reunión 1-a-1 con Q",
         dateTime: "Every Wed (Todos los Miércoles) @ 3:30 PM – 4:15 PM",
         dateTimeEs: "Todos los Miércoles @ 3:30 PM – 4:15 PM",
         location: "Agroecology Lab / Office",
         host: "Q & Dr. Alexis Racelis",
+        assigned: "Q & Dr. Alexis Racelis",
+        assignedEs: "Q y Dr. Alexis Racelis",
         notes: "Dedicated 1-on-1 sprint coordination, project data workflows, and priority alignment.",
         notesEs: "Coordinación 1-a-1 de sprints de investigación, flujo de datos y alineación de prioridades.",
         featured: false,
-        order: 7
+        order: 8
       },
       {
         id: "wrk-1",
         category: "WORKSHOP",
+        org: "SEEMS Conference Suite",
         title: "Agroecology Team Welcome Lunch & Research Roundtable",
         titleEs: "Almuerzo de Bienvenida y Mesa Redonda de Investigación",
         dateTime: "Fri, Oct 2, 2026 @ 12:00 PM – 1:30 PM",
         dateTimeEs: "Vie 2 de oct de 2026 @ 12:00 PM – 1:30 PM",
         location: "SEEMS Conference Room",
         host: "Dr. Alexis Racelis & Lab Team",
+        assigned: "Dr. Alexis Racelis & All Lab Members",
+        assignedEs: "Dr. Alexis Racelis y Todo el Equipo",
         notes: "Informal welcome lunch & introductory roundtable on research data and regional priorities.",
         notesEs: "Almuerzo informal de bienvenida y diálogo sobre prioridades de investigación.",
         featured: false,
-        order: 8
+        order: 9
       },
       {
         id: "pap-1",
         category: "PAPER",
+        org: "Writing Collective",
         title: "Paper Milestone 1: Outline & Dataset Lock",
         titleEs: "Hito 1 del Artículo: Esquema Final y Cierre de Bases de Datos",
         dateTime: "Mon, Oct 5, 2026",
@@ -1247,28 +1374,34 @@
         location: "Visiting Scholar Office",
         host: "[Por definir / TBD]",
         hostEs: "[Por definir]",
+        assigned: "Visiting Scholar [Reviewers open / TBD]",
+        assignedEs: "Académica Invitada [Revisores por definir]",
         notes: "Deliverable: Final paper outline, target journal selection, and consolidated datasets. Reviewers left open for team sign-up.",
         notesEs: "Entregable: Esquema final, revista objetivo y datos consolidados. Revisores abiertos para asignación.",
         featured: false,
-        order: 9
+        order: 10
       },
       {
         id: "wrk-2",
         category: "WORKSHOP",
+        org: "Science Lecture Hall",
         title: "Departmental Colloquium: Soil Health & Climate Resilience",
         titleEs: "Coloquio Departamental: Salud del Suelo y Resiliencia Climática",
         dateTime: "Thu, Oct 15, 2026 @ 2:00 PM",
         dateTimeEs: "Jue 15 de oct de 2026 @ 2:00 PM",
         location: "Science Lecture Hall 1.102",
         host: "Visiting Scholar",
+        assigned: "Visiting Scholar & Full Department",
+        assignedEs: "Académica Invitada y Todo el Departamento",
         notes: "Public lecture for undergraduate/graduate students, faculty, and regional conservation partners.",
         notesEs: "Conferencia magistral abierta para estudiantes, profesores y aliados de conservación.",
         featured: false,
-        order: 10
+        order: 11
       },
       {
         id: "pap-2",
         category: "PAPER",
+        org: "Writing Collective",
         title: "Paper Milestone 2: Methods & Lit Review Draft",
         titleEs: "Hito 2 del Artículo: Metodología y Revisión Bibliográfica",
         dateTime: "Mon, Oct 12, 2026",
@@ -1276,14 +1409,17 @@
         location: "Visiting Scholar Office",
         host: "[Por definir / TBD]",
         hostEs: "[Por definir]",
+        assigned: "Visiting Scholar [Reviewers open / TBD]",
+        assignedEs: "Académica Invitada [Revisores por definir]",
         notes: "Complete methodology, study site descriptions, and regional literature matrix.",
         notesEs: "Metodología completa, descripciones de sitios y matriz de literatura regional.",
         featured: false,
-        order: 11
+        order: 12
       },
       {
         id: "pap-3",
         category: "PAPER",
+        org: "Writing Collective",
         title: "Paper Milestone 3: Results, Figures & Discussion",
         titleEs: "Hito 3 del Artículo: Borrador de Resultados, Figuras y Discusión",
         dateTime: "Mon, Oct 19, 2026",
@@ -1291,14 +1427,17 @@
         location: "Visiting Scholar Office",
         host: "[Por definir / TBD]",
         hostEs: "[Por definir]",
+        assigned: "Visiting Scholar [Reviewers open / TBD]",
+        assignedEs: "Académica Invitada [Revisores por definir]",
         notes: "Complete draft of analytical figures, PCA plots, statistical results, and discussion section.",
         notesEs: "Borrador de figuras analíticas, gráficos PCA, estadísticas y discusión.",
         featured: false,
-        order: 12
+        order: 13
       },
       {
         id: "pap-4",
         category: "PAPER",
+        org: "Writing Collective",
         title: "Paper Milestone 4: Full Draft Out for Co-Author Review",
         titleEs: "Hito 4 del Artículo: Envío de Borrador Completo para Revisión (48h)",
         dateTime: "Thu, Oct 22, 2026",
@@ -1306,14 +1445,17 @@
         location: "Google Drive / Shared Folder",
         host: "[Por definir / TBD]",
         hostEs: "[Por definir]",
+        assigned: "All Co-Authors & Lab Reviewers",
+        assignedEs: "Todos los coautores y revisores del lab",
         notes: "48-hour internal review cycle across all team co-authors.",
         notesEs: "Revisión intensiva interna de 48 horas con todos los coautores del laboratorio.",
         featured: false,
-        order: 13
+        order: 14
       },
       {
         id: "pap-5",
         category: "PAPER",
+        org: "Writing Collective",
         title: "Paper Milestone 5: Final Submission & Pre-Print Archive",
         titleEs: "Hito 5 del Artículo: Envío Formal a la Revista y Archivo Pre-Print",
         dateTime: "Mon, Oct 26, 2026",
@@ -1321,52 +1463,63 @@
         location: "Journal Portal / AgriRxiv",
         host: "[Por definir / TBD]",
         hostEs: "[Por definir]",
+        assigned: "Visiting Scholar, Dr. Racelis & Co-Authors",
+        assignedEs: "Académica Invitada, Dr. Racelis y Coautores",
         notes: "Target journal manuscript upload & open-access pre-print deposit.",
         notesEs: "Carga formal del manuscrito a la revista científica y depósito abierto en pre-print.",
         featured: false,
-        order: 14
+        order: 15
       },
       {
         id: "wrk-3",
         category: "WORKSHOP",
+        org: "SEEMS Lecture Hall",
         title: "Residency Exit Colloquium & Research Presentation",
         titleEs: "Coloquio de Clausura y Presentación de Resultados",
         dateTime: "Tue, Oct 27, 2026 @ 2:00 PM",
         dateTimeEs: "Mar 27 de oct de 2026 @ 2:00 PM",
         location: "SEEMS Lecture Hall",
         host: "Visiting Scholar",
+        assigned: "Visiting Scholar & All Lab Members",
+        assignedEs: "Académica Invitada y Todo el Equipo",
         notes: "Presentation of research findings and paper insights to college faculty & students.",
         notesEs: "Presentación de resultados del artículo y conclusiones ante la facultad y estudiantes.",
         featured: false,
-        order: 15
+        order: 16
       },
       {
         id: "trv-2",
         category: "TRAVEL",
+        org: "Lab Celebration",
         title: "Residency Farewell Dinner Celebration",
         titleEs: "Cena de Despedida y Celebración del Equipo",
         dateTime: "Wed, Oct 28, 2026 @ 6:30 PM",
         dateTimeEs: "Mié 28 de oct de 2026 @ 6:30 PM",
         location: "McAllen / Edinburg Restaurant",
         host: "Dr. Alexis Racelis",
+        assigned: "Dr. Alexis Racelis & All Team",
+        assignedEs: "Dr. Alexis Racelis y Todo el Equipo",
         notes: "Team celebration honoring the visiting professor's 30-day residency.",
         notesEs: "Celebración del equipo en honor a la estancia académica de 30 días.",
         featured: false,
-        order: 16
+        order: 17
       },
       {
         id: "trv-3",
         category: "TRAVEL",
+        org: "Airport Transit",
         title: "Airport Departure & Closeout Logistics",
         titleEs: "Salida al Aeropuerto y Cierre Logístico",
         dateTime: "Thu, Oct 29, 2026 @ 9:00 AM",
         dateTimeEs: "Jue 29 de oct de 2026 @ 9:00 AM",
         location: "Edinburg Campus ➔ Valley Int'l Airport (HRL)",
         host: "Desiderio Romero",
+        assigned: "Desiderio Romero & Visiting Scholar",
+        assignedEs: "Desiderio Romero y Académica Invitada",
         notes: "Transit to airport and official conclusion of 30-day residency program.",
         notesEs: "Traslado al aeropuerto y conclusión oficial del programa de estancia.",
         featured: false,
-        order: 17
+        order: 18
       }
     ];
 
@@ -1383,16 +1536,92 @@
     }
 
     let activeFilter = "ALL";
+    let activeMember = "ALL";
     let events = getStoredEvents();
     const container = document.getElementById("cardsContainer");
 
+    // Conflict and Split Coverage Detection Engine
+    function checkConflictAndCoverage(ev, allList, isEs) {
+      const dateText = (ev.dateTime || "").toLowerCase();
+      
+      // Find concurrent events
+      const concurrent = allList.filter(other => {
+        if (other.id === ev.id) return false;
+        const oDate = (other.dateTime || "").toLowerCase();
+        if (dateText.includes("sep 26") && oDate.includes("sep 26")) return true;
+        if (dateText.includes("oct 8") && oDate.includes("oct 8")) return true;
+        if (dateText.includes("oct 9") && oDate.includes("oct 9")) return true;
+        if (dateText.includes("oct 27") && oDate.includes("oct 27")) return true;
+        if (dateText.includes("mon") && oDate.includes("mon") && dateText.includes("every") && oDate.includes("every")) return true;
+        if (dateText.includes("tue") && oDate.includes("tue") && dateText.includes("every") && oDate.includes("every")) return true;
+        if (dateText.includes("wed") && oDate.includes("wed") && dateText.includes("every") && oDate.includes("every")) return true;
+        return false;
+      });
+
+      if (concurrent.length === 0) return null;
+
+      // Check if the same person is double-booked simultaneously
+      const myAssigned = ((ev.assigned || "") + " " + (ev.host || "")).toLowerCase();
+      let doubleBookedName = null;
+
+      const teamMembers = [
+        { key: "racelis", display: "Dr. Racelis" },
+        { key: "desi", display: "Desi" },
+        { key: "maria", display: "Maria" },
+        { key: "stephanie", display: "Stephanie" },
+        { key: "sara", display: "SARA Staff" },
+        { key: "q", display: "Q" },
+        { key: "scholar", display: isEs ? "Académica Invitada" : "Visiting Scholar" }
+      ];
+
+      for (let other of concurrent) {
+        const otherAssigned = ((other.assigned || "") + " " + (other.host || "")).toLowerCase();
+        const oDate = (other.dateTime || "").toLowerCase();
+
+        for (let m of teamMembers) {
+          if (myAssigned.includes(m.key) && otherAssigned.includes(m.key)) {
+            // Check if exact times overlap
+            if ((dateText.includes("8:00 am") && oDate.includes("8:00 am")) ||
+                (dateText.includes("9:00 am") && oDate.includes("9:00 am")) ||
+                (dateText.includes("2:00 pm") && oDate.includes("2:00 pm")) ||
+                (dateText.includes("10:00 am") && oDate.includes("10:00 am"))) {
+              doubleBookedName = m.display;
+              break;
+            }
+          }
+        }
+      }
+
+      if (doubleBookedName) {
+        return {
+          type: "conflict",
+          badge: `<span class="badge-conflict">⚠️ ${isEs ? 'Alerta de Empalme' : 'Double Booking Alert'}: ${doubleBookedName}</span>`
+        };
+      }
+
+      // If concurrent multi-org with split coverage
+      const otherOrg = concurrent[0].org || concurrent[0].location || (isEs ? 'Otra entidad' : 'Other org');
+      return {
+        type: "coverage",
+        badge: `<span class="badge-coverage">⚡ ${isEs ? 'Cobertura dividida' : 'Split Coverage'}: ${otherOrg}</span>`
+      };
+    }
+
     function renderCards() {
       container.innerHTML = "";
-      const filtered = events.filter(ev => activeFilter === "ALL" || ev.category === activeFilter);
       const isEs = currentLang === 'es';
 
+      const filtered = events.filter(ev => {
+        const matchesCategory = (activeFilter === "ALL" || ev.category === activeFilter);
+        if (!matchesCategory) return false;
+
+        if (activeMember === "ALL") return true;
+        const personString = ((ev.assigned || "") + " " + (ev.assignedEs || "") + " " + (ev.host || "") + " " + (ev.hostEs || "")).toLowerCase();
+        return personString.includes(activeMember.toLowerCase());
+      });
+
       if (filtered.length === 0) {
-        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); font-style: italic;">${isEs ? 'No hay elementos en esta categoría.' : 'No items in this category.'}</div>`;
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted); font-style: italic;">${isEs ? 'No hay elementos para este filtro.' : 'No items match this filter.'}</div>`;
         return;
       }
 
@@ -1404,12 +1633,18 @@
         const dateTime = (isEs && ev.dateTimeEs) ? ev.dateTimeEs : ev.dateTime;
         const notes = (isEs && ev.notesEs) ? ev.notesEs : (ev.notes || '');
         const host = (isEs && ev.hostEs) ? ev.hostEs : (ev.host || '');
+        const assigned = (isEs && ev.assignedEs) ? ev.assignedEs : (ev.assigned || host || '');
+        const org = ev.org || '';
 
         let tagClass = "tag-workshop";
         let tagLabel = isEs ? "TALLER" : "WORKSHOP";
         if (ev.category === "TRAVEL") { tagClass = "tag-travel"; tagLabel = isEs ? "VIAJE" : "TRAVEL"; }
         if (ev.category === "PAPER") { tagClass = "tag-paper"; tagLabel = isEs ? "ARTÍCULO" : "PAPER"; }
         if (ev.category === "MEETING") { tagClass = "tag-meeting"; tagLabel = isEs ? "REUNIÓN" : "MEETING"; }
+
+        // Evaluate conflict and split coverage
+        const conflictStatus = checkConflictAndCoverage(ev, events, isEs);
+        const conflictBadgeHtml = conflictStatus ? conflictStatus.badge : '';
 
         let flyerHtml = "";
         if (ev.hasFlyer) {
@@ -1428,15 +1663,20 @@
 
         card.innerHTML = `
           <div class="card-header">
-            <span class="card-tag ${tagClass}">${tagLabel}</span>
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+              <span class="card-tag ${tagClass}">${tagLabel}</span>
+              ${conflictBadgeHtml}
+            </div>
             <span class="card-date">${dateTime}</span>
           </div>
           <div class="card-title">${title}</div>
           <div class="card-body">${notes}</div>
           ${flyerHtml}
           <div class="card-meta">
+            ${org ? `<div class="meta-row"><strong>${isEs ? 'Entidad' : 'Entity'}:</strong> <span>${org}</span></div>` : ''}
             ${ev.location ? `<div class="meta-row"><strong>${isEs ? 'Lugar' : 'Location'}:</strong> <span>${ev.location}</span></div>` : ''}
             ${host ? `<div class="meta-row"><strong>${isEs ? 'Líder' : 'Lead'}:</strong> <span>${host}</span></div>` : ''}
+            ${assigned ? `<div class="meta-row"><strong>${isEs ? 'Cobertura' : 'Assigned'}:</strong> <span style="font-weight:600; color:var(--text-dark);">${assigned}</span></div>` : ''}
           </div>
           <div class="card-footer">
             <span style="font-size: 10px; color: var(--border-rule);">${ev.id}</span>
@@ -1466,12 +1706,22 @@
       }
     };
 
-    // Filters
+    // Category Filters
     document.querySelectorAll(".filter-chip").forEach(chip => {
       chip.addEventListener("click", () => {
         document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
         chip.classList.add("active");
         activeFilter = chip.getAttribute("data-category");
+        renderCards();
+      });
+    });
+
+    // Team Member Filters
+    document.querySelectorAll(".team-filter-chip").forEach(chip => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".team-filter-chip").forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+        activeMember = chip.getAttribute("data-member");
         renderCards();
       });
     });
@@ -1537,7 +1787,9 @@
         title: document.getElementById("itemTitle").value.trim(),
         dateTime: document.getElementById("itemDateTime").value.trim(),
         location: document.getElementById("itemLocation").value.trim(),
+        org: document.getElementById("itemOrg") ? document.getElementById("itemOrg").value.trim() : "",
         host: document.getElementById("itemHost").value.trim(),
+        assigned: document.getElementById("itemAssigned") ? document.getElementById("itemAssigned").value.trim() : "",
         notes: document.getElementById("itemNotes").value.trim(),
         featured: false,
         order: 0,
@@ -1594,6 +1846,16 @@
       
       document.getElementById('btnCopyWhatsapp').innerHTML = isEs ? '<span>Copiar para WhatsApp</span>' : '<span>Copy for WhatsApp</span>';
       document.getElementById('btnOpenAddModal').innerHTML = isEs ? '<span>+ Publicar</span>' : '<span>+ Post Item</span>';
+
+      const teamLabel = document.getElementById('teamFilterLabel');
+      if (teamLabel) teamLabel.textContent = isEs ? 'Equipo:' : 'Team:';
+
+      const infoBanner = document.getElementById('cardsInfoBanner');
+      if (infoBanner) {
+        infoBanner.textContent = isEs ? 
+          'Toca "Copiar para WhatsApp" para pegar el resumen en el chat grupal. Los eventos simultáneos muestran cobertura dividida para evitar empalmes.' : 
+          'Tap "Copy for WhatsApp" to grab the digest and paste it into your group chat. Concurrent multi-org events feature split coverage tracking to avoid double bookings.';
+      }
 
       const btnEn = document.getElementById('langBtnEn');
       const btnEs = document.getElementById('langBtnEs');
