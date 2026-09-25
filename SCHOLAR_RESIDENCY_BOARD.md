@@ -87,6 +87,11 @@
   * *Lead:* SARA Staff  
   * *Focus:* Center for Sustainable Agriculture & Rural Advancement operations, grant status & regional producer outreach.
 
+### 🗓️ Every Tuesday (Todos los Martes)
+* **9:00 AM - 12:30 PM: Dr. Racelis Class / Teaching Block**  
+  * *Lead:* Dr. Alexis Racelis  
+  * *Focus:* Undergraduate and graduate course teaching block.
+
 ### 🗓️ Every Wednesday (Todos los Miércoles)
 * **1:00 PM - 2:00 PM: 1-1 Tree Meeting**  
   * *Lead:* Tree & Urban Forestry Lead  
