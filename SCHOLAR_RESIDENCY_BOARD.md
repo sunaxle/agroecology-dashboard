@@ -10,14 +10,28 @@
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Tue, Sep 29** | 10:00 AM | **Visiting Scholar Arrival & Airport Pickup** | Valley Int'l Airport (HRL) ➔ Edinburg Campus | Desiderio Romero | Confirmed. Guest office setup & keycard access. |
 | **Tue, Sep 29** | 2:00 PM | **Campus & Lab Facility Orientation** | Agroecology Lab & Greenhouse Suite | Desiderio Romero & Lab Staff | Tour of wet lab, analytical ovens, soil prep area. |
-| **Wed, Oct 28** | 6:30 PM | **Residency Farewell Celebration Dinner** | Regional Restaurant (McAllen / Edinburg) | Dr. Alexis Racelis | Team & partner retrospective dinner. |
+| **Wed, Sep 30** | 8:30 AM – 2:00 PM | **Region One ESC School Nutrition Food Show** | Edinburg Campus ➔ SPI Convention Center ➔ Campus | Agroecology / SARA Team | Leave campus @ 8:30 AM, arrive SPI ~9:45 AM, depart SPI ~12:45 PM, return @ 2:00 PM. |
 | **Thu, Oct 29** | 9:00 AM | **Airport Departure & Program Closeout** | Edinburg Campus ➔ Valley Int'l Airport (HRL) | Desiderio Romero | Safe travels & transit back. |
 
 ---
 
-### 🌾 2. Workshops, Field Demos & Major Talks
+## 🌾 2. Verified Events, Workshops & Field Demos
 
-### 📍 Pre-Residency Community Workshops (Saturday, September 26, 2026)
+### 📍 Featured Event: Region One ESC School Nutrition Food Show
+* **Theme:** *"A Spoonful of Magic"* (Hosted by Child Nutrition Program-South Texas Cooperative / Region One ESC)
+* **Date & Time:** Wednesday, September 30, 2026 | 8:30 AM – 2:00 PM (Transit included)
+* **Venue:** South Padre Island Convention Centre (7355 Padre Blvd, South Padre Island, TX 78597)
+* **Transit Schedule:**
+  * `08:30 AM` — Depart UTRGV Edinburg Campus (approx. 1 hr 15 min drive via I-69E / TX-100 E)
+  * `09:45 AM` — Arrive at SPI Convention Centre & check in
+  * `10:00 AM – 12:45 PM` — Food Show, farm-to-school regional vendor exhibits & local food procurement networking
+  * `12:45 PM` — Depart South Padre Island
+  * `02:00 PM` — Arrive back on UTRGV Edinburg Campus
+* **What it is:** The annual CNP-STC food show bringing together over 120 regional nutrition directors, food service buyers, local agricultural producers, and distributors to explore child nutrition products, regional sourcing, and farm-to-institution supply chains in South Texas.
+
+---
+
+### 📍 Community Workshops (Saturday, September 26, 2026)
 * **🌱 Beginner Gardening 101 (10:00 AM – 12:00 PM)**
   * **Location:** Hub of Prosperity Farm (3707 W University Dr, Edinburg, TX)
   * **Hosts:** UTRGV Agroecology, SARA & West/Southwest Transition to Organic Partnership Program (TOPP)
@@ -46,38 +60,7 @@
 
 ---
 
-### Additional Talks & Workshops Schedule
-
-| Date | Time | Event Title | Location | Audience / Partners | Host / Lead |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Sat, Sep 26** | 10:00 AM | **Beginner Gardening 101** | Hub of Prosperity Farm | Community Gardeners & Students | UTRGV Agroecology / SARA / TOPP |
-| **Sat, Sep 26** | 6:30 PM | **Transplant Production Workshop** | Sentli Center | Regional Growers & Families | Sentli Center |
-| **Fri, Oct 2** | 12:00 PM | **Agroecology Welcome Lunch & Roundtable** | SEEMS Conference Room | Lab Members & Grad Students | Dr. Alexis Racelis |
-| **Thu, Oct 8** | 8:00 AM | **Working Lands Workshop (Day 1 - Sessions)** | Weslaco AgriLife Extension | Ranchers, SARA, NRCS, TAMU | AgriLife / SARA |
-| **Fri, Oct 9** | 8:00 AM | **Working Lands Workshop (Day 2 - Field Demos)** | La Sarra Ranch, Santa Rosa | Regional Producers & Researchers | Grazing Coalition |
-| **Thu, Oct 15** | 2:00 PM | **Departmental Public Lecture: Soil & Climate Resilience** | Science Lecture Hall 1.102 | University Faculty & Students | Visiting Scholar |
-| **Tue, Oct 27** | 2:00 PM | **Agroecology Residency Exit Colloquium** | SEEMS Lecture Hall | Lab, SARA Partners, College | Visiting Scholar |
-
----
-
-## 📝 3. Research Paper Sprint (Deadlines Only)
-*Goal: Protect 3.5–4 hours of daily writing focus. Meetings capped at $\le 4$ hours/day.*
-*🛡️ Weekend Rule: Weekends are protected rest time with no work scheduled.*
-
-* **🎯 Milestone 1 (Mon, Oct 5):** Finalize Paper Outline, Datasets & Target Journal  
-  * *Reviewers:* ____________________ [TBD]
-* **🎯 Milestone 2 (Mon, Oct 12):** Complete Methods, Study Sites & Literature Review  
-  * *Reviewers:* ____________________ [TBD]
-* **🎯 Milestone 3 (Mon, Oct 19):** Complete Draft of Results, Figures & Discussion  
-  * *Reviewers:* ____________________ [TBD]
-* **🎯 Milestone 4 (Thu, Oct 22):** Distribute Full Manuscript Draft for 48h Co-Author Review  
-  * *Reviewers:* ____________________ [TBD]
-* **🎯 Milestone 5 (Mon, Oct 26):** Final Manuscript Submission & Pre-Print Archive  
-  * *Reviewers / Leads:* ____________________ [TBD]
-
----
-
-## 🔄 4. Standing Weekly Cadence (Reuniones Semanales Recurrentes)
+## 🔄 3. Standing Weekly Cadence (Reuniones Semanales Recurrentes)
 
 ### 🗓️ Every Monday (Todos los Lunes)
 * **8:00 AM - 9:00 AM: Farm Meeting**  
