@@ -77,6 +77,29 @@
 
 ---
 
+### 📍 Featured Cultural & Agricultural Festival: City of Pharr Avocado Festival 2026
+* **Date & Time:** Saturday, October 10, 2026 | 2:00 PM – 11:00 PM CDT
+* **Location:** [Downtown Pharr](https://maps.google.com/?q=118+S+Cage+Blvd,+Pharr,+TX+78577) (118 S. Cage Blvd, Pharr, TX 78577)
+* **Admission:**
+  * **Free Admission:** 2:00 PM – 5:00 PM
+  * **Wristbands Required:** Starting at 5:00 PM for general entrance
+  * **Carnival Rides:** Separate ride wristband required
+* **Live Music Lineup:**
+  * **Main Stage:** Los Palominos (Headliner), Braxton Keith, La Casetera, De Parranda, RED (Taylor Swift Tribute)
+  * **956 Stage:** Domingo Elias 3zero (Headliner), Mesteño, Arturo Quintero, Derick Garza, Ali Cat Crash, Vintage Travelers Band
+* **Activities & Highlights:**
+  * Annual Guacamole Contest
+  * Live Lucha Libre wrestling matches & Jurassic RGV shows
+  * Carnival rides, arcade games, and local youth performances
+  * Regional food, snack, and beverage vendors specializing in avocado dishes
+* **Links & Resources:**
+  * [Official Festival Website](https://avocadofest.com/)
+  * [City of Pharr Event Page](https://pharr-tx.gov/event/avocado-festival-2026/)
+  * [Ticket & Wristband Portal](https://avocadofest.com/tickets/)
+  * [Google Calendar Event Link](https://www.google.com/calendar/event?eid=c3BtMjhrZHRwNjUzcmVrMTA2YWExbWlqY3Mgcm9tZXJvZGVhYkBt)
+
+---
+
 ## 🔄 3. Standing Weekly Cadence (Reuniones Semanales Recurrentes)
 
 ### 🗓️ Every Monday (Todos los Lunes)
