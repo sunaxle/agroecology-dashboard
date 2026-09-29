@@ -60,6 +60,23 @@
 
 ---
 
+### 📍 Featured Community Event: VIP Night in the Park – Planta Nativa 2026
+* **Theme:** Native Plant Month Celebration (Very Important Plants 2026)
+* **Date & Time:** Thursday, October 8, 2026 | 6:30 PM – 9:30 PM CDT (Keynote begins at 7:30 PM)
+* **Location:** [Quinta Mazatlan World Birding Center](https://maps.google.com/?q=600+Sunset+Dr,+McAllen,+TX+78503) (600 Sunset Dr, McAllen, TX 78503)
+* **Keynote Speaker:** Cyrus Harp of Paleo Foraging (foraging instructor, ethnobiology researcher, author of *Native Food Plants of Texas*)
+* **Program & Highlights:**
+  * Book Signing & Sales: *Native Food Plants of Texas* by Cyrus Harp
+  * Exhibits & Demonstrations: Research poster sessions, taproot demonstrations, and native seed giveaways
+  * Educational & Community Partners: Tabling by UTRGV, American Forests, Texas A&M Forest Service, Native Plant Society of Texas (RGV Chapter), and Native Plant Project
+  * Marketplace & Activities: Native plant sales, local snack/beverage vendors, artisan booths, and live music
+* **Links & Tickets:**
+  * [Event Listing & Details (McAllen Next)](https://mcallennext.com/places/quinta-mazatlan/events/2163755794220469/planta-nativa-2026---cyrus-harp-of-paleo-foraging)
+  * [Tickets via Quinta Mazatlan TicketLeap](https://events.ticketleap.com/events/quintamazatlan)
+  * [Google Calendar Event Link](https://www.google.com/calendar/event?eid=NHY2anYyOGxscTA1cHY0NW01NDg4OHVqYXMgcm9tZXJvZGVhYkBt)
+
+---
+
 ## 🔄 3. Standing Weekly Cadence (Reuniones Semanales Recurrentes)
 
 ### 🗓️ Every Monday (Todos los Lunes)
