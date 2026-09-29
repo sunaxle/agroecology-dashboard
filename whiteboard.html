@@ -863,11 +863,12 @@
           <div class="cal-day-cell inactive"><span>27</span></div>
           <div class="cal-day-cell inactive"><span>28</span></div>
           
-          <!-- Sept 29: Day 1 Arrival & Class -->
+          <!-- Sept 29: Day 1 Arrival, Class & Robert Cantu Intro Lunch -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>29</span><span class="day-badge" style="background:var(--accent-water); color:white;">DAY 1</span></div>
             <div class="cal-pill pill-travel" title="Visiting Scholar Arrival">10am Arrival (HRL)</div>
             <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">9am–12:30pm Class</div>
+            <div class="cal-pill pill-meeting" style="background:#5c7a52; font-size:8px; margin-top:2px;" title="Completed Lunch: Dr. Ramos & Robert Cantu (Food Services)">✓ 12pm Lunch: Dr. Ramos & Robert Cantu</div>
           </div>
 
           <!-- Sept 30: Food Show (SPI) & Wed recurring -->
@@ -1276,7 +1277,29 @@
         notes: "Airport pickup, guest office check-in, keycard issuance & lab computer setup.",
         notesEs: "Recogida en aeropuerto, entrega de oficina de invitados, llave de acceso y computadora.",
         featured: false,
+        isDone: true,
         order: 3
+      },
+      {
+        id: "intro-lunch-cantu",
+        category: "MEETING",
+        org: "UTRGV Auxiliary & Food Services",
+        title: "Welcome & Intro Lunch: Dr. Ramos & Robert Cantu (UTRGV Food Services)",
+        titleEs: "Almuerzo de Bienvenida y Presentación: Dra. Ramos y Robert Cantu (Servicios de Alimentos UTRGV)",
+        dateTime: "Tue, Sep 29, 2026 @ 12:00 PM – 1:30 PM",
+        dateTimeEs: "Martes 29 de sep de 2026 @ 12:00 PM – 1:30 PM",
+        location: "UTRGV Campus Dining / Student Union, Edinburg",
+        host: "Dr. Alexis Racelis",
+        hostEs: "Dr. Alexis Racelis",
+        assigned: "Dr. Alexis Racelis, Dr. Ramos, Robert Cantu",
+        assignedEs: "Dr. Alexis Racelis, Dra. Ramos, Robert Cantu",
+        notes: "Introductory lunch introducing visiting scholar Dr. Ramos to Robert Cantu (Executive Director of Business Auxiliary Services at UTRGV, leading campus food services, student dining advisory & dining sustainability) alongside Dr. Alexis Racelis.",
+        notesEs: "Almuerzo de bienvenida para presentar a la investigadora invitada Dra. Ramos con Robert Cantu (Director Ejecutivo de Servicios Auxiliares y Alimentos en UTRGV, encargado de comedores universitarios, comité de nutrición y sustentabilidad) junto al Dr. Alexis Racelis.",
+        link: "https://www.utrgv.edu/auxiliary/food-services/index.htm",
+        isDone: true,
+        hasFlyer: false,
+        featured: false,
+        order: 3.5
       },
       {
         id: "rec-mon-farm",
@@ -1525,6 +1548,7 @@
         // Evaluate conflict and split coverage
         const conflictStatus = checkConflictAndCoverage(ev, events, isEs);
         const conflictBadgeHtml = conflictStatus ? conflictStatus.badge : '';
+        const doneBadgeHtml = ev.isDone ? `<span class="badge-coverage" style="background:#eaf2e8; color:#2c5e20; border-color:#8ebf80; font-weight:700;">✓ ${isEs ? 'REALIZADO' : 'DONE'}</span>` : '';
 
         let flyerHtml = "";
         if (ev.hasFlyer) {
@@ -1545,6 +1569,7 @@
           <div class="card-header">
             <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
               <span class="card-tag ${tagClass}">${tagLabel}</span>
+              ${doneBadgeHtml}
               ${conflictBadgeHtml}
             </div>
             <span class="card-date">${dateTime}</span>

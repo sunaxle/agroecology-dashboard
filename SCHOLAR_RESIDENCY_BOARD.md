@@ -8,8 +8,9 @@
 
 | Date | Time | Activity / Movement | Location / Route | Lead / Coordinator | Status / Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Tue, Sep 29** | 10:00 AM | **Visiting Scholar Arrival & Airport Pickup** | Valley Int'l Airport (HRL) ➔ Edinburg Campus | Desiderio Romero | Confirmed. Guest office setup & keycard access. |
-| **Tue, Sep 29** | 2:00 PM | **Campus & Lab Facility Orientation** | Agroecology Lab & Greenhouse Suite | Desiderio Romero & Lab Staff | Tour of wet lab, analytical ovens, soil prep area. |
+| **Tue, Sep 29** | 10:00 AM | **Visiting Scholar Arrival & Airport Pickup** | Valley Int'l Airport (HRL) ➔ Edinburg Campus | Desiderio Romero | **✓ Done.** Guest office setup & keycard access. |
+| **Tue, Sep 29** | 12:00 PM | **Intro Lunch: Dr. Ramos & Robert Cantu** | UTRGV Campus Dining / Student Union | Dr. Alexis Racelis | **✓ Done.** Welcome lunch introducing visiting scholar Dr. Ramos to Robert Cantu (Executive Director, UTRGV Business Auxiliary Services / Food Services). |
+| **Tue, Sep 29** | 2:00 PM | **Campus & Lab Facility Orientation** | Agroecology Lab & Greenhouse Suite | Desiderio Romero & Lab Staff | **✓ Done.** Tour of wet lab, analytical ovens, soil prep area. |
 | **Wed, Sep 30** | 8:30 AM – 2:00 PM | **Region One ESC School Nutrition Food Show** | Edinburg Campus ➔ SPI Convention Center ➔ Campus | Agroecology / SARA Team | Leave campus @ 8:30 AM, arrive SPI ~9:45 AM, depart SPI ~12:45 PM, return @ 2:00 PM. |
 | **Thu, Oct 29** | 9:00 AM | **Airport Departure & Program Closeout** | Edinburg Campus ➔ Valley Int'l Airport (HRL) | Desiderio Romero | Safe travels & transit back. |
 
