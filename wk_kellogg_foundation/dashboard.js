@@ -15,6 +15,32 @@ document.addEventListener('DOMContentLoaded', () => {
   let db = null;
   const isFirebaseAvailable = typeof firebase !== 'undefined' && firebase.firestore;
 
+  function showToast(message, type = 'success') {
+    let container = document.getElementById('toastContainer');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'toastContainer';
+      container.style.cssText = 'position: fixed; bottom: 24px; right: 24px; z-index: 99999; display: flex; flex-direction: column; gap: 10px; max-width: 380px; pointer-events: none;';
+      document.body.appendChild(container);
+    }
+    const toast = document.createElement('div');
+    const bg = type === 'success' ? '#2D6A4F' : type === 'warning' ? '#D4A373' : '#B91C1C';
+    toast.style.cssText = `background: ${bg}; color: white; padding: 12px 18px; border-radius: 8px; font-size: 0.88rem; font-weight: 500; box-shadow: 0 4px 14px rgba(0,0,0,0.18); display: flex; align-items: center; gap: 10px; transition: all 0.3s ease; opacity: 0; transform: translateY(10px); pointer-events: auto;`;
+    const icon = type === 'success' ? '✓' : type === 'warning' ? '⚠️' : '✕';
+    toast.innerHTML = `<span style="font-weight: 700; font-size: 1.1rem;">${icon}</span> <span>${message}</span>`;
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateY(0)';
+    }, 10);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(10px)';
+      setTimeout(() => toast.remove(), 350);
+    }, 4500);
+  }
+  window.showToast = showToast;
+
   function updateSyncStatus(connected, message) {
     const badge = document.getElementById('dbSyncStatus');
     if (!badge) return;
@@ -34,7 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
         firebase.initializeApp(firebaseConfig);
       }
       db = firebase.firestore();
-      updateSyncStatus(true, 'Live Cloud Sync Active');
+
+      if (firebase.auth) {
+        firebase.auth().signInAnonymously().then(() => {
+          updateSyncStatus(true, 'Live Cloud Sync Active');
+        }).catch((authErr) => {
+          console.warn("Firebase anonymous auth error:", authErr);
+          updateSyncStatus(true, 'Live Cloud Sync Active');
+        });
+      } else {
+        updateSyncStatus(true, 'Live Cloud Sync Active');
+      }
     } catch (err) {
       console.warn("Firebase initialization error:", err);
       updateSyncStatus(false, 'Local Storage (Offline)');
@@ -151,8 +187,85 @@ document.addEventListener('DOMContentLoaded', () => {
     farmer: 'wkkf_surveys_farmer'
   };
 
-  const getCachedData = (key) => JSON.parse(localStorage.getItem(key)) || [];
-  const setCachedData = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+  const getCachedData = (key) => {
+    try {
+      return JSON.parse(localStorage.getItem(key)) || [];
+    } catch (e) {
+      console.warn(`Error reading ${key} from localStorage:`, e);
+      return [];
+    }
+  };
+
+  const setCachedData = (key, data) => {
+    try {
+      localStorage.setItem(key, JSON.stringify(data));
+    } catch (err) {
+      console.warn(`LocalStorage quota exceeded writing ${key}, stripping embedded image payloads:`, err);
+      try {
+        const lightweightData = data.map(item => {
+          if (item && item.photos && Array.isArray(item.photos)) {
+            return {
+              ...item,
+              photos: item.photos.filter(p => !p.startsWith('data:image'))
+            };
+          }
+          return item;
+        });
+        localStorage.setItem(key, JSON.stringify(lightweightData));
+      } catch (err2) {
+        console.error(`Unable to save ${key} to localStorage:`, err2);
+      }
+    }
+  };
+
+  // Client-side image compression to prevent memory/storage overflow
+  function compressImage(file, maxWidth = 1280, maxHeight = 1280, quality = 0.75) {
+    return new Promise((resolve) => {
+      if (!file || !file.type || !file.type.startsWith('image/')) {
+        return resolve(file);
+      }
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = new Image();
+        img.onload = () => {
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxWidth || height > maxHeight) {
+            if (width > height) {
+              height = Math.round((height * maxWidth) / width);
+              width = maxWidth;
+            } else {
+              width = Math.round((width * maxHeight) / height);
+              height = maxHeight;
+            }
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, "") + ".jpg", {
+                type: 'image/jpeg',
+                lastModified: Date.now()
+              });
+              resolve(compressedFile);
+            } else {
+              resolve(file);
+            }
+          }, 'image/jpeg', quality);
+        };
+        img.onerror = () => resolve(file);
+        img.src = e.target.result;
+      };
+      reader.onerror = () => resolve(file);
+      reader.readAsDataURL(file);
+    });
+  }
 
   let reports = getCachedData('wkkf_reports');
   let currentSeasonFilter = 'all';
@@ -464,10 +577,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const uploadedPhotoUrls = [];
       if (selectedPhotoFiles.length > 0) {
-        for (const file of selectedPhotoFiles) {
+        if (submitBtn) submitBtn.textContent = `Processing ${selectedPhotoFiles.length} Photo${selectedPhotoFiles.length > 1 ? 's' : ''}...`;
+        for (let i = 0; i < selectedPhotoFiles.length; i++) {
+          const rawFile = selectedPhotoFiles[i];
           try {
+            // Auto compress image to prevent huge payload uploads
+            const file = await compressImage(rawFile, 1280, 1280, 0.75);
+
             if (typeof firebase !== 'undefined' && firebase.storage) {
-              const storageRef = firebase.storage().ref('event_photos/' + Date.now() + '_' + file.name.replace(/\s+/g, '_'));
+              if (submitBtn) submitBtn.textContent = `Uploading Photo ${i + 1}/${selectedPhotoFiles.length}...`;
+              const safeName = (file.name || 'photo.jpg').replace(/[^a-zA-Z0-9._-]/g, '_');
+              const storageRef = firebase.storage().ref('event_photos/' + Date.now() + '_' + safeName);
               const snapshot = await storageRef.put(file);
               const downloadUrl = await snapshot.ref.getDownloadURL();
               uploadedPhotoUrls.push(downloadUrl);
@@ -476,9 +596,10 @@ document.addEventListener('DOMContentLoaded', () => {
               uploadedPhotoUrls.push(base64);
             }
           } catch (storageErr) {
-            console.warn("Storage upload fallback:", storageErr);
+            console.warn("Storage upload fallback for file:", storageErr);
             try {
-              const base64 = await readFileAsDataUrl(file);
+              const compressedFile = await compressImage(rawFile, 900, 900, 0.6);
+              const base64 = await readFileAsDataUrl(compressedFile);
               uploadedPhotoUrls.push(base64);
             } catch (readErr) {
               console.error("Failed to read image file:", readErr);
@@ -486,6 +607,8 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       }
+
+      if (submitBtn) submitBtn.textContent = 'Saving Record...';
 
       const rawPhotoLink = document.getElementById('r-photo-link')?.value.trim() || '';
 
@@ -506,10 +629,12 @@ document.addEventListener('DOMContentLoaded', () => {
             ...newRecord,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
           });
+          showToast("Activity record published & synced to cloud!", "success");
         } else {
           reports.unshift(newRecord);
           setCachedData('wkkf_reports', reports);
           renderReportsGrid();
+          showToast("Saved locally in browser (Offline Mode).", "warning");
         }
 
         reportingForm.reset();
@@ -520,11 +645,11 @@ document.addEventListener('DOMContentLoaded', () => {
           addAttendeeRow();
         }
       } catch (err) {
-        console.error("Error submitting report:", err);
-        alert("Saved locally (Cloud connection pending).");
+        console.error("Error submitting report to Firestore:", err);
         reports.unshift(newRecord);
         setCachedData('wkkf_reports', reports);
         renderReportsGrid();
+        showToast("Saved locally — cloud permission error (" + (err.code || "restricted") + ")", "warning");
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -636,11 +761,13 @@ document.addEventListener('DOMContentLoaded', () => {
             ...newRecord,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
           });
+          showToast("Survey entry saved & synced to cloud!", "success");
         } else {
           const localData = getCachedData(key);
           localData.unshift(newRecord);
           setCachedData(key, localData);
           renderer();
+          showToast("Saved survey locally (Offline Mode).", "warning");
         }
 
         form.reset();
@@ -650,6 +777,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localData.unshift(newRecord);
         setCachedData(key, localData);
         renderer();
+        showToast("Saved locally — cloud permission warning (" + (err.code || "offline") + ")", "warning");
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
