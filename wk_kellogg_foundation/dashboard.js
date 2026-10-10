@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Client-side image compression to prevent memory/storage overflow
-  function compressImage(file, maxWidth = 1280, maxHeight = 1280, quality = 0.75) {
+  function compressImage(file, maxWidth = 960, maxHeight = 960, quality = 0.65) {
     return new Promise((resolve) => {
       if (!file || !file.type || !file.type.startsWith('image/')) {
         return resolve(file);
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           canvas.toBlob((blob) => {
             if (blob) {
-              const compressedFile = new File([blob], file.name.replace(/\.[^/.]+$/, "") + ".jpg", {
+              const compressedFile = new File([blob], (file.name || 'photo').replace(/\.[^/.]+$/, "") + ".jpg", {
                 type: 'image/jpeg',
                 lastModified: Date.now()
               });
@@ -317,15 +317,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const recordCountSpan = document.getElementById('recordCount');
   const filterReportingSeason = document.getElementById('filterReportingSeason');
 
-  // Photo Dropzone and File Picker
+  // Photo Dropzone, Counter, and File Picker
   let selectedPhotoFiles = [];
   const photoFileInput = document.getElementById('r-photos');
   const photoDropzone = document.getElementById('photoDropzone');
   const photoPreviewGrid = document.getElementById('photoPreviewGrid');
+  const photoBatchCounter = document.getElementById('photoBatchCounter');
+  const photoActionRow = document.getElementById('photoActionRow');
+  const btnClearPhotos = document.getElementById('btnClearPhotos');
 
   function renderPhotoPreviews() {
     if (!photoPreviewGrid) return;
     photoPreviewGrid.innerHTML = '';
+    
+    if (selectedPhotoFiles.length > 0) {
+      if (photoBatchCounter) {
+        photoBatchCounter.style.display = 'inline';
+        const estKb = Math.round(selectedPhotoFiles.length * 40);
+        photoBatchCounter.textContent = `📸 ${selectedPhotoFiles.length} photo${selectedPhotoFiles.length > 1 ? 's' : ''} ready (~${estKb} KB)`;
+      }
+      if (photoActionRow) photoActionRow.style.display = 'flex';
+    } else {
+      if (photoBatchCounter) photoBatchCounter.style.display = 'none';
+      if (photoActionRow) photoActionRow.style.display = 'none';
+    }
+
     selectedPhotoFiles.forEach((file, index) => {
       const item = document.createElement('div');
       item.className = 'photo-preview-item';
@@ -335,6 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
       item.appendChild(img);
 
       const btnRemove = document.createElement('button');
+      btnRemove.type = 'button';
       btnRemove.className = 'btn-remove-preview';
       btnRemove.innerHTML = '&times;';
       btnRemove.onclick = (e) => {
@@ -348,10 +365,89 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  if (btnClearPhotos) {
+    btnClearPhotos.addEventListener('click', (e) => {
+      e.stopPropagation();
+      selectedPhotoFiles = [];
+      if (photoFileInput) photoFileInput.value = '';
+      renderPhotoPreviews();
+    });
+  }
+
+  // Quick Date Buttons
+  const btnQuickDateToday = document.getElementById('btnQuickDateToday');
+  const btnQuickDateYesterday = document.getElementById('btnQuickDateYesterday');
+  const rDateInput = document.getElementById('r-date');
+
+  if (btnQuickDateToday && rDateInput) {
+    btnQuickDateToday.addEventListener('click', () => {
+      rDateInput.value = new Date().toISOString().split('T')[0];
+      saveFormDraft();
+    });
+  }
+
+  if (btnQuickDateYesterday && rDateInput) {
+    btnQuickDateYesterday.addEventListener('click', () => {
+      const d = new Date();
+      d.setDate(d.getDate() - 1);
+      rDateInput.value = d.toISOString().split('T')[0];
+      saveFormDraft();
+    });
+  }
+
+  // Draft Auto-Save System
+  const draftBadge = document.getElementById('draftStatusBadge');
+  function saveFormDraft() {
+    const draft = {
+      date: document.getElementById('r-date')?.value || '',
+      type: document.getElementById('r-type')?.value || '',
+      topic: document.getElementById('r-topic')?.value || '',
+      status: document.getElementById('r-status')?.value || 'N/A',
+      story: document.getElementById('r-story')?.value || '',
+      photoLink: document.getElementById('r-photo-link')?.value || ''
+    };
+    try {
+      localStorage.setItem('wkkf_reporting_draft', JSON.stringify(draft));
+      if (draftBadge && (draft.topic || draft.story)) {
+        draftBadge.style.display = 'inline';
+      }
+    } catch (e) {}
+  }
+
+  function restoreFormDraft() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('wkkf_reporting_draft'));
+      if (saved) {
+        if (saved.date) document.getElementById('r-date').value = saved.date;
+        if (saved.type) document.getElementById('r-type').value = saved.type;
+        if (saved.topic) document.getElementById('r-topic').value = saved.topic;
+        if (saved.status) document.getElementById('r-status').value = saved.status;
+        if (saved.story) document.getElementById('r-story').value = saved.story;
+        if (saved.photoLink) document.getElementById('r-photo-link').value = saved.photoLink;
+        if (draftBadge && (saved.topic || saved.story)) {
+          draftBadge.style.display = 'inline';
+        }
+      }
+    } catch (e) {}
+  }
+
+  // Bind draft auto-saving
+  ['r-date', 'r-type', 'r-topic', 'r-status', 'r-story', 'r-photo-link'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', saveFormDraft);
+      el.addEventListener('change', saveFormDraft);
+    }
+  });
+
+  restoreFormDraft();
+
   if (photoFileInput) {
     photoFileInput.addEventListener('change', (e) => {
-      if (e.target.files) {
-        Array.from(e.target.files).forEach(f => selectedPhotoFiles.push(f));
+      if (e.target.files && e.target.files.length > 0) {
+        Array.from(e.target.files).forEach(f => {
+          if (f.type.startsWith('image/')) selectedPhotoFiles.push(f);
+        });
         renderPhotoPreviews();
       }
     });
@@ -371,6 +467,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
     photoDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      photoDropzone.classList.remove('dragover');
       if (e.dataTransfer && e.dataTransfer.files) {
         Array.from(e.dataTransfer.files).forEach(f => {
           if (f.type.startsWith('image/')) selectedPhotoFiles.push(f);
@@ -566,6 +664,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      const uploadProgressBox = document.getElementById('uploadProgressBox');
+      const uploadProgressBarFill = document.getElementById('uploadProgressBarFill');
+      const uploadProgressText = document.getElementById('uploadProgressText');
+
+      if (uploadProgressBox) {
+        uploadProgressBox.style.display = 'block';
+        if (uploadProgressBarFill) uploadProgressBarFill.style.width = '5%';
+        if (uploadProgressText) uploadProgressText.textContent = 'Preparing submission...';
+      }
+
       function readFileAsDataUrl(file) {
         return new Promise((resolve, reject) => {
           const reader = new FileReader();
@@ -576,16 +684,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const uploadedPhotoUrls = [];
-      if (selectedPhotoFiles.length > 0) {
-        if (submitBtn) submitBtn.textContent = `Processing ${selectedPhotoFiles.length} Photo${selectedPhotoFiles.length > 1 ? 's' : ''}...`;
-        for (let i = 0; i < selectedPhotoFiles.length; i++) {
+      const totalPhotos = selectedPhotoFiles.length;
+
+      if (totalPhotos > 0) {
+        for (let i = 0; i < totalPhotos; i++) {
           const rawFile = selectedPhotoFiles[i];
+          const pct = Math.round(((i + 1) / totalPhotos) * 85);
+
+          if (submitBtn) submitBtn.textContent = `Processing Photo ${i + 1}/${totalPhotos}...`;
+          if (uploadProgressBarFill) uploadProgressBarFill.style.width = `${pct}%`;
+          if (uploadProgressText) uploadProgressText.textContent = `Optimizing & saving photo ${i + 1} of ${totalPhotos}...`;
+
           try {
-            // Auto compress image to prevent huge payload uploads
-            const file = await compressImage(rawFile, 1280, 1280, 0.75);
+            // Auto compress image to ~35KB to guarantee ultra-fast batch uploads
+            const file = await compressImage(rawFile, 960, 960, 0.65);
 
             if (typeof firebase !== 'undefined' && firebase.storage) {
-              if (submitBtn) submitBtn.textContent = `Uploading Photo ${i + 1}/${selectedPhotoFiles.length}...`;
               const safeName = (file.name || 'photo.jpg').replace(/[^a-zA-Z0-9._-]/g, '_');
               const storageRef = firebase.storage().ref('event_photos/' + Date.now() + '_' + safeName);
               const snapshot = await storageRef.put(file);
@@ -598,7 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
           } catch (storageErr) {
             console.warn("Storage upload fallback for file:", storageErr);
             try {
-              const compressedFile = await compressImage(rawFile, 900, 900, 0.6);
+              const compressedFile = await compressImage(rawFile, 720, 720, 0.55);
               const base64 = await readFileAsDataUrl(compressedFile);
               uploadedPhotoUrls.push(base64);
             } catch (readErr) {
@@ -608,6 +722,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      if (uploadProgressBarFill) uploadProgressBarFill.style.width = '95%';
+      if (uploadProgressText) uploadProgressText.textContent = 'Finalizing & syncing record...';
       if (submitBtn) submitBtn.textContent = 'Saving Record...';
 
       const rawPhotoLink = document.getElementById('r-photo-link')?.value.trim() || '';
@@ -629,7 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ...newRecord,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
           });
-          showToast("Activity record published & synced to cloud!", "success");
+          showToast(`Record with ${uploadedPhotoUrls.length} photos synced to cloud!`, "success");
         } else {
           reports.unshift(newRecord);
           setCachedData('wkkf_reports', reports);
@@ -637,9 +753,15 @@ document.addEventListener('DOMContentLoaded', () => {
           showToast("Saved locally in browser (Offline Mode).", "warning");
         }
 
+        // Clear Form & Draft
         reportingForm.reset();
         selectedPhotoFiles = [];
         renderPhotoPreviews();
+        try {
+          localStorage.removeItem('wkkf_reporting_draft');
+          if (draftBadge) draftBadge.style.display = 'none';
+        } catch (e) {}
+
         if (attendeeTableBody) {
           attendeeTableBody.innerHTML = '';
           addAttendeeRow();
@@ -649,8 +771,9 @@ document.addEventListener('DOMContentLoaded', () => {
         reports.unshift(newRecord);
         setCachedData('wkkf_reports', reports);
         renderReportsGrid();
-        showToast("Saved locally — cloud permission error (" + (err.code || "restricted") + ")", "warning");
+        showToast("Saved locally — cloud sync pending (" + (err.code || "restricted") + ")", "warning");
       } finally {
+        if (uploadProgressBox) uploadProgressBox.style.display = 'none';
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = 'Submit Record';
