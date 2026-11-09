@@ -1,10 +1,14 @@
 [[work]]
 
-# UTRGV Hub of Prosperity - Project Board
+# UTRGV Agroecology & Hub of Prosperity - Project Board
+
+> 🧭 **Overarching Operations Hub:** [Master Command Center](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/command_center/dashboard.html) | [W.K. Kellogg Hub](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/wk_kellogg_foundation/dashboard.html) | [USDA BFRDP Hub](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/bfrdp_grant/dashboard.html) | [Project Cool Schools (14 Campuses)](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/campuses.html)
 
 ## 🌅 Upcoming Seasonal Milestones
+- **Master Command Center Integration:** Unified tracking across W.K. Kellogg, USDA BFRDP, Project Cool Schools, and Hub Farm Operations via [Master Command Center](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/command_center/dashboard.html).
 - **Visiting Scholar Residency & Travel Coordination (Sept 29 – Oct 29, 2026):** Active shared whiteboard for travel dates, talks, and paper sprint milestones. See [SCHOLAR_RESIDENCY_BOARD.md](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/SCHOLAR_RESIDENCY_BOARD.md) and live WhatsApp coordinator [whiteboard.html](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/whiteboard.html).
-- **Working Lands Workshop (Oct 8–9, 2026):** Featured South Texas Grazing Land Coalition & SARA partner event in Weslaco & Santa Rosa.
+- **Project Cool Schools (14-Campus Urban Forestry):** Expand native shade tree canopy inventories, 3D solar shade modeling, and microclimate cooling tracking across 14 regional ISD campuses with Dr. Bradley Christoffersen ([campuses.html](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/campuses.html)).
+- **Working Lands Workshop (Oct 8–9, 2026):** Featured South Texas Grazing Land Coalition & UTRGV Agroecology partner event in Weslaco & Santa Rosa.
 - **Summer Field Transition:** Finalize the transition of all spring cleared beds (NE & SW plots) to summer cover crops (Cowpea & Sunn Hemp mix).
 - **CUE at Quinta Mazatlan Integration:** Finalize the joint vision board connecting Hub of Prosperity STEM resources with the City of McAllen's Center for Urban Ecology (CUE).
 - **Peak Summer Harvest:** Complete full harvest of summer crops (Watermelon, Butternut Squash, Muskmelon, Cucumber, Okra, Peppers).
@@ -60,7 +64,9 @@
 
 ## 🧠 Human Bandwidth Allocation (See: `team_charter_and_bandwidth.md`)
 *Before adding a task above, ensure it aligns with the owner's cognitive load limits. Divert administrative/drafting tasks to the AI Swarm wherever possible.*
-- **Dr. Racelis:** Strategic direction & grant oversight (AI: `chief_scientist`, `grant_writer`)
-- **Stephanie:** Operational planning & student tracking (AI: `agribusiness_manager`)
-- **Mario:** Curriculum & Outreach drafting (AI: `curriculum_developer`, `outreach_agent`)
-- **Desiderio:** Technical trials & field data (AI: `data_analyst`)
+- **Dr. Alexis Racelis:** Strategic direction, teaching & grant oversight (AI: `chief_scientist`, `grant_writer`)
+- **Desiderio "Desi" Romero:** Technical trials, field data & residency coordination (AI: `data_analyst`, `systems_engineer`)
+- **Maria Gonzalez, Juan & Demetrio:** Hub farm operations, plot prep & Tier 1 farmer incubation (AI: `farmer_agent`, `agribusiness_manager`)
+- **Dr. Bradley Christoffersen:** Project Cool Schools (14-campus canopy) & urban forestry trials (AI: `research_botanist`)
+- **Q / Quinn:** Research sprint tracking, PR graphics & outreach media (AI: `media_pr_coordinator`, `outreach_agent`)
+- **Marisol Cervantes:** Certified Organic Greenhouse & campus raised beds (AI: `knowledge_tracker`)

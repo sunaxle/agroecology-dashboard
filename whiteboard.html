@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Agroecology & SARA - Shared Residency Whiteboard</title>
+  <title>UTRGV Agroecology & Hub of Prosperity - Shared Residency Whiteboard</title>
   <!-- Firebase Cloud Realtime Sync -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -746,7 +746,11 @@
   <header>
     <div class="header-content">
       <div class="header-top">
-        <span class="badge-sub">UTRGV Agroecology & SARA</span>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <span class="badge-sub">UTRGV Agroecology & Hub of Prosperity</span>
+          <a href="command_center/dashboard.html" style="font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:700; color:#faf7f2; background:var(--primary); padding:3px 10px; border-radius:3px; text-decoration:none;">🧭 Master Command Center →</a>
+          <a href="campuses.html" style="font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:600; color:var(--primary-dark); background:var(--primary-light); padding:3px 8px; border-radius:3px; text-decoration:none; border:1px solid var(--border-rule);">🌳 Cool Schools</a>
+        </div>
         <div style="display:flex; align-items:center; gap:8px;">
           <!-- Bilingual Toggle -->
           <div style="border:1px solid var(--border-rule); border-radius:3px; padding:1px; display:flex; gap:1px; font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:700;">
@@ -802,9 +806,9 @@
         <button class="team-filter-chip" data-member="Scholar">Visiting Scholar</button>
         <button class="team-filter-chip" data-member="Desi">Desi</button>
         <button class="team-filter-chip" data-member="Maria">Maria (Farm)</button>
-        <button class="team-filter-chip" data-member="SARA">SARA Staff</button>
+        <button class="team-filter-chip" data-member="Christoffersen">Cool Schools</button>
+        <button class="team-filter-chip" data-member="Juan">Juan &amp; Demetrio</button>
         <button class="team-filter-chip" data-member="Q">Q</button>
-        <button class="team-filter-chip" data-member="Mario">Mario</button>
       </div>
 
       <div class="info-banner" id="cardsInfoBanner">
@@ -894,7 +898,7 @@
           <!-- Oct 5: Mon recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>5</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm · 9am SARA</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm Ops</div>
           </div>
 
           <!-- Oct 6: Tue Recurring Class -->
@@ -933,7 +937,7 @@
           <!-- Oct 12: Mon recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>12</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm · 9am SARA</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm Ops</div>
           </div>
 
           <!-- Oct 13: Tue Recurring Class -->
@@ -961,7 +965,7 @@
           <!-- Oct 19: Mon recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>19</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm · 9am SARA</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm Ops</div>
           </div>
 
           <!-- Oct 20: Tue Recurring Class -->
@@ -989,7 +993,7 @@
           <!-- Oct 26: Mon recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>26</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm · 9am SARA</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">8am Farm Ops</div>
           </div>
 
           <!-- Oct 27: Tue Recurring Class -->
@@ -1047,7 +1051,7 @@
             <strong>Oct 10:</strong> City of Pharr Avocado Festival (Downtown Pharr)
           </div>
           <div class="quarter-event-item" style="border-color:var(--primary);">
-            <strong>Every Mon/Tue/Wed:</strong> Standing Lab, Farm & SARA Operations
+            <strong>Every Mon/Tue/Wed:</strong> Standing Lab, Hub Farm &amp; Cool Schools Operations
           </div>
           <div class="quarter-event-item" style="border-color:var(--accent-water);">
             <strong>Oct 29:</strong> Residency Closeout & Airport Departure
@@ -1112,7 +1116,7 @@
         </div>
         <div class="form-group">
           <label>Host Organization / Entity</label>
-          <input type="text" id="itemOrg" placeholder="e.g. Hub of Prosperity, Sentli, SARA, TAMU AgriLife">
+          <input type="text" id="itemOrg" placeholder="e.g. Hub of Prosperity, Sentli, Cool Schools, TAMU AgriLife">
         </div>
         <div class="form-group">
           <label>Lead / Host</label>
@@ -1145,14 +1149,14 @@
       {
         id: "hub-gardening-101",
         category: "WORKSHOP",
-        org: "Hub of Prosperity & SARA",
+        org: "Hub of Prosperity & UTRGV Agroecology",
         title: "Beginner Gardening 101 @ Hub of Prosperity Farm",
         titleEs: "Taller de Jardinería para Principiantes 101 @ Hub of Prosperity",
         dateTime: "Sat, Sep 26, 2026 @ 10:00 AM – 12:00 PM",
         dateTimeEs: "Sábado 26 de sep de 2026 @ 10:00 AM – 12:00 PM",
         location: "Hub of Prosperity Farm, 3707 W University Dr, Edinburg TX",
-        host: "UTRGV Agroecology, SARA & TOPP",
-        hostEs: "UTRGV Agroecología, SARA y TOPP",
+        host: "UTRGV Agroecology Lab, Hub of Prosperity & TOPP",
+        hostEs: "Laboratorio de Agroecología UTRGV, Hub of Prosperity y TOPP",
         assigned: "Desi & Hub Farm Crew",
         assignedEs: "Desi y equipo de campo del Hub",
         notes: "Topics: Organic growing practices, small space/container gardening tips, native plant implementation.",
@@ -1173,8 +1177,8 @@
         location: "Sentli Center, 2806 E Rogers Rd, Edinburg, TX 78542",
         host: "Sentli Center & Community Partners",
         hostEs: "Centro Sentli y aliados comunitarios",
-        assigned: "Maria, Sentli Staff",
-        assignedEs: "María, Equipo Sentli",
+        assigned: "Maria, Juan & Sentli Staff",
+        assignedEs: "María, Juan y Equipo Sentli",
         notes: "Topics: Save by growing your own transplants, organic transplant production, make your own potting mix hands-on. Free seeds and tray per attendee while supplies last!",
         notesEs: "Temas: Ahorra produciendo tus propios trasplantes, producción orgánica y elaboración práctica de sustrato. ¡Semillas y charola de germinación gratis por asistente hasta agotar existencias!",
         hasFlyer: true,
@@ -1193,8 +1197,8 @@
         location: "South Padre Island Convention Center (7355 Padre Blvd, SPI)",
         host: "Region One ESC & South Texas Cooperative",
         hostEs: "Region One ESC y South Texas Cooperative",
-        assigned: "Agroecology Team & SARA Collective",
-        assignedEs: "Equipo de Agroecología y Colectivo SARA",
+        assigned: "UTRGV Agroecology Lab & Hub Team",
+        assignedEs: "Laboratorio de Agroecología UTRGV y Equipo del Hub",
         notes: "Annual school food & nutrition showcase with 120+ vendor booths and local food sourcing presentations. Itinerary: Depart campus @ 8:30 AM ➔ Arrive SPI ~9:45 AM ➔ Depart SPI ~12:45 PM ➔ Return to campus @ 2:00 PM.",
         notesEs: "Muestra anual de alimentos y nutrición escolar con más de 120 expositores y presentaciones de alimentos locales. Salida del campus a las 8:30 AM ➔ Llegada a SPI ~9:45 AM ➔ Regreso al campus a las 2:00 PM.",
         link: "https://esc1net.finalsite.com/food-show",
@@ -1205,15 +1209,15 @@
       {
         id: "feat-1",
         category: "WORKSHOP",
-        org: "USDA NRCS / SARA / TAMU",
+        org: "USDA NRCS / UTRGV / TAMU",
         title: "South Texas Grazing Land Coalition: Working Lands Workshop",
         titleEs: "Taller de Tierras Productivas: South Texas Grazing Land Coalition",
         dateTime: "Thu-Fri, Oct 8–9, 2026 @ 8:00 AM Daily",
         dateTimeEs: "Jue-Vie, 8–9 de oct de 2026 @ 8:00 AM",
         location: "Day 1: Weslaco AgriLife Center | Day 2: La Sarra Ranch, Santa Rosa",
-        host: "USDA NRCS, SARA, Texas A&M AgriLife, Grassroots Carbon",
-        assigned: "Dr. Alexis Racelis, Visiting Scholar, SARA Staff",
-        assignedEs: "Dr. Alexis Racelis, Académica Invitada, Personal SARA",
+        host: "USDA NRCS, UTRGV Agroecology Lab, Texas A&M AgriLife, Grassroots Carbon",
+        assigned: "Dr. Alexis Racelis, Visiting Scholar, Desi, Juan & Demetrio",
+        assignedEs: "Dr. Alexis Racelis, Académica Invitada, Desi, Juan y Demetrio",
         notes: "Key Topics: Climate trends, screwworm updates, soil health & grazing management, drone spraying demo, virtual fencing, AI monitoring, rancher panel. Fee: $20. RSVP by Oct 1 for catering.",
         notesEs: "Temas: Gusano barrenador, salud del suelo, cercado virtual, monitoreo con IA y aspersión con drones en vivo. Cuota: $20. Registrarse antes del 1 de oct.",
         link: "https://tinyurl.com/workinglandsworkshop",
@@ -1231,10 +1235,10 @@
         dateTime: "Thu, Oct 8, 2026 @ 6:30 PM – 9:30 PM CDT (Keynote @ 7:30 PM)",
         dateTimeEs: "Jueves 8 de oct de 2026 @ 6:30 PM – 9:30 PM CDT (Conferencia Magistral @ 7:30 PM)",
         location: "Quinta Mazatlan World Birding Center, 600 Sunset Dr, McAllen, TX 78503",
-        host: "Quinta Mazatlan & Cyrus Harp (Paleo Foraging)",
-        hostEs: "Quinta Mazatlán y Cyrus Harp (Paleo Foraging)",
-        assigned: "UTRGV Agroecology, Visiting Scholar, SARA & Community Partners",
-        assignedEs: "Agroecología UTRGV, Académica Invitada, SARA y Aliados",
+        host: "Quinta Mazatlan, Dr. Bradley Christoffersen & Cyrus Harp (Paleo Foraging)",
+        hostEs: "Quinta Mazatlán, Dr. Bradley Christoffersen y Cyrus Harp (Paleo Foraging)",
+        assigned: "UTRGV Agroecology Lab, Dr. Christoffersen (Cool Schools), Visiting Scholar & Community Partners",
+        assignedEs: "Laboratorio de Agroecología UTRGV, Dr. Christoffersen (Cool Schools), Académica Invitada y Aliados",
         notes: "Keynote: Cyrus Harp (Paleo Foraging, author of 'Native Food Plants of Texas' book signing). Research poster sessions, taproot demo, seed giveaways, native plant sales, live music & partner tabling (UTRGV, American Forests, Texas A&M Forest Service, NPSOT RGV, Native Plant Project). Tickets: events.ticketleap.com/events/quintamazatlan",
         notesEs: "Conferencia magistral: Cyrus Harp (autor de 'Native Food Plants of Texas' con firma de libros). Sesiones de carteles de investigación, demostración de raíz pivotante, obsequio de semillas, venta de plantas nativas, música en vivo y mesas educativas (UTRGV, American Forests, Texas A&M Forest Service, NPSOT RGV). Boletos: events.ticketleap.com/events/quintamazatlan",
         link: "https://mcallennext.com/places/quinta-mazatlan/events/2163755794220469/planta-nativa-2026---cyrus-harp-of-paleo-foraging",
@@ -1310,32 +1314,14 @@
         dateTime: "Every Mon (Todos los Lunes) @ 8:00 AM – 9:00 AM",
         dateTimeEs: "Todos los Lunes @ 8:00 AM – 9:00 AM",
         location: "Hub of Prosperity / Farm Office",
-        host: "Maria & Farm Crew",
-        hostEs: "María y equipo de campo",
-        assigned: "Maria & Farm Crew",
-        assignedEs: "María y equipo de campo",
+        host: "Maria, Juan, Demetrio & Farm Crew",
+        hostEs: "María, Juan, Demetrio y equipo de campo",
+        assigned: "Maria, Juan, Demetrio & Farm Crew",
+        assignedEs: "María, Juan, Demetrio y equipo de campo",
         notes: "Hub of Prosperity farm operations, harvest planning, crop rotations & field labor coordination.",
         notesEs: "Operaciones de la granja Hub of Prosperity, cosecha, rotaciones y labores de campo.",
         featured: false,
         order: 4
-      },
-      {
-        id: "rec-mon-sara",
-        category: "MEETING",
-        org: "SARA Center",
-        title: "Every Monday: SARA Team Meeting",
-        titleEs: "Todos los Lunes: Reunión de Equipo SARA",
-        dateTime: "Every Mon (Todos los Lunes) @ 9:00 AM – 10:00 AM",
-        dateTimeEs: "Todos los Lunes @ 9:00 AM – 10:00 AM",
-        location: "SARA Office / Hybrid Zoom",
-        host: "SARA Staff",
-        hostEs: "Equipo de SARA",
-        assigned: "SARA Staff & Dr. Alexis Racelis",
-        assignedEs: "Equipo de SARA y Dr. Alexis Racelis",
-        notes: "Center for Sustainable Agriculture & Rural Advancement operations, grant progress & producer technical assistance.",
-        notesEs: "Operaciones del Centro SARA, avance de subvenciones y asistencia técnica a productores.",
-        featured: false,
-        order: 5
       },
       {
         id: "rec-tue-class",
@@ -1358,17 +1344,17 @@
       {
         id: "rec-wed-tree",
         category: "MEETING",
-        org: "Urban Forestry Lab",
-        title: "Every Wednesday: 1-1 Tree Meeting",
-        titleEs: "Todos los Miércoles: Reunión 1-a-1 Proyecto Forestal (Tree Meeting)",
+        org: "Project Cool Schools / Urban Forestry",
+        title: "Every Wednesday: 1-1 Tree & Cool Schools Meeting",
+        titleEs: "Todos los Miércoles: Reunión 1-a-1 Proyecto Forestal (Project Cool Schools)",
         dateTime: "Every Wed (Todos los Miércoles) @ 1:00 PM – 2:00 PM",
         dateTimeEs: "Todos los Miércoles @ 1:00 PM – 2:00 PM",
         location: "SEEMS Urban Forestry Lab / Field Sites",
-        host: "Tree & Agroforestry Lead",
-        assigned: "Tree Lead & Visiting Scholar",
-        assignedEs: "Líder Forestal y Académica Invitada",
-        notes: "Silvopasture canopy trials, urban forestry microclimates & Tree Campus USA initiatives.",
-        notesEs: "Ensayos de dosel silvopastoril, microclimas forestales e iniciativas Tree Campus USA.",
+        host: "Dr. Bradley Christoffersen (Cool Schools Lead)",
+        assigned: "Dr. Bradley Christoffersen & Visiting Scholar",
+        assignedEs: "Dr. Bradley Christoffersen y Académica Invitada",
+        notes: "Project Cool Schools 14-campus canopy trials, silvopasture microclimates & Tree Campus USA initiatives.",
+        notesEs: "Ensayos de dosel en 14 escuelas (Project Cool Schools), microclimas forestales e iniciativas Tree Campus USA.",
         featured: false,
         order: 7
       },
@@ -1470,8 +1456,8 @@
         { key: "racelis", display: "Dr. Racelis" },
         { key: "desi", display: "Desi" },
         { key: "maria", display: "Maria" },
-        { key: "mario", display: "Mario" },
-        { key: "sara", display: "SARA Staff" },
+        { key: "christoffersen", display: "Dr. Christoffersen (Cool Schools)" },
+        { key: "juan", display: "Juan & Demetrio" },
         { key: "q", display: "Q" },
         { key: "scholar", display: isEs ? "Académica Invitada" : "Visiting Scholar" }
       ];
@@ -1782,7 +1768,7 @@
     document.getElementById("btnCopyWhatsapp").addEventListener("click", () => {
       let text = "";
       if (currentLang === 'es') {
-        text = `🌱 *PIZARRA DE OPERACIONES Y TALLERES - UTRGV AGROECOLOGÍA & SARA*\n` +
+        text = `🌱 *PIZARRA DE OPERACIONES Y TALLERES - UTRGV AGROECOLOGÍA & HUB OF PROSPERITY*\n` +
           `📅 Fechas clave: 26 de septiembre – 29 de octubre de 2026\n\n` +
           `🌾 *TALLERES Y EVENTOS DESTACADOS:*\n` +
           `1️⃣ *Jardinería para Principiantes 101* (Sáb 26 sep @ 10:00 AM – 12:00 PM)\n` +
@@ -1804,10 +1790,9 @@
           `📍 Downtown Pharr, 118 S. Cage Blvd, Pharr\n` +
           `Entrada libre 2pm–5pm. Concurso de guacamole, Los Palominos, Lucha Libre, juegos mecánicos y gastronomía de aguacate.\n\n` +
           `🔄 *REUNIONES SEMANALES RECURRENTES:*\n` +
-          `• Lunes 8:00 AM: Reunión de Campo Hub of Prosperity (María y equipo de campo)\n` +
-          `• Lunes 9:00 AM: Reunión de Equipo SARA (Equipo de SARA)\n` +
+          `• Lunes 8:00 AM: Reunión de Campo Hub of Prosperity (María, Juan, Demetrio y equipo de campo)\n` +
           `• Martes 9:00 AM – 12:30 PM: Clase del Dr. Alexis Racelis\n` +
-          `• Miércoles 1:00 PM: 1-1 Proyecto Forestal (Tree Meeting)\n` +
+          `• Miércoles 1:00 PM: 1-1 Proyecto Forestal (Project Cool Schools)\n` +
           `• Miércoles 2:00 PM: Reunión General del Laboratorio de Agroecología\n` +
           `• Miércoles 3:30 PM: 1-1 con Q\n\n` +
           `✈️ *LOGÍSTICA Y VIAJES:*\n` +
@@ -1816,7 +1801,7 @@
           `_Nota: Fines de semana protegidos para descanso personal sin tareas asignadas, excepto talleres oficiales._\n` +
           `_Pizarra en vivo: https://sunaxle.github.io/agroecology-dashboard/whiteboard.html_`;
       } else {
-        text = `🌱 *UTRGV AGROECOLOGY & SARA OPERATIONS BOARD*\n` +
+        text = `🌱 *UTRGV AGROECOLOGY & HUB OF PROSPERITY OPERATIONS BOARD*\n` +
           `📅 Key Dates: Sept 26 – Oct 29, 2026\n\n` +
           `🌾 *FEATURED WORKSHOPS & EVENTS:*\n` +
           `1️⃣ *Beginner Gardening 101* (Sat Sep 26 @ 10:00 AM – 12:00 PM)\n` +
@@ -1838,10 +1823,9 @@
           `📍 Downtown Pharr, 118 S. Cage Blvd, Pharr\n` +
           `Free entry 2pm–5pm. Guacamole contest, Los Palominos, Lucha Libre, carnival rides & regional avocado food vendors.\n\n` +
           `🔄 *STANDING WEEKLY CADENCE:*\n` +
-          `• Mondays @ 8:00 AM: Hub Farm Operations Meeting (Maria & Farm Crew)\n` +
-          `• Mondays @ 9:00 AM: SARA Team Meeting (SARA Staff)\n` +
+          `• Mondays @ 8:00 AM: Hub Farm Operations Meeting (Maria, Juan, Demetrio & Farm Crew)\n` +
           `• Tuesdays @ 9:00 AM – 12:30 PM: Dr. Racelis Class / Teaching\n` +
-          `• Wednesdays @ 1:00 PM: 1-1 Tree Meeting\n` +
+          `• Wednesdays @ 1:00 PM: 1-1 Tree & Cool Schools Meeting (Dr. Christoffersen)\n` +
           `• Wednesdays @ 2:00 PM: Agroecology Lab Team Meeting\n` +
           `• Wednesdays @ 3:30 PM: 1-1 Q Meeting\n\n` +
           `✈️ *KEY TRAVEL & LOGISTICS:*\n` +

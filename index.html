@@ -1,343 +1,1577 @@
+<!-- TRANSPARENCY DISCLOSURE: This application is developed and monitored in compliance with the Texas Responsible AI Governance Act (TRAIGA), Texas DIR TAC Chapter 219, and UTRGV institutional policies. Human-in-the-loop oversight is maintained and logged. -->
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Community Impact & Health | UTRGV Agroecology</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .impact-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            text-align: center;
-        }
-
-        .impact-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .impact-value {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .chart-container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Alexis Racelis | Agroecology & Resilient Food Systems Lab | UTRGV</title>
+  <meta name="description" content="Official website and research portal for Dr. Alexis Racelis and the UTRGV Agroecology & Resilient Food Systems Laboratory in the School of Earth, Environmental, and Marine Sciences (SEEMS) and School of Integrative Biological and Chemical Sciences." />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="home.css" />
+  <link rel="icon" type="image/png" href="assets/utrgv-agroecology.png" />
 </head>
 
 <body>
-    <header class="app-header">
-        <div class="brand-left">
+
+  <!-- Top Institutional Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div>
+        <span>🎓 <strong>University of Texas Rio Grande Valley</strong> | College of Sciences • SEEMS & SIBCS</span>
+      </div>
+      <div>
+        <span>Edinburg & Brownsville, TX • <a href="#join">Join the Lab (Graduate M.S. & Undergrad)</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="brand-wrapper">
+          <img src="assets/utrgv-agroecology.png" alt="UTRGV Agroecology Logo" class="brand-logo" onerror="this.src='assets/IMG_7220.jpg'" />
+          <div class="brand-text">
+            <span class="brand-title">RACELIS LAB</span>
+            <span class="brand-subtitle">Agroecology & Resilient Food Systems</span>
+          </div>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#research" class="nav-link">Research</a></li>
+          <li><a href="#publications" class="nav-link">Publications</a></li>
+          <li><a href="#people" class="nav-link">Lab Members</a></li>
+          <li><a href="#labs" class="nav-link">Living Labs</a></li>
+          <li><a href="#funding" class="nav-link">Funding</a></li>
+          <li><a href="#portal" class="nav-link">Digital Hub</a></li>
+          <li><a href="#colleagues" class="nav-link">Faculty Network</a></li>
+          <li><a href="#join" class="nav-link">Join Us</a></li>
+          <li><a href="#visit" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="command_center/dashboard.html" class="btn btn-accent">🧭 Command Center</a>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button>
         </div>
-        <div class="title">Human & Community Impact</div>
-        <div class="brand-right">
-        </div>
-    </header>
+      </nav>
+    </div>
+  </header>
 
-    <nav class="app-nav">
-        <a class="nav-link" href="campuses.html">Select Campus</a><span style="color: #ccc; padding: 6px;">|</span><a class="nav-link" href="dashboard_map.html">Dashboard</a>
-        <a class="nav-link" href="canopy.html">Canopy Over Time</a>
-        <a class="nav-link" href="trails.html">Trail Analysis</a>
-        <a class="nav-link" href="wind.html">Wind Analysis</a>
-        <a class="nav-link" href="viewshed.html">Viewshed Greenery</a>
-        <a class="nav-link" href="temperature.html">Temp Modeling</a>
-        <a class="nav-link" href="soil_moisture.html">Soil Moisture</a>
-        <a class="nav-link" href="albedo.html">Albedo</a>
-        <a class="nav-link" href="water_table.html">Water Table</a>
-        <a class="nav-link" href="soil_types.html">Soil Composition</a>
-        <a class="nav-link" href="zoning.html">Site Zoning</a>
-        <a class="nav-link" id="navData" href="data_pipeline.html">Data Telemetry</a>
-        <a class="nav-link" href="3d-vision.html">3D Vision Concept</a>
-        <a class="nav-link" href="school.html">School Profile</a>
-        <a class="nav-link" href="biodiversity.html">Biodiversity</a>
-        <a class="nav-link" href="protocols.html">Protocols</a>
-        <a class="nav-link active" href="index.html">Community Impact</a>
-        <a class="nav-link" href="student_tracking.html">Student Tracking</a>
-        <a class="nav-link" href="tree_3d.html">3D Shade Models</a>
-        <a class="nav-link" href="maintenance.html">Structural Maint.</a>
-        <a class="nav-link" href="economics.html">Economic Ledger</a>
-        <a class="nav-link" href="correlations.html">Data Correlations</a>
-        <a class="nav-link" href="survey.html">Wellbeing Survey</a>
-    </nav>
+  <!-- Hero Section -->
+  <section class="hero-section" id="about">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-gold); border: 1px solid rgba(245, 158, 11, 0.4);">
+            🌱 School of Earth, Environmental, and Marine Sciences (SEEMS)
+          </div>
+          <h1 class="font-serif">
+            Agroecology, Soil Carbon & <span>Food Resilience</span> Lab
+          </h1>
+          <p class="hero-lead">
+            Led by <strong>Dr. Alexis Racelis</strong> (Houston Endowed Chair for Science & Technology), our laboratory advances participatory action research, subtropical soil health, silvopasture microclimates, and regional food sovereignty throughout the Rio Grande Valley.
+          </p>
 
-    <main class="page-container" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
-        <div style="margin-bottom: 30px; text-align: center;">
-            <p style="font-size: 18px; color: var(--text);">Correlating our physical ecosystem metrics (shade,
-                temperature drops, biodiversity) to human-centric improvements on campus.</p>
-            <h2 id="campusHeader" style="margin-top: 10px; color: var(--primary);">J.W. Caceres & M. Rivas Academy</h2>
-        </div>
+          <div class="hero-cta-group">
+            <a href="command_center/dashboard.html" class="btn btn-accent">🧭 Master Command Center</a>
+            <a href="#research" class="btn btn-outline-white">Explore Research Themes 🔬</a>
+            <a href="#portal" class="btn btn-outline-white">Digital Tools & GIS Maps 🚀</a>
+          </div>
 
-        <div class="impact-grid">
-            <!-- BOLUND & HUNHAMMAR CATEGORY 1: Air Filtering -->
-            <div class="impact-card">
-                <div class="impact-icon">🍃</div>
-                <div class="impact-value" id="valAir">-12% PM10</div>
-                <h3 style="font-size: 16px;">Air Filtration</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Estimated reduction in airborne particulate
-                    matter via leaf surface interception (Bolund & Hunhammar, 1999).</p>
+          <div class="hero-badges">
+            <div class="hero-badge-item">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <span>White House Rural Innovator Honoree</span>
             </div>
-
-            <!-- BOLUND & HUNHAMMAR CATEGORY 2: Microclimate -->
-            <div class="impact-card">
-                <div class="impact-icon">🌡️</div>
-                <div class="impact-value" id="valHeat">-4.5°F</div>
-                <h3 style="font-size: 16px;">Microclimate Regulation</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Daytime ambient cooling effect driven by
-                    evapo-transpiration and direct shading (Bolund & Hunhammar, 1999).</p>
+            <div class="hero-badge-item">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>USDA Equity Commission & NIFA Partner</span>
             </div>
-
-            <!-- BOLUND & HUNHAMMAR CATEGORY 3: Noise Reduction -->
-            <div class="impact-card">
-                <div class="impact-icon">🔇</div>
-                <div class="impact-value" id="valNoise">-8 dB</div>
-                <h3 style="font-size: 16px;">Acoustic Dampening</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Reduction in traffic noise pollution reaching
-                    the trail network due to dense foliage buffers (Bolund & Hunhammar, 1999).</p>
-            </div>
-
-            <!-- BOLUND & HUNHAMMAR CATEGORY 4: Recreation -->
-            <div class="impact-card">
-                <div class="impact-icon">🥾</div>
-                <div class="impact-value" id="valPlay">+45 mins</div>
-                <h3 style="font-size: 16px;">Recreation & Active Play</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Increase in daily outdoor exposure time
-                    enabled by comfortable, accessible microclimate zones (Bolund & Hunhammar, 1999).</p>
-            </div>
-
-            <!-- Secondary Educational Metrics -->
-            <div class="impact-card">
-                <div class="impact-icon">🧠</div>
-                <div class="impact-value" id="valEdu">+12%</div>
-                <h3 style="font-size: 16px;">Ecological Literacy Growth</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Average improvement on science
-                    post-assessment scores when integrating field data collection.</p>
-            </div>
-
-            <div class="impact-card">
-                <div class="impact-icon">🧭</div>
-                <div class="impact-value">3.5 miles</div>
-                <h3 style="font-size: 16px;">Internal Walkable Routes</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Total hard internal campus distance when
-                    combining all major paths and transit corridors.</p>
-            </div>
-
-            <!-- Newly Synthesized Scientific Benefits -->
-            <div class="impact-card">
-                <div class="impact-icon">🧘🏽‍♀️</div>
-                <div class="impact-value" id="valPsych">-15% Stress</div>
-                <h3 style="font-size: 16px;">Psychological Recuperation</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Direct links between urban greening and the
-                    reduction of physiological stress during the school day (Wolf, 2010).</p>
-            </div>
-
-            <div class="impact-card">
-                <div class="impact-icon">📉</div>
-                <div class="impact-value" id="valROI">-$1,400/yr</div>
-                <h3 style="font-size: 16px;">HVAC Efficiency & ROI</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Reduction in building heating and cooling
-                    costs due to the direct shading of the new microforest canopy (Dwyer, 1992).</p>
-            </div>
-
-            <div class="impact-card">
-                <div class="impact-icon">☔</div>
-                <div class="impact-value" id="valStorm">-85% Flow</div>
-                <h3 style="font-size: 16px;">Stormwater Management</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Permeable trails and root networks act as
-                    sponges, preventing parking lot pooling and filtering pollutants (Livesley, 2016).</p>
-            </div>
-
-            <div class="impact-card">
-                <div class="impact-icon">🫁</div>
-                <div class="impact-value" id="valAQI">Net Positive</div>
-                <h3 style="font-size: 16px;">Localized Air Quality</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Dynamic particulate capture models balanced
-                    against localized tree VOC emissions to ensure positive lung health (Escobedo, 2011).</p>
-            </div>
-
-            <div class="impact-card">
-                <div class="impact-icon">🕸️</div>
-                <div class="impact-value" id="valConn">+22 Paths</div>
-                <h3 style="font-size: 16px;">Organic Connectivity</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Rejects rigid concrete A-to-B sidewalks to
-                    map "semi-lattice" organic student wandering and natural exploration (Alexander, 1965).</p>
-            </div>
-
-            <div class="impact-card">
-                <div class="impact-icon">🤝</div>
-                <div class="impact-value" id="valStew">400+ Hrs</div>
-                <h3 style="font-size: 16px;">Social-Ecological Stewardship</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Treats the forest not just as a physical
-                    space, but as a living socio-ecological network maintained by students (Campbell, 2022).</p>
-            </div>
-
-            <div class="impact-card" style="position: relative;">
-                <div class="impact-icon">📋</div>
-                <div class="impact-value" id="valMaint">15-Yr Plan</div>
-                <h3 style="font-size: 16px;">Structural Maintenance</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px; margin-bottom: 35px;">Visualizes long-term
-                    pruning rotations,
-                    adaptive watering, and expected natural canopy mortality rates (Schoeneman, 1994).</p>
-                <a href="maintenance.html"
-                    style="position: absolute; bottom: 15px; left: 20px; right: 20px; display: block; text-align: center; padding: 6px; background: var(--green); color: white; border-radius: 4px; text-decoration: none; font-size: 13px; font-weight: bold;">Launch
-                    Tracker</a>
-            </div>
-
-            <div class="impact-card">
-                <div class="impact-icon">🏫</div>
-                <div class="impact-value" id="valScale">RGV Scaled</div>
-                <h3 style="font-size: 16px;">South Texas Deployment</h3>
-                <p style="font-size: 13px; color: #666; margin-top: 10px;">Framework custom built for rural,
-                    lower-resourced districts rather than relying on bloated mega-city metrics (Groninger, 2002).</p>
-            </div>
+          </div>
         </div>
 
-        <div style="display: flex; gap: 20px; margin-top: 20px;">
-            <div style="flex: 1;" class="chart-container">
-                <canvas id="impactRadarChart"></canvas>
+        <div class="hero-visual-card">
+          <div class="hero-img-container">
+            <img src="assets/IMG_7220.jpg" alt="Hub of Prosperity Field Station" />
+            <div class="live-tag">
+              <span class="pulse-dot"></span> Active Research Farm | Edinburg, TX
             </div>
-
-            <div style="width: 350px; display: flex; flex-direction: column; gap: 20px;">
-                <div class="card"
-                    style="flex: 1; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                    <h3 style="margin-bottom: 15px;">Target Correlator</h3>
-                    <label style="font-size: 14px; font-weight: bold;">Simulate Progress Year:</label>
-                    <input type="range" id="yearSlider" min="2025" max="2040" step="5" value="2040"
-                        style="width: 100%; margin: 15px 0;">
-                    <div style="text-align: center; font-size: 24px; font-weight: bold; color: var(--primary);"
-                        id="yearReadout">2040</div>
-                    <p style="font-size: 13px; margin-top: 15px; color: #555;">Slide to see how progressive tree growth
-                        maps directly to long-term health and social outcomes.</p>
-                </div>
-
-                <div class="card"
-                    style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-                    <button class="campus-action"
-                        onclick="alert('Generating PDF Impact Report summarizing local findings.')">Export Exec.
-                        Report</button>
-                </div>
+          </div>
+          <div class="hero-card-meta">
+            <div>
+              <div class="hero-card-title">Hub of Prosperity (5 Acres)</div>
+              <div class="hero-card-desc">Urban living lab, cover crop trials, silvopasture paddocks & community farm stand.</div>
             </div>
+            <a href="hub_intro.html" class="btn btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">Explore Hub →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Metric Ribbon -->
+  <div class="container impact-ribbon-wrapper">
+    <div class="impact-ribbon">
+      <div class="metric-item">
+        <div class="metric-icon">🚜</div>
+        <div class="metric-number" data-target="5" data-suffix=" Acres">0</div>
+        <div class="metric-label">Living Agroecology Farm & Research Station</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-icon">🏆</div>
+        <div class="metric-number" data-target="1" data-prefix="#" data-suffix="st">0</div>
+        <div class="metric-label">USDA Organic Certified Garden on a Texas Campus</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-icon">🥗</div>
+        <div class="metric-number" data-target="92" data-suffix="%">0</div>
+        <div class="metric-label">Harvest Donated to Community Fridges & Pantries</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-icon">👥</div>
+        <div class="metric-number" data-target="350" data-suffix="+">0</div>
+        <div class="metric-label">Students, Postdocs & Farmers Mentored Annually</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-icon">💰</div>
+        <div class="metric-number" data-target="2" data-prefix="$" data-suffix="M+">0</div>
+        <div class="metric-label">Active Grants (USDA NIFA, WKKF, Texas Trees)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Core Research Themes -->
+  <section class="pillars-section" id="research">
+    <div class="container">
+      <div class="text-center mx-auto" style="max-width: 800px;">
+        <span class="section-tag">Scientific Agenda</span>
+        <h2 class="section-title font-serif">Research Themes & Laboratory Focus</h2>
+        <p class="section-desc mx-auto">
+          Echoing the scientific rigor of the UTRGV College of Sciences, our research spans the continuum from soil microbial ecology and entomological biocontrol to regional agroforestry and civic food systems.
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon-box">🌱</div>
+          <h3>Subtropical Soil Health &amp; Carbon</h3>
+          <p>Investigating cover crop mixes (Cowpea, Sunn Hemp), mycorrhizal fungal colonization, and active soil organic carbon (POXC) accumulation under high temperatures and water constraints.</p>
+          <ul class="pillar-highlights">
+            <li>Summer legume nitrogen fixation</li>
+            <li>Reduced-tillage organic transitions</li>
+            <li>Biochar &amp; organic amendment trials</li>
+          </ul>
         </div>
 
-    </main>
+        <div class="pillar-card">
+          <div class="pillar-icon-box">🐑</div>
+          <h3>Silvopasture &amp; Microclimates</h3>
+          <p>Integrating small ruminants and yearling cattle into shaded tree canopy corridors to provide thermal comfort, improve animal welfare, and biological weed suppression via flash-grazing.</p>
+          <ul class="pillar-highlights">
+            <li>Multi-paddock rotational grazing</li>
+            <li>Canopy microclimate cooling (-12°F)</li>
+            <li>Cover crop biological termination</li>
+          </ul>
+        </div>
 
-    <script src="config.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const campusName = localStorage.getItem("activeCampusName") || "J.W. Caceres & M. Rivas Academy";
-            document.getElementById("campusHeader").textContent = campusName;
+        <div class="pillar-card">
+          <div class="pillar-icon-box">🌳</div>
+          <h3>Urban Forestry &amp; Cool Schools</h3>
+          <p>Deploying native tree canopy (Montezuma Cypress, Live Oak, Pecan) to cool schoolyards, mitigate urban heat islands, and assess ecosystem service valuations with the Texas Trees Foundation.</p>
+          <ul class="pillar-highlights">
+            <li>30-Year canopy growth simulations</li>
+            <li>3D orbital sun &amp; shade modeling</li>
+            <li>Viewshed greenery line-of-sight analysis</li>
+          </ul>
+        </div>
 
-            const ctx = document.getElementById('impactRadarChart').getContext('2d');
+        <div class="pillar-card">
+          <div class="pillar-icon-box">🌾</div>
+          <h3>Food Sovereignty &amp; Justice</h3>
+          <p>Championing bilingual beginning farmer training, land access equity, Community Fridge mutual aid networks, and policy partnerships with the USDA Equity Commission across South Texas.</p>
+          <ul class="pillar-highlights">
+            <li>Beginning farmer business incubation</li>
+            <li>92% harvest donation to community fridges</li>
+            <li>Participatory food justice research</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            // Initial Data for 2040 (Max Impact)
-            const radarData = {
-                labels: [
-                    'Thermal Comfort',
-                    'Social Interaction',
-                    'Physical Activity',
-                    'Mental Well-being',
-                    'Eco-Literacy',
-                    'Air Quality/Asthma Rx'
-                ],
-                datasets: [{
-                    label: 'Pre-Intervention Baseline (2025)',
-                    data: [3, 4, 3, 5, 2, 4],
-                    fill: true,
-                    backgroundColor: 'rgba(255, 152, 0, 0.2)',
-                    borderColor: 'rgb(255, 152, 0)',
-                    pointBackgroundColor: 'rgb(255, 152, 0)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgb(255, 152, 0)'
-                }, {
-                    label: 'Projected Target (2040)',
-                    data: [8, 9, 7, 8, 9, 8],
-                    fill: true,
-                    backgroundColor: 'rgba(76, 175, 80, 0.2)',
-                    borderColor: 'rgb(76, 175, 80)',
-                    pointBackgroundColor: 'rgb(76, 175, 80)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgb(76, 175, 80)'
-                }]
-            };
+  <!-- Section 2: Peer-Reviewed Publications -->
+  <section class="publications-section" id="publications">
+    <div class="container">
+      <div class="text-center mx-auto" style="max-width: 800px;">
+        <span class="section-tag">Scholarly Output</span>
+        <h2 class="section-title font-serif">Selected Peer-Reviewed Publications</h2>
+        <p class="section-desc mx-auto">
+          Recent journal articles, technical reports, and peer-reviewed studies authored by Dr. Alexis Racelis and lab members.
+        </p>
+      </div>
 
-            const config = {
-                type: 'radar',
-                data: radarData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        r: {
-                            angleLines: { display: true },
-                            suggestedMin: 0,
-                            suggestedMax: 10,
-                            ticks: { display: false }
-                        }
-                    },
-                    plugins: {
-                        legend: { position: 'bottom' }
-                    }
-                }
-            };
+      <div class="pub-filter-bar">
+        <button class="pub-btn pub-filter-btn active" data-pub-filter="all">All Topics</button>
+        <button class="pub-btn pub-filter-btn" data-pub-filter="soil">🌱 Soil Health & Cover Crops</button>
+        <button class="pub-btn pub-filter-btn" data-pub-filter="forestry">🌳 Urban Forestry & Microclimate</button>
+        <button class="pub-btn pub-filter-btn" data-pub-filter="biocontrol">🐛 Biocontrol & Entomology</button>
+        <button class="pub-btn pub-filter-btn" data-pub-filter="food">🍎 Food Systems & Policy</button>
+      </div>
 
-            const myChart = new Chart(ctx, config);
+      <div class="pub-list">
+        <!-- Pub 1 -->
+        <div class="pub-item" data-pub-category="soil">
+          <div class="pub-main-info">
+            <div class="pub-badge-line">
+              <span class="pub-year-badge">2024</span>
+              <span class="pub-journal-tag">Agriculture, Ecosystems & Environment</span>
+            </div>
+            <div class="pub-title-text">Evaluating Summer Legume Cover Crop Performance, Biomass Production, and Weed Suppression in Semi-Arid Subtropical Organic Vegetable Systems</div>
+            <div class="pub-authors-text">Kasper, S., Soti, P., Moreno, C., &amp; <strong>Racelis, A.</strong></div>
+          </div>
+          <div class="pub-actions">
+            <a href="https://scholar.google.com/citations?user=alexis_racelis" target="_blank" class="pub-btn">Google Scholar ↗</a>
+          </div>
+        </div>
 
-            // Slider Logic to animate the radar
-            const slider = document.getElementById('yearSlider');
-            const readout = document.getElementById('yearReadout');
+        <!-- Pub 2 -->
+        <div class="pub-item" data-pub-category="forestry">
+          <div class="pub-main-info">
+            <div class="pub-badge-line">
+              <span class="pub-year-badge">2024</span>
+              <span class="pub-journal-tag">Urban Forestry &amp; Urban Greening</span>
+            </div>
+            <div class="pub-title-text">Microclimate Cooling and Shade Equity: Quantifying Ecosystem Benefits of Schoolyard Canopy Expansion in Subtropical South Texas</div>
+            <div class="pub-authors-text">Jones, K., Brush, J., Christoffersen, B., &amp; <strong>Racelis, A.</strong></div>
+          </div>
+          <div class="pub-actions">
+            <a href="canopy.html" class="pub-btn">View Model ↗</a>
+          </div>
+        </div>
 
-            slider.addEventListener('input', (e) => {
-                const year = parseInt(e.target.value);
-                readout.textContent = year;
+        <!-- Pub 3 -->
+        <div class="pub-item" data-pub-category="soil">
+          <div class="pub-main-info">
+            <div class="pub-badge-line">
+              <span class="pub-year-badge">2023</span>
+              <span class="pub-journal-tag">Renewable Agriculture and Food Systems</span>
+            </div>
+            <div class="pub-title-text">Soil Health Indicators and Mycorrhizal Fungal Dynamics Across Organic and Reduced-Till Farms in the Lower Rio Grande Valley</div>
+            <div class="pub-authors-text">Soti, P., Kariyat, R., &amp; <strong>Racelis, A.</strong></div>
+          </div>
+          <div class="pub-actions">
+            <a href="https://scholarworks.utrgv.edu/seem_facpub/" target="_blank" class="pub-btn">ScholarWorks ↗</a>
+          </div>
+        </div>
 
-                // Simple linear interpolation for the demo
-                let progressRatio = (year - 2025) / (2040 - 2025);
+        <!-- Pub 4 -->
+        <div class="pub-item" data-pub-category="biocontrol">
+          <div class="pub-main-info">
+            <div class="pub-badge-line">
+              <span class="pub-year-badge">2023</span>
+              <span class="pub-journal-tag">Invasive Plant Science and Management</span>
+            </div>
+            <div class="pub-title-text">Biological Control and Ecological Suppression of Silverleaf Nightshade (Solanum elaeagnifolium) in Subtropical Crop Alleys</div>
+            <div class="pub-authors-text">Subedi, S., Soti, P., &amp; <strong>Racelis, A.</strong></div>
+          </div>
+          <div class="pub-actions">
+            <a href="https://scholar.google.com/citations?user=alexis_racelis" target="_blank" class="pub-btn">DOI ↗</a>
+          </div>
+        </div>
 
-                let bConfig = radarData.datasets[0].data; // Baseline
-                let tConfig = [8, 9, 7, 8, 9, 8]; // True Targets
+        <!-- Pub 5 -->
+        <div class="pub-item" data-pub-category="food">
+          <div class="pub-main-info">
+            <div class="pub-badge-line">
+              <span class="pub-year-badge">2022</span>
+              <span class="pub-journal-tag">Journal of Agriculture, Food Systems, and Community Development</span>
+            </div>
+            <div class="pub-title-text">Participatory Action Research and Civic Agriculture: Building Food Sovereignty through Urban Food Hubs in the Rio Grande Valley</div>
+            <div class="pub-authors-text">Kaika, A., Reyna, R., &amp; <strong>Racelis, A.</strong></div>
+          </div>
+          <div class="pub-actions">
+            <a href="hub_intro.html" class="pub-btn">Hub Story ↗</a>
+          </div>
+        </div>
 
-                let currentVals = bConfig.map((base, idx) => {
-                    return base + ((tConfig[idx] - base) * progressRatio);
-                });
+        <!-- Pub 6 -->
+        <div class="pub-item" data-pub-category="biocontrol">
+          <div class="pub-main-info">
+            <div class="pub-badge-line">
+              <span class="pub-year-badge">2021</span>
+              <span class="pub-journal-tag">Biological Control</span>
+            </div>
+            <div class="pub-title-text">Impact of Biological Control Agents on Invasive Arundo donax Across the Lower Rio Grande River Basin</div>
+            <div class="pub-authors-text"><strong>Racelis, A. E.</strong>, Goolsby, J. A., &amp; Moran, P. J.</div>
+          </div>
+          <div class="pub-actions">
+            <a href="https://scholar.google.com/citations?user=alexis_racelis" target="_blank" class="pub-btn">Full Text ↗</a>
+          </div>
+        </div>
+      </div>
 
-                myChart.data.datasets[1].data = currentVals;
-                myChart.data.datasets[1].label = `Projected Target (${year})`;
-                myChart.update();
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="https://scholar.google.com/citations?user=alexis_racelis" target="_blank" class="btn btn-outline">View All Publications on Google Scholar ↗</a>
+        <a href="https://www.researchgate.net/profile/Alexis-Racelis/research" target="_blank" class="btn btn-outline" style="margin-left: 10px;">ResearchGate Profile ↗</a>
+      </div>
+    </div>
+  </section>
 
-                // Update Bolund & Hunhammar Ecosystem Metrics
-                document.getElementById('valAir').textContent = "-" + Math.round(12 * progressRatio) + "% PM10";
-                document.getElementById('valHeat').textContent = "-" + (4.5 * progressRatio).toFixed(1) + "°F";
-                document.getElementById('valNoise').textContent = "-" + Math.round(8 * progressRatio) + " dB";
-                document.getElementById('valPlay').textContent = "+" + Math.round(45 * progressRatio) + " mins";
-                document.getElementById('valEdu').textContent = "+" + Math.round(12 * progressRatio) + "%";
-            });
-     );
-    </script>
+  <!-- Section 3: Lab Members & Personnel -->
+  <section class="people-section" id="people">
+    <div class="container">
+      <div class="text-center mx-auto" style="max-width: 800px;">
+        <span class="section-tag">Lab Directory</span>
+        <h2 class="section-title font-serif">Lab Members & Alumni</h2>
+        <p class="section-desc mx-auto">
+          Our team comprises postdoctoral fellows, M.S. graduate thesis researchers, undergraduate SAFS fellows, and farm managers working collaboratively.
+        </p>
+      </div>
+
+      <!-- PI Profile Card -->
+      <div class="leader-profile">
+        <div class="leader-avatar">
+          <img src="assets/IMG_7219.jpg" alt="Dr. Alexis Racelis" />
+        </div>
+        <div class="leader-info">
+          <h3>Dr. Alexis Racelis</h3>
+          <div class="leader-title">Principal Investigator | Houston Endowed Chair for Science &amp; Technology | Associate Professor (SEEMS &amp; Biology)</div>
+          <p class="leader-bio">
+            Dr. Racelis is a prominent agroecologist leading participatory research in soil health, cover cropping, urban forestry, and resilient food systems. He directs the Agroecology and Resilient Food Systems Laboratory and the Hub of Prosperity at UTRGV. In 2024, Dr. Racelis was honored by the White House's Domestic Policy Council as one of 14 national "Rural Innovators" and served on the USDA Equity Commission’s Subcommittee for Agriculture.
+          </p>
+          <div class="leader-awards">
+            <span class="award-tag">🏛️ White House Rural Innovator</span>
+            <span class="award-tag">🇺🇸 USDA Equity Commission</span>
+            <span class="award-tag">🔬 Houston Endowed Chair</span>
+            <span class="award-tag">🌱 Director, Hub of Prosperity</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roster Filtering Tabs -->
+      <div class="members-tabs">
+        <button class="member-tab-btn active" data-member-filter="all">All Members &amp; Alumni</button>
+        <button class="member-tab-btn" data-member-filter="leadership">Postdocs &amp; Leadership</button>
+        <button class="member-tab-btn" data-member-filter="masters">M.S. Graduate Researchers</button>
+        <button class="member-tab-btn" data-member-filter="undergrad">Undergrad Researchers &amp; Staff</button>
+        <button class="member-tab-btn" data-member-filter="alumni">Lab Alumni</button>
+      </div>
+
+      <!-- Roster Grid -->
+      <div class="members-grid">
+        <!-- Member: Dr. Pushpa Soti -->
+        <div class="member-card" data-group="leadership">
+          <div class="member-header">
+            <div class="member-avatar-circle">PS</div>
+            <div>
+              <div class="member-name">Dr. Pushpa Soti</div>
+              <div class="member-role-badge">Affiliate Faculty / Postdoc</div>
+            </div>
+          </div>
+          <div class="member-thesis">Specializes in soil biogeochemistry, mycorrhizal fungi ecology, and integrated weed &amp; pest management across subtropical cropping systems.</div>
+        </div>
+
+        <!-- Member: Dr. Carlo Moreno -->
+        <div class="member-card" data-group="leadership">
+          <div class="member-header">
+            <div class="member-avatar-circle">CM</div>
+            <div>
+              <div class="member-name">Dr. Carlo Moreno</div>
+              <div class="member-role-badge">SOAR Postdoctoral Fellow</div>
+            </div>
+          </div>
+          <div class="member-thesis">Leads research on organic brassica production, reduced-tillage management, and agroecosystem insect dynamics in semi-arid soils.</div>
+        </div>
+
+        <!-- Member: Dr. Bradley Christoffersen -->
+        <div class="member-card" data-group="leadership">
+          <div class="member-header">
+            <div class="member-avatar-circle">BC</div>
+            <div>
+              <div class="member-name">Dr. Bradley Christoffersen</div>
+              <div class="member-role-badge">Co-Leader, Project Cool Schools &amp; CIT</div>
+            </div>
+          </div>
+          <div class="member-thesis">Plant ecophysiologist investigating hydraulic architecture, drought resilience, and transpiration kinetics in native tree species across schoolyards and living labs.</div>
+        </div>
+
+        <!-- Member: Katie Lavallee -->
+        <div class="member-card" data-group="masters">
+          <div class="member-header">
+            <div class="member-avatar-circle">KL</div>
+            <div>
+              <div class="member-name">Katie Lavallee</div>
+              <div class="member-role-badge">M.S. AESS Candidate</div>
+            </div>
+          </div>
+          <div class="member-thesis"><strong>Thesis:</strong> Native cover crop trials, seed germination dynamics, and pollinator floral resource availability in the Lower RGV.</div>
+        </div>
+
+        <!-- Member: Samikshya Subedi -->
+        <div class="member-card" data-group="masters">
+          <div class="member-header">
+            <div class="member-avatar-circle">SS</div>
+            <div>
+              <div class="member-name">Samikshya Subedi</div>
+              <div class="member-role-badge">M.S. AESS Candidate</div>
+            </div>
+          </div>
+          <div class="member-thesis"><strong>Thesis:</strong> Biological control agents, host specificity, and natural suppression of invasive Silverleaf Nightshade (Solanum elaeagnifolium).</div>
+        </div>
+
+        <!-- Member: Roberto Reyna Oviedo -->
+        <div class="member-card" data-group="masters">
+          <div class="member-header">
+            <div class="member-avatar-circle">RR</div>
+            <div>
+              <div class="member-name">Roberto Reyna Oviedo</div>
+              <div class="member-role-badge">M.S. AESS Candidate</div>
+            </div>
+          </div>
+          <div class="member-thesis"><strong>Thesis:</strong> Subtropical agroecological systems, farmer participatory trials, and regional food web resilience.</div>
+        </div>
+
+        <!-- Member: Savannah Rugg -->
+        <div class="member-card" data-group="masters">
+          <div class="member-header">
+            <div class="member-avatar-circle">SR</div>
+            <div>
+              <div class="member-name">Savannah Rugg</div>
+              <div class="member-role-badge">M.S. AESS Candidate</div>
+            </div>
+          </div>
+          <div class="member-thesis"><strong>Thesis:</strong> Sustainable food systems, soil microbial biomass, and SOAR transition to certified organic farm management.</div>
+        </div>
+
+        <!-- Member: Katharine Jones -->
+        <div class="member-card" data-group="alumni">
+          <div class="member-header">
+            <div class="member-avatar-circle">KJ</div>
+            <div>
+              <div class="member-name">Katharine Jones</div>
+              <div class="member-role-badge">M.S. Alumna</div>
+            </div>
+          </div>
+          <div class="member-thesis"><strong>Thesis:</strong> Urban tree canopy modeling, heat island mitigation, and ecosystem valuation in South Texas.</div>
+          <div class="member-alumni-dest">📍 Now: Urban Forester &amp; Environmental Consultant</div>
+        </div>
+
+        <!-- Member: John Brush -->
+        <div class="member-card" data-group="alumni">
+          <div class="member-header">
+            <div class="member-avatar-circle">JB</div>
+            <div>
+              <div class="member-name">John Brush</div>
+              <div class="member-role-badge">M.S. Alumnus</div>
+            </div>
+          </div>
+          <div class="member-thesis"><strong>Thesis:</strong> Avian ecology and bird community composition across urban and agricultural forest matrices.</div>
+          <div class="member-alumni-dest">📍 Now: Urban Ecologist, Quinta Mazatlán</div>
+        </div>
+
+        <!-- Member: Allison Kaika -->
+        <div class="member-card" data-group="alumni">
+          <div class="member-header">
+            <div class="member-avatar-circle">AK</div>
+            <div>
+              <div class="member-name">Allison Kaika</div>
+              <div class="member-role-badge">M.S. Alumna</div>
+            </div>
+          </div>
+          <div class="member-thesis"><strong>Thesis:</strong> Participatory action research, civic agriculture, and local produce accessibility in colonias.</div>
+          <div class="member-alumni-dest">📍 Now: Food Systems Specialist, Regional Non-Profit</div>
+        </div>
+
+        <!-- Member: Matt Kutugata -->
+        <div class="member-card" data-group="undergrad">
+          <div class="member-header">
+            <div class="member-avatar-circle">MK</div>
+            <div>
+              <div class="member-name">Matt Kutugata</div>
+              <div class="member-role-badge">Undergrad Researcher (B.S. SAFS)</div>
+            </div>
+          </div>
+          <div class="member-thesis">Deploying drone multispectral imagery and AI computer vision to evaluate cover crop biomass and canopy closure.</div>
+        </div>
+
+        <!-- Member: Marisol Cervantes -->
+        <div class="member-card" data-group="undergrad">
+          <div class="member-header">
+            <div class="member-avatar-circle">MC</div>
+            <div>
+              <div class="member-name">Marisol Cervantes</div>
+              <div class="member-role-badge">Garden Manager &amp; Assistant</div>
+            </div>
+          </div>
+          <div class="member-thesis">Coordinates daily operations at the UTRGV Certified Organic Greenhouse and manages student volunteer field cohorts.</div>
+        </div>
+
+        <!-- Member: Rico Marez -->
+        <div class="member-card" data-group="undergrad">
+          <div class="member-header">
+            <div class="member-avatar-circle">RM</div>
+            <div>
+              <div class="member-name">Rico Marez</div>
+              <div class="member-role-badge">Undergrad Researcher (B.S. SAFS)</div>
+            </div>
+          </div>
+          <div class="member-thesis">Testing organic fertilizer amendments, salinity stress, and drought tolerance in heirloom tomato and pepper cultivars.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Living Laboratories -->
+  <section class="labs-section" id="labs">
+    <div class="container">
+      <div class="text-center mx-auto" style="max-width: 800px;">
+        <span class="section-tag">Living Laboratories</span>
+        <h2 class="section-title font-serif">Field Stations & Research Landscapes</h2>
+        <p class="section-desc mx-auto">
+          Our living laboratories serve as hands-on experimental research grounds, instructional spaces, and community hubs across the Rio Grande Valley.
+        </p>
+      </div>
+
+      <div class="labs-grid">
+        <!-- Lab 1: Hub of Prosperity -->
+        <div class="lab-card">
+          <div class="lab-img-wrapper">
+            <img src="assets/IMG_7220.jpg" alt="Hub of Prosperity Urban Farm" />
+            <span class="lab-badge">5-Acre Research Farm</span>
+          </div>
+          <div class="lab-content">
+            <div class="lab-location">📍 First UMC | Edinburg, TX</div>
+            <h3>The Hub of Prosperity</h3>
+            <p>A premier 5-acre urban research farm featuring organic crop rows, silvopasture paddocks, a 3,000-gallon rainwater harvesting system, and a weekly Saturday community market.</p>
+            <div class="lab-features">
+              <span class="lab-tag">💧 3,000-Gal Rainwater</span>
+              <span class="lab-tag">🌽 Organic Vegetables</span>
+              <span class="lab-tag">🛒 Saturday Market</span>
+              <span class="lab-tag">🤝 Community Garden</span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="hub_intro.html" class="btn btn-outline" style="flex: 1; padding: 8px 12px; font-size: 0.85rem;">Hub Overview</a>
+              <a href="farm_management.html" class="btn btn-primary" style="flex: 1; padding: 8px 12px; font-size: 0.85rem;">Farm Ops</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lab 2: UTRGV Organic Garden & Greenhouse -->
+        <div class="lab-card">
+          <div class="lab-img-wrapper">
+            <img src="assets/tomatoes.jpg" alt="UTRGV Campus Organic Garden and Greenhouse" />
+            <span class="lab-badge">1st USDA Organic in TX</span>
+          </div>
+          <div class="lab-content">
+            <div class="lab-location">📍 NE Wing (Near Child Development Center) | Edinburg, TX</div>
+            <h3>UTRGV Certified Organic Garden &amp; Greenhouse</h3>
+            <p>
+              A 7,500 sq. ft. USDA-certified organic facility featuring a climate-controlled greenhouse with an automated water wall, misters, and fans, plus a shade house, tool shed, and <strong>15 community raised beds</strong> managed by student organizations and community members.
+            </p>
+            <div class="lab-features">
+              <span class="lab-tag">🌿 15 Community Raised Beds</span>
+              <span class="lab-tag">💧 Automated Water Wall &amp; Misters</span>
+              <span class="lab-tag">🪴 Shaded Propagation House</span>
+              <span class="lab-tag">🎒 CDC Nature &amp; Sensory Walks</span>
+              <span class="lab-tag">🔬 Agroecology Course Practicums</span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <a href="portfolio_timeline.html" class="btn btn-outline" style="flex: 1; padding: 8px 12px; font-size: 0.85rem;">Student Research →</a>
+              <a href="#visit" class="btn btn-primary" style="flex: 1; padding: 8px 12px; font-size: 0.85rem;">Request Bed / Tour</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lab 3: Center for Urban Ecology (CUE) -->
+        <div class="lab-card">
+          <div class="lab-img-wrapper">
+            <img src="assets/catus.jpg" alt="Quinta Mazatlán Center for Urban Ecology" />
+            <span class="lab-badge">Urban Ecology Center</span>
+          </div>
+          <div class="lab-content">
+            <div class="lab-location">📍 Quinta Mazatlán | McAllen, TX</div>
+            <h3>Center for Urban Ecology (CUE)</h3>
+            <p>A flagship partnership with the City of McAllen advancing urban forestry, Miyawaki "Tiny Forests", native Thornscrub restoration, ecotourism, and regional environmental education.</p>
+            <div class="lab-features">
+              <span class="lab-tag">🌲 Miyawaki Forests</span>
+              <span class="lab-tag">🦋 Pollinator Habitat</span>
+              <span class="lab-tag">🗺️ Viewshed Analysis</span>
+              <span class="lab-tag">🎒 K-12 STEM</span>
+            </div>
+            <a href="viewshed.html" class="btn btn-outline" style="padding: 8px 12px; font-size: 0.85rem;">View CUE Viewshed Tool →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Funding & Grants Timeline (Tian Y. Dong style) -->
+  <section class="funding-section" id="funding">
+    <div class="container">
+      <div class="text-center mx-auto" style="max-width: 800px;">
+        <span class="section-tag" style="background: var(--primary-100); color: var(--primary-800);">Grant Portfolio</span>
+        <h2 class="section-title font-serif">Funding &amp; Supported Initiatives</h2>
+        <p class="section-desc mx-auto">
+          Since 2019, Dr. Alexis Racelis and the Agroecology &amp; Resilient Food Systems Lab have secured and directed over <strong>$3.8M+</strong> in federal, foundation, and state research grants supporting student fellowships, beginning farmer incubation, and living laboratory infrastructure across South Texas.
+        </p>
+      </div>
+
+      <!-- Funding Overview Cards -->
+      <div class="funding-overview-grid">
+        <div class="funding-overview-card">
+          <strong>$6.25M+</strong>
+          <p>Total project award value across research initiatives</p>
+        </div>
+        <div class="funding-overview-card">
+          <strong>$5.45M+</strong>
+          <p>External federal &amp; foundation awards as Lead PI / Co-PI</p>
+        </div>
+        <div class="funding-overview-card">
+          <strong>16+</strong>
+          <p>Grant awards &amp; living lab field initiatives supported</p>
+        </div>
+      </div>
+
+      <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); max-width: 800px; margin: -20px auto 36px;">
+        Figures show full award values supporting UTRGV agroecology research, Conservation Innovation Trials (CIT), beginning farmer incubation, and graduate student cohorts.
+      </p>
+
+      <!-- Funding Filter Bar -->
+      <div class="funding-filter-bar">
+        <button class="pub-btn funding-filter-btn active" data-funding-agency="all">All Funding (8 Featured)</button>
+        <button class="pub-btn funding-filter-btn" data-funding-agency="usda">🏛️ USDA-NRCS, NIFA &amp; ARS</button>
+        <button class="pub-btn funding-filter-btn" data-funding-agency="wkkf">🌾 W.K. Kellogg Foundation</button>
+        <button class="pub-btn funding-filter-btn" data-funding-agency="trees">🌳 Texas Trees &amp; State</button>
+        <button class="pub-btn funding-filter-btn" data-funding-agency="endow">🔬 Endowments &amp; Municipal</button>
+      </div>
+
+      <!-- Timeline Stack -->
+      <div class="funding-timeline">
+
+        <!-- Grant 0: USDA NRCS CIT / CIG -->
+        <div class="funding-item" data-agency="usda">
+          <div class="funding-meta-col">
+            <span class="funding-period-tag">2020–2024 · USDA-NRCS · CIG / CIT</span>
+            <div class="agency-badge">🌱 USDA NRCS CIG</div>
+            <div class="funding-amount">$2,150,000</div>
+            <div class="funding-credit-note">Co-PI &amp; Scientific Lead · NCAT Partner</div>
+          </div>
+          <div class="funding-content-col">
+            <h3>Subtropical Soil Health Initiative (SSHI): On-Farm Conservation Innovation Trials (CIT)</h3>
+            <span class="funding-lead-role">Scientific Co-Lead: Dr. Alexis Racelis &amp; Dr. Bradley Christoffersen · RGV-Wide On-Farm Trials</span>
+            <p class="funding-description">
+              Major USDA-NRCS On-Farm Conservation Innovation Trials (CIT) conducting multi-year participatory research with regional farmers across the Lower Rio Grande Valley. Evaluated cover crop varieties, reduced-tillage soil biology, and soil organic carbon dynamics while mentoring multi-year student cohorts (CIT Cohort 1 &amp; Middle Cohort).
+            </p>
+            <div class="funding-actions">
+              <a href="soil_types.html" class="pub-btn">Soil Composition Map ↗</a>
+              <a href="soil_moisture.html" class="pub-btn">Soil Moisture Telemetry ↗</a>
+              <a href="#publications" class="pub-btn">Cover Crop Publications ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grant 1: USDA BFRDP -->
+        <div class="funding-item" data-agency="usda">
+          <div class="funding-meta-col">
+            <span class="funding-period-tag">2024–2027 · USDA-NIFA · WORKFORCE</span>
+            <div class="agency-badge">🏛️ USDA NIFA</div>
+            <div class="funding-amount">$748,500</div>
+            <div class="funding-credit-note">Lead PI / Program Director · 100% Lead</div>
+          </div>
+          <div class="funding-content-col">
+            <h3>Beginning Farmer and Rancher Development Program (BFRDP): Subtropical Agroecology Enterprises</h3>
+            <span class="funding-lead-role">Lead PI: Dr. Alexis Racelis · 8 South Texas Counties Target Area</span>
+            <p class="funding-description">
+              Comprehensive bilingual training, land access incubation, and agribusiness financial benchmarking for Tier 1 (0–1 yr) and Tier 2 beginning farmers. Directs field incubation, equipment access, and market development at the Hub of Prosperity.
+            </p>
+            <div class="funding-actions">
+              <a href="bfrdp_grant/dashboard.html" class="pub-btn" style="background: var(--primary-700); color: #ffffff;">Live BFRDP Dashboard ⚡</a>
+              <a href="bfrdp_grant/dashboard.html#contacts" class="pub-btn">8-County Contacts CRM ↗</a>
+              <a href="bfrdp_grant/dashboard.html#cohort" class="pub-btn">Incubator Roster ↗</a>
+              <a href="farm_management.html" class="pub-btn">Farm Ops Planner ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grant 2: WKKF -->
+        <div class="funding-item" data-agency="wkkf">
+          <div class="funding-meta-col">
+            <span class="funding-period-tag">2023–2026 · WKKF · FOOD SOVEREIGNTY</span>
+            <div class="agency-badge">🌾 W.K. Kellogg Foundation</div>
+            <div class="funding-amount">$750,000</div>
+            <div class="funding-credit-note">Lead PI / Project Director · 100% Lead</div>
+          </div>
+          <div class="funding-content-col">
+            <h3>Expanding Community Food Sovereignty, Bilingual Workforce Training, and Food Access in South Texas</h3>
+            <span class="funding-lead-role">Lead PI: Dr. Alexis Racelis · Multi-Year Regional Partnership</span>
+            <p class="funding-description">
+              Multi-year foundation grant supporting Hub of Prosperity living lab operations, Community Fridge networks, SNAP and Double Up Food Bucks incentive expansion, and regional youth food literacy programs.
+            </p>
+            <div class="funding-actions">
+              <a href="wk_kellogg_foundation/dashboard.html" class="pub-btn" style="background: var(--primary-700); color: #ffffff;">Live WKKF Dashboard ⚡</a>
+              <a href="wk_kellogg_foundation/dashboard.html#checklist" class="pub-btn">Deliverables Checklist ↗</a>
+              <a href="economics.html" class="pub-btn">Economic Ledger ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grant 3: USDA CBG SOAR -->
+        <div class="funding-item" data-agency="usda">
+          <div class="funding-meta-col">
+            <span class="funding-period-tag">2021–2025 · USDA-NIFA · CAPACITY</span>
+            <div class="agency-badge">🏛️ USDA NIFA</div>
+            <div class="funding-amount">$998,000</div>
+            <div class="funding-credit-note">Project Director · UTRGV Lead</div>
+          </div>
+          <div class="funding-content-col">
+            <h3>SOAR: Subtropical Organic Agriculture Research &amp; Educational Pipeline</h3>
+            <span class="funding-lead-role">Project Director: Dr. Alexis Racelis · Undergraduate &amp; Graduate Fellowships</span>
+            <p class="funding-description">
+              Established the B.S. in Sustainable Agriculture and Food Systems (SAFS) degree pathway, certified organic greenhouse research infrastructure, and funded over 40 undergraduate and M.S. student research assistantships.
+            </p>
+            <div class="funding-actions">
+              <a href="#academics" class="pub-btn">SAFS Degree Details ↗</a>
+              <a href="portfolio_timeline.html" class="pub-btn">Student Research Timeline ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grant 4: Houston Endowed Chair -->
+        <div class="funding-item" data-agency="endow">
+          <div class="funding-meta-col">
+            <span class="funding-period-tag">2022–PRESENT · HOUSTON ENDOWMENT</span>
+            <div class="agency-badge">🔬 Houston Endowment</div>
+            <div class="funding-amount">$500,000</div>
+            <div class="funding-credit-note">Endowed Chairholder &amp; PI</div>
+          </div>
+          <div class="funding-content-col">
+            <h3>Endowed Research Fellowship in Subtropical Soil Carbon and Agroecology</h3>
+            <span class="funding-lead-role">Chairholder: Dr. Alexis Racelis · Sustained Endowed Research Fund</span>
+            <p class="funding-description">
+              Perpetual research endowment supporting long-term soil organic carbon sequestration monitoring, participatory action research with regional farmers, and graduate student research stipends.
+            </p>
+            <div class="funding-actions">
+              <a href="#people" class="pub-btn">Chairholder Bio ↗</a>
+              <a href="https://scholar.google.com/citations?user=alexis_racelis" target="_blank" class="pub-btn">Google Scholar ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grant 5: Texas Trees Foundation -->
+        <div class="funding-item" data-agency="trees">
+          <div class="funding-meta-col">
+            <span class="funding-period-tag">2024–2026 · TEXAS TREES · FORESTRY</span>
+            <div class="agency-badge">🌳 Texas Trees Foundation</div>
+            <div class="funding-amount">$450,000</div>
+            <div class="funding-credit-note">Co-PI &amp; Scientific Lead (with SEEMS)</div>
+          </div>
+          <div class="funding-content-col">
+            <h3>Project Cool Schools: Schoolyard Urban Forestry and Microclimate Cooling Across South Texas ISDs</h3>
+            <span class="funding-lead-role">Scientific Lead: Dr. Alexis Racelis · Multi-Campus Field Studies</span>
+            <p class="funding-description">
+              Quantifying native tree canopy growth rates, 3D solar shade microclimate cooling, and i-Tree ecosystem benefit valuations (carbon, stormwater, avoided cooling energy) across regional elementary and high school campuses.
+            </p>
+            <div class="funding-actions">
+              <a href="campuses.html" class="pub-btn" style="background: var(--primary-700); color: #ffffff;">14-Campus Cool Schools Hub ⚡</a>
+              <a href="tree_3d.html" class="pub-btn">3D Shade Model ↗</a>
+              <a href="canopy.html" class="pub-btn">Canopy Simulator ↗</a>
+              <a href="community_impact.html" class="pub-btn">i-Tree Benefits Ledger ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grant 6: City of McAllen CUE -->
+        <div class="funding-item" data-agency="endow">
+          <div class="funding-meta-col">
+            <span class="funding-period-tag">2023–2026 · CITY OF MCALLEN · MUNICIPAL</span>
+            <div class="agency-badge">🌲 City of McAllen</div>
+            <div class="funding-amount">$325,000</div>
+            <div class="funding-credit-note">Academic &amp; Scientific Co-Director</div>
+          </div>
+          <div class="funding-content-col">
+            <h3>Center for Urban Ecology (CUE): Urban Ecotourism, Native Thornscrub, and Miyawaki Microforests</h3>
+            <span class="funding-lead-role">Scientific Co-Director: Dr. Alexis Racelis · Quinta Mazatlán</span>
+            <p class="funding-description">
+              Advancing urban forestry models, K-12 STEM pipelines, viewshed greenery line-of-sight metrics, and native wildlife biodiversity monitoring at Quinta Mazatlán in McAllen, TX.
+            </p>
+            <div class="funding-actions">
+              <a href="viewshed.html" class="pub-btn">CUE Viewshed Tool ↗</a>
+              <a href="biodiversity.html" class="pub-btn">Biodiversity Tracker ↗</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grant 7: USDA ARS -->
+        <div class="funding-item" data-agency="usda">
+          <div class="funding-meta-col">
+            <span class="funding-period-tag">2019–2023 · USDA-ARS · BIOCONTROL</span>
+            <div class="agency-badge">🐛 USDA ARS</div>
+            <div class="funding-amount">$280,000</div>
+            <div class="funding-credit-note">Lead Investigator · USDA-ARS Partner</div>
+          </div>
+          <div class="funding-content-col">
+            <h3>Biological Control of Invasive Arundo donax and Solanum elaeagnifolium in the Rio Grande Basin</h3>
+            <span class="funding-lead-role">Lead Investigator: Dr. Alexis Racelis · Biological Control Program</span>
+            <p class="funding-description">
+              Field screening host specificity, parasitism rates, and impact of insect biological control agents on invasive riparian Giant Reed and agricultural nightshade weeds.
+            </p>
+            <div class="funding-actions">
+              <a href="#publications" class="pub-btn">View Publications ↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: UTRGV College of Sciences Colleague Network -->
+  <section class="colleagues-section" id="colleagues">
+    <div class="container">
+      <div class="text-center mx-auto" style="max-width: 800px;">
+        <span class="section-tag">Interdisciplinary Collaboration</span>
+        <h2 class="section-title font-serif">College of Sciences Faculty Labs</h2>
+        <p class="section-desc mx-auto">
+          Dr. Racelis's laboratory collaborates closely with faculty across the School of Earth, Environmental, and Marine Sciences (SEEMS) and the School of Integrative Biological and Chemical Sciences (SIBCS).
+        </p>
+      </div>
+
+      <div class="colleagues-grid">
+        <!-- Colleague 1: Choudhury -->
+        <div class="colleague-card">
+          <div class="colleague-dept">SEEMS • Plant Pathology</div>
+          <div class="colleague-name">Dr. Robin Choudhury</div>
+          <div class="colleague-lab-title">Plant Pathology &amp; Epidemiology Lab</div>
+          <div class="colleague-focus">Landscape epidemiology, fungal plant pathogens, spinach downy mildew, and disease forecasting.</div>
+          <a href="https://robchoudhury.com/" target="_blank" class="colleague-link">Lab Website ↗</a>
+        </div>
+
+        <!-- Colleague 2: Feria Arroyo -->
+        <div class="colleague-card">
+          <div class="colleague-dept">SIBCS • Global Change</div>
+          <div class="colleague-name">Dr. Teresa Patricia Feria</div>
+          <div class="colleague-lab-title">FeriaLab Global Change Ecology</div>
+          <div class="colleague-focus">Species distribution modeling, GIS climate change impacts, invasive species, and vector distribution.</div>
+          <a href="https://www.utrgv.edu/ferialab/" target="_blank" class="colleague-link">Lab Website ↗</a>
+        </div>
+
+        <!-- Colleague 3: Contina -->
+        <div class="colleague-card">
+          <div class="colleague-dept">SIBCS • Bioacoustics</div>
+          <div class="colleague-name">Dr. Andrea Contina</div>
+          <div class="colleague-lab-title">Contina Avian Ecology &amp; AI Lab</div>
+          <div class="colleague-focus">Avian migration ecology, evolutionary biology, and AI/machine learning tools for wildlife monitoring (SONAR).</div>
+          <a href="https://sites.google.com/view/contina/" target="_blank" class="colleague-link">Lab Website ↗</a>
+        </div>
+
+        <!-- Colleague 4: Dong -->
+        <div class="colleague-card">
+          <div class="colleague-dept">SEEMS • Geomorphology</div>
+          <div class="colleague-name">Dr. Tian Y. Dong</div>
+          <div class="colleague-lab-title">Geomorphology &amp; Surface Lab</div>
+          <div class="colleague-focus">Coastal and river-deltaic geomorphology, sediment transport, planetary surface processes, and landscape evolution.</div>
+          <a href="https://tian-y-dong.org/" target="_blank" class="colleague-link">Lab Website ↗</a>
+        </div>
+
+        <!-- Colleague 5: Berg -->
+        <div class="colleague-card">
+          <div class="colleague-dept">SIBCS • Avian Behavior</div>
+          <div class="colleague-name">Dr. Karl Berg</div>
+          <div class="colleague-lab-title">Lab of Avian Ecology</div>
+          <div class="colleague-focus">Avian vocal communication, behavioral development, ecology, and neotropical parrot biology.</div>
+          <a href="https://www.utrgv.edu/avianecology/" target="_blank" class="colleague-link">Lab Website ↗</a>
+        </div>
+
+        <!-- Colleague 6: Vitek -->
+        <div class="colleague-card">
+          <div class="colleague-dept">Biology • Entomology</div>
+          <div class="colleague-name">Dr. Christopher Vitek</div>
+          <div class="colleague-lab-title">CVBZED Vector-Borne Center</div>
+          <div class="colleague-focus">Vector-borne diseases, medical entomology, arboviruses, and regional mosquito/tick control.</div>
+          <a href="https://www.utrgv.edu/cvbzed/" target="_blank" class="colleague-link">Lab Website ↗</a>
+        </div>
+
+        <!-- Colleague 7: Kline -->
+        <div class="colleague-card">
+          <div class="colleague-dept">SEEMS • Marine Ecology</div>
+          <div class="colleague-name">Dr. Richard Kline</div>
+          <div class="colleague-lab-title">South Texas Ecology Lab</div>
+          <div class="colleague-focus">Coastal and marine ecology, artificial reefs, fish movement dynamics, and acoustic telemetry.</div>
+          <a href="https://klinelab2015.wixsite.com/klinelab/people" target="_blank" class="colleague-link">Lab Website ↗</a>
+        </div>
+
+        <!-- Colleague 8: Hicks -->
+        <div class="colleague-card">
+          <div class="colleague-dept">SEEMS • Coastal Studies</div>
+          <div class="colleague-name">Dr. David Hicks</div>
+          <div class="colleague-lab-title">Coastal Studies Laboratory</div>
+          <div class="colleague-focus">Benthic ecology, marine resource management, oyster reef restoration, and coastal water quality.</div>
+          <a href="https://www.utrgv.edu/coastal-studies-lab/" target="_blank" class="colleague-link">Lab Website ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Prospective Students & Join the Lab -->
+  <section class="join-lab-section" id="join">
+    <div class="container">
+      <div class="join-lab-grid">
+        <div>
+          <span class="guide-badge" style="background: var(--accent-gold); color: var(--primary-900);">🎓 Graduate &amp; Undergrad Opportunities</span>
+          <h2 class="font-serif" style="color: #ffffff; font-size: 2.3rem; margin-bottom: 16px;">Join the Racelis Lab</h2>
+          <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">
+            We are actively recruiting motivated graduate students (M.S. in Agricultural, Environmental, and Sustainability Sciences) and undergraduate research fellows (B.S. in Sustainable Agriculture and Food Systems / Biology) passionate about agroecology, soil health, GIS, and community food systems.
+          </p>
+
+          <ul class="join-checklist">
+            <li>Fully funded USDA-NIFA and W.K. Kellogg Foundation Graduate Assistantships</li>
+            <li>Guaranteed field research plots at the Hub of Prosperity and campus organic greenhouse</li>
+            <li>Direct mentorship in scientific publication, grant writing, and community engagement</li>
+            <li>Interdisciplinary coursework across SEEMS, Biology, and Agribusiness Economics</li>
+          </ul>
+
+          <a href="#visit" class="btn btn-accent">Submit Student Inquiry 📩</a>
+        </div>
+
+        <div class="join-box">
+          <h4>How to Apply</h4>
+          <p>Prospective graduate students should email Dr. Alexis Racelis with the following materials:</p>
+          <div style="background: rgba(0,0,0,0.3); padding: 16px; border-radius: 8px; font-size: 0.85rem; color: #e2e8f0; line-height: 1.7; margin-bottom: 20px;">
+            1. <strong>Curriculum Vitae (CV)</strong> with GPA and relevant coursework<br />
+            2. <strong>One-Page Statement of Research Interests</strong> explaining how your goals align with agroecology, soil carbon, silvopasture, or urban forestry<br />
+            3. <strong>Contact information for 2 academic/professional references</strong><br />
+            4. Unofficial undergraduate transcripts
+          </div>
+          <p style="font-size: 0.85rem; color: #94a3b8;">
+            Undergraduate UTRGV students interested in work-study or research credit should stop by the Hub of Prosperity or email us directly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Unified Digital Projects & Dashboards Hub -->
+  <section class="portal-section" id="portal">
+    <div class="container">
+      <div class="text-center mx-auto" style="max-width: 800px;">
+        <span class="section-tag" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-gold);">Interactive Portal</span>
+        <h2 class="section-title font-serif">Project &amp; Dashboard Directory</h2>
+        <p class="section-desc mx-auto">
+          Access our full suite of interactive GIS mapping tools, 3D microclimate simulators, grant trackers, and field sensor telemetry platforms.
+        </p>
+      </div>
+
+      <div class="portal-controls">
+        <div class="search-box-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="portalSearch" class="search-input" placeholder="Search dashboards, tools, sensors, or research models..." />
+        </div>
+
+        <div class="filter-pills">
+          <button class="filter-pill active" data-filter="all">All Projects (26)</button>
+          <button class="filter-pill" data-filter="canopy">🌳 Project Cool Schools &amp; Canopy</button>
+          <button class="filter-pill" data-filter="microclimate">🌡️ Microclimate &amp; 3D Sim</button>
+          <button class="filter-pill" data-filter="farm">🌾 Farm Operations &amp; CRM</button>
+          <button class="filter-pill" data-filter="grants">📊 Grant Portals &amp; WKKF</button>
+          <button class="filter-pill" data-filter="telemetry">🧪 Soil &amp; Sensors</button>
+          <button class="filter-pill" data-filter="network">🕸️ Research Networks</button>
+        </div>
+      </div>
+
+      <!-- Dashboard Grid -->
+      <div class="portal-grid" id="portalGrid">
+
+        <!-- Master Operations & Team Command Center -->
+        <div class="portal-card" data-category="grants" style="border: 2px solid var(--accent-gold); background: linear-gradient(135deg, rgba(6,78,59,0.06), rgba(245,158,11,0.08));">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🧭</div>
+            <span class="portal-category-tag" style="background: var(--accent-gold); color: #064e3b; font-weight: 700;">#1 Overarching Hub</span>
+          </div>
+          <h4>Master Operations &amp; Team Command Center</h4>
+          <p>Unified cross-grant operations hub integrating W.K. Kellogg, USDA BFRDP, Project Cool Schools, Hub Farm operations, and active team bandwidth.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Master Command Hub</span>
+            <a href="command_center/dashboard.html" class="portal-launch-btn" style="font-weight: 700;">Launch Command Center →</a>
+          </div>
+        </div>
+
+        <!-- Project Cool Schools (14-Campus Hub) -->
+        <div class="portal-card" data-category="canopy" style="border: 2px solid var(--primary-600);">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🌳</div>
+            <span class="portal-category-tag">Project Cool Schools</span>
+          </div>
+          <h4>Project Cool Schools (14-Campus Hub)</h4>
+          <p>Interactive 14-campus schoolyard urban forestry directory, native shade tree inventories, and microclimate cooling across South Texas ISDs.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> 14 School Campuses</span>
+            <a href="campuses.html" class="portal-launch-btn">Open Cool Schools →</a>
+          </div>
+        </div>
+        
+        <!-- Canopy Growth -->
+        <div class="portal-card" data-category="canopy">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🌳</div>
+            <span class="portal-category-tag">Canopy &amp; GIS</span>
+          </div>
+          <h4>Canopy Growth Over Time</h4>
+          <p>Interactive 0 to 30-year tree growth simulator modeling canopy radius expansion for native RGV species across school campuses.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Live Simulator</span>
+            <a href="canopy.html" class="portal-launch-btn">Launch App →</a>
+          </div>
+        </div>
+
+        <!-- 3D Tree Shade Simulation -->
+        <div class="portal-card" data-category="microclimate">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🌲</div>
+            <span class="portal-category-tag">3D Microclimate</span>
+          </div>
+          <h4>3D Montezuma Cypress Solar Shade</h4>
+          <p>Three.js orbital 3D model simulating dynamic sun vectors (6 AM - 6 PM), cast shadows, and ground cooling differentials.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> 3D WebGL</span>
+            <a href="tree_3d.html" class="portal-launch-btn">Launch 3D Model →</a>
+          </div>
+        </div>
+
+        <!-- WKKF Grant Portal -->
+        <div class="portal-card" data-category="grants">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🌾</div>
+            <span class="portal-category-tag">WKKF Grant</span>
+          </div>
+          <h4>W.K. Kellogg Foundation Dashboard</h4>
+          <p>Real-time grant milestone tracker, community survey portal, photo upload hub, and monthly compliance report generator.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Live Firestore Sync</span>
+            <a href="wk_kellogg_foundation/dashboard.html" class="portal-launch-btn">Open Kellogg Hub →</a>
+          </div>
+        </div>
+
+        <!-- USDA BFRDP Grant Portal -->
+        <div class="portal-card" data-category="grants">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🏛️</div>
+            <span class="portal-category-tag">USDA-NIFA</span>
+          </div>
+          <h4>USDA Beginning Farmer &amp; Rancher (BFRDP)</h4>
+          <p>8-County farmer directory, Hub incubator plot allocations, bilingual workforce training, financial benchmarking &amp; REEport generator.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Live Dashboard</span>
+            <a href="bfrdp_grant/dashboard.html" class="portal-launch-btn">Open BFRDP Hub →</a>
+          </div>
+        </div>
+
+        <!-- Campus GIS Map -->
+        <div class="portal-card" data-category="canopy">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🗺️</div>
+            <span class="portal-category-tag">Campus GIS</span>
+          </div>
+          <h4>Campus Interactive Geospatial Map</h4>
+          <p>Multi-layered campus GIS dashboard displaying tree locations, building footprints, microforests, and thermal layers.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Leaflet GIS</span>
+            <a href="dashboard_map.html" class="portal-launch-btn">Open Map →</a>
+          </div>
+        </div>
+
+        <!-- Viewshed & Greenery -->
+        <div class="portal-card" data-category="canopy">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">👀</div>
+            <span class="portal-category-tag">Viewshed</span>
+          </div>
+          <h4>Viewshed &amp; Greenery Line-of-Sight</h4>
+          <p>Calculates visual line-of-sight from campus windows to quantify the "Green View Score" vs asphalt for classroom wellbeing.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Turf.js Spatial</span>
+            <a href="viewshed.html" class="portal-launch-btn">Open Viewshed →</a>
+          </div>
+        </div>
+
+        <!-- Wind Flow Vectors -->
+        <div class="portal-card" data-category="microclimate">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">💨</div>
+            <span class="portal-category-tag">Wind Dynamics</span>
+          </div>
+          <h4>Wind Directional &amp; Funneling Vectors</h4>
+          <p>Visualizes uni-directional and multi-directional breeze pathways and evaluates the windbreak efficiency of new microforests.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Vector Particle Sim</span>
+            <a href="wind.html" class="portal-launch-btn">Launch Wind Model →</a>
+          </div>
+        </div>
+
+        <!-- Trail Shade Equity -->
+        <div class="portal-card" data-category="canopy">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🚶</div>
+            <span class="portal-category-tag">Trail Analytics</span>
+          </div>
+          <h4>Walkable Trails &amp; Shade Equity</h4>
+          <p>Traces campus pedestrian paths, calculating permeable vs impermeable footing and live shade percentage at peak afternoon heat.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Shade Equity Analysis</span>
+            <a href="trails.html" class="portal-launch-btn">View Trail Model →</a>
+          </div>
+        </div>
+
+        <!-- Hub of Prosperity Operations -->
+        <div class="portal-card" data-category="farm">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🚜</div>
+            <span class="portal-category-tag">Farm Ops</span>
+          </div>
+          <h4>Hub Farm Management &amp; Plot Planner</h4>
+          <p>Plot-by-plot crop succession planner, cover crop termination tracker, and daily harvest distribution monitor.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Operations Portal</span>
+            <a href="farm_management.html" class="portal-launch-btn">Open Farm Planner →</a>
+          </div>
+        </div>
+
+        <!-- CRM & Donor Management -->
+        <div class="portal-card" data-category="farm">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🗂️</div>
+            <span class="portal-category-tag">Agribusiness CRM</span>
+          </div>
+          <h4>Master CRM, Donors &amp; Support Tracker</h4>
+          <p>Agribusiness relationship ledger tracking community partners, beginning farmers, donor contributions, and support letters.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> CSV &amp; Ledger Sync</span>
+            <a href="crm.html" class="portal-launch-btn">Open CRM →</a>
+          </div>
+        </div>
+
+        <!-- Soil Composition Map -->
+        <div class="portal-card" data-category="telemetry">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🌱</div>
+            <span class="portal-category-tag">Soil Analysis</span>
+          </div>
+          <h4>Soil Composition &amp; Texture Polygons</h4>
+          <p>Regional soil profile analysis mapping clay, loam, silt, and fill boundaries to assess drainage and root establishment.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Soil Spatial Layer</span>
+            <a href="soil_types.html" class="portal-launch-btn">Open Soil Map →</a>
+          </div>
+        </div>
+
+        <!-- Soil Moisture Telemetry -->
+        <div class="portal-card" data-category="telemetry">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">💧</div>
+            <span class="portal-category-tag">Soil Moisture</span>
+          </div>
+          <h4>Soil Moisture &amp; Sensor Telemetry</h4>
+          <p>Real-time volumetric water content (VWC) sensors mapped across field beds to optimize drip irrigation scheduling.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Active Sensors</span>
+            <a href="soil_moisture.html" class="portal-launch-btn">View Soil Moisture →</a>
+          </div>
+        </div>
+
+        <!-- Water Table Depth -->
+        <div class="portal-card" data-category="telemetry">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🌊</div>
+            <span class="portal-category-tag">Hydrology</span>
+          </div>
+          <h4>Water Table Depth Simulation</h4>
+          <p>Calculates sub-surface water depth to evaluate deep-root water uptake and salinity tolerance for native shade trees.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Hydrological Model</span>
+            <a href="water_table.html" class="portal-launch-btn">View Water Table →</a>
+          </div>
+        </div>
+
+        <!-- Surface Albedo -->
+        <div class="portal-card" data-category="microclimate">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">☀️</div>
+            <span class="portal-category-tag">Thermal Albedo</span>
+          </div>
+          <h4>Surface Albedo &amp; Heat Reflection</h4>
+          <p>Quantifies solar reflectivity of grass, decomposed granite, asphalt, and concrete to measure urban heat island mitigation.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Solar Radiation Sim</span>
+            <a href="albedo.html" class="portal-launch-btn">View Albedo Map →</a>
+          </div>
+        </div>
+
+        <!-- Data Telemetry Pipeline -->
+        <div class="portal-card" data-category="telemetry">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">📡</div>
+            <span class="portal-category-tag">Data Telemetry</span>
+          </div>
+          <h4>Data Telemetry &amp; MASD Pipeline</h4>
+          <p>Aggregates sensor feeds, weather station APIs, and gradient-boosted tree predictive pipelines under TRAIGA governance.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Live Telemetry Feed</span>
+            <a href="data_pipeline.html" class="portal-launch-btn">View Pipeline →</a>
+          </div>
+        </div>
+
+        <!-- Research Knowledge Force Graph -->
+        <div class="portal-card" data-category="network">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🕸️</div>
+            <span class="portal-category-tag">Knowledge Graph</span>
+          </div>
+          <h4>Agroecology Research Network Graph</h4>
+          <p>Interactive D3.js force-directed knowledge graph mapping Dr. Racelis's publications, collaborators, grants, and field trials.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Interactive D3 Graph</span>
+            <a href="racelis_force_graph.html" class="portal-launch-btn">Launch Graph →</a>
+          </div>
+        </div>
+
+        <!-- Radial Tree Graph -->
+        <div class="portal-card" data-category="network">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🌳</div>
+            <span class="portal-category-tag">Taxonomy Tree</span>
+          </div>
+          <h4>Research Taxonomy Radial Tree</h4>
+          <p>Hierarchical radial breakdown of subtropical agroecology domains: soil biology, entomology, agroforestry, and economics.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Radial D3 View</span>
+            <a href="racelis_radial_tree.html" class="portal-launch-btn">View Radial Tree →</a>
+          </div>
+        </div>
+
+        <!-- Community Impact Dashboard -->
+        <div class="portal-card" data-category="grants">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">📊</div>
+            <span class="portal-category-tag">Ecosystem Services</span>
+          </div>
+          <h4>Community Impact &amp; i-Tree Forecasts</h4>
+          <p>Baseline environmental metrics, carbon sequestration rates, stormwater interception, and avoided energy cooling costs.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> i-Tree Benefit Engine</span>
+            <a href="community_impact.html" class="portal-launch-btn">Open Impact Dashboard →</a>
+          </div>
+        </div>
+
+        <!-- Student Movement Heatmap -->
+        <div class="portal-card" data-category="canopy">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🏃</div>
+            <span class="portal-category-tag">Student Analytics</span>
+          </div>
+          <h4>Student Movement &amp; Heatmap Tracking</h4>
+          <p>Time-based heatmap visualization demonstrating how shaded microforests attract outdoor student use during peak midday hours.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Temporal Heatmap</span>
+            <a href="student_tracking.html" class="portal-launch-btn">Launch Heatmap →</a>
+          </div>
+        </div>
+
+        <!-- Economic Ledger -->
+        <div class="portal-card" data-category="farm">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">💵</div>
+            <span class="portal-category-tag">Food Economics</span>
+          </div>
+          <h4>Economic Impact &amp; Harvest Valuation</h4>
+          <p>Calculates the monetary value of donated organic produce, grocery relief offsets, and Double Up Food Bucks community savings.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Valuation Ledger</span>
+            <a href="economics.html" class="portal-launch-btn">View Economics →</a>
+          </div>
+        </div>
+
+        <!-- Biodiversity Tracker -->
+        <div class="portal-card" data-category="telemetry">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">🦋</div>
+            <span class="portal-category-tag">Biodiversity</span>
+          </div>
+          <h4>Biodiversity &amp; iNaturalist Bioblitz</h4>
+          <p>Living inventory of beneficial pollinators, predator insects, native birds, and plant diversity logged across research farms.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> iNaturalist API</span>
+            <a href="biodiversity.html" class="portal-launch-btn">View Biodiversity →</a>
+          </div>
+        </div>
+
+        <!-- Standard Field Protocols -->
+        <div class="portal-card" data-category="farm">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">📋</div>
+            <span class="portal-category-tag">SOP Protocols</span>
+          </div>
+          <h4>Standard Operating Field Protocols</h4>
+          <p>Official laboratory and farm protocols for soil organic matter testing, cover crop seeding, and livestock rotation management.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> SOP Docs</span>
+            <a href="protocols.html" class="portal-launch-btn">View SOPs →</a>
+          </div>
+        </div>
+
+        <!-- Wellbeing Survey -->
+        <div class="portal-card" data-category="grants">
+          <div class="portal-card-header">
+            <div class="portal-card-icon">📝</div>
+            <span class="portal-category-tag">Surveys</span>
+          </div>
+          <h4>Student &amp; Community Wellbeing Survey</h4>
+          <p>Standardized intake and feedback forms assessing the psychological and physical health benefits of outdoor shaded learning.</p>
+          <div class="portal-card-footer">
+            <span class="portal-status"><span class="pulse-dot"></span> Survey Forms</span>
+            <a href="survey.html" class="portal-launch-btn">Open Survey →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="portalEmptyState" style="display: none; text-align: center; padding: 40px; color: #94a3b8;">
+        <p style="font-size: 1.2rem;">No dashboards match your search. Try searching for "canopy", "soil", "3D", or "grants".</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 8: Community Resources & Grower's Guide -->
+  <section class="resources-section" id="resources">
+    <div class="container">
+      <div class="resource-banner-card">
+        <div>
+          <span class="guide-badge">📖 Essential Regional Resource</span>
+          <h3 class="font-serif">The RGV Grower's Guide</h3>
+          <p>
+            The comprehensive guide for backyard gardeners, school gardens, and commercial smallholders across USDA Hardiness Zones 9b and 10a. Features seasonal planting calendars, pest management strategies, soil fertility tips, and native companion plant recommendations.
+          </p>
+          <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+            <a href="RGV_Growers_Guide_Spring_2024_Revised.pdf" target="_blank" class="btn btn-accent">Download Guide (PDF) 📥</a>
+            <a href="RGV_Growers_Guide_Spring_2024_Revised.pdf" target="_blank" class="btn btn-outline-white">Read Online ↗</a>
+          </div>
+        </div>
+
+        <div class="guide-preview-box">
+          <div style="font-size: 3rem; margin-bottom: 8px;">🌱</div>
+          <h4 style="color: #ffffff; margin-bottom: 8px;">Spring &amp; Fall 2024 Revised Edition</h4>
+          <p style="color: #cbd5e1; font-size: 0.85rem; margin-bottom: 16px;">Published by the UTRGV Agroecology &amp; Resilient Food Systems Laboratory and Hub of Prosperity.</p>
+          <div style="background: rgba(255, 255, 255, 0.1); padding: 8px; border-radius: 6px; font-size: 0.78rem; color: #fde047;">
+            Includes bilingual seed tables &amp; irrigation calendars
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: Photo Gallery Grid -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="text-center mx-auto" style="max-width: 800px; margin-bottom: 30px;">
+        <span class="section-tag">Living Campus</span>
+        <h2 class="section-title font-serif">Life at the Hub &amp; Field Stations</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/IMG_7220.jpg" alt="Hub of Prosperity Main Gate" />
+          <div class="gallery-overlay">Hub of Prosperity Main Gate</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/tomatoes.jpg" alt="Organic Heirloom Tomato Harvest" />
+          <div class="gallery-overlay">Fresh Heirloom Tomato Harvest</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/waterharvesting.jpg" alt="3,000-Gal Rainwater Catchment" />
+          <div class="gallery-overlay">3,000-Gal Rainwater Catchment</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/chickens.jpg" alt="Livestock &amp; Free-Range Poultry" />
+          <div class="gallery-overlay">Free-Range Livestock Integration</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/catus.jpg" alt="Native Flora &amp; Thornscrub Restoration" />
+          <div class="gallery-overlay">Native Thornscrub Restoration</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/hubwheel.jpg" alt="Farm Infrastructure &amp; Tool Station" />
+          <div class="gallery-overlay">Farm Infrastructure &amp; Tools</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG_7225.jpg" alt="Fresh Organic Leafy Greens" />
+          <div class="gallery-overlay">Organic Brassica Beds</div>
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG_7219.jpg" alt="Cover Crop Demonstration Rows" />
+          <div class="gallery-overlay">Summer Cover Crop Rows</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 10: Visit Us & Contact -->
+  <section class="contact-section" id="visit">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Info Card -->
+        <div class="contact-info-card">
+          <span class="section-tag">Visit &amp; Engage</span>
+          <h2 class="font-serif" style="margin-bottom: 20px;">Connect with Racelis Lab</h2>
+          
+          <div class="info-block">
+            <h4>📍 Hub of Prosperity Farm &amp; Market</h4>
+            <p>First United Methodist Church Grounds<br />3707 W University Dr, Edinburg, TX 78539</p>
+          </div>
+
+          <div class="info-block">
+            <h4>⏰ Saturday Community Farm Stand</h4>
+            <p>Every Saturday Morning: 8:30 AM – 12:00 PM<br />Fresh organic produce, SNAP/EBT &amp; Double Up Food Bucks accepted.</p>
+          </div>
+
+          <div class="info-block">
+            <h4>🏫 UTRGV Campus Laboratory</h4>
+            <p>School of Earth, Environmental, and Marine Sciences (SEEMS)<br />1201 W University Dr, Edinburg, TX 78539</p>
+          </div>
+
+          <div class="info-block">
+            <h4>🤝 Community Fridge Donations</h4>
+            <p>Donations of fresh, unblemished garden produce and non-perishables are welcomed at the on-site community fridge.</p>
+          </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="contact-form-card">
+          <h3 style="margin-bottom: 16px;">Get Involved / Send an Inquiry</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 24px;">
+            Interested in joining the lab as an M.S. graduate researcher, undergraduate intern, visiting scholar, or community partner? Send us a message!
+          </p>
+
+          <form id="agroInquiryForm">
+            <div class="form-group">
+              <label class="form-label" for="userName">Full Name</label>
+              <input type="text" id="userName" class="form-control" placeholder="Jane Doe" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="userEmail">Email Address</label>
+              <input type="email" id="userEmail" class="form-control" placeholder="jane.doe@utrgv.edu" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="interestType">Area of Interest</label>
+              <select id="interestType" class="form-control" required>
+                <option value="graduate">Prospective M.S. Graduate Student (AESS)</option>
+                <option value="undergrad">Undergraduate Research Fellow (SAFS / Biology)</option>
+                <option value="garden_bed">Request a Campus Community Raised Bed (15 Beds Available)</option>
+                <option value="garden_tour">Schedule a School / Child Development Center Garden Tour</option>
+                <option value="postdoc">Postdoctoral / Visiting Scholar Inquiries</option>
+                <option value="volunteer">Volunteering at the Hub of Prosperity &amp; Campus Garden</option>
+                <option value="farmer">Beginning Farmer &amp; Rancher (BFR) Training</option>
+                <option value="market">Saturday Farm Stand &amp; Community Fridge</option>
+                <option value="other">Other Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="userMessage">Message / Research Statement</label>
+              <textarea id="userMessage" class="form-control" placeholder="Tell us about your background, research interests, or questions..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">Send Message 🌱</button>
+            <div id="formStatus" style="display: none;"></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img class="lightbox-content" id="lightboxImg" alt="Enlarged photo" />
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- TRAIGA Compliance Banner -->
+      <div class="traiga-notice">
+        <strong>⚖️ Texas Responsible AI Governance Act (TRAIGA) Notice:</strong> This web portal and associated predictive telemetry systems comply with Texas DIR TAC Chapter 219 and UTRGV information security policies. All public and protected data belong to the State of Texas. Continuous human-in-the-loop oversight is maintained.
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Racelis Agroecology Lab</h4>
+          <p>
+            School of Earth, Environmental, and Marine Sciences (SEEMS)<br />
+            School of Integrative Biological and Chemical Sciences<br />
+            University of Texas Rio Grande Valley<br />
+            Edinburg &amp; Brownsville, Texas
+          </p>
+          <div style="font-size: 0.85rem; color: var(--accent-gold);">
+            🌱 "Cultivating Food Sovereignty &amp; Ecological Resilience"
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Lab &amp; Research</h5>
+          <ul class="footer-links">
+            <li><a href="#about">About the Lab</a></li>
+            <li><a href="#research">Research Themes</a></li>
+            <li><a href="#publications">Publications &amp; Preprints</a></li>
+            <li><a href="#people">Lab Members &amp; Alumni</a></li>
+            <li><a href="#labs">Living Laboratories</a></li>
+            <li><a href="#join">Prospective Students</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Key Dashboards</h5>
+          <ul class="footer-links">
+            <li><a href="command_center/dashboard.html">🧭 Master Command Center</a></li>
+            <li><a href="campuses.html">🌳 Project Cool Schools</a></li>
+            <li><a href="wk_kellogg_foundation/dashboard.html">WKKF Grant Portal</a></li>
+            <li><a href="bfrdp_grant/dashboard.html">USDA BFRDP Grant Portal</a></li>
+            <li><a href="farm_management.html">Farm Ops Planner</a></li>
+            <li><a href="canopy.html">Canopy Growth Sim</a></li>
+            <li><a href="tree_3d.html">3D Shade Model</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>College of Sciences</h5>
+          <ul class="footer-links">
+            <li><a href="#colleagues">Faculty Lab Network</a></li>
+            <li><a href="RGV_Growers_Guide_Spring_2024_Revised.pdf" target="_blank">RGV Grower's Guide (PDF)</a></li>
+            <li><a href="https://www.utrgv.edu/agroecology/" target="_blank">UTRGV SEEMS Official Site ↗</a></li>
+            <li><a href="hub_intro.html">Hub of Prosperity Pillars</a></li>
+            <li><a href="crm.html">Partners &amp; CRM Ledger</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 Racelis Agroecology &amp; Resilient Food Systems Lab. University of Texas Rio Grande Valley.
+        </div>
+        <div>
+          Dedicated to ecological science, participatory research, and community food sovereignty.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="home.js"></script>
 </body>
-
 </html>

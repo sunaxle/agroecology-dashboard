@@ -1,0 +1,304 @@
+<!-- TRANSPARENCY DISCLOSURE: This application is generated and monitored by artificial intelligence in compliance with the Texas Responsible AI Governance Act (TRAIGA), Texas DIR TAC Chapter 219, and UTRGV policies. All private/protected information belongs to the State of Texas. Human-in-the-loop oversight is maintained and logged. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hub of Prosperity | Pillars</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        :root {
+            --bg-color: #0f172a;
+            --accent-gold: #fde047;
+            --accent-green: #22c55e;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: linear-gradient(to bottom, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.95)), url('assets/IMG_7220.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Unified Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 25px 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a.active {
+            color: var(--bg-color);
+            background: var(--accent-gold);
+        }
+
+        nav a:hover:not(.active) {
+            color: var(--accent-gold);
+            background: rgba(253, 224, 71, 0.1);
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hub-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            background: rgba(253, 224, 71, 0.05);
+            box-shadow: 0 0 40px rgba(253, 224, 71, 0.2);
+        }
+
+        .hub-logo svg {
+            width: 60px;
+            height: 60px;
+            fill: var(--accent-gold);
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin: 0 0 20px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #94a3b8;
+            font-weight: 300;
+        }
+
+        /* Pillars Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 40px;
+            flex-grow: 1;
+        }
+
+        .pillar-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(253, 224, 71, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .pillar-card:hover::before { opacity: 1; }
+
+        .pillar-card h2 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .pillar-card h2 span {
+            color: var(--accent-gold);
+            font-size: 14px;
+            background: rgba(253, 224, 71, 0.1);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .pillar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pillar-list li {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            position: relative;
+            color: #cbd5e1;
+            font-size: 15px;
+            line-height: 1.5;
+            transition: color 0.3s;
+        }
+
+        .pillar-list li:hover { color: #ffffff; }
+
+        .pillar-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-gold);
+            opacity: 0.7;
+        }
+
+        /* Footer Tagline */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .tagline {
+            font-size: 28px;
+            font-weight: 300;
+            color: #ffffff;
+            font-style: italic;
+        }
+
+        .tagline span {
+            color: var(--accent-green);
+            font-weight: 600;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" style="background: rgba(34, 197, 94, 0.2); border: 1px solid var(--accent-green);">🏠 Main Home</a>
+        <a href="hub_intro.html" class="active">The Pillars</a>
+        <a href="hub_systems.html">Ecosystem Practices</a>
+        <a href="dynamic_conference.html" style="margin-left: 20px; border: 1px solid rgba(255,255,255,0.2);">← Return to Network</a>
+    </nav>
+
+    <header>
+        <div class="hub-logo">
+            <!-- Simple SVG icon representing growth/sun/wheel -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15 8H9L12 2Z" />
+                <path d="M22 12L16 9V15L22 12Z" />
+                <path d="M12 22L9 16H15L12 22Z" />
+                <path d="M2 12L8 15V9L2 12Z" />
+                <circle cx="12" cy="12" r="3" />
+            </svg>
+        </div>
+        <h1>The Hub of Prosperity</h1>
+        <p class="intro-text">
+            First planted in 2019 by UTRGV Agroecology and Edinburg First United Methodist Church, this community farm is blossoming into a regional hub for sustainable agriculture research and education.
+        </p>
+    </header>
+
+    <div class="grid-container">
+        
+        <!-- Agriculture -->
+        <div class="pillar-card">
+            <h2>Agriculture <span>01</span></h2>
+            <ul class="pillar-list">
+                <li>Weekly farm stand, Saturdays Nov - June</li>
+                <li>Online sales via Sentli Center</li>
+                <li>Donations to FUMC and UTRGV food pantries</li>
+                <li>Volunteer for veggies!</li>
+            </ul>
+        </div>
+
+        <!-- Research -->
+        <div class="pillar-card">
+            <h2>Research <span>02</span></h2>
+            <ul class="pillar-list">
+                <li>Regionally adapted vegetable varieties</li>
+                <li>Cover cropping and soil health</li>
+                <li>Low-input pest management</li>
+                <li>Natives in agroecosystems</li>
+            </ul>
+        </div>
+
+        <!-- Education -->
+        <div class="pillar-card">
+            <h2>Education <span>03</span></h2>
+            <ul class="pillar-list">
+                <li>Monthly community workshops</li>
+                <li>UTRGV courses and tours</li>
+                <li>30+ student employees, interns, and counting!</li>
+                <li>Community conversations on food system issues</li>
+            </ul>
+        </div>
+
+        <!-- Community -->
+        <div class="pillar-card">
+            <h2>Community <span>04</span></h2>
+            <ul class="pillar-list">
+                <li>20 bed community garden</li>
+                <li>8 member incubator farm</li>
+                <li>Perimeter walking trail</li>
+                <li>Special events like Tomato Fest and RGV Food Summit</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="tagline">
+            Welcome to the Hub - <span>where the land loves you back!</span>
+        </div>
+    </footer>
+
+</body>
+</html>

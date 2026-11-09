@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USDA BFRDP Project Dashboard | Subtropical Agroecology Enterprises</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
+        <a href="../command_center/dashboard.html" style="display: inline-block; font-size: 0.8rem; font-weight: 700; color: #064e3b; text-decoration: none; background: #34d399; padding: 6px 10px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">🧭 Master Command Center →</a>
+        <a href="../index.html" class="portal-back-link" style="margin-bottom: 0;">← Main Agroecology Portal</a>
+      </div>
+      <span class="sidebar-badge">USDA-NIFA · BFRDP</span>
+      <h1>Subtropical Agroecology</h1>
+      <p>Beginning Farmer &amp; Rancher Development Program</p>
+      
+      <div class="db-sync-status" id="dbSyncStatus">
+        <span class="status-dot"></span>
+        <span class="status-text">Local Storage (Active)</span>
+      </div>
+    </div>
+    
+    <ul class="nav-links">
+      <li>
+        <a href="#checklist" class="nav-link active" data-target="checklist-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+          Deliverables &amp; Pillars
+        </a>
+      </li>
+      <li>
+        <a href="#contacts" class="nav-link" data-target="contacts-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          8-County Contacts &amp; CRM
+        </a>
+      </li>
+      <li>
+        <a href="#cohort" class="nav-link" data-target="cohort-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+          Incubator &amp; Cohort
+        </a>
+      </li>
+      <li>
+        <a href="#timeline" class="nav-link" data-target="timeline-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          3-Year Timeline
+        </a>
+      </li>
+      <li>
+        <a href="#reporting" class="nav-link" data-target="reporting-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          NIFA REEporting
+        </a>
+      </li>
+      <li>
+        <a href="#intake" class="nav-link" data-target="intake-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Farmer Intake Survey
+        </a>
+      </li>
+      <li>
+        <a href="#compiled" class="nav-link" data-target="compiled-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+          Executive Summary
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <p>Related Dashboards:</p>
+      <p>🧭 <a href="../command_center/dashboard.html" style="font-weight: 700; color: #6ee7b7;">Master Command Center</a></p>
+      <p>🌾 <a href="../wk_kellogg_foundation/dashboard.html">W.K. Kellogg Grant Dashboard</a></p>
+      <p>🌳 <a href="../campuses.html">Project Cool Schools</a></p>
+      <p>📊 <a href="../farm_management.html">Farm Operations Planner</a></p>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    
+    <!-- Hero Stats Bar -->
+    <div class="hero-stat-banner">
+      <div class="stat-card">
+        <div class="stat-label">Total Grant Award</div>
+        <div class="stat-value">$748,500</div>
+        <div class="stat-subtext">USDA-NIFA · 3-Year Funding</div>
+      </div>
+      <div class="stat-card accent-gold">
+        <div class="stat-label">Target Region</div>
+        <div class="stat-value">8 Counties</div>
+        <div class="stat-subtext">South Texas / Lower RGV</div>
+      </div>
+      <div class="stat-card accent-teal">
+        <div class="stat-label">Farmer Graduate Goal</div>
+        <div class="stat-value" id="statGradCount">60 Producers</div>
+        <div class="stat-subtext">Tier 1 &amp; Tier 2 Bilingual Cohorts</div>
+      </div>
+      <div class="stat-card accent-amber">
+        <div class="stat-label">Deliverables Completion</div>
+        <div class="stat-value" id="statOverallProgress">0%</div>
+        <div class="stat-subtext" id="statDeliverablesCompleted">0 of 20 Tracked</div>
+      </div>
+    </div>
+
+    <!-- VIEW 1: Deliverables Checklist -->
+    <section id="checklist-view" class="view-section active">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>Grant Deliverables &amp; Pillars</h2>
+          <p>Monitor real-time progress across all core pillars of the USDA-NIFA BFRDP project.</p>
+        </div>
+        <div class="header-action-group">
+          <button class="btn btn-secondary btn-sm" id="btnResetChecklist">Reset Checkmarks</button>
+          <button class="btn btn-primary btn-sm" id="btnSaveChecklist">Save Progress</button>
+        </div>
+      </div>
+
+      <div class="progress-container">
+        <div class="progress-header">
+          <span>Overall Project Execution</span>
+          <span id="progressBarLabel">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressBarFill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        
+        <!-- Pillar 1 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">📚</div>
+            <div>
+              <div class="card-title">Pillar 1: Bilingual Education</div>
+              <div class="card-subtitle">Curriculum, Workshops &amp; Certificates</div>
+            </div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p1-1" class="grant-checkbox">
+              <label for="chk-p1-1" class="checklist-text">
+                <strong>12 Bilingual Curriculum Modules</strong>
+                Develop subtropical-specific modules (soil health, water conservation, IPM, cover cropping).
+                <span class="checklist-tag tag-bilingual">Bilingual (EN/ES)</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p1-2" class="grant-checkbox">
+              <label for="chk-p1-2" class="checklist-text">
+                <strong>36 Hands-On Field Workshops</strong>
+                Host 12 workshops/year across Hidalgo, Cameron, Willacy, and Starr counties.
+                <span class="checklist-tag tag-tier1">Tier 1 &amp; Tier 2</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p1-3" class="grant-checkbox">
+              <label for="chk-p1-3" class="checklist-text">
+                <strong>Live Spanish Interpretation</strong>
+                Deliver simultaneous interpretation and translated technical handouts for all sessions.
+                <span class="checklist-tag tag-bilingual">Outreach</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p1-4" class="grant-checkbox">
+              <label for="chk-p1-4" class="checklist-text">
+                <strong>60+ Certified Graduates</strong>
+                Ensure participants complete at least 25 instructional/field hours to earn UTRGV Certificates.
+                <span class="checklist-tag tag-nifa">Milestone</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon gold">🚜</div>
+            <div>
+              <div class="card-title">Pillar 2: Incubator &amp; Land Access</div>
+              <div class="card-subtitle">Hub of Prosperity Living Lab</div>
+            </div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p2-1" class="grant-checkbox">
+              <label for="chk-p2-1" class="checklist-text">
+                <strong>15 Incubator Farm Plots</strong>
+                Allocate irrigated 1/4-acre plots at Hub of Prosperity for Tier 1 (0–1 yr) beginning producers.
+                <span class="checklist-tag tag-tier1">Land Access</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p2-2" class="grant-checkbox">
+              <label for="chk-p2-2" class="checklist-text">
+                <strong>Shared Equipment Bank</strong>
+                Establish equipment pool (two-wheel tractors, seeders, flail mowers, solar dryers).
+                <span class="checklist-tag tag-tier1">Infrastructure</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p2-3" class="grant-checkbox">
+              <label for="chk-p2-3" class="checklist-text">
+                <strong>Soil Health &amp; Water Testing</strong>
+                Provide complimentary soil organic carbon, active carbon, and salinity testing.
+                <span class="checklist-tag tag-tier1">Diagnostics</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p2-4" class="grant-checkbox">
+              <label for="chk-p2-4" class="checklist-text">
+                <strong>Post-Harvest Wash/Pack Hub</strong>
+                Equip certified wash-pack facility with cold storage for direct-to-market prep.
+                <span class="checklist-tag tag-tier1">Food Safety</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon teal">💼</div>
+            <div>
+              <div class="card-title">Pillar 3: Agribusiness &amp; Finance</div>
+              <div class="card-subtitle">Financial Benchmarking &amp; Markets</div>
+            </div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p3-1" class="grant-checkbox">
+              <label for="chk-p3-1" class="checklist-text">
+                <strong>Crop Enterprise Budgets</strong>
+                Build dynamic financial templates for specialty subtropical crops (roselle, greens, melons).
+                <span class="checklist-tag tag-benchmarking">Financials</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p3-2" class="grant-checkbox">
+              <label for="chk-p3-2" class="checklist-text">
+                <strong>Kitchen Table Mentorship</strong>
+                Provide 1-on-1 financial coaching and cash flow modeling for 30 Tier 2 producers.
+                <span class="checklist-tag tag-benchmarking">Mentorship</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p3-3" class="grant-checkbox">
+              <label for="chk-p3-3" class="checklist-text">
+                <strong>3 Market Channel Connections</strong>
+                Bridge farmers into farmers markets, CSA subscriptions, and institutional wholesale (TIPA).
+                <span class="checklist-tag tag-tier2">Commercialization</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p3-4" class="grant-checkbox">
+              <label for="chk-p3-4" class="checklist-text">
+                <strong>USDA Programs Navigation</strong>
+                Conduct technical clinics on FSA microloans, NRCS EQIP cost-share, and RMA insurance.
+                <span class="checklist-tag tag-nifa">Federal Programs</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon amber">🤝</div>
+            <div>
+              <div class="card-title">Pillar 4: Mentorship &amp; 8-County Network</div>
+              <div class="card-subtitle">Regional Field Days &amp; Peer Pairing</div>
+            </div>
+          </div>
+          <ul class="checklist">
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p4-1" class="grant-checkbox">
+              <label for="chk-p4-1" class="checklist-text">
+                <strong>20 Farmer-to-Farmer Pairings</strong>
+                Pair beginning producers with experienced regional farmers (Good Grow, Crossroads, AFT).
+                <span class="checklist-tag tag-tier2">Mentorship</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p4-2" class="grant-checkbox">
+              <label for="chk-p4-2" class="checklist-text">
+                <strong>6 Regional Farm Field Days</strong>
+                Host live demonstrations of silvopasture, cover-crop termination, and soil health.
+                <span class="checklist-tag tag-bilingual">Field Day</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p4-3" class="grant-checkbox">
+              <label for="chk-p4-3" class="checklist-text">
+                <strong>8-County GIS Resource Map</strong>
+                Launch interactive farmer GIS mapping covering Hidalgo, Cameron, Willacy, Starr, etc.
+                <span class="checklist-tag tag-nifa">Geospatial</span>
+              </label>
+            </li>
+            <li class="checklist-item">
+              <input type="checkbox" id="chk-p4-4" class="grant-checkbox">
+              <label for="chk-p4-4" class="checklist-text">
+                <strong>Annual South Texas BFR Forum</strong>
+                Host regional beginning farmer summit in partnership with the Annual RGV Food Summit.
+                <span class="checklist-tag tag-nifa">Annual Summit</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 2: 8-County Contacts & CRM -->
+    <section id="contacts-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>8-County Stakeholder &amp; Contacts CRM</h2>
+          <p>Directory of leadership, contractor liaisons, farmer mentors, and letter-of-support partners.</p>
+        </div>
+        <div class="header-action-group">
+          <button class="btn btn-primary btn-sm" id="btnOpenAddContactModal">+ Add New Contact</button>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-chip active" data-filter="all">All Contacts</button>
+        <button class="filter-chip" data-filter="leadership">Core Leadership</button>
+        <button class="filter-chip" data-filter="contractor">Contractors &amp; Staff</button>
+        <button class="filter-chip" data-filter="farmer">Farmer Mentors</button>
+        <button class="filter-chip" data-filter="partner">Institutional Partners</button>
+        <input type="text" id="contactSearchInput" class="search-input" placeholder="🔍 Search name, county, farm..." style="margin-left: auto;">
+      </div>
+
+      <div class="table-container">
+        <table class="data-table" id="contactsTable">
+          <thead>
+            <tr>
+              <th>Contact &amp; Title</th>
+              <th>Organization / Farm</th>
+              <th>County / Area</th>
+              <th>Project Role</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="contactsTableBody">
+            <!-- Populated via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VIEW 3: Incubator & Cohort -->
+    <section id="cohort-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>Beginning Farmer Cohort &amp; Incubator Roster</h2>
+          <p>Track Tier 1 (0–1 yr) incubator plot holders and Tier 2 (1–3+ yrs) advanced agribusiness cohorts.</p>
+        </div>
+        <div class="header-action-group">
+          <button class="btn btn-primary btn-sm" id="btnOpenAddCohortModal">+ Onboard New Producer</button>
+        </div>
+      </div>
+
+      <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-bottom: 1.5rem;">
+        <div class="card">
+          <div class="card-title">🌱 Tier 1: Living Lab Incubator</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.35rem 0 1rem;">Hub of Prosperity physical plots, drip irrigation &amp; equipment sharing.</p>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);" id="tier1ActiveCount">6 / 15 Enrolled</div>
+        </div>
+        <div class="card">
+          <div class="card-title">📈 Tier 2: Agribusiness &amp; Finance</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.35rem 0 1rem;">Kitchen Table coaching, wholesale readiness &amp; FSA navigation.</p>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--secondary-color);" id="tier2ActiveCount">12 / 30 Enrolled</div>
+        </div>
+        <div class="card">
+          <div class="card-title">🎓 Certificates Awarded</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.35rem 0 1rem;">Producers completing 25+ training &amp; field demonstration hours.</p>
+          <div style="font-size: 1.5rem; font-weight: 700; color: var(--accent-blue);" id="graduatedCount">18 / 60 Goal</div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Producer Name</th>
+              <th>Tier</th>
+              <th>Farm Enterprise / Specialty</th>
+              <th>Plot / Land Status</th>
+              <th>Training Hours</th>
+              <th>Mentorship Pair</th>
+            </tr>
+          </thead>
+          <tbody id="cohortTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- VIEW 4: Timeline -->
+    <section id="timeline-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>3-Year Grant Execution Timeline</h2>
+          <p>Quarter-by-quarter work plan and major project milestones.</p>
+        </div>
+      </div>
+
+      <div class="timeline-grid">
+        <div class="timeline-card">
+          <span class="timeline-quarter-tag">Year 1: Foundation &amp; Setup</span>
+          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--primary-color);">Incubator Groundbreaking &amp; Curriculum</h3>
+          <ul class="timeline-milestones">
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Finalize contractor MOUs (Marcelino, Patty, Kitchen Table)</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Break ground on 15 incubator plots at Hub of Prosperity</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Author 12 bilingual curriculum modules</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Onboard Year 1 Cohort (20 beginning producers)</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Submit NIFA REEport Semi-Annual Progress Report 1</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <span class="timeline-quarter-tag" style="background: rgba(212, 163, 115, 0.2); color: #b07d4b;">Year 2: Scale &amp; Benchmarking</span>
+          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--primary-color);">8-County Extension &amp; Financial Coaching</h3>
+          <ul class="timeline-milestones">
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Deploy Kitchen Table 1-on-1 financial benchmarking</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Host 12 regional workshops &amp; 2 on-farm field days</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Launch 8-county GIS Farmer &amp; Land Resource Portal</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Graduate first 20 producers with UTRGV Certificates</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Submit Annual REEport &amp; Federal Milestone Update</li>
+          </ul>
+        </div>
+
+        <div class="timeline-card">
+          <span class="timeline-quarter-tag" style="background: rgba(42, 157, 143, 0.2); color: #2a9d8f;">Year 3: Market Maturation</span>
+          <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem; color: var(--primary-color);">Institutional Sales &amp; Farmland Succession</h3>
+          <ul class="timeline-milestones">
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Connect Tier 2 cohort to institutional wholesale (TIPA)</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Conduct land succession clinics with American Farmland Trust</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Reach cumulative 60+ certified beginning producers</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Host Final BFR Forum at Annual RGV Food Summit</li>
+            <li class="timeline-milestone-item"><span class="timeline-dot"></span> Compile Final Federal Comprehensive Evaluation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: NIFA Reporting -->
+    <section id="reporting-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>USDA-NIFA REEporting Portal</h2>
+          <p>Generate federal compliance drafts and monitor performance metrics for semi-annual reviews.</p>
+        </div>
+        <div class="header-action-group">
+          <button class="btn btn-primary btn-sm" id="btnCopyReportDraft">📋 Copy REEport Narrative Draft</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <div class="card-title">USDA Demographic &amp; Participant Indicators</div>
+        <div class="form-grid" style="margin-top: 1rem;">
+          <div class="form-group">
+            <label class="form-label">Socially Disadvantaged Producers</label>
+            <input type="number" class="form-control" id="repSociallyDisadv" value="48">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Military Veteran Producers</label>
+            <input type="number" class="form-control" id="repVeterans" value="7">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Women Producers in Ag</label>
+            <input type="number" class="form-control" id="repWomen" value="34">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Total Acres in Regenerative Transition</label>
+            <input type="number" class="form-control" id="repAcres" value="142">
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Automated Semi-Annual Progress Narrative Draft</div>
+        <div class="form-group" style="margin-top: 1rem;">
+          <textarea class="form-control" id="reeportNarrativeDraft" style="min-height: 220px; font-family: monospace; font-size: 0.85rem;" readonly>
+PROJECT: USDA-NIFA BFRDP - Subtropical Agroecology Enterprises
+LEAD PI: Dr. Alexis Racelis (UTRGV)
+REPORTING PERIOD: Semi-Annual Progress Report
+
+1. ACCOMPLISHMENTS & MAJOR MILESTONES:
+- Continued bilingual workforce and land incubation at the Hub of Prosperity.
+- Active farmer enrollment across Hidalgo, Cameron, and Willacy counties.
+- Conducted hands-on soil health and drip irrigation workshops with live Spanish interpretation.
+- Collaborated with American Farmland Trust and South Texas Grazing Land Coalition on regional field days.
+- Deployed financial benchmarking frameworks with Kitchen Table Consultants.
+
+2. TARGET PARTICIPANTS & DEMOGRAPHICS:
+- Socially Disadvantaged Producers: 48
+- Military Veteran Producers: 7
+- Women in Agriculture: 34
+- Total Acreage Transitioned: 142 Acres
+
+3. NEXT 6-MONTH OBJECTIVES:
+- Expand Tier 2 producer commercial wholesale readiness with TIPA.
+- Host upcoming Soil Health & Grazing Field Days in Weslaco and Santa Rosa.
+- Finalize 8-county GIS producer mapping dataset.
+          </textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: Farmer Intake Survey -->
+    <section id="intake-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>Bilingual Farmer Intake &amp; Needs Assessment</h2>
+          <p>Interactive intake form for onboarding beginning farmers and ranchers in South Texas.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <form id="farmerIntakeForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Full Name / Nombre Completo *</label>
+              <input type="text" class="form-control" id="intakeName" required placeholder="e.g. Carlos Alvarez">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Farm or Enterprise Name / Nombre del Rancho</label>
+              <input type="text" class="form-control" id="intakeFarm" placeholder="e.g. Tierra Viva Organics">
+            </div>
+            <div class="form-group">
+              <label class="form-label">County / Condado *</label>
+              <select class="form-control" id="intakeCounty" required>
+                <option value="Hidalgo">Hidalgo County</option>
+                <option value="Cameron">Cameron County</option>
+                <option value="Willacy">Willacy County</option>
+                <option value="Starr">Starr County</option>
+                <option value="Zapata">Zapata County</option>
+                <option value="Jim Hogg">Jim Hogg County</option>
+                <option value="Brooks">Brooks County</option>
+                <option value="Kenedy">Kenedy County</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Years in Farming / Años de Experiencia *</label>
+              <select class="form-control" id="intakeTier" required>
+                <option value="Tier 1 (0–1 yr)">Tier 1 (0–1 Year) - Living Lab Incubator</option>
+                <option value="Tier 2 (1–3 yrs)">Tier 2 (1–3 Years) - Financial Benchmarking</option>
+                <option value="Tier 3 (3–10 yrs)">Tier 3 (3–10 Years) - Advanced Scale / Wholesale</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone / Teléfono *</label>
+              <input type="tel" class="form-control" id="intakePhone" required placeholder="956-555-0199">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email / Correo Electrónico</label>
+              <input type="email" class="form-control" id="intakeEmail" placeholder="producer@example.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Crops or Livestock / Cultivos o Ganadería</label>
+              <input type="text" class="form-control" id="intakeEnterprise" placeholder="e.g., Specialty Melons, Pastured Poultry, Citrus">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Preferred Language / Idioma Preferido</label>
+              <select class="form-control" id="intakeLanguage">
+                <option value="Bilingual">Bilingual (English &amp; Español)</option>
+                <option value="Spanish Only">Español Solamente</option>
+                <option value="English Only">English Only</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Key Needs &amp; Assistance Goals / Necesidades Principales</label>
+              <textarea class="form-control" id="intakeGoals" placeholder="Describe land access needs, irrigation setup, equipment sharing, FSA loan assistance, or business planning..."></textarea>
+            </div>
+          </div>
+          <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn btn-primary">Submit Intake &amp; Add to Cohort</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIEW 7: Compiled Summary -->
+    <section id="compiled-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>Compiled Grant Executive Summary</h2>
+          <p>Consolidated executive brief for project directors, USDA program officers, and institutional partners.</p>
+        </div>
+        <div class="header-action-group">
+          <button class="btn btn-primary btn-sm" onclick="window.print()">🖨️ Print / Export to PDF</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 2rem;">
+        <div style="border-bottom: 2px solid var(--primary-color); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+          <h1 style="color: var(--primary-color); font-size: 1.5rem;">USDA-NIFA Beginning Farmer and Rancher Development Program</h1>
+          <h3 style="color: var(--text-secondary); font-size: 1.1rem; font-weight: 500;">Subtropical Agroecology Enterprises (Grant Award: $748,500)</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">University of Texas Rio Grande Valley · Agroecology &amp; Resilient Food Systems Lab</p>
+        </div>
+
+        <div class="card-grid" style="margin-bottom: 1.5rem;">
+          <div>
+            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Project Leadership</h4>
+            <p style="font-size: 0.9rem;"><strong>Lead PI / Project Director:</strong> Dr. Alexis Racelis</p>
+            <p style="font-size: 0.9rem;"><strong>Narrative &amp; Strategy:</strong> Dr. Lockman</p>
+            <p style="font-size: 0.9rem;"><strong>Grants &amp; Compliance:</strong> Aisha</p>
+            <p style="font-size: 0.9rem;"><strong>GIS &amp; Farmer Mapping:</strong> Alex &amp; Valdez</p>
+          </div>
+          <div>
+            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Regional Scope &amp; Target</h4>
+            <p style="font-size: 0.9rem;"><strong>Target Region:</strong> 8 South Texas Counties</p>
+            <p style="font-size: 0.9rem;"><strong>Hub Living Lab:</strong> 5-Acre Incubator Farm</p>
+            <p style="font-size: 0.9rem;"><strong>Graduate Target:</strong> 60 Certified Beginning Producers</p>
+            <p style="font-size: 0.9rem;"><strong>Mentorship Cohort:</strong> 20 Peer Pairs</p>
+          </div>
+        </div>
+
+        <div style="background: #f8fafc; padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--primary-color); margin-bottom: 1.5rem;">
+          <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Key Project Deliverable Highlights</h4>
+          <ul style="padding-left: 1.25rem; font-size: 0.88rem; display: flex; flex-direction: column; gap: 6px;">
+            <li><strong>36 Bilingual Workshops:</strong> Soil health, drip irrigation, IPM, and agroforestry tailored to subtropical climate.</li>
+            <li><strong>Hub of Prosperity Incubator:</strong> 15 physical plots with water access, shared tools, and post-harvest cold storage.</li>
+            <li><strong>Agribusiness &amp; Financial Mentorship:</strong> 1-on-1 financial coaching via Kitchen Table Consultants and FSA loan clinics.</li>
+            <li><strong>Key Regional Alliances:</strong> Active partnerships with American Farmland Trust, South Texas Grazing Land Coalition, Good Grow, and TIPA.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Add Contact Modal -->
+  <div class="modal-backdrop" id="addContactModal">
+    <div class="modal-box">
+      <button class="modal-close" id="btnCloseContactModal">&times;</button>
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Add Stakeholder or Partner Contact</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">Record a new regional farmer, institutional partner, or contractor liaison.</p>
+      
+      <form id="addContactForm">
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label">Full Name &amp; Title *</label>
+            <input type="text" class="form-control" id="modalContactName" required placeholder="e.g. Servando Leal, Chair">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Organization / Farm *</label>
+            <input type="text" class="form-control" id="modalContactOrg" required placeholder="e.g. South Texas Grazing Coalition">
+          </div>
+          <div class="form-group">
+            <label class="form-label">County / Location *</label>
+            <input type="text" class="form-control" id="modalContactCounty" required placeholder="e.g. Hidalgo / Weslaco">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select class="form-control" id="modalContactCategory" required>
+              <option value="leadership">Core Leadership</option>
+              <option value="contractor">Contractor &amp; Staff</option>
+              <option value="farmer">Farmer Mentor / Producer</option>
+              <option value="partner">Institutional Partner</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Status *</label>
+            <select class="form-control" id="modalContactStatus" required>
+              <option value="active">Active Lead</option>
+              <option value="partner">Letter of Support</option>
+              <option value="drafted">MOU Drafted</option>
+              <option value="pending">Pending Outreach</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label class="form-label">Email or Phone</label>
+            <input type="text" class="form-control" id="modalContactInfo" placeholder="email@example.com / 956-555-0100">
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" id="btnCancelContactModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Contact</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Cohort Modal -->
+  <div class="modal-backdrop" id="addCohortModal">
+    <div class="modal-box">
+      <button class="modal-close" id="btnCloseCohortModal">&times;</button>
+      <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">Onboard Producer to Cohort</h3>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">Add a beginning farmer to the Tier 1 Incubator or Tier 2 Agribusiness track.</p>
+      
+      <form id="addCohortForm">
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label">Producer Name *</label>
+            <input type="text" class="form-control" id="modalCohortName" required placeholder="e.g. Rosa Linda Ramos">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cohort Track / Tier *</label>
+            <select class="form-control" id="modalCohortTier" required>
+              <option value="Tier 1 (0–1 yr)">Tier 1 (0–1 yr) Incubator</option>
+              <option value="Tier 2 (1–3 yrs)">Tier 2 (1–3 yrs) Agribusiness</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Enterprise / Crops *</label>
+            <input type="text" class="form-control" id="modalCohortEnterprise" required placeholder="e.g. Specialty Squashes &amp; Okra">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Plot / Land Status *</label>
+            <input type="text" class="form-control" id="modalCohortPlot" required placeholder="e.g. Hub Plot 4A (1/4 Acre)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Assigned Mentor</label>
+            <input type="text" class="form-control" id="modalCohortMentor" placeholder="e.g. Marcelino Garza / Good Grow">
+          </div>
+        </div>
+        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-secondary" id="btnCancelCohortModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add to Cohort</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

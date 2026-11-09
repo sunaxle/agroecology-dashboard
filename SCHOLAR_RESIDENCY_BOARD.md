@@ -1,6 +1,7 @@
-# 🌱 UTRGV Agroecology & SARA - Shared Residency Whiteboard
+# 🌱 UTRGV Agroecology & Hub of Prosperity - Shared Residency Whiteboard
 **Visiting Scholar Residency Window: Tuesday, September 29 – Thursday, October 29, 2026**  
-*Shared Team Coordinator for WhatsApp & Lab Operations*
+*Shared Team Coordinator for WhatsApp & Lab Operations*  
+> 🧭 **Overarching Operations Hub:** [Master Command Center](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/command_center/dashboard.html) | [Project Cool Schools (14 Campuses)](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/campuses.html) | [Live Whiteboard](file:///Users/dr3/Documents/Antigravity%20Designs/work/agroecology/whiteboard.html)
 
 ---
 
@@ -11,7 +12,7 @@
 | **Tue, Sep 29** | 10:00 AM | **Visiting Scholar Arrival & Airport Pickup** | Valley Int'l Airport (HRL) ➔ Edinburg Campus | Desiderio Romero | **✓ Done.** Guest office setup & keycard access. |
 | **Tue, Sep 29** | 12:00 PM | **Intro Lunch: Dr. Ramos & Robert Cantu** | UTRGV Campus Dining / Student Union | Dr. Alexis Racelis | **✓ Done.** Welcome lunch introducing visiting scholar Dr. Ramos to Robert Cantu (Executive Director, UTRGV Business Auxiliary Services / Food Services). |
 | **Tue, Sep 29** | 2:00 PM | **Campus & Lab Facility Orientation** | Agroecology Lab & Greenhouse Suite | Desiderio Romero & Lab Staff | **✓ Done.** Tour of wet lab, analytical ovens, soil prep area. |
-| **Wed, Sep 30** | 8:30 AM – 2:00 PM | **Region One ESC School Nutrition Food Show** | Edinburg Campus ➔ SPI Convention Center ➔ Campus | Agroecology / SARA Team | Leave campus @ 8:30 AM, arrive SPI ~9:45 AM, depart SPI ~12:45 PM, return @ 2:00 PM. |
+| **Wed, Sep 30** | 8:30 AM – 2:00 PM | **Region One ESC School Nutrition Food Show** | Edinburg Campus ➔ SPI Convention Center ➔ Campus | UTRGV Agroecology & Hub Team | Leave campus @ 8:30 AM, arrive SPI ~9:45 AM, depart SPI ~12:45 PM, return @ 2:00 PM. |
 | **Thu, Oct 29** | 9:00 AM | **Airport Departure & Program Closeout** | Edinburg Campus ➔ Valley Int'l Airport (HRL) | Desiderio Romero | Safe travels & transit back. |
 
 ---
@@ -35,7 +36,7 @@
 ### 📍 Community Workshops (Saturday, September 26, 2026)
 * **🌱 Beginner Gardening 101 (10:00 AM – 12:00 PM)**
   * **Location:** Hub of Prosperity Farm (3707 W University Dr, Edinburg, TX)
-  * **Hosts:** UTRGV Agroecology, SARA & West/Southwest Transition to Organic Partnership Program (TOPP)
+  * **Hosts:** UTRGV Agroecology Lab, Hub of Prosperity & West/Southwest Transition to Organic Partnership Program (TOPP)
   * **Topics:** Organic growing practices, small space/container gardening tips, and native plant implementation.
 * **🌱 Transplant Production Workshop (6:30 PM)**
   * **Location:** Sentli Center (2806 E Rogers Rd, Edinburg, TX 78542)
@@ -104,12 +105,9 @@
 ## 🔄 3. Standing Weekly Cadence (Reuniones Semanales Recurrentes)
 
 ### 🗓️ Every Monday (Todos los Lunes)
-* **8:00 AM - 9:00 AM: Farm Meeting**  
-  * *Lead:* Maria & Farm Crew  
-  * *Focus:* Hub of Prosperity farm operations, harvest planning, crop rotations & field labor coordination.
-* **9:00 AM - 10:00 AM: SARA Team Meeting**  
-  * *Lead:* SARA Staff  
-  * *Focus:* Center for Sustainable Agriculture & Rural Advancement operations, grant status & regional producer outreach.
+* **8:00 AM - 9:00 AM: Farm Operations Meeting**  
+  * *Lead:* Maria Gonzalez, Juan, Demetrio & Farm Crew  
+  * *Focus:* Hub of Prosperity farm operations, harvest planning, crop rotations, Tier 1 farmer plot incubation & field labor coordination.
 
 ### 🗓️ Every Tuesday (Todos los Martes)
 * **9:00 AM - 12:30 PM: Dr. Racelis Class / Teaching Block**  
@@ -117,9 +115,9 @@
   * *Focus:* Undergraduate and graduate course teaching block.
 
 ### 🗓️ Every Wednesday (Todos los Miércoles)
-* **1:00 PM - 2:00 PM: 1-1 Tree Meeting**  
-  * *Lead:* Tree & Urban Forestry Lead  
-  * *Focus:* Silvopasture canopy trials, Tree Campus USA initiatives & microclimate temperature sensing.
+* **1:00 PM - 2:00 PM: 1-1 Tree & Project Cool Schools Meeting**  
+  * *Lead:* Dr. Bradley Christoffersen (Project Cool Schools & Urban Forestry Lead)  
+  * *Focus:* Project Cool Schools 14-campus canopy trials, silvopasture microclimates, Tree Campus USA initiatives & temperature sensing.
 * **2:00 PM - 3:15 PM: Agroecology General Team Meeting**  
   * *Lead:* Dr. Alexis Racelis & All Lab Members  
   * *Focus:* Core lab all-hands, student researcher tracking, research trial updates & visiting scholar check-in.

@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Agroecology &amp; Hub Command Center | UTRGV Living Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <!-- Firebase Cloud Realtime Sync (Shared kellogg-dashboard Project) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <a href="../index.html" class="portal-back-link">← Main Agroecology Portal</a>
+      <span class="sidebar-badge">UTRGV · MASTER COMMAND</span>
+      <h1>Agroecology &amp; Hub Command Center</h1>
+      <p>Kellogg · BFRDP · Cool Schools · Hub Living Lab</p>
+      <div class="db-sync-status" id="dbSyncStatus">
+        <span class="status-dot"></span>
+        <span class="status-text">Connecting to Live Cloud...</span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <a href="#pulse" class="nav-link active" data-target="pulse-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          Executive Pulse &amp; Roll-Up
+        </a>
+      </li>
+      <li>
+        <a href="#logger" class="nav-link" data-target="logger-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+          Universal "Log Once" Logger
+          <span class="nav-badge-pill">AUTO-SYNC</span>
+        </a>
+      </li>
+      <li>
+        <a href="#calendar" class="nav-link" data-target="calendar-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+          Master Calendar &amp; Coverage
+        </a>
+      </li>
+      <li>
+        <a href="#coworkers" class="nav-link" data-target="coworkers-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+          Coworkers, Tasks &amp; Bandwidth
+        </a>
+      </li>
+      <li>
+        <a href="#cool-schools" class="nav-link" data-target="cool-schools-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+          Cool Schools &amp; Urban Forestry
+          <span class="nav-badge-pill">14 ISDs</span>
+        </a>
+      </li>
+      <li>
+        <a href="#assets" class="nav-link" data-target="assets-view">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+          Shared Sites, Fleet &amp; Assets
+        </a>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-footer-title">Direct Hub Launchers</div>
+      <a href="../wk_kellogg_foundation/dashboard.html">🌾 W.K. Kellogg Grant Hub →</a>
+      <a href="../bfrdp_grant/dashboard.html">🏛️ USDA-NIFA BFRDP Hub →</a>
+      <a href="../campuses.html">🌳 Cool Schools 14-ISD GIS →</a>
+      <a href="../farm_management.html">🌱 Hub of Prosperity Farm Planner →</a>
+      <a href="../whiteboard.html">📋 Residency &amp; Team Whiteboard →</a>
+    </div>
+  </aside>
+
+  <!-- Main Workspace -->
+  <main class="main-content">
+
+    <!-- Top Command Banner -->
+    <div class="top-command-banner">
+      <div class="command-banner-left">
+        <h2>🌍 Master Agroecology &amp; Hub of Prosperity Command Center</h2>
+        <p>Unified cross-grant operations, "Log Once, Count Everywhere" reporting, 14-campus Cool Schools forestry, and coworker coordination.</p>
+      </div>
+      <div class="command-banner-actions">
+        <button class="btn btn-gold" id="btnQuickJumpLogger">➕ Log Workshop / Field Event</button>
+        <button class="btn btn-secondary" id="btnSyncBackfillAll" style="background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.3);">🔄 Sync &amp; Backfill Past Events into Ledger</button>
+      </div>
+    </div>
+
+    <!-- Top Hero KPI Stat Bar -->
+    <div class="hero-stat-banner">
+      <div class="stat-card accent-gold">
+        <div class="stat-label">Active Grant &amp; Lab Portfolio</div>
+        <div class="stat-value">$6.25M+</div>
+        <div class="stat-subtext">Kellogg · BFRDP · Cool Schools · CUE · CIT · SOAR</div>
+      </div>
+      <div class="stat-card accent-teal">
+        <div class="stat-label">Total Events &amp; Logs</div>
+        <div class="stat-value" id="heroTotalEventsCount">0</div>
+        <div class="stat-subtext" id="heroTotalEventsSub">Aggregated across Kellogg, Whiteboard &amp; Hub</div>
+      </div>
+      <div class="stat-card accent-forest">
+        <div class="stat-label">People &amp; Farmers Reached</div>
+        <div class="stat-value" id="heroTotalPeopleCount">0</div>
+        <div class="stat-subtext" id="heroTotalPeopleSub">Workshops + BFRDP Cohort + Cool Schools</div>
+      </div>
+      <div class="stat-card accent-purple">
+        <div class="stat-label">Overall Deliverables Progress</div>
+        <div class="stat-value" id="heroOverallProgressPct">0%</div>
+        <div class="stat-subtext" id="heroOverallProgressSub">Avg across Kellogg, BFRDP &amp; Cool Schools</div>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         VIEW 1: EXECUTIVE PULSE & PROGRAM ROLL-UP (#pulse-view)
+         ========================================================= -->
+    <section id="pulse-view" class="view-section active">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>Executive Pulse &amp; 4-Pillar Program Roll-Up</h2>
+          <p>Real-time synchronization with W.K. Kellogg Foundation, USDA-NIFA BFRDP, Project Cool Schools, and Hub of Prosperity operations.</p>
+        </div>
+        <div class="header-action-group">
+          <button class="btn btn-secondary btn-sm" id="btnPulseBackfill">🔄 Sync &amp; Backfill Past Events into Ledger</button>
+          <button class="btn btn-primary btn-sm" onclick="window.switchCommandView('logger-view')">📝 Open Universal Logger</button>
+        </div>
+      </div>
+
+      <!-- 4 Core Program Category Cards -->
+      <div class="program-rollup-grid">
+
+        <!-- 1. W.K. Kellogg Foundation -->
+        <div class="program-card prog-kellogg">
+          <div class="program-card-top">
+            <div class="program-card-title">
+              <div class="program-icon">🌾</div>
+              <div>
+                <h3>W.K. Kellogg Foundation</h3>
+                <span>Food Systems, SNAP/DUFB Markets, Sentli &amp; MALL Mobile Lab</span>
+              </div>
+            </div>
+            <span class="tag-pill tag-kellogg">$300K · Active</span>
+          </div>
+          <div class="program-metrics-row">
+            <div class="prog-mini-stat">
+              <span class="lbl">Logged Reports</span>
+              <span class="val" id="pulseKelloggReports">0</span>
+            </div>
+            <div class="prog-mini-stat">
+              <span class="lbl">Participants</span>
+              <span class="val" id="pulseKelloggAttendees">0</span>
+            </div>
+            <div class="prog-mini-stat">
+              <span class="lbl">Deliverables</span>
+              <span class="val" id="pulseKelloggCheckCount">0 / 16</span>
+            </div>
+          </div>
+          <div class="prog-progress-wrap">
+            <div class="prog-progress-header">
+              <span>Checklist Completion (`wkkf_meta/checklist`)</span>
+              <span id="pulseKelloggPct">0%</span>
+            </div>
+            <div class="prog-progress-track">
+              <div class="prog-progress-fill" id="pulseKelloggBar" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="program-card-footer">
+            <span>Lead: Dr. Alexis Racelis, Maria Gonzalez &amp; Sentli Center</span>
+            <a href="../wk_kellogg_foundation/dashboard.html" class="btn btn-secondary btn-sm">Open Kellogg Hub →</a>
+          </div>
+        </div>
+
+        <!-- 2. USDA-NIFA BFRDP -->
+        <div class="program-card prog-bfrdp">
+          <div class="program-card-top">
+            <div class="program-card-title">
+              <div class="program-icon">🏛️</div>
+              <div>
+                <h3>USDA-NIFA BFRDP Grant</h3>
+                <span>Subtropical Beginning Farmer &amp; Rancher Development (8 Counties)</span>
+              </div>
+            </div>
+            <span class="tag-pill tag-bfrdp">$748.5K · 3-Yr</span>
+          </div>
+          <div class="program-metrics-row">
+            <div class="prog-mini-stat">
+              <span class="lbl">Enrolled Cohort</span>
+              <span class="val" id="pulseBfrdpCohort">6 Farmers</span>
+            </div>
+            <div class="prog-mini-stat">
+              <span class="lbl">8-County CRM</span>
+              <span class="val" id="pulseBfrdpContacts">21 Contacts</span>
+            </div>
+            <div class="prog-mini-stat">
+              <span class="lbl">Deliverables</span>
+              <span class="val" id="pulseBfrdpCheckCount">0 / 20</span>
+            </div>
+          </div>
+          <div class="prog-progress-wrap">
+            <div class="prog-progress-header">
+              <span>Pillar Execution (`bfrdp_data/checklist`)</span>
+              <span id="pulseBfrdpPct">0%</span>
+            </div>
+            <div class="prog-progress-track">
+              <div class="prog-progress-fill" id="pulseBfrdpBar" style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="program-card-footer">
+            <span>Lead: Dr. Racelis, Lockman, Aisha, Valdez &amp; Marcelino</span>
+            <a href="../bfrdp_grant/dashboard.html" class="btn btn-secondary btn-sm">Open BFRDP Hub →</a>
+          </div>
+        </div>
+
+        <!-- 3. Project Cool Schools & Urban Forestry -->
+        <div class="program-card prog-cool">
+          <div class="program-card-top">
+            <div class="program-card-title">
+              <div class="program-icon">🌳</div>
+              <div>
+                <h3>Project Cool Schools &amp; Urban Forestry</h3>
+                <span>Texas Trees Foundation ($450K) · 14 South Texas ISDs · McAllen CUE ($325K)</span>
+              </div>
+            </div>
+            <span class="tag-pill tag-cool">$775K Combined</span>
+          </div>
+          <div class="program-metrics-row">
+            <div class="prog-mini-stat">
+              <span class="lbl">ISD Campuses</span>
+              <span class="val">14 Schools</span>
+            </div>
+            <div class="prog-mini-stat">
+              <span class="lbl">Caceres Planted</span>
+              <span class="val" id="pulseCoolTreesCount">154 Trees</span>
+            </div>
+            <div class="prog-mini-stat">
+              <span class="lbl">Canopy Target</span>
+              <span class="val">5% → 30%</span>
+            </div>
+          </div>
+          <div class="prog-progress-wrap">
+            <div class="prog-progress-header">
+              <span>Cool Schools &amp; CUE Milestones (`cool_schools_data/checklist`)</span>
+              <span id="pulseCoolPct">58%</span>
+            </div>
+            <div class="prog-progress-track">
+              <div class="prog-progress-fill" id="pulseCoolBar" style="width: 58%;"></div>
+            </div>
+          </div>
+          <div class="program-card-footer">
+            <span>Co-Leads: Dr. Bradley Christoffersen &amp; Dr. Alexis Racelis</span>
+            <div style="display:flex; gap:6px;">
+              <button class="btn btn-secondary btn-sm" onclick="window.switchCommandView('cool-schools-view')">Cool Schools Hub</button>
+              <a href="../campuses.html" class="btn btn-primary btn-sm">14-Campus GIS →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Hub of Prosperity & Field Trials -->
+        <div class="program-card prog-hub">
+          <div class="program-card-top">
+            <div class="program-card-title">
+              <div class="program-icon">🌱</div>
+              <div>
+                <h3>Hub of Prosperity &amp; Living Lab Trials</h3>
+                <span>5-Acre Living Lab · 15 Incubator Plots · Cover Crops, Silvopasture &amp; Sensors</span>
+              </div>
+            </div>
+            <span class="tag-pill tag-hub">Living Lab Core</span>
+          </div>
+          <div class="program-metrics-row">
+            <div class="prog-mini-stat">
+              <span class="lbl">Incubator Plots</span>
+              <span class="val">15 Plots (5 Ac)</span>
+            </div>
+            <div class="prog-mini-stat">
+              <span class="lbl">Active Tasks</span>
+              <span class="val" id="pulseHubTasksCount">0 Open</span>
+            </div>
+            <div class="prog-mini-stat">
+              <span class="lbl">Saturday Stand</span>
+              <span class="val">Weekly Active</span>
+            </div>
+          </div>
+          <div class="prog-progress-wrap">
+            <div class="prog-progress-header">
+              <span>Seasonal Field &amp; Trial Task Completion</span>
+              <span id="pulseHubPct">65%</span>
+            </div>
+            <div class="prog-progress-track">
+              <div class="prog-progress-fill" id="pulseHubBar" style="width: 65%;"></div>
+            </div>
+          </div>
+          <div class="program-card-footer">
+            <span>Leads: Maria Gonzalez, Desi Romero, Juan &amp; Demetrio</span>
+            <a href="../farm_management.html" class="btn btn-secondary btn-sm">Farm Planner →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Unified Live Activity Feed -->
+      <div class="card-panel">
+        <div class="panel-header">
+          <div>
+            <h3>Unified Live Activity &amp; Impact Feed</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Automatically merges records from Kellogg (`wkkf_reports`), Completed Residency Whiteboard Events, Cool Schools Audits, and Master Command Logs.</p>
+          </div>
+          <div class="filter-pills-bar" id="pulseFeedFilters">
+            <button class="filter-pill active" data-prog="ALL">All Programs</button>
+            <button class="filter-pill" data-prog="KELLOGG">🌾 Kellogg</button>
+            <button class="filter-pill" data-prog="BFRDP">🏛️ BFRDP</button>
+            <button class="filter-pill" data-prog="COOL_SCHOOLS">🌳 Cool Schools</button>
+            <button class="filter-pill" data-prog="HUB">🌱 Hub &amp; Lab</button>
+          </div>
+        </div>
+
+        <div class="unified-feed-list" id="unifiedPulseFeed">
+          <!-- Populated dynamically by dashboard.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 2: UNIVERSAL "LOG ONCE" EVENT & ACTIVITY LOGGER (#logger-view)
+         ========================================================= -->
+    <section id="logger-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>Universal "Log Once, Count Everywhere" Activity Logger</h2>
+          <p>Log any workshop, campus planting, farmer consult, or field day once — automatically routes to Kellogg, BFRDP, Cool Schools, and Master Workbooks.</p>
+        </div>
+        <div class="header-action-group">
+          <span id="loggerDraftBadge" class="tag-pill tag-kellogg" style="display:none;">💾 Draft Auto-Saved</span>
+          <button class="btn btn-secondary btn-sm" id="btnExportMasterCsv">📥 Export Master CSV</button>
+        </div>
+      </div>
+
+      <div class="log-once-explainer">
+        <div>
+          <h4>⚡ How "Log Once, Count Everywhere" Works</h4>
+          <p>Snap photos, record attendees or check in BFRDP cohort farmers, describe what was taught/discussed, tag the coworkers who covered it, and check which grants/programs it counts toward. One submission updates every linked dashboard automatically!</p>
+        </div>
+        <span class="tag-pill tag-bfrdp" style="font-size:0.8rem; padding:6px 12px;">✓ Multi-Grant Cloud Router Active</span>
+      </div>
+
+      <div class="logger-layout-grid">
+        <!-- Universal Logger Form Card -->
+        <div class="card-panel">
+          <form id="universalLoggerForm">
+
+            <!-- Row 1: Date, Duration, Activity Type -->
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="u-date">
+                  <span>Event Date *</span>
+                  <span>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btnLogToday" style="padding:1px 6px; font-size:0.7rem;">Today</button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="btnLogYesterday" style="padding:1px 6px; font-size:0.7rem;">Yesterday</button>
+                  </span>
+                </label>
+                <input type="date" id="u-date" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label for="u-hours">Duration / Instructional Hours *</label>
+                <input type="number" id="u-hours" class="form-control" step="0.5" min="0.5" max="24" value="2.0" required>
+              </div>
+
+              <div class="form-group">
+                <label for="u-type">Activity Type *</label>
+                <select id="u-type" class="form-control" required>
+                  <option value="Workshop / Training">Workshop / Training</option>
+                  <option value="Field Day / Ranch Demo">Field Day / Ranch Demo</option>
+                  <option value="Cool Schools Campus Planting / Canopy Audit">Cool Schools Campus Planting / Canopy Audit</option>
+                  <option value="Farmers Market / Farm Stand">Farmers Market / Farm Stand</option>
+                  <option value="1-on-1 Farmer Technical Assistance">1-on-1 Farmer Technical Assistance</option>
+                  <option value="Community Festival / CUE Outreach">Community Festival / CUE Outreach</option>
+                  <option value="Research Trial / Sensor Milestone">Research Trial / Sensor Milestone</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 2: Site/Campus & Topic/Title -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="u-site">Site / Campus / Asset Used *</label>
+                <select id="u-site" class="form-control" required>
+                  <option value="Hub of Prosperity Farm">Hub of Prosperity Farm (Edinburg)</option>
+                  <option value="Sentli Center">Sentli Center (Edinburg)</option>
+                  <option value="J.W. Caceres Academy (Cool Schools - Donna ISD)">J.W. Caceres Academy (Cool Schools - Donna ISD)</option>
+                  <option value="Economedes HS (Cool Schools - Edinburg CISD)">Economedes HS (Cool Schools - Edinburg CISD)</option>
+                  <option value="Nikki Rowe HS (Cool Schools - McAllen ISD)">Nikki Rowe HS (Cool Schools - McAllen ISD)</option>
+                  <option value="Quinta Mazatlán (CUE)">Quinta Mazatlán (Center for Urban Ecology - McAllen)</option>
+                  <option value="UTRGV Organic Greenhouse">UTRGV Certified Organic Garden &amp; Greenhouse</option>
+                  <option value="MALL Mobile Trailer">MALL Mobile Agroecology Learning Lab Trailer</option>
+                  <option value="Partner Ranch / Off-Site">Partner Ranch / Off-Site Regional Location</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="u-topic">Topic / Event Title *</label>
+                <input type="text" id="u-topic" class="form-control" placeholder="e.g., Subtropical Cover Crop Termination & Drip Setup or Cool Schools Canopy Audit" required>
+              </div>
+            </div>
+
+            <!-- Row 3: Coworkers Who Covered It -->
+            <div class="form-group">
+              <label>Coworkers Who Covered It (Check all team members who led or supported)</label>
+              <div class="coworker-pill-grid" id="uCoworkerPills">
+                <label class="coworker-check-label"><input type="checkbox" value="Dr. Alexis Racelis" checked><span>Dr. Alexis Racelis</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Desi Romero" checked><span>Desi Romero</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Maria Gonzalez"><span>Maria Gonzalez</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Q / Quinn"><span>Q / Quinn</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Juan & Demetrio"><span>Juan &amp; Demetrio</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Dr. Christoffersen (Cool Schools)"><span>Dr. Christoffersen (Cool Schools)</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Marisol Cervantes"><span>Marisol Cervantes</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Visiting Scholar (Dr. Ramos)"><span>Visiting Scholar (Dr. Ramos)</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Marcelino Garza"><span>Marcelino Garza</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Patty"><span>Patty</span></label>
+                <label class="coworker-check-label"><input type="checkbox" value="Grad / Undergrad Cohort"><span>Grad / Undergrad Cohort</span></label>
+              </div>
+            </div>
+
+            <!-- Row 4: What Was Taught, Discussed & Key Takeaways -->
+            <div class="form-group">
+              <label for="u-story">
+                <span>What Was Taught, Discussed &amp; Key Takeaways *</span>
+                <span style="font-weight:500; color:var(--text-muted);">Curriculum covered, farmer/student questions, barriers identified &amp; impact stories</span>
+              </label>
+              <textarea id="u-story" rows="3" class="form-control" placeholder="Describe what was demonstrated, key questions from farmers or students, soil/canopy data collected, and next follow-up steps..." required></textarea>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label style="justify-content:flex-start; gap:8px; cursor:pointer; margin-top:6px;">
+                  <input type="checkbox" id="u-bilingual" checked style="width:16px; height:16px; accent-color:var(--primary-mid);">
+                  <span>🗣️ Bilingual (EN/ES) Interpretation &amp; Materials Provided</span>
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="u-status">Outcome / Follow-Up Status</label>
+                <select id="u-status" class="form-control">
+                  <option value="Completed">Completed</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Follow-Up Needed">Follow-Up Needed</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 5: People & Attendees Logged (3 Tabs) -->
+            <div class="form-group">
+              <label>People, Farmers &amp; Students Logged</label>
+              <div class="attendee-tabs-bar">
+                <button type="button" class="attendee-tab-btn active" data-utab="manual">1. Manual Attendee Table</button>
+                <button type="button" class="attendee-tab-btn" data-utab="bulk">2. Bulk Paste (Excel/Sheets)</button>
+                <button type="button" class="attendee-tab-btn" data-utab="cohort">3. BFRDP Incubator Cohort Check-In</button>
+              </div>
+
+              <!-- Tab 1: Manual Table -->
+              <div class="attendee-tab-panel active" id="utab-manual">
+                <table class="mini-table" id="uAttendeeTable">
+                  <thead>
+                    <tr>
+                      <th>Full Name</th>
+                      <th>Phone</th>
+                      <th>Email</th>
+                      <th>Farm / School / Org</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Rows injected by JS -->
+                  </tbody>
+                </table>
+                <button type="button" class="btn btn-secondary btn-sm" id="btnAddUAttendeeRow" style="margin-top:0.5rem;">+ Add Attendee Row</button>
+              </div>
+
+              <!-- Tab 2: Bulk Paste -->
+              <div class="attendee-tab-panel" id="utab-bulk">
+                <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:0.4rem;">Paste tab-separated rows from Excel or Google Sheets (Name, Phone, Email, Farm/School/Org) or one name per line:</p>
+                <textarea id="u-bulk-attendees" rows="4" class="form-control" placeholder="Carlos Alvarez	956-555-0142	carlos@rgv.org	Hub Plot 1A&#10;Elena Villarreal	956-555-0188	elena@csa.org	Alamo Farm"></textarea>
+              </div>
+
+              <!-- Tab 3: BFRDP Cohort Check-In -->
+              <div class="attendee-tab-panel" id="utab-cohort">
+                <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:0.5rem;">Check any enrolled BFRDP Incubator Cohort farmers who attended — <strong>checking them automatically adds this event's instructional hours to their BFRDP Cohort record!</strong></p>
+                <div class="coworker-pill-grid" id="uBfrdpCohortCheckboxes">
+                  <!-- Populated dynamically from bfrdp_cohort_roster -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 6: Event Photos & Documentation -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>
+                  <span>Event Photos &amp; Documentation (Auto-Compressed ~35KB JPEG)</span>
+                  <span id="uPhotoBatchCounter" style="display:none; color:var(--primary-light); font-weight:700;"></span>
+                </label>
+                <div class="photo-dropzone" id="uPhotoDropzone" onclick="document.getElementById('u-photos').click()">
+                  <input type="file" id="u-photos" accept="image/*" multiple style="display:none;">
+                  <div style="font-size:0.84rem; font-weight:600; color:var(--primary-mid);">📸 Click or Drag &amp; Drop Event Photos Here</div>
+                  <div style="font-size:0.74rem; color:var(--text-muted); margin-top:2px;">Client-side canvas compression (~35KB @ 960px max) for instant cloud sync</div>
+                </div>
+                <div class="photo-preview-grid" id="uPhotoPreviewGrid"></div>
+                <div id="uUploadProgressBox" style="display:none; margin-top:0.5rem;">
+                  <div class="prog-progress-track"><div class="prog-progress-fill" id="uUploadProgressFill" style="width:0%;"></div></div>
+                  <div id="uUploadProgressText" style="font-size:0.74rem; color:var(--text-secondary); margin-top:3px;">Processing photos...</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="u-photo-link">Optional Google Drive Album or External Link</label>
+                <input type="url" id="u-photo-link" class="form-control" placeholder="https://drive.google.com/drive/folders/...">
+                <div style="margin-top:0.75rem; padding:0.75rem; background:var(--surface-subtle); border-radius:var(--radius-sm); border:1px solid var(--border-light); font-size:0.78rem; color:var(--text-secondary);">
+                  💡 <strong>Tip:</strong> Uploaded photos appear in the interactive Lightbox Gallery in both this Command Center and the W.K. Kellogg Reporting Portal when Kellogg is checked below.
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 7: Automatic Program Routing Checkboxes ("Where Does This Count?") -->
+            <div class="form-group">
+              <label>Automatic Program Routing ("Where Does This Count?") *</label>
+              <div class="routing-cards-grid">
+                <label class="routing-card-label">
+                  <input type="checkbox" id="route-kellogg" checked>
+                  <div class="routing-card-text">
+                    <strong>🌾 W.K. Kellogg Foundation</strong>
+                    <span>Writes to `wkkf_reports` in Firestore + `localStorage` so it auto-populates Kellogg's Reporting Workbook, Calendar &amp; Compiled Report.</span>
+                  </div>
+                </label>
+
+                <label class="routing-card-label">
+                  <input type="checkbox" id="route-bfrdp" checked>
+                  <div class="routing-card-text">
+                    <strong>🏛️ USDA-NIFA BFRDP</strong>
+                    <span>Updates checked BFRDP cohort hours in `bfrdp_data/cohort` &amp; appends new farmer attendees to `bfrdp_data/contacts`.</span>
+                  </div>
+                </label>
+
+                <label class="routing-card-label">
+                  <input type="checkbox" id="route-cool">
+                  <div class="routing-card-text">
+                    <strong>🌳 Project Cool Schools &amp; Urban Forestry</strong>
+                    <span>Writes to `cool_schools_logs` &amp; updates campus microforest outreach and canopy audit metrics.</span>
+                  </div>
+                </label>
+
+                <label class="routing-card-label">
+                  <input type="checkbox" id="route-hub" checked>
+                  <div class="routing-card-text">
+                    <strong>🌱 Hub of Prosperity &amp; Lab Operations</strong>
+                    <span>Always writes to `master_command_logs` and updates the unified Master Activity Workbook below.</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1rem;">
+              <button type="button" class="btn btn-secondary" id="btnClearLoggerForm">Reset Form</button>
+              <button type="submit" class="btn btn-primary" id="btnSubmitUniversalLog" style="padding:0.7rem 1.5rem; font-size:0.92rem;">🚀 Log Event &amp; Sync Across Selected Programs</button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Master Activity Workbook Grid -->
+        <div class="card-panel">
+          <div class="panel-header">
+            <div>
+              <h3>Master Activity Workbook Grid (<span id="workbookRecordCount">0 Records</span>)</h3>
+              <p style="font-size:0.8rem; color:var(--text-muted);">Live unified ledger across `master_command_logs`, `wkkf_reports`, `cool_schools_logs`, and verified residency events.</p>
+            </div>
+            <div class="header-action-group">
+              <select id="workbookFilterProgram" class="form-control" style="padding:0.38rem 0.65rem; font-size:0.8rem;">
+                <option value="ALL">All Programs</option>
+                <option value="KELLOGG">🌾 Kellogg</option>
+                <option value="BFRDP">🏛️ BFRDP</option>
+                <option value="COOL_SCHOOLS">🌳 Cool Schools</option>
+                <option value="HUB">🌱 Hub &amp; Lab</option>
+              </select>
+              <select id="workbookFilterSeason" class="form-control" style="padding:0.38rem 0.65rem; font-size:0.8rem;">
+                <option value="all">All Seasons</option>
+                <option value="summer-2026">Summer 2026</option>
+                <option value="fall-2026">Fall 2026</option>
+                <option value="winter-2026">Winter 2026/27</option>
+                <option value="spring-2027">Spring 2027</option>
+              </select>
+              <input type="search" id="workbookSearchInput" class="form-control" placeholder="Search topic, site, coworker..." style="padding:0.38rem 0.75rem; font-size:0.8rem; width:210px;">
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="masterWorkbookTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Programs Tagged</th>
+                  <th>Type &amp; Site</th>
+                  <th>Topic &amp; What Was Taught / Discussed</th>
+                  <th>Team Coverage</th>
+                  <th>Attendees</th>
+                  <th>Photos</th>
+                </tr>
+              </thead>
+              <tbody id="masterWorkbookBody">
+                <!-- Populated dynamically by dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 3: MASTER CALENDAR, EVENTS & TEAM COVERAGE (#calendar-view)
+         ========================================================= -->
+    <section id="calendar-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>Master Calendar, Events &amp; Split-Coverage Coordinator</h2>
+          <p>Unified schedule across Hub of Prosperity, Project Cool Schools, Kellogg, BFRDP, and Visiting Scholar Residency with automatic conflict detection.</p>
+        </div>
+        <div class="header-action-group">
+          <div style="display:inline-flex; border:1px solid var(--border-color); border-radius:var(--radius-sm); overflow:hidden;">
+            <button type="button" class="btn btn-sm cal-subview-btn active" data-calview="cards" style="border-radius:0; background:var(--primary-mid); color:#fff;">🗂️ Cards View</button>
+            <button type="button" class="btn btn-sm cal-subview-btn" data-calview="month" style="border-radius:0;">📅 Monthly Grid (Oct/Nov 2026)</button>
+            <button type="button" class="btn btn-sm cal-subview-btn" data-calview="horizon" style="border-radius:0;">🌅 Seasonal Horizon (2026–2027)</button>
+          </div>
+          <button type="button" class="btn btn-secondary btn-sm" id="btnToggleWaLang" title="Toggle English / Español">🌐 EN / ES: <strong id="waLangLabel">EN</strong></button>
+          <button type="button" class="btn btn-gold btn-sm" id="btnCopyWhatsAppDigest">📲 Copy Weekly Digest for WhatsApp</button>
+          <button type="button" class="btn btn-primary btn-sm" id="btnOpenPostEventModal">+ Post New Event</button>
+        </div>
+      </div>
+
+      <!-- Standing Weekly Cadence Banner -->
+      <div class="cadence-strip">
+        <div class="cadence-card">
+          <div class="cadence-day">📅 Mondays — Operations &amp; Grants</div>
+          <div class="cadence-slot"><strong>8:00 AM – 9:00 AM:</strong> Hub of Prosperity Farm Operations Meeting <em>(Maria, Juan, Demetrio &amp; Farm Crew)</em></div>
+          <div class="cadence-slot"><strong>9:00 AM – 10:00 AM:</strong> Grants, BFRDP &amp; Kellogg Coordination Sync <em>(Dr. Racelis, Lockman, Aisha, Annalise, Valdez)</em></div>
+        </div>
+        <div class="cadence-card">
+          <div class="cadence-day">📅 Tuesdays — Academic &amp; Writing</div>
+          <div class="cadence-slot"><strong>9:00 AM – 12:30 PM:</strong> Dr. Racelis Teaching Block <em>(Edinburg Campus)</em></div>
+          <div class="cadence-slot"><strong>1:30 PM – 4:30 PM:</strong> BFRDP Narrative &amp; GIS Mapping Sprint <em>(Lockman, Valdez &amp; Research Team)</em></div>
+        </div>
+        <div class="cadence-card">
+          <div class="cadence-day">📅 Wednesdays — Forestry, Lab &amp; Data</div>
+          <div class="cadence-slot"><strong>1:00 PM – 2:00 PM:</strong> 1-on-1 Cool Schools &amp; Urban Forestry Meeting <em>(Dr. Christoffersen, Forestry Crew &amp; Dr. Racelis)</em></div>
+          <div class="cadence-slot"><strong>2:00 PM – 3:15 PM:</strong> Agroecology Lab All-Hands Team Meeting <em>(Dr. Racelis, Postdocs, Grad/Undergrad Researchers &amp; Visiting Scholar)</em></div>
+          <div class="cadence-slot"><strong>3:30 PM – 4:15 PM:</strong> 1-on-1 Q Sprint &amp; Data Meeting <em>(Q &amp; Dr. Racelis)</em></div>
+        </div>
+      </div>
+
+      <!-- Program & Coworker Filter Bars -->
+      <div class="card-panel" style="padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
+        <div style="display:flex; flex-direction:column; gap:0.65rem;">
+          <div class="filter-pills-bar" id="calCategoryFilters">
+            <span style="font-size:0.74rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-right:4px;">Category:</span>
+            <button class="filter-pill active" data-cat="ALL">All Events</button>
+            <button class="filter-pill" data-cat="COOL_SCHOOLS">🌳 Cool Schools &amp; CUE</button>
+            <button class="filter-pill" data-cat="KELLOGG">🌾 Kellogg</button>
+            <button class="filter-pill" data-cat="BFRDP">🏛️ BFRDP</button>
+            <button class="filter-pill" data-cat="WORKSHOP">🚜 Workshops &amp; Field</button>
+            <button class="filter-pill" data-cat="TRAVEL">✈️ Travel &amp; Scholars</button>
+            <button class="filter-pill" data-cat="MEETING">🔄 Standing Lab Cadence</button>
+          </div>
+          <div class="filter-pills-bar" id="calCoworkerFilters">
+            <span style="font-size:0.74rem; font-weight:800; color:var(--text-muted); text-transform:uppercase; margin-right:4px;">Coworker:</span>
+            <button class="filter-pill active" data-member="ALL">All Team</button>
+            <button class="filter-pill" data-member="Racelis">Dr. Racelis</button>
+            <button class="filter-pill" data-member="Desi">Desi</button>
+            <button class="filter-pill" data-member="Maria">Maria (Hub)</button>
+            <button class="filter-pill" data-member="Q">Q / Quinn</button>
+            <button class="filter-pill" data-member="Juan">Juan &amp; Demetrio</button>
+            <button class="filter-pill" data-member="Christoffersen">Christoffersen (Cool Schools)</button>
+            <button class="filter-pill" data-member="Scholar">Visiting Scholar</button>
+            <button class="filter-pill" data-member="Lockman">Lockman / Aisha / Valdez</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-View 1: Cards View -->
+      <div id="calSubviewCards">
+        <div class="events-cards-grid" id="masterCalendarCardsGrid">
+          <!-- Populated dynamically by dashboard.js -->
+        </div>
+      </div>
+
+      <!-- Sub-View 2: Monthly Calendar Grid (Oct/Nov 2026) -->
+      <div id="calSubviewMonth" style="display:none;">
+        <div class="card-panel">
+          <div class="panel-header">
+            <h3>October – November 2026 Master Operations Grid</h3>
+            <span class="tag-pill tag-cool">⚡ Split-Coverage Conflict Detection Active</span>
+          </div>
+          <div class="cal-month-grid" id="masterMonthGrid">
+            <!-- Populated dynamically by dashboard.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-View 3: Seasonal Grant Horizon (Summer 2026 – Fall 2027) -->
+      <div id="calSubviewHorizon" style="display:none;">
+        <div class="pillars-grid-3" id="seasonalHorizonGrid">
+          <!-- Populated dynamically by dashboard.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 4: COWORKER DIRECTORY, TASKS & BANDWIDTH BOARD (#coworkers-view)
+         ========================================================= -->
+    <section id="coworkers-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>Coworker Directory, Active Roles &amp; Team Task Board</h2>
+          <p>Track who leads each research track, grant deliverable, field site, and upcoming action item across the Agroecology Lab and Hub of Prosperity.</p>
+        </div>
+        <div class="header-action-group">
+          <button class="btn btn-primary btn-sm" id="btnOpenAssignTaskModal">+ Assign New Task</button>
+        </div>
+      </div>
+
+      <!-- Track Filter Pills -->
+      <div class="filter-pills-bar" id="coworkerTrackFilters" style="margin-bottom: 1.15rem;">
+        <button class="filter-pill active" data-track="ALL">All Team &amp; Partners (14)</button>
+        <button class="filter-pill" data-track="leadership">Leadership &amp; Grants</button>
+        <button class="filter-pill" data-track="field">Field &amp; Trials</button>
+        <button class="filter-pill" data-track="hub">Hub &amp; Greenhouse</button>
+        <button class="filter-pill" data-track="cool">Cool Schools &amp; Researchers</button>
+        <button class="filter-pill" data-track="partners">Partners &amp; Contractors</button>
+      </div>
+
+      <!-- Coworker Cards Grid -->
+      <div class="coworkers-grid" id="coworkerCardsContainer">
+        <!-- Populated dynamically by dashboard.js -->
+      </div>
+
+      <!-- Interactive Team Task & Action Board -->
+      <div class="card-panel">
+        <div class="panel-header">
+          <div>
+            <h3>Interactive Team Task &amp; Action Board (<span id="taskBoardCount">0 Open</span>)</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted);">Synced with `master_command_tasks` in Firestore &amp; seeded from `PROJECT_BOARD.md` + Cool Schools &amp; BFRDP sprints.</p>
+          </div>
+          <div class="filter-pills-bar" id="taskCategoryFilters">
+            <button class="filter-pill active" data-taskcat="ALL">All Tasks</button>
+            <button class="filter-pill" data-taskcat="COOL_SCHOOLS">🌳 Cool Schools</button>
+            <button class="filter-pill" data-taskcat="KELLOGG">🌾 Kellogg</button>
+            <button class="filter-pill" data-taskcat="BFRDP">🏛️ BFRDP &amp; GIS</button>
+            <button class="filter-pill" data-taskcat="HUB">🚜 Hub Field &amp; Trials</button>
+          </div>
+        </div>
+
+        <div class="task-list-grid" id="teamTaskBoardList">
+          <!-- Populated dynamically by dashboard.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 5: PROJECT COOL SCHOOLS & URBAN FORESTRY HUB (#cool-schools-view)
+         ========================================================= -->
+    <section id="cool-schools-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>🌳 Project Cool Schools ($450K) &amp; McAllen CUE ($325K) Urban Forestry Hub</h2>
+          <p>Co-Led by Dr. Bradley Christoffersen &amp; Dr. Alexis Racelis · 14 South Texas ISD Campuses · Thermal Microclimate, 3D Canopy &amp; Viewshed Modeling.</p>
+        </div>
+        <div class="header-action-group">
+          <a href="../campuses.html" class="btn btn-primary btn-sm">🗺️ Launch 14-Campus GIS Map</a>
+          <a href="../canopy.html" class="btn btn-secondary btn-sm">🌲 30-Yr Canopy Sim</a>
+          <a href="../tree_3d.html" class="btn btn-secondary btn-sm">☀️ 3D Solar Shade</a>
+          <a href="../viewshed.html" class="btn btn-secondary btn-sm">🪟 Classroom Viewshed</a>
+          <a href="../student_tracking.html" class="btn btn-secondary btn-sm">👣 Student Heatmaps</a>
+          <a href="../community_impact.html" class="btn btn-secondary btn-sm">📊 i-Tree ROI Ledger</a>
+        </div>
+      </div>
+
+      <!-- Cool Schools Progress Bar -->
+      <div class="card-panel" style="padding: 1.1rem 1.35rem;">
+        <div class="prog-progress-header" style="margin-bottom:0.4rem;">
+          <span style="font-weight:800; color:var(--text-primary);">Project Cool Schools &amp; CUE Deliverables Execution (`cool_schools_data/checklist`)</span>
+          <span id="coolSchoolsMasterPct" style="font-weight:800; color:var(--primary-mid);">0%</span>
+        </div>
+        <div class="prog-progress-track" style="height:10px;">
+          <div class="prog-progress-fill" id="coolSchoolsMasterBar" style="width:0%;"></div>
+        </div>
+      </div>
+
+      <!-- 3 Pillars Checklist -->
+      <div class="pillars-grid-3">
+        <!-- Pillar 1 -->
+        <div class="card-panel" style="margin-bottom:0;">
+          <h3 style="font-size:1rem; margin-bottom:0.75rem;">🌱 Pillar 1: Campus Microforest Planting &amp; Baseline Audits</h3>
+          <ul class="checklist-box">
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-1" checked>
+              <label for="cs-chk-1"><strong>14 South Texas ISD Campuses Selected:</strong> Coordinate agreements across Donna, Edinburg, McAllen, La Joya, PSJA, Mission, and Weslaco ISDs.</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-2" checked>
+              <label for="cs-chk-2"><strong>J.W. Caceres &amp; M. Rivas Academy Flagship Planting:</strong> 154 native trees planted (Donna ISD) with active soil moisture &amp; thermal telemetry.</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-3" checked>
+              <label for="cs-chk-3"><strong>Economedes HS &amp; Nikki Rowe HS Baseline Audits:</strong> Capture unshaded surface temp (128°F vs 89°F shaded) and baseline canopy (2%–8%).</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-4">
+              <label for="cs-chk-4"><strong>5% → 30% Canopy Expansion Target:</strong> Establish multi-layered native subtropical microforests across all 14 schoolyards by 2040 horizon.</label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="card-panel" style="margin-bottom:0;">
+          <h3 style="font-size:1rem; margin-bottom:0.75rem;">🛰️ Pillar 2: 3D Microclimate, Wind &amp; Viewshed Modeling</h3>
+          <ul class="checklist-box">
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-5" checked>
+              <label for="cs-chk-5"><strong>30-Year Canopy Growth Simulator:</strong> ArcGIS interactive slider forecasting DBH, crown diameter, and thermal cooling through 2056 (`canopy.html`).</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-6" checked>
+              <label for="cs-chk-6"><strong>Three.js 3D Montezuma Cypress Solar Model:</strong> Interactive diurnal sun-angle shadow projection &amp; transpiration cooling (`tree_3d.html`).</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-7" checked>
+              <label for="cs-chk-7"><strong>Classroom Window Green View Score (GVS):</strong> Viewshed line-of-sight cognitive restoration index for classrooms (`viewshed.html`).</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-8">
+              <label for="cs-chk-8"><strong>Walkable Trail Shade Equity &amp; Windbreaks:</strong> Thermal corridor routing (`trails.html`) and computational windbreak shelterbelts (`wind.html`).</label>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="card-panel" style="margin-bottom:0;">
+          <h3 style="font-size:1rem; margin-bottom:0.75rem;">🦋 Pillar 3: Student Wellbeing, Heatmaps &amp; CUE Integration</h3>
+          <ul class="checklist-box">
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-9" checked>
+              <label for="cs-chk-9"><strong>Temporal Student Movement Heatmaps:</strong> Track student outdoor clustering under shaded vs exposed zones during recess &amp; PE (`student_tracking.html`).</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-10">
+              <label for="cs-chk-10"><strong>i-Tree Eco Carbon, Stormwater &amp; HVAC Ledger:</strong> Quantify avoided runoff (3,200+ gal), carbon sequestered, and school AC kWh savings (`community_impact.html`).</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-11">
+              <label for="cs-chk-11"><strong>Quinta Mazatlán CUE Miyawaki Microforests:</strong> Integrate City of McAllen Center for Urban Ecology ($325K) native seed propagation &amp; Planta Nativa outreach.</label>
+            </li>
+            <li>
+              <input type="checkbox" class="cool-chk" id="cs-chk-12">
+              <label for="cs-chk-12"><strong>K-12 STEM Living Lab Curriculum:</strong> Train teachers and high school interns in sap-flow, stomatal conductance, and urban heat island telemetry.</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 14-Campus Microforest Directory Grid -->
+      <div class="card-panel">
+        <div class="panel-header">
+          <div>
+            <h3>Interactive 14-Campus Microforest Directory (South Texas ISDs)</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted);">Click any simulation button on a campus card to set that school as the active GIS context and launch the 3D/spatial viewer.</p>
+          </div>
+          <select id="coolDistrictFilter" class="form-control" style="width:200px; padding:0.4rem 0.7rem; font-size:0.8rem;">
+            <option value="ALL">All 7 School Districts</option>
+            <option value="Donna ISD">Donna ISD</option>
+            <option value="Edinburg CISD">Edinburg CISD</option>
+            <option value="McAllen ISD">McAllen ISD</option>
+            <option value="La Joya ISD">La Joya ISD</option>
+            <option value="PSJA ISD">PSJA ISD</option>
+            <option value="Mission CISD">Mission CISD</option>
+            <option value="Weslaco ISD">Weslaco ISD</option>
+          </select>
+        </div>
+
+        <div class="campuses-directory-grid" id="coolCampusesGrid">
+          <!-- Populated dynamically by dashboard.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         VIEW 6: SHARED SITES, FLEET & EQUIPMENT SCHEDULER (#assets-view)
+         ========================================================= -->
+    <section id="assets-view" class="view-section">
+      <div class="view-header">
+        <div class="view-header-title">
+          <h2>🚜 Shared Sites, Fleet &amp; Equipment Scheduler</h2>
+          <p>Coordinate availability and field reservations across the Hub of Prosperity, MALL Mobile Lab, trucks, tractors, wash-pack cold storage, and SEEMS labs.</p>
+        </div>
+      </div>
+
+      <div class="assets-grid" id="sharedAssetsGrid">
+        <!-- Populated dynamically by dashboard.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       MODAL 1: + POST NEW CALENDAR EVENT
+       ========================================================= -->
+  <div class="modal-overlay" id="postEventModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>📅 Post New Event to Master Calendar</h3>
+        <button type="button" class="modal-close" id="btnClosePostEventModal">&times;</button>
+      </div>
+      <form id="postEventForm">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="evCategory">Program / Category *</label>
+            <select id="evCategory" class="form-control" required>
+              <option value="COOL_SCHOOLS">🌳 Cool Schools &amp; Urban Forestry</option>
+              <option value="KELLOGG">🌾 W.K. Kellogg Foundation</option>
+              <option value="BFRDP">🏛️ USDA-NIFA BFRDP</option>
+              <option value="WORKSHOP">🚜 Workshop / Field Demo</option>
+              <option value="TRAVEL">✈️ Travel / Visiting Scholar</option>
+              <option value="MEETING">🔄 Lab / Team Meeting</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="evDateTime">Date &amp; Time *</label>
+            <input type="text" id="evDateTime" class="form-control" placeholder="e.g., Sat, Nov 14, 2026 @ 9:00 AM" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="evTitle">Event Title *</label>
+          <input type="text" id="evTitle" class="form-control" placeholder="e.g., Donna ISD Microforest Canopy & Sap-Flow Workshop" required>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="evLocation">Location / Campus *</label>
+            <input type="text" id="evLocation" class="form-control" placeholder="e.g., J.W. Caceres Academy / Hub of Prosperity" required>
+          </div>
+          <div class="form-group">
+            <label for="evOrg">Host Organization / Grant</label>
+            <input type="text" id="evOrg" class="form-control" placeholder="e.g., UTRGV Agroecology & Texas Trees Foundation">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="evAssigned">Team Assigned / Coverage *</label>
+          <input type="text" id="evAssigned" class="form-control" placeholder="e.g., Dr. Christoffersen, Desi Romero, Q" required>
+        </div>
+        <div class="form-group">
+          <label for="evNotes">Notes, Agenda &amp; Links</label>
+          <textarea id="evNotes" rows="3" class="form-control" placeholder="Key objectives, equipment needed, or registration link..."></textarea>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.6rem; margin-top:0.75rem;">
+          <button type="button" class="btn btn-secondary" id="btnCancelPostEventModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save &amp; Sync Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL 2: + ASSIGN NEW TEAM TASK
+       ========================================================= -->
+  <div class="modal-overlay" id="assignTaskModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>✅ Assign New Team Task</h3>
+        <button type="button" class="modal-close" id="btnCloseAssignTaskModal">&times;</button>
+      </div>
+      <form id="assignTaskForm">
+        <div class="form-group">
+          <label for="tskTitle">Task Description *</label>
+          <input type="text" id="tskTitle" class="form-control" placeholder="e.g., Calibrate stomatal conductance porometers at Economedes HS" required>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="tskOwner">Assigned Coworker(s) *</label>
+            <input type="text" id="tskOwner" class="form-control" placeholder="e.g., Dr. Christoffersen & Desi" required>
+          </div>
+          <div class="form-group">
+            <label for="tskCategory">Program Track *</label>
+            <select id="tskCategory" class="form-control" required>
+              <option value="COOL_SCHOOLS">🌳 Cool Schools &amp; CUE</option>
+              <option value="KELLOGG">🌾 W.K. Kellogg</option>
+              <option value="BFRDP">🏛️ USDA BFRDP &amp; GIS</option>
+              <option value="HUB">🚜 Hub Field &amp; Trials</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tskDue">Due Date / Target Window</label>
+          <input type="text" id="tskDue" class="form-control" placeholder="e.g., Next Friday / Nov 2026">
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:0.6rem; margin-top:0.75rem;">
+          <button type="button" class="btn btn-secondary" id="btnCancelAssignTaskModal">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add to Task Board</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MODAL 3: IMAGE LIGHTBOX
+       ========================================================= -->
+  <div class="modal-overlay" id="imageLightboxModal" onclick="this.classList.remove('active')">
+    <div class="modal-box" style="max-width:780px; text-align:center; background:#0f172a; color:#fff;" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+        <span id="lightboxCaption" style="font-size:0.9rem; font-weight:600;">Event Photo</span>
+        <button type="button" class="modal-close" style="color:#fff;" onclick="document.getElementById('imageLightboxModal').classList.remove('active')">&times;</button>
+      </div>
+      <img id="lightboxImage" src="" alt="Event documentation" style="max-width:100%; max-height:72vh; border-radius:8px; object-fit:contain;">
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
