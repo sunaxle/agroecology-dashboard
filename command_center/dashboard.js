@@ -1081,7 +1081,9 @@ document.addEventListener('DOMContentLoaded', () => {
         programs: Array.isArray(item.programs) && item.programs.length > 0 ? item.programs : ['HUB'],
         attendees: Array.isArray(item.attendees) ? item.attendees : [],
         photoLink: item.photoLink || '',
-        photos: Array.isArray(item.photos) ? item.photos : []
+        photos: Array.isArray(item.photos) ? item.photos : [],
+        fieldNotes: Array.isArray(item.fieldNotes) ? item.fieldNotes : [],
+        customEdited: !!item.customEdited
       });
     });
 
@@ -1122,7 +1124,9 @@ document.addEventListener('DOMContentLoaded', () => {
           programs: Array.isArray(r.programs) ? r.programs : ['KELLOGG', 'HUB'],
           attendees: Array.isArray(r.attendees) ? r.attendees : [],
           photoLink: r.photoLink || '',
-          photos: Array.isArray(r.photos) ? r.photos : []
+          photos: Array.isArray(r.photos) ? r.photos : [],
+          fieldNotes: Array.isArray(r.fieldNotes) ? r.fieldNotes : [],
+          customEdited: !!r.customEdited
         });
       }
     });
@@ -1275,7 +1279,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const attCount = Array.isArray(item.attendees) ? item.attendees.length : 0;
       const coworkersStr = Array.isArray(item.coworkers) ? item.coworkers.join(', ') : (item.coworkers || 'Agroecology Team');
       const thumbHtml = (item.photos && item.photos.length > 0)
-        ? `<img src="${item.photos[0]}" class="table-thumbnail" style="width:56px; height:56px;" onclick="openLightbox('${item.photos[0]}', '${(item.topic || '').replace(/'/g, "\\'")}')" alt="Photo">`
+        ? `<img src="${item.photos[0]}" class="table-thumbnail" style="width:56px; height:56px;" onclick="event.stopPropagation(); openLightbox('${item.photos[0]}', '${(item.topic || '').replace(/'/g, "\\'")}')" alt="Photo">`
         : '';
 
       const isFollowUp = (item.status || '').toLowerCase().includes('follow-up');
@@ -1285,7 +1289,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const safeId = (item.id || '').replace(/'/g, "\\'");
       return `
-        <div class="feed-item" style="${isFollowUp ? 'border-left: 4px solid #f59e0b;' : ''}">
+        <div class="feed-item clickable-event-trigger" style="${isFollowUp ? 'border-left: 4px solid #f59e0b;' : ''}" onclick="window.openEventProfile('${safeId}', 'pulse-view')">
           <div class="feed-item-main">
             <div class="feed-item-header">
               <span class="feed-date">${item.date}</span>
@@ -1293,13 +1297,16 @@ document.addEventListener('DOMContentLoaded', () => {
               ${renderProgramTagPills(item.programs)}
               ${statusPillHtml}
             </div>
-            <div class="feed-title">${item.topic}</div>
+            <div class="feed-title" style="color:var(--primary-dark);">${item.topic} <span style="font-size:0.74rem; font-weight:700; color:var(--primary-light); margin-left:4px;">↗ View Profile</span></div>
             <div class="feed-desc">${item.story || ''}</div>
             <div class="feed-meta" style="align-items:center;">
               <span>📍 ${item.site || 'Hub of Prosperity'}</span>
               <span>👥 ${attCount} Logged Attendee${attCount !== 1 ? 's' : ''}</span>
               <span>🧑‍🌾 Covered by: ${coworkersStr}</span>
-              <button type="button" class="btn btn-secondary btn-sm" style="padding:2px 8px; font-size:0.72rem; margin-left:auto;" onclick="window.openQuickEditActivity('${safeId}')">📸 Upload Photos / Edit Notes</button>
+              <span style="margin-left:auto; display:flex; gap:6px;">
+                <button type="button" class="btn btn-primary btn-sm" style="padding:2px 9px; font-size:0.72rem;" onclick="event.stopPropagation(); window.openEventProfile('${safeId}', 'pulse-view')">📄 Event Profile →</button>
+                <button type="button" class="btn btn-secondary btn-sm" style="padding:2px 8px; font-size:0.72rem;" onclick="event.stopPropagation(); window.openQuickEditActivity('${safeId}')">📸 Quick Upload</button>
+              </span>
             </div>
           </div>
           ${thumbHtml}
@@ -1801,10 +1808,10 @@ document.addEventListener('DOMContentLoaded', () => {
       let photoHtml = `<span style="color:var(--text-muted); font-size:0.78rem;">None</span>`;
       if (Array.isArray(r.photos) && r.photos.length > 0) {
         photoHtml = `<div class="table-photo-gallery">` + r.photos.map(url =>
-          `<img src="${url}" class="table-thumbnail" onclick="openLightbox('${url}', '${(r.topic || '').replace(/'/g, "\\'")}')" alt="Photo">`
+          `<img src="${url}" class="table-thumbnail" onclick="event.stopPropagation(); openLightbox('${url}', '${(r.topic || '').replace(/'/g, "\\'")}')" alt="Photo">`
         ).join('') + `</div>`;
       } else if (r.photoLink) {
-        photoHtml = `<a href="${r.photoLink}" target="_blank" style="font-size:0.78rem; font-weight:700; color:var(--primary-mid);">📁 View Media</a>`;
+        photoHtml = `<a href="${r.photoLink}" target="_blank" onclick="event.stopPropagation()" style="font-size:0.78rem; font-weight:700; color:var(--primary-mid);">📁 View Media</a>`;
       }
 
       const safeId = (r.id || '').replace(/'/g, "\\'");
@@ -1814,7 +1821,7 @@ document.addEventListener('DOMContentLoaded', () => {
         : `<div style="font-size:0.72rem; color:var(--text-muted);">${r.hours || 2.0} hrs · ${r.status || 'Completed'}</div>`;
 
       return `
-        <tr>
+        <tr class="clickable-row-trigger" onclick="window.openEventProfile('${safeId}', 'logger-view')" title="Click to open full Event Profile Page">
           <td>
             <strong>${r.date}</strong>
             ${statusBadge}
@@ -1825,7 +1832,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="font-size:0.76rem; color:var(--text-secondary);">📍 ${r.site || 'Hub of Prosperity'}</div>
           </td>
           <td style="max-width:310px;">
-            <div style="font-weight:700; color:var(--text-primary);">${r.topic}</div>
+            <div style="font-weight:700; color:var(--primary-dark);">${r.topic} <span style="font-size:0.72rem; color:var(--primary-light);">↗ Profile</span></div>
             <div style="font-size:0.78rem; color:var(--text-secondary); margin-top:3px;">${r.story || ''}</div>
           </td>
           <td style="font-size:0.79rem; font-weight:600; color:var(--primary-mid);">${coworkersList}</td>
@@ -1835,8 +1842,9 @@ document.addEventListener('DOMContentLoaded', () => {
           </td>
           <td>
             ${photoHtml}
-            <div style="margin-top:5px;">
-              <button type="button" class="btn btn-secondary btn-sm" style="padding:2px 7px; font-size:0.7rem;" onclick="window.openQuickEditActivity('${safeId}')">📸 Add/Edit</button>
+            <div style="margin-top:5px; display:flex; gap:4px; flex-wrap:wrap;">
+              <button type="button" class="btn btn-primary btn-sm" style="padding:2px 7px; font-size:0.7rem;" onclick="event.stopPropagation(); window.openEventProfile('${safeId}', 'logger-view')">📄 Profile</button>
+              <button type="button" class="btn btn-secondary btn-sm" style="padding:2px 7px; font-size:0.7rem;" onclick="event.stopPropagation(); window.openQuickEditActivity('${safeId}')">📸 Edit</button>
             </div>
           </td>
         </tr>
@@ -2496,6 +2504,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderUnifiedPulseFeed();
     renderMasterWorkbookGrid();
     renderLoggerCohortCheckboxes();
+    if (activeProfileRecordId && document.getElementById('event-profile-view')?.classList.contains('active')) {
+      renderEventProfilePage(activeProfileRecordId);
+    }
   }
 
   // ========================================================
@@ -2787,7 +2798,567 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================================
-  // 15. Initial Render of All 6 Command Center Views
+  // 14c. Dedicated Event Profile Page (#event-profile-view)
+  // ========================================================
+  let activeProfileRecordId = null;
+  let previousCommandViewId = 'pulse-view';
+
+  function saveUpdatedActivityRecord(updatedRecord) {
+    const id = updatedRecord.id;
+    const mIdx = masterLogs.findIndex(m => m.id === id);
+    if (mIdx >= 0) {
+      masterLogs[mIdx] = updatedRecord;
+    } else {
+      masterLogs.unshift(updatedRecord);
+    }
+    setLocalJSON('master_command_logs', masterLogs);
+
+    if (db) {
+      db.collection('master_command_logs').doc(id).set({
+        ...updatedRecord,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true }).catch(() => {});
+    }
+
+    const wIdx = wkkfReports.findIndex(w => w.id === id);
+    if (wIdx >= 0) {
+      wkkfReports[wIdx] = {
+        ...wkkfReports[wIdx],
+        topic: updatedRecord.topic,
+        site: updatedRecord.site,
+        coworkers: updatedRecord.coworkers,
+        status: updatedRecord.status,
+        story: updatedRecord.story,
+        attendees: updatedRecord.attendees,
+        photos: updatedRecord.photos,
+        photoLink: updatedRecord.photoLink,
+        fieldNotes: updatedRecord.fieldNotes || [],
+        customEdited: true
+      };
+      setLocalJSON('wkkf_reports', wkkfReports);
+      if (db) {
+        db.collection('wkkf_reports').doc(id).set({
+          topic: updatedRecord.topic,
+          site: updatedRecord.site,
+          coworkers: updatedRecord.coworkers,
+          status: updatedRecord.status,
+          story: updatedRecord.story,
+          attendees: updatedRecord.attendees,
+          photos: updatedRecord.photos,
+          photoLink: updatedRecord.photoLink,
+          fieldNotes: updatedRecord.fieldNotes || [],
+          customEdited: true,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true }).catch(() => {});
+      }
+    }
+  }
+
+  function lookupCoworkerRole(nameStr) {
+    const lower = (nameStr || '').toLowerCase();
+    if (lower.includes('racelis')) return { initials: 'AR', role: 'Lead PI & Agroecology Lab Director' };
+    if (lower.includes('desi') || lower.includes('romero')) return { initials: 'DR', role: 'Field Trials, Sensor Telemetry & Logistics Lead' };
+    if (lower.includes('maria')) return { initials: 'MG', role: 'Hub of Prosperity Living Lab Farm Manager' };
+    if (lower.includes('savanah')) return { initials: 'SZ', role: 'Graduate Research Lead · Project Cool Schools & CUE' };
+    if (lower.includes('jj') || lower.includes('alaniz')) return { initials: 'JA', role: 'UTRGV Agroecology & Hub Soil Team' };
+    if (lower.includes('katelyn') || lower.includes('katy')) return { initials: 'KA', role: 'UTRGV Agroecology & Hub Workshop Team' };
+    if (lower.includes('bianca')) return { initials: 'BN', role: 'UTRGV Certified Organic Garden & Greenhouse Manager' };
+    if (lower.includes('juan') || lower.includes('demetrio')) return { initials: 'JD', role: 'Hub Field Incubation & Tractor Operations Leads' };
+    if (lower.includes('ramos') || lower.includes('scholar')) return { initials: 'VR', role: 'Visiting Scholar · Agroecology Residency' };
+    const parts = (nameStr || 'TM').trim().split(/\s+/);
+    const ini = parts.length >= 2 ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase() : (nameStr || 'TM').slice(0, 2).toUpperCase();
+    return { initials: ini, role: 'Agroecology & Partner Coverage Team' };
+  }
+
+  function getGrantAttributionDescriptions(programs) {
+    const list = Array.isArray(programs) && programs.length > 0 ? programs : ['HUB'];
+    return list.map(p => {
+      if (p === 'KELLOGG') {
+        return {
+          badge: '🌾 W.K. Kellogg Foundation',
+          desc: 'Synced to `wkkf_reports` ledger — counts toward community food sovereignty workshops, bilingual grower training, and SNAP/DUFB outreach.'
+        };
+      }
+      if (p === 'BFRDP') {
+        return {
+          badge: '🏛️ USDA-NIFA BFRDP',
+          desc: 'Counts toward Tier 1 & Tier 2 beginning farmer instructional hours, ranch/field peer learning, and 8-county producer outreach.'
+        };
+      }
+      if (p === 'COOL_SCHOOLS') {
+        return {
+          badge: '🌳 Project Cool Schools & CUE',
+          desc: 'Counts toward 14-ISD schoolyard forestry, microclimate education, or Quinta Mazatlán Center for Urban Ecology outreach.'
+        };
+      }
+      return {
+        badge: '🌱 Hub of Prosperity & Living Lab',
+        desc: list.length === 1
+          ? 'General UTRGV Agroecology Lab / Hub of Prosperity Living Lab activity (internal/cultural/lab record — not tied to an external grant deliverable).'
+          : 'Anchored in the UTRGV Agroecology Lab & 5-acre Hub of Prosperity Living Lab operations.'
+      };
+    });
+  }
+
+  function findLinkedTasksForRecord(rec) {
+    const topicLower = (rec.topic || '').toLowerCase();
+    return masterTasks.map((t, idx) => ({ task: t, idx })).filter(({ task }) => {
+      const titleLower = (task.title || '').toLowerCase();
+      if (topicLower.includes('supporting your soil') && titleLower.includes('supporting your soil')) return true;
+      if (topicLower.includes('beginner gardening 101') && titleLower.includes('beginner gardening 101')) return true;
+      if (topicLower.includes('working lands') && titleLower.includes('working lands')) return true;
+      if ((topicLower.includes('region one esc') || topicLower.includes('food show')) && titleLower.includes('region one esc')) return true;
+      if (topicLower.includes('planta nativa') && titleLower.includes('planta nativa')) return true;
+      return false;
+    });
+  }
+
+  function formatSeasonLabel(dateStr) {
+    const s = getSeasonFromDate(dateStr);
+    if (s === 'fall-2026') return 'Fall 2026';
+    if (s === 'winter-2026') return 'Winter 2026–27';
+    if (s === 'spring-2027') return 'Spring 2027';
+    return '2026–2027';
+  }
+
+  function renderEventProfilePage(recordId) {
+    const container = document.getElementById('eventProfileContainer');
+    if (!container) return;
+
+    const allRecords = getUnifiedActivityRecords();
+    const idx = allRecords.findIndex(r => r.id === recordId);
+    const rec = idx >= 0 ? allRecords[idx] : allRecords[0];
+    if (!rec) {
+      container.innerHTML = `<div class="card-panel"><p>Event record not found.</p></div>`;
+      return;
+    }
+
+    activeProfileRecordId = rec.id;
+
+    // Update Prev / Next buttons
+    const prevBtn = document.getElementById('btnProfilePrev');
+    const nextBtn = document.getElementById('btnProfileNext');
+    if (prevBtn) {
+      prevBtn.disabled = idx <= 0;
+      prevBtn.onclick = () => {
+        if (idx > 0) window.openEventProfile(allRecords[idx - 1].id, previousCommandViewId);
+      };
+    }
+    if (nextBtn) {
+      nextBtn.disabled = idx < 0 || idx >= allRecords.length - 1;
+      nextBtn.onclick = () => {
+        if (idx >= 0 && idx < allRecords.length - 1) window.openEventProfile(allRecords[idx + 1].id, previousCommandViewId);
+      };
+    }
+
+    const attList = Array.isArray(rec.attendees) ? rec.attendees : [];
+    const coworkers = Array.isArray(rec.coworkers) ? rec.coworkers : ['Dr. Alexis Racelis', 'Desi Romero'];
+    const photos = Array.isArray(rec.photos) ? rec.photos : [];
+    const fieldNotes = Array.isArray(rec.fieldNotes) ? rec.fieldNotes : [];
+    const isFollowUp = (rec.status || '').toLowerCase().includes('follow-up') || (rec.status || '').toLowerCase().includes('action');
+
+    // Split narrative from inline [⚠️ ...] or [📸 ...] callout if present
+    let cleanNarrative = rec.story || 'No narrative description entered yet.';
+    let extractedActionCallout = '';
+    const bracketIdx = cleanNarrative.indexOf(' [⚠️');
+    const photoBracketIdx = cleanNarrative.indexOf(' [📸');
+    const splitAt = bracketIdx >= 0 ? bracketIdx : photoBracketIdx;
+    if (splitAt >= 0) {
+      extractedActionCallout = cleanNarrative.slice(splitAt).replace(/^\s*\[|\]\s*$/g, '');
+      cleanNarrative = cleanNarrative.slice(0, splitAt).trim();
+    }
+
+    const followUpBannerHtml = isFollowUp ? `
+      <div class="profile-followup-banner">
+        <div>
+          <div style="font-weight:800; font-size:0.92rem;">⚠️ ${rec.status}</div>
+          ${extractedActionCallout ? `<div style="font-size:0.82rem; margin-top:3px;">${extractedActionCallout}</div>` : ''}
+        </div>
+        <button type="button" class="btn btn-primary btn-sm no-print" id="btnResolveProfileFollowUp" style="background:#059669;">✓ Mark Follow-Up Resolved</button>
+      </div>
+    ` : '';
+
+    const photosGalleryHtml = photos.length > 0
+      ? `<div class="profile-photo-grid">` + photos.map((src, pIdx) => `
+          <div class="profile-photo-card" onclick="openLightbox('${src}', '${(rec.topic || '').replace(/'/g, "\\'")} — Photo ${pIdx + 1}')">
+            <img src="${src}" alt="Event photo ${pIdx + 1}">
+          </div>
+        `).join('') + `</div>`
+      : `<div style="padding:1.35rem; background:var(--surface-subtle); border:1px dashed var(--border-color); border-radius:8px; text-align:center; color:var(--text-muted); font-size:0.84rem; margin-top:0.5rem;">
+          📷 No photos uploaded to this event profile yet. Use the upload button above to attach photos directly!
+        </div>`;
+
+    const notesLogHtml = fieldNotes.length > 0
+      ? `<div style="margin-top:1rem;">
+          <h4 style="font-size:0.84rem; font-weight:800; color:var(--primary-mid); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.5rem;">📝 Team Field Notes &amp; Follow-Up Log (${fieldNotes.length})</h4>
+          ${fieldNotes.map(n => `
+            <div class="profile-note-entry">
+              <div style="display:flex; justify-content:space-between; font-size:0.73rem; color:var(--text-muted); font-weight:700; margin-bottom:3px;">
+                <span>👤 ${n.author || 'Team Update'}</span>
+                <span>🕒 ${n.timestamp || ''}</span>
+              </div>
+              <div style="color:var(--text-primary);">${n.text || ''}</div>
+            </div>
+          `).join('')}
+        </div>`
+      : '';
+
+    const attendeesRowsHtml = attList.length > 0
+      ? attList.map((a, i) => `
+          <tr>
+            <td style="font-weight:700; color:var(--text-muted); width:38px;">${i + 1}</td>
+            <td style="font-weight:700; color:var(--text-primary);">${a.name || 'Participant'}</td>
+            <td>${a.location || rec.site || '—'}</td>
+            <td>${a.email ? `<a href="mailto:${a.email}" style="color:var(--primary-light); text-decoration:none;">${a.email}</a>` : '—'}</td>
+            <td>${a.phone || '—'}</td>
+          </tr>
+        `).join('')
+      : `<tr><td colspan="5" style="text-align:center; padding:1.25rem; color:var(--text-muted);">No individual sign-in rows logged yet. Add attendees below!</td></tr>`;
+
+    const coworkerCardsHtml = coworkers.map(cw => {
+      const info = lookupCoworkerRole(cw);
+      return `
+        <div class="profile-coworker-item">
+          <div class="coworker-avatar" style="width:36px; height:36px; font-size:0.8rem;">${info.initials}</div>
+          <div>
+            <div style="font-size:0.86rem; font-weight:800; color:var(--text-primary);">${cw}</div>
+            <div style="font-size:0.73rem; color:var(--text-muted); font-weight:600;">${info.role}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const grantAttributions = getGrantAttributionDescriptions(rec.programs);
+    const grantHtml = grantAttributions.map(g => `
+      <div class="profile-grant-box">
+        <div style="font-weight:800; color:var(--primary-dark); margin-bottom:3px;">${g.badge}</div>
+        <div style="color:var(--text-secondary); line-height:1.45;">${g.desc}</div>
+      </div>
+    `).join('');
+
+    const linkedTasks = findLinkedTasksForRecord(rec);
+    const linkedTasksHtml = linkedTasks.length > 0
+      ? linkedTasks.map(({ task, idx: tIdx }) => `
+          <label style="display:flex; align-items:flex-start; gap:8px; padding:0.65rem 0.75rem; background:var(--surface-subtle); border:1px solid var(--border-light); border-radius:8px; margin-bottom:0.5rem; cursor:pointer;">
+            <input type="checkbox" class="profile-linked-task-chk" data-tidx="${tIdx}" ${task.done ? 'checked' : ''} style="margin-top:3px; width:16px; height:16px; accent-color:var(--primary-mid);">
+            <div style="font-size:0.8rem;">
+              <div style="font-weight:700; color:var(--text-primary); ${task.done ? 'text-decoration:line-through; opacity:0.65;' : ''}">${task.title}</div>
+              <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">👤 ${task.owner} · Due: ${task.due || 'Upcoming'}</div>
+            </div>
+          </label>
+        `).join('')
+      : `<div style="font-size:0.8rem; color:var(--text-muted);">No open follow-up tasks linked to this event.</div>`;
+
+    container.innerHTML = `
+      <!-- Hero Event Dossier Card -->
+      <div class="profile-hero-card">
+        <div class="profile-hero-top">
+          <div style="display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
+            ${renderProgramTagPills(rec.programs)}
+            <span class="tag-pill" style="background:rgba(255,255,255,0.16); color:#fff;">${rec.type || 'Workshop / Event'}</span>
+            ${rec.bilingual !== false ? `<span class="tag-pill" style="background:rgba(233,196,106,0.25); color:#fef3c7;">🗣️ Bilingual EN/ES</span>` : ''}
+          </div>
+          <span class="tag-pill" style="background:${isFollowUp ? '#fef3c7' : 'rgba(82,183,136,0.28)'}; color:${isFollowUp ? '#92400e' : '#d8f3dc'}; font-weight:800;">
+            ${isFollowUp ? '⚠️ Follow-Up Open' : `✓ ${rec.status || 'Completed'}`}
+          </span>
+        </div>
+
+        <h2 class="profile-hero-title">${rec.topic}</h2>
+        <div style="font-size:0.84rem; color:rgba(255,255,255,0.82);">Event Record ID: <code style="background:rgba(0,0,0,0.22); padding:2px 6px; border-radius:4px;">${rec.id}</code> · Position ${idx + 1} of ${allRecords.length} in Master Ledger</div>
+
+        <div class="profile-meta-strip">
+          <div class="profile-meta-box">
+            <span class="lbl">📅 Event Date</span>
+            <span class="val">${rec.date}</span>
+            <span class="sub">${formatSeasonLabel(rec.date)} Reporting Window</span>
+          </div>
+          <div class="profile-meta-box">
+            <span class="lbl">⏱️ Duration &amp; Format</span>
+            <span class="val">${rec.hours || 2.0} Hours</span>
+            <span class="sub">${rec.type || 'Field / Workshop'}</span>
+          </div>
+          <div class="profile-meta-box">
+            <span class="lbl">📍 Site / Location</span>
+            <span class="val" style="font-size:0.86rem;">${rec.site || 'Hub of Prosperity Farm'}</span>
+            <span class="sub">Rio Grande Valley, TX</span>
+          </div>
+          <div class="profile-meta-box">
+            <span class="lbl">👥 People &amp; Coverage</span>
+            <span class="val">${attList.length} Logged Attendee${attList.length !== 1 ? 's' : ''}</span>
+            <span class="sub">${coworkers.length} UTRGV Team Member${coworkers.length !== 1 ? 's' : ''}</span>
+          </div>
+        </div>
+      </div>
+
+      ${followUpBannerHtml}
+
+      <div class="profile-layout-grid">
+        <!-- LEFT COLUMN: Narrative, Notes, Photos, Attendees -->
+        <div>
+          <!-- 1. Full Narrative & Field Notes Card -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3>📖 Event Summary, What Was Taught &amp; Field Notes</h3>
+              <button type="button" class="btn btn-secondary btn-sm no-print" onclick="window.openQuickEditActivity('${rec.id.replace(/'/g, "\\'")}')">✏️ Edit Narrative</button>
+            </div>
+            <p style="font-size:0.93rem; color:var(--text-primary); line-height:1.68; white-space:pre-line;">${cleanNarrative}</p>
+
+            ${notesLogHtml}
+
+            <!-- Add Timestamped Field Note / Follow-Up Update -->
+            <form id="profileAddNoteForm" class="no-print" style="margin-top:1.15rem; padding-top:1rem; border-top:1px solid var(--border-light);">
+              <label style="font-size:0.78rem; font-weight:800; color:var(--text-secondary); display:block; margin-bottom:0.4rem;">➕ Add Follow-Up Update or Field Note to This Event</label>
+              <div style="display:grid; grid-template-columns: 180px 1fr auto; gap:0.5rem;">
+                <input type="text" id="profileNoteAuthor" class="form-control" placeholder="Your Name (e.g., Desi)" value="Desi Romero" style="padding:0.48rem 0.65rem; font-size:0.82rem;">
+                <input type="text" id="profileNoteText" class="form-control" placeholder="Type field notes, certification confirmation, or follow-up details..." required style="padding:0.48rem 0.65rem; font-size:0.82rem;">
+                <button type="submit" class="btn btn-primary btn-sm">Post Note</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- 2. Event Photo & Media Gallery Card -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3>📸 Event Photos &amp; Visual Documentation (${photos.length})</h3>
+              <label class="btn btn-primary btn-sm no-print" style="cursor:pointer; margin:0;">
+                📸 + Upload Photos Here
+                <input type="file" id="profileDirectPhotoInput" accept="image/*" multiple style="display:none;">
+              </label>
+            </div>
+            ${photosGalleryHtml}
+          </div>
+
+          <!-- 3. Full Attendee & Sign-In Sheet Roster -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3>👥 Full Sign-In Sheet &amp; Attendee Roster (${attList.length})</h3>
+              <span class="tag-pill tag-bfrdp">${attList.length} Participant${attList.length !== 1 ? 's' : ''} / Groups Logged</span>
+            </div>
+            <div class="workbook-table-wrap">
+              <table class="workbook-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Participant / Group Name</th>
+                    <th>Organization / Plot / Location</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${attendeesRowsHtml}
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Inline Add Attendee Form -->
+            <form id="profileAddAttendeeForm" class="no-print" style="margin-top:1rem; padding-top:0.9rem; border-top:1px solid var(--border-light);">
+              <label style="font-size:0.78rem; font-weight:800; color:var(--text-secondary); display:block; margin-bottom:0.4rem;">➕ Add Participant / Group to Sign-In Roster</label>
+              <div style="display:grid; grid-template-columns: 1.2fr 1.2fr 1fr auto; gap:0.5rem;">
+                <input type="text" id="profAttName" class="form-control" placeholder="Full Name or Group *" required style="padding:0.45rem 0.65rem; font-size:0.8rem;">
+                <input type="text" id="profAttLoc" class="form-control" placeholder="Farm / Org / Plot" value="${(rec.site || '').replace(/"/g, '&quot;')}" style="padding:0.45rem 0.65rem; font-size:0.8rem;">
+                <input type="email" id="profAttEmail" class="form-control" placeholder="Email (optional)" style="padding:0.45rem 0.65rem; font-size:0.8rem;">
+                <button type="submit" class="btn btn-secondary btn-sm">+ Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Coworkers Covered, Grant Attribution & Linked Tasks -->
+        <div>
+          <!-- 1. Coworkers Who Covered It -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3>🧑‍🌾 Coworkers Who Covered It</h3>
+              <button type="button" class="btn btn-secondary btn-sm no-print" onclick="window.openQuickEditActivity('${rec.id.replace(/'/g, "\\'")}')">Edit</button>
+            </div>
+            <div class="profile-coworker-list">
+              ${coworkerCardsHtml}
+            </div>
+          </div>
+
+          <!-- 2. Linked Follow-Up Tasks -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3>✅ Linked Follow-Up Tasks</h3>
+            </div>
+            ${linkedTasksHtml}
+          </div>
+
+          <!-- 3. Grant & Program Routing Attribution -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <h3>🎯 Program &amp; Grant Attribution</h3>
+            </div>
+            ${grantHtml}
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Wire interactive handlers inside the rendered Event Profile Page:
+    // A. Resolve Follow-Up Button
+    const btnResolve = document.getElementById('btnResolveProfileFollowUp');
+    if (btnResolve) {
+      btnResolve.addEventListener('click', () => {
+        const updated = {
+          ...rec,
+          status: 'Completed (Verified)',
+          story: cleanNarrative,
+          customEdited: true
+        };
+        saveUpdatedActivityRecord(updated);
+        refreshAllMetricsAndViews();
+        showToast(`Marked "${rec.topic}" follow-up as Resolved & Verified!`);
+      });
+    }
+
+    // B. Post Timestamped Field Note
+    const noteForm = document.getElementById('profileAddNoteForm');
+    if (noteForm) {
+      noteForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const author = cleanText(document.getElementById('profileNoteAuthor')?.value.trim() || 'Team Member');
+        const text = cleanText(document.getElementById('profileNoteText')?.value.trim() || '');
+        if (!text) return;
+        const stamp = new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+        const nextNotes = [...fieldNotes, { author, text, timestamp: stamp }];
+        const updated = { ...rec, fieldNotes: nextNotes, customEdited: true };
+        saveUpdatedActivityRecord(updated);
+        refreshAllMetricsAndViews();
+        showToast('Added field note to Event Profile!');
+      });
+    }
+
+    // C. Direct Photo Upload onto Profile Page
+    const directPhotoInput = document.getElementById('profileDirectPhotoInput');
+    if (directPhotoInput) {
+      directPhotoInput.addEventListener('change', async (e) => {
+        const files = Array.from(e.target.files || []).slice(0, 8);
+        if (files.length === 0) return;
+        showToast(`Compressing & attaching ${files.length} photo(s)...`);
+        const nextPhotos = [...photos];
+        for (const f of files) {
+          try {
+            const comp = await compressImage(f, 960, 960, 0.65);
+            const b64 = await readFileAsDataUrl(comp);
+            nextPhotos.push(b64);
+          } catch (err) {
+            console.warn('Profile photo upload warning:', err);
+          }
+        }
+        const updated = {
+          ...rec,
+          photos: nextPhotos,
+          photoLink: nextPhotos[0] || rec.photoLink || '',
+          customEdited: true
+        };
+        saveUpdatedActivityRecord(updated);
+        refreshAllMetricsAndViews();
+        showToast(`Attached ${files.length} photo(s) to "${rec.topic}"!`);
+      });
+    }
+
+    // D. Inline Add Attendee Form
+    const attForm = document.getElementById('profileAddAttendeeForm');
+    if (attForm) {
+      attForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = cleanText(document.getElementById('profAttName')?.value.trim() || '');
+        const location = cleanText(document.getElementById('profAttLoc')?.value.trim() || rec.site || '');
+        const email = (document.getElementById('profAttEmail')?.value || '').trim();
+        if (!name) return;
+        const nextAtt = [...attList, { name, location, email, phone: '' }];
+        const updated = { ...rec, attendees: nextAtt, customEdited: true };
+        saveUpdatedActivityRecord(updated);
+        refreshAllMetricsAndViews();
+        showToast(`Added "${name}" to event sign-in roster!`);
+      });
+    }
+
+    // E. Linked Task Checkboxes
+    container.querySelectorAll('.profile-linked-task-chk').forEach(chk => {
+      chk.addEventListener('change', () => {
+        const tIdx = parseInt(chk.getAttribute('data-tidx'), 10);
+        if (masterTasks[tIdx]) {
+          masterTasks[tIdx].done = chk.checked;
+          setLocalJSON('master_command_tasks', masterTasks);
+          if (db) {
+            db.collection('master_command_tasks').doc('board').set({
+              tasks: masterTasks,
+              updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true }).catch(() => {});
+          }
+          renderTeamTaskBoard();
+          refreshAllMetricsAndViews();
+          showToast(chk.checked ? 'Linked follow-up task completed!' : 'Task reopened.');
+        }
+      });
+    });
+  }
+
+  window.openEventProfile = function(recordId, fromViewId) {
+    if (fromViewId) previousCommandViewId = fromViewId;
+    activeProfileRecordId = recordId;
+    switchCommandView('event-profile-view');
+    renderEventProfilePage(recordId);
+    history.replaceState(null, '', `#event=${encodeURIComponent(recordId)}`);
+    const mainEl = document.querySelector('.main-content');
+    if (mainEl) mainEl.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Top Profile Navigation Bar Buttons
+  const btnProfileBack = document.getElementById('btnProfileBack');
+  if (btnProfileBack) {
+    btnProfileBack.addEventListener('click', () => {
+      switchCommandView(previousCommandViewId || 'pulse-view');
+      history.replaceState(null, '', `#${(previousCommandViewId || 'pulse-view').replace('-view', '')}`);
+    });
+  }
+
+  const btnProfileCopyLink = document.getElementById('btnProfileCopyLink');
+  if (btnProfileCopyLink) {
+    btnProfileCopyLink.addEventListener('click', () => {
+      const shareUrl = `${window.location.origin}${window.location.pathname}#event=${encodeURIComponent(activeProfileRecordId || '')}`;
+      navigator.clipboard.writeText(shareUrl).then(() => {
+        showToast('Direct Event Profile link copied to clipboard!');
+      });
+    });
+  }
+
+  const btnProfileExportCsv = document.getElementById('btnProfileExportCsv');
+  if (btnProfileExportCsv) {
+    btnProfileExportCsv.addEventListener('click', () => {
+      const rec = getUnifiedActivityRecords().find(r => r.id === activeProfileRecordId);
+      if (!rec) return;
+      let csv = `Event Title,"${(rec.topic || '').replace(/"/g, '""')}"\nDate,"${rec.date}"\nSite,"${(rec.site || '').replace(/"/g, '""')}"\nHours,${rec.hours || 2}\nCovered By,"${(rec.coworkers || []).join('; ').replace(/"/g, '""')}"\n\n#,Participant Name,Organization / Location,Email,Phone\n`;
+      (rec.attendees || []).forEach((a, i) => {
+        csv += `${i + 1},"${(a.name || '').replace(/"/g, '""')}","${(a.location || '').replace(/"/g, '""')}","${(a.email || '').replace(/"/g, '""')}","${(a.phone || '').replace(/"/g, '""')}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Event_Profile_${rec.date}_${(rec.topic || 'Event').replace(/[^a-z0-9]+/gi, '_').slice(0, 32)}.csv`;
+      a.click();
+      showToast('Exported Event Sign-In & Profile CSV!');
+    });
+  }
+
+  const btnProfilePrint = document.getElementById('btnProfilePrint');
+  if (btnProfilePrint) {
+    btnProfilePrint.addEventListener('click', () => window.print());
+  }
+
+  const btnProfileOpenEditor = document.getElementById('btnProfileOpenEditor');
+  if (btnProfileOpenEditor) {
+    btnProfileOpenEditor.addEventListener('click', () => {
+      if (activeProfileRecordId) window.openQuickEditActivity(activeProfileRecordId);
+    });
+  }
+
+  // ========================================================
+  // 15. Initial Render of All Command Center Views
   // ========================================================
   renderCoworkersDirectory();
   renderTeamTaskBoard();
@@ -2795,5 +3366,13 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCoolSchoolsCampusesGrid();
   renderSharedAssetsGrid();
   refreshAllMetricsAndViews();
+
+  // Open directly to an Event Profile Page if URL hash has `#event=<id>`
+  if (window.location.hash && window.location.hash.startsWith('#event=')) {
+    const targetEvId = decodeURIComponent(window.location.hash.slice('#event='.length));
+    if (targetEvId) {
+      window.openEventProfile(targetEvId, 'pulse-view');
+    }
+  }
 
 });

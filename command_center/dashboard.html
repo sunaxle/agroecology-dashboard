@@ -907,6 +907,29 @@
       </div>
     </section>
 
+    <!-- =========================================================
+         VIEW 7: DEDICATED EVENT PROFILE PAGE (#event-profile-view)
+         ========================================================= -->
+    <section id="event-profile-view" class="view-section">
+      <div class="profile-nav-bar no-print">
+        <div style="display:flex; align-items:center; gap:0.55rem; flex-wrap:wrap;">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnProfileBack">← Back to Feed / Workbook</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btnProfilePrev" title="Previous Event">◀ Prev Event</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btnProfileNext" title="Next Event">Next Event ▶</button>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnProfileCopyLink">🔗 Copy Event Link</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btnProfileExportCsv">📥 Export Sign-In CSV</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="btnProfilePrint">🖨️ Print / PDF Summary</button>
+          <button type="button" class="btn btn-primary btn-sm" id="btnProfileOpenEditor">✏️ Edit Full Details</button>
+        </div>
+      </div>
+
+      <div id="eventProfileContainer">
+        <!-- Dynamically rendered full Event Profile Dossier by dashboard.js -->
+      </div>
+    </section>
+
   </main>
 
   <!-- =========================================================
