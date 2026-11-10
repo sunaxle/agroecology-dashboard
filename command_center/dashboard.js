@@ -47,12 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const r1 = new RegExp('\\/?\\s*S' + 'ARA\\s*(Staff|Center|Collective|Operations)?', 'gi');
     const r2 = new RegExp('Steph' + 'anie\\s*Kasper|Steph' + 'anie|St' + 'eph', 'gi');
     const r3 = new RegExp('Mar' + 'io\\s*Fierro|Mar' + 'io', 'gi');
+    const r4 = new RegExp('Marisol\\s*Cervantes', 'gi');
     return str
       .replace(r1, 'Agroecology Lab')
       .replace(r2, 'Maria Gonzalez')
-      .replace(r3, 'Marcelino Garza')
+      .replace(r3, 'Desi Romero')
+      .replace(r4, 'Bianca Nunez')
       .replace(/\s{2,}/g, ' ')
       .trim();
+  }
+
+  function cleanCoworkerArray(arr) {
+    if (!Array.isArray(arr)) return ['Dr. Alexis Racelis', 'Desi Romero'];
+    const excludeRe = /katie\s*lavallee|^katie$|^q\s*\/\s*quinn$|^quinn$|^q$|marcelino(\s*garza)?|^patty$|christoffersen/i;
+    const cleaned = arr
+      .map(c => cleanText(String(c || '')))
+      .filter(c => c && !excludeRe.test(c.trim()));
+    return cleaned.length > 0 ? cleaned : ['Dr. Alexis Racelis', 'Desi Romero'];
   }
 
   // ========================================================
@@ -174,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
       type: 'Workshop / Training',
       site: 'Sentli Center',
       topic: 'Transplant Production & Organic Potting Mix Workshop @ Sentli Center',
-      coworkers: ['Maria Gonzalez', 'Patty', 'Marcelino Garza'],
+      coworkers: ['Maria Gonzalez', 'Sentli Center Team'],
       story: 'Bilingual evening workshop teaching families and beginning growers how to mix organic potting media, seed germination trays, and reduce input costs.',
       bilingual: true,
       status: 'Completed',
@@ -196,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
       type: '1-on-1 Farmer Technical Assistance',
       site: 'UTRGV Organic Greenhouse',
       topic: 'Institutional Food Sourcing Sync: Dr. Ramos, Dr. Racelis & Robert Cantu (UTRGV Dining)',
-      coworkers: ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Marisol Cervantes'],
+      coworkers: ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Bianca Nunez'],
       story: 'Strategic institutional food systems meeting with UTRGV Auxiliary & Dining Services Director Robert Cantu to expand campus procurement of Hub of Prosperity and certified organic student-grown produce.',
       bilingual: true,
       status: 'Completed',
@@ -217,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
       site: 'South Padre Island Convention Center (Region One ESC)',
       topic: 'Region One ESC School Nutrition Food Show @ South Padre Island',
       coworkers: ['Dr. Alexis Racelis', 'Desi Romero', 'Visiting Scholar (Dr. Ramos)'],
-      story: 'Connected with K-12 school nutrition directors across Region One ISDs on farm-to-school local produce sourcing and Cool Schools edible schoolyard integration. Covered by Dr. Alexis Racelis, Desi Romero, and Visiting Scholar Dr. Ramos (Q / Quinn did not attend). [📸 Action Needed: Upload event photos & field notes from Desi Romero.]',
+      story: 'Connected with K-12 school nutrition directors across Region One ISDs on farm-to-school local produce sourcing and Cool Schools edible schoolyard integration. Covered by Dr. Alexis Racelis, Desi Romero, and Visiting Scholar Dr. Ramos. [📸 Action Needed: Upload event photos & field notes from Desi Romero.]',
       bilingual: true,
       status: 'Follow-Up Needed: Upload Event Photos & Notes (Desi Romero)',
       programs: ['KELLOGG', 'COOL_SCHOOLS', 'HUB'],
@@ -235,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
       type: 'Field Day / Ranch Demo',
       site: 'Day 1: Weslaco AgriLife | Day 2: La Sarra Ranch, Santa Rosa',
       topic: 'South Texas Grazing Land Coalition: Working Lands Workshop (Weslaco & La Sarra Ranch)',
-      coworkers: ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Desi Romero', 'Marcelino Garza'],
+      coworkers: ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Desi Romero'],
       story: '2-day subtropical ranching & agroecology field workshop covering soil health, rotational grazing, virtual fencing, drone spraying demos, and rancher peer panels. Invited all of Dr. Racelis\'s Agroecology class and the UTRGV Vaquero Club to attend, which added tremendously to the cross-generational peer dynamics between students, beginning growers, and veteran ranchers. [⚠️ Follow-Up Needed: Coordinate student/Vaquero Club & rancher mentor follow-ups from workshop connections.]',
       bilingual: true,
       status: 'Follow-Up Needed: Agroecology Class, Vaquero Club & Rancher Follow-Ups',
@@ -359,22 +370,13 @@ document.addEventListener('DOMContentLoaded', () => {
       cadence: "Mon 8:00 AM Farm Ops · Daily Field Prep"
     },
     {
-      initials: "QQ",
-      name: "Q / Quinn",
-      role: "Research Sprint, Data Workflows & PR/Graphics Lead",
-      track: "leadership",
-      programs: ["🌾 Kellogg", "🏛️ BFRDP", "🌳 Cool Schools"],
-      focus: "Manages quantitative data pipelines, manuscript sprint milestones, bilingual recruitment flyers, and multi-grant reporting visualizations.",
-      cadence: "Wed 2:00 PM Lab Meeting · Wed 3:30 PM 1-on-1 Sprint"
-    },
-    {
-      initials: "MC",
-      name: "Marisol Cervantes",
+      initials: "BN",
+      name: "Bianca Nunez",
       role: "UTRGV Certified Organic Garden & Greenhouse Manager",
       track: "hub",
       programs: ["🌱 Hub & Lab", "🌾 Kellogg", "🌳 Cool Schools"],
-      focus: "Oversees the 7,500 sq ft evaporative-cooled greenhouse, 15 raised teaching beds, organic seed propagation, and campus dining produce deliveries.",
-      cadence: "Campus Greenhouse Operations · Wed 2:00 PM Lab"
+      focus: "Manages the UTRGV Certified Organic Garden & 7,500 sq ft evaporative-cooled greenhouse, 15 raised teaching beds, organic seed propagation, and campus dining produce deliveries.",
+      cadence: "Campus Garden & Greenhouse Operations · Wed 2:00 PM Lab"
     },
     {
       initials: "DL",
@@ -400,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
       role: "Budget & Subcontracts Financial Liaison",
       track: "leadership",
       programs: ["🏛️ BFRDP", "🌾 Kellogg", "🌳 Cool Schools"],
-      focus: "Manages grant budget allocations, participant stipends, and contractor agreements (Sentli, Marcelino, Patty, Kitchen Table Consultants).",
+      focus: "Manages grant budget allocations, participant stipends, and subaward/contractor agreements (Sentli Center, Kitchen Table Consultants).",
       cadence: "Mon 9:00 AM Grants Sync"
     },
     {
@@ -423,8 +425,8 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       initials: "VR",
-      name: "Visiting Scholar (Dr. Ramos), Katie Lavallee, JJ Alaniz & Grad Cohort",
-      role: "Katie Lavallee, JJ Alaniz, Savanah Zambrano, Samikshya Subedi, Roberto Reyna, Savannah Rugg, Matt Kutugata, Rico Marez",
+      name: "Visiting Scholar (Dr. Ramos), JJ Alaniz, Katelyn Amador & Grad Cohort",
+      role: "JJ Alaniz, Katelyn \"Katy\" Amador, Savanah Zambrano, Samikshya Subedi, Roberto Reyna, Savannah Rugg, Matt Kutugata, Rico Marez",
       track: "cool",
       programs: ["🌳 Cool Schools", "🌱 Hub & Lab", "🌾 Kellogg", "🏛️ BFRDP"],
       focus: "Conduct certified soil health & amendment workshops, field sampling, tree canopy thermal audits, silvopasture heat-stress monitoring, and bilingual community workshops.",
@@ -432,11 +434,11 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       initials: "SP",
-      name: "Sentli Center, Marcelino Garza, Patty & Kitchen Table Consultants",
-      role: "Key Grant Subawardees, Farmer Mentors & Outreach Contractors",
+      name: "Sentli Center & Kitchen Table Consultants",
+      role: "Key Grant Subawardees & Producer Financial Partners",
       track: "partners",
       programs: ["🌾 Kellogg", "🏛️ BFRDP"],
-      focus: "Co-host bilingual on-farm workshops, recruit Tier 1/2 beginning farmers, run Sentli transplant trainings, and deliver 1-on-1 financial benchmarking.",
+      focus: "Co-host bilingual on-farm workshops, run Sentli transplant & Farm2Go trainings, and deliver 1-on-1 financial benchmarking.",
       cadence: "Regional Field Workshops & Producer Mentoring"
     }
   ];
@@ -467,7 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dateTime: "Sat, Sep 26, 2026 @ 6:30 PM",
       dateTimeEs: "Sábado 26 de sep de 2026 @ 6:30 PM",
       location: "Sentli Center, 2806 E Rogers Rd, Edinburg, TX 78542",
-      assigned: "Maria Gonzalez, Patty, Sentli Staff",
+      assigned: "Maria Gonzalez, Sentli Staff",
       notes: "Organic transplant production, hands-on potting mix preparation, free seeds and germination tray per attendee.",
       conflictBadge: "✓ Split-Coverage Verified: Evening Slot",
       isDone: true,
@@ -510,7 +512,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dateTime: "Thu–Fri, Oct 8–9, 2026 @ 8:00 AM Daily",
       dateTimeEs: "Jue–Vie, 8–9 de oct de 2026 @ 8:00 AM",
       location: "Day 1: Weslaco AgriLife | Day 2: La Sarra Ranch, Santa Rosa",
-      assigned: "Dr. Alexis Racelis, Desi Romero, Marcelino Garza, Visiting Scholar",
+      assigned: "Dr. Alexis Racelis, Desi Romero, Visiting Scholar (Dr. Ramos)",
       notes: "Screwworm updates, soil organic carbon, drone spraying demo, virtual fencing, and BFRDP rancher mentor panel. Invited all of Dr. Racelis's Agroecology class & the UTRGV Vaquero Club, adding rich student–rancher dynamics and follow-ups.",
       conflictBadge: "⚡ Oct 8 Split-Coverage: Daytime @ Weslaco / 6:30 PM @ Quinta Mazatlán",
       isDone: true,
@@ -568,7 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dateTime: "Sat, Nov 14, 2026 @ 8:30 AM – 12:30 PM",
       dateTimeEs: "Sábado 14 de nov de 2026 @ 8:30 AM – 12:30 PM",
       location: "Hub of Prosperity Living Lab, Edinburg TX",
-      assigned: "Maria Gonzalez, Juan & Demetrio, Marcelino Garza, Dr. Racelis",
+      assigned: "Maria Gonzalez, Juan & Demetrio, Dr. Racelis",
       notes: "Assign quarter-acre incubator plots to Tier 1 cohort growers, demonstrate header line filtration, and seed winter brassicas.",
       isDone: false,
       featured: true
@@ -591,13 +593,13 @@ document.addEventListener('DOMContentLoaded', () => {
       id: "ev-cadence-wed",
       category: "MEETING",
       org: "Agroecology & Urban Forestry Labs",
-      title: "Standing Wednesdays: 1pm Cool Schools · 2pm Lab All-Hands · 3:30pm Q Sprint",
-      titleEs: "Miércoles Permanentes: 1pm Cool Schools · 2pm Reunión General · 3:30pm Sprint con Q",
-      dateTime: "Every Wednesday @ 1:00 PM – 4:15 PM",
-      dateTimeEs: "Todos los Miércoles @ 1:00 PM – 4:15 PM",
+      title: "Standing Wednesdays: 1pm Cool Schools · 2pm Lab All-Hands",
+      titleEs: "Miércoles Permanentes: 1pm Cool Schools · 2pm Reunión General",
+      dateTime: "Every Wednesday @ 1:00 PM – 3:15 PM",
+      dateTimeEs: "Todos los Miércoles @ 1:00 PM – 3:15 PM",
       location: "SEEMS Forestry Lab & Agroecology Main Lab",
-      assigned: "Dr. Racelis, Desi Romero, Savanah Zambrano, Q / Quinn, Visiting Scholar, Grad Cohort",
-      notes: "Weekly research coordination across Cool Schools urban forestry, soil carbon trials, and data/manuscript sprints.",
+      assigned: "Dr. Racelis, Desi Romero, Savanah Zambrano, Visiting Scholar, Grad Cohort",
+      notes: "Weekly research coordination across Cool Schools urban forestry, soil carbon trials, and lab field deployments.",
       isDone: false,
       featured: false
     }
@@ -605,18 +607,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Default Team Tasks (Seeded from PROJECT_BOARD.md + Cool Schools + Kellogg/BFRDP)
   const DEFAULT_MASTER_TASKS = [
-    { id: "tsk-soil-followup", title: "Follow up with JJ Alaniz & Katie Lavallee on 'Hub - Supporting Your Soil Workshop' (Oct 10) to confirm all soil practices & records are certified and amended", owner: "Desi Romero, JJ Alaniz & Katie Lavallee", category: "KELLOGG", due: "Nov 12, 2026", done: false },
+    { id: "tsk-soil-followup", title: "Follow up with JJ Alaniz & Katelyn \"Katy\" Amador on 'Hub - Supporting Your Soil Workshop' (Oct 10) to confirm all soil practices & records are certified and amended", owner: "Desi Romero, JJ Alaniz & Katelyn Amador", category: "KELLOGG", due: "Nov 12, 2026", done: false },
     { id: "tsk-gardening101-followup", title: "Verify all attendance, status & form details are filled out correctly for 'Hub - Beginner Gardening 101' (Sep 26)", owner: "Desi Romero & Maria Gonzalez", category: "KELLOGG", due: "Nov 12, 2026", done: false },
-    { id: "tsk-working-lands-followup", title: "Complete post-event follow-ups from Working Lands Workshop (Oct 8–9) with Dr. Racelis's Agroecology class, UTRGV Vaquero Club & STGLC rancher mentors", owner: "Dr. Alexis Racelis, Desi Romero & Marcelino Garza", category: "BFRDP", due: "Nov 13, 2026", done: false },
+    { id: "tsk-working-lands-followup", title: "Complete post-event follow-ups from Working Lands Workshop (Oct 8–9) with Dr. Racelis's Agroecology class, UTRGV Vaquero Club & STGLC rancher mentors", owner: "Dr. Alexis Racelis & Desi Romero", category: "BFRDP", due: "Nov 13, 2026", done: false },
     { id: "tsk-photos-notes-upload", title: "Upload photos & field notes for Region One ESC School Nutrition Food Show (Sep 30) and Planta Nativa VIP Night @ Quinta Mazatlán (Oct 8)", owner: "Desi Romero & Savanah Zambrano", category: "COOL_SCHOOLS", due: "Nov 12, 2026", done: false },
     { id: "tsk-1", title: "Process 8-county producer GIS layer & map pre-contacted farmers to BFRDP tiers", owner: "Valdez & Dr. Racelis", category: "BFRDP", due: "Nov 12, 2026", done: false },
     { id: "tsk-2", title: "Complete Economedes HS & Nikki Rowe HS classroom viewshed and thermal drone baseline", owner: "Desi Romero, Savanah Zambrano & Dr. Racelis", category: "COOL_SCHOOLS", due: "Nov 14, 2026", done: false },
     { id: "tsk-3", title: "Draft core BFRDP evaluation narrative & finalize federal REEport supporting checklist", owner: "Dr. Lockman & Aisha", category: "BFRDP", due: "Nov 18, 2026", done: false },
-    { id: "tsk-4", title: "Finalize contractor agreements for Marcelino Garza, Patty & Kitchen Table Consultants", owner: "Annalise & Aisha", category: "BFRDP", due: "Nov 15, 2026", done: false },
+    { id: "tsk-4", title: "Finalize subaward & contractor agreements for Sentli Center & Kitchen Table Consultants", owner: "Annalise & Aisha", category: "BFRDP", due: "Nov 15, 2026", done: false },
     { id: "tsk-5", title: "Coordinate breaking ground & drip tape layout on quarter-acre plots for Tier 1 BFRDP farmers", owner: "Juan & Demetrio, Maria Gonzalez", category: "HUB", due: "Nov 14, 2026", done: false },
     { id: "tsk-7", title: "Sow Cowpea & Sunn Hemp nitrogen-building cover crop mix in Field 1 (NE & SW plots)", owner: "Maria Gonzalez, Juan & Demetrio", category: "HUB", due: "Completed", done: true },
-    { id: "tsk-8", title: "Compile Fall 2026 Kellogg bilingual workshop attendance & SNAP/DUFB market survey metrics", owner: "Q / Quinn & Patty", category: "KELLOGG", due: "Nov 20, 2026", done: false },
-    { id: "tsk-9", title: "Coordinate Quinta Mazatlán CUE Miyawaki native seed propagation bench at UTRGV Greenhouse", owner: "Marisol Cervantes & Savanah Zambrano", category: "COOL_SCHOOLS", due: "Nov 22, 2026", done: false },
+    { id: "tsk-8", title: "Compile Fall 2026 Kellogg bilingual workshop attendance & SNAP/DUFB market survey metrics", owner: "Maria Gonzalez & Desi Romero", category: "KELLOGG", due: "Nov 20, 2026", done: false },
+    { id: "tsk-9", title: "Coordinate Quinta Mazatlán CUE Miyawaki native seed propagation bench at UTRGV Greenhouse", owner: "Bianca Nunez & Savanah Zambrano", category: "COOL_SCHOOLS", due: "Nov 22, 2026", done: false },
     { id: "tsk-10", title: "Monitor sheep thermal comfort & soil compaction in Silvopasture Zone A vs Open Pasture Zone C", owner: "Desi Romero & Roberto Reyna Oviedo", category: "HUB", due: "Ongoing Weekly", done: false }
   ];
 
@@ -638,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Mobile Agroecology Learning Lab (MALL)",
       specs: "24' Enclosed Teaching Trailer · Onboard Generator · Digital Microscopes · Bilingual Display Canopy",
       status: "Available",
-      custodian: "Desi Romero & Patty",
+      custodian: "Desi Romero",
       reservedBy: "Donna ISD & McAllen CUE Schoolyard Outreach",
       link: "../wk_kellogg_foundation/dashboard.html"
     },
@@ -668,7 +670,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "Integrated Post-Harvest Wash-Pack & CoolBot Hub",
       specs: "40' Insulated Container · Dual-Zone CoolBot Cold Storage · Stainless Wash Sinks · 2,500-Gal Rainwater Roof",
       status: "Available",
-      custodian: "Maria Gonzalez & Marisol Cervantes",
+      custodian: "Maria Gonzalez & Bianca Nunez",
       reservedBy: "Friday Harvest Wash & Saturday Farm Stand Prep",
       link: "../farm_management.html"
     },
@@ -678,7 +680,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "UTRGV Certified Organic Garden & Greenhouse",
       specs: "7,500 sq ft Evaporative-Cooled Structure · 15 Raised Teaching Beds · Native Tree Propagation Tables",
       status: "Available",
-      custodian: "Marisol Cervantes",
+      custodian: "Bianca Nunez",
       reservedBy: "Cool Schools Native Saplings & Dining Hall Greens",
       link: ""
     },
@@ -719,10 +721,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let masterLogs = getLocalJSON('master_command_logs', []);
   let coolSchoolsLogs = getLocalJSON('cool_schools_logs', []);
   let bfrdpCohort = getLocalJSON('bfrdp_cohort_roster', [
-    { name: "Carlos Alvarez", tier: "Tier 1 (0–1 yr)", enterprise: "Specialty Melons & Roselle", plot: "Hub Plot 1A (1/4 Acre)", hours: "18 hrs", mentor: "Marcelino Garza / Good Grow" },
+    { name: "Carlos Alvarez", tier: "Tier 1 (0–1 yr)", enterprise: "Specialty Melons & Roselle", plot: "Hub Plot 1A (1/4 Acre)", hours: "18 hrs", mentor: "Hub of Prosperity Living Lab" },
     { name: "Guadalupe Peña", tier: "Tier 1 (0–1 yr)", enterprise: "Subtropical Winter Brassicas", plot: "Hub Plot 2B (1/4 Acre)", hours: "22 hrs", mentor: "Maria Gonzalez / Hub Farm" },
     { name: "Mateo De Leon", tier: "Tier 1 (0–1 yr)", enterprise: "Pastured Poultry & Cover Crops", plot: "Hub Zone C-Pasture", hours: "14 hrs", mentor: "Servando Leal / STGLC" },
-    { name: "Elena Villarreal", tier: "Tier 2 (1–3 yrs)", enterprise: "Direct CSA & Herb Cultivation", plot: "Off-site (Alamo, TX)", hours: "28 hrs (Completed)", mentor: "Katie Lavallee / Weaving Webs" },
+    { name: "Elena Villarreal", tier: "Tier 2 (1–3 yrs)", enterprise: "Direct CSA & Herb Cultivation", plot: "Off-site (Alamo, TX)", hours: "28 hrs (Completed)", mentor: "Sentli Center" },
     { name: "Ramiro Hinojosa", tier: "Tier 2 (1–3 yrs)", enterprise: "Dryland Grain Sorghum / Strip Till", plot: "Off-site (Raymondville)", hours: "26 hrs (Completed)", mentor: "Stephen Obst / Obst Farms" },
     { name: "Lucia Morales", tier: "Tier 2 (1–3 yrs)", enterprise: "High-Tunnel Heirloom Tomatoes", plot: "Hub Incubator Tunnel 1", hours: "30 hrs (Completed)", mentor: "George Bennack / Crossroads" }
   ]);
@@ -767,6 +769,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (Array.isArray(item.photos)) {
       item.photos = item.photos.map(fixRelativePhotoPath);
     }
+    if (Array.isArray(item.coworkers)) {
+      item.coworkers = cleanCoworkerArray(item.coworkers);
+    }
     if (Array.isArray(item.attendees)) {
       // Exclude departed team members from attendee lists
       const depRe = new RegExp('steph' + 'anie\\s*kasper|mar' + 'io\\s*fierro', 'i');
@@ -793,14 +798,14 @@ document.addEventListener('DOMContentLoaded', () => {
       ];
     }
 
-    // 2. Oct 10: Hub - Supporting Your Soil Workshop (Maria Gonzalez, Desi Romero, JJ Alaniz, Katie Lavallee + Follow-up on certified & amended)
+    // 2. Oct 10: Hub - Supporting Your Soil Workshop (Maria Gonzalez, Desi Romero, JJ Alaniz, Katelyn "Katy" Amador + Follow-up on certified & amended)
     if (topicLower.includes('supporting your soil')) {
       item.site = 'Hub of Prosperity Farm';
-      item.coworkers = ['Maria Gonzalez', 'Desi Romero', 'JJ Alaniz', 'Katie Lavallee'];
+      item.coworkers = ['Maria Gonzalez', 'Desi Romero', 'JJ Alaniz', 'Katelyn "Katy" Amador'];
       if (!item.customEdited) {
-        item.status = 'Follow-Up Needed: Confirm Certified & Amended (JJ Alaniz & Katie Lavallee)';
+        item.status = 'Follow-Up Needed: Confirm Certified & Amended (JJ Alaniz & Katy Amador)';
         const baseStory = (item.story || 'Soil health and common practices utilized at the Hub of Prosperity Farms was discussed at this workshop. Attendees brought soil from their growing space and determined their soil type through an activity.').split(' [⚠️')[0].trim();
-        item.story = `${baseStory} [⚠️ Follow-Up Needed: Follow up with JJ Alaniz & Katie Lavallee to confirm all workshop soil practices and records are certified and amended.]`;
+        item.story = `${baseStory} [⚠️ Follow-Up Needed: Follow up with JJ Alaniz & Katelyn "Katy" Amador to confirm all workshop soil practices and records are certified and amended.]`;
       }
       item.programs = ['KELLOGG', 'HUB'];
     }
@@ -813,7 +818,7 @@ document.addEventListener('DOMContentLoaded', () => {
       item.type = 'Field Day / Ranch Demo';
       item.site = 'Day 1: Weslaco AgriLife | Day 2: La Sarra Ranch, Santa Rosa';
       item.topic = 'South Texas Grazing Land Coalition: Working Lands Workshop (Weslaco & La Sarra Ranch)';
-      item.coworkers = ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Desi Romero', 'Marcelino Garza'];
+      item.coworkers = ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Desi Romero'];
       if (!item.customEdited) {
         item.story = '2-day subtropical ranching & agroecology field workshop covering soil health, rotational grazing, virtual fencing, drone spraying demos, and rancher peer panels. Invited all of Dr. Racelis\'s Agroecology class and the UTRGV Vaquero Club to attend, which added tremendously to the cross-generational peer dynamics between students, beginning growers, and veteran ranchers. [⚠️ Follow-Up Needed: Coordinate student/Vaquero Club & rancher mentor follow-ups from workshop connections.]';
         item.status = 'Follow-Up Needed: Agroecology Class, Vaquero Club & Rancher Follow-Ups';
@@ -846,7 +851,7 @@ document.addEventListener('DOMContentLoaded', () => {
       item.programs = ['COOL_SCHOOLS', 'KELLOGG', 'HUB'];
     }
 
-    // 5. Sep 30: Region One ESC School Nutrition Food Show @ South Padre Island (Desi Romero attended; Q/Quinn did not attend; upload photos & notes)
+    // 5. Sep 30: Region One ESC School Nutrition Food Show @ South Padre Island (Desi Romero attended; upload photos & notes)
     if (item.id === 'hist-esc1-foodshow' || topicLower.includes('region one esc') || topicLower.includes('food show')) {
       item.id = 'hist-esc1-foodshow';
       item.date = '2026-09-30';
@@ -856,7 +861,7 @@ document.addEventListener('DOMContentLoaded', () => {
       item.topic = 'Region One ESC School Nutrition Food Show @ South Padre Island';
       item.coworkers = ['Dr. Alexis Racelis', 'Desi Romero', 'Visiting Scholar (Dr. Ramos)'];
       if (!item.customEdited) {
-        item.story = 'Connected with K-12 school nutrition directors across Region One ISDs on farm-to-school local produce sourcing and Cool Schools edible schoolyard integration. Covered by Dr. Alexis Racelis, Desi Romero, and Visiting Scholar Dr. Ramos (Q / Quinn did not attend). [📸 Action Needed: Upload event photos & field notes from Desi Romero.]';
+        item.story = 'Connected with K-12 school nutrition directors across Region One ISDs on farm-to-school local produce sourcing and Cool Schools edible schoolyard integration. Covered by Dr. Alexis Racelis, Desi Romero, and Visiting Scholar Dr. Ramos. [📸 Action Needed: Upload event photos & field notes from Desi Romero.]';
         item.status = 'Follow-Up Needed: Upload Event Photos & Notes (Desi Romero)';
       }
       item.programs = ['KELLOGG', 'COOL_SCHOOLS', 'HUB'];
@@ -885,7 +890,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    // 7. Sep 29: Institutional Food Sourcing Sync (Bianca Nunez)
+    if (item.id === 'hist-cantu-lunch') {
+      item.coworkers = ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Bianca Nunez'];
+    }
+
+    // 8. Sep 26: Sentli Transplant Workshop
+    if (item.id === 'hist-sentli-transplants') {
+      item.coworkers = ['Maria Gonzalez', 'Sentli Center Team'];
+    }
+
     return item;
+  }
+
+  function stripRemovedCoworkersText(s) {
+    if (!s || typeof s !== 'string') return s || '';
+    return cleanText(s)
+      .replace(/,?\s*Katie\s*Lavallee/gi, ' & Katelyn "Katy" Amador')
+      .replace(/,?\s*Q\s*\/\s*Quinn/gi, '')
+      .replace(/,?\s*Marcelino(\s*Garza)?/gi, '')
+      .replace(/,?\s*Patty/gi, '')
+      .replace(/^[\s,&]+|[\s,&]+$/g, '')
+      .trim();
   }
 
   function applyRuntimeNormalizations() {
@@ -911,6 +937,22 @@ document.addEventListener('DOMContentLoaded', () => {
     coolSchoolsLogs = coolSchoolsLogs.filter(c => !isExcludedActivityRecord(c));
     setLocalJSON('cool_schools_logs', coolSchoolsLogs);
 
+    // 2c. Normalize cached sharedAssets so Bianca Nunez replaces Marisol Cervantes & Patty is removed
+    sharedAssets = sharedAssets.map(a => {
+      const cust = stripRemovedCoworkersText(a.custodian || '');
+      if (a.id === 'asset-greenhouse' || (a.name || '').toLowerCase().includes('greenhouse')) {
+        return { ...a, custodian: 'Bianca Nunez' };
+      }
+      if (a.id === 'asset-washpack') {
+        return { ...a, custodian: 'Maria Gonzalez & Bianca Nunez' };
+      }
+      if (a.id === 'asset-mall-trailer') {
+        return { ...a, custodian: 'Desi Romero' };
+      }
+      return { ...a, custodian: cust || 'Agroecology Team' };
+    });
+    setLocalJSON('master_command_assets', sharedAssets);
+
     // 3. Normalize masterCalendarEvents (and purge J.W. Caceres planting which did not occur)
     masterCalendarEvents = masterCalendarEvents
       .filter(ev => !(ev.id === 'ev-caceres-microforest' || (ev.title || '').toLowerCase().includes('caceres')))
@@ -919,7 +961,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ...ev,
           org: cleanText(ev.org),
           title: cleanText(ev.title),
-          assigned: cleanText(ev.assigned),
+          assigned: stripRemovedCoworkersText(ev.assigned),
           notes: cleanText(ev.notes)
         };
         if (cleaned.id === 'ev-pharr-avocado' || (cleaned.title || '').toLowerCase().includes('avocado')) {
@@ -939,6 +981,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cleaned.id === 'ev-working-lands' || (cleaned.title || '').toLowerCase().includes('working lands')) {
           return {
             ...cleaned,
+            assigned: "Dr. Alexis Racelis, Desi Romero, Visiting Scholar (Dr. Ramos)",
             notes: "Screwworm updates, soil organic carbon, drone spraying demo, virtual fencing, and BFRDP rancher mentor panel. Invited all of Dr. Racelis's Agroecology class & the UTRGV Vaquero Club, adding rich student–rancher dynamics and follow-ups."
           };
         }
@@ -963,22 +1006,43 @@ document.addEventListener('DOMContentLoaded', () => {
             assigned: "Dr. Alexis Racelis, Desi Romero, Savanah Zambrano, Valdez"
           };
         }
+        if (cleaned.id === 'ev-cadence-wed') {
+          return {
+            ...cleaned,
+            title: "Standing Wednesdays: 1pm Cool Schools · 2pm Lab All-Hands",
+            titleEs: "Miércoles Permanentes: 1pm Cool Schools · 2pm Reunión General",
+            dateTime: "Every Wednesday @ 1:00 PM – 3:15 PM",
+            dateTimeEs: "Todos los Miércoles @ 1:00 PM – 3:15 PM",
+            assigned: "Dr. Racelis, Desi Romero, Savanah Zambrano, Visiting Scholar, Grad Cohort"
+          };
+        }
         return cleaned;
       });
     setLocalJSON('master_command_events', masterCalendarEvents);
 
-    // 4. Ensure follow-up tasks exist in masterTasks and purge removed Caceres task
+    // 4. Ensure follow-up tasks exist in masterTasks and clean removed names
     masterTasks = masterTasks
       .filter(t => !(t.id === 'tsk-6' || (t.title || '').toLowerCase().includes('caceres')))
-      .map(t => ({
-        ...t,
-        title: cleanText(t.title),
-        owner: cleanText((t.owner || '').replace(/Dr\.\s*Christoffersen/gi, 'Savanah Zambrano'))
-      }));
+      .map(t => {
+        if (t.id === 'tsk-soil-followup') {
+          return { ...t, title: "Follow up with JJ Alaniz & Katelyn \"Katy\" Amador on 'Hub - Supporting Your Soil Workshop' (Oct 10) to confirm all soil practices & records are certified and amended", owner: "Desi Romero, JJ Alaniz & Katelyn Amador" };
+        }
+        if (t.id === 'tsk-4') {
+          return { ...t, title: "Finalize subaward & contractor agreements for Sentli Center & Kitchen Table Consultants", owner: "Annalise & Aisha" };
+        }
+        if (t.id === 'tsk-8') {
+          return { ...t, owner: "Maria Gonzalez & Desi Romero" };
+        }
+        return {
+          ...t,
+          title: cleanText(t.title),
+          owner: stripRemovedCoworkersText((t.owner || '').replace(/Dr\.\s*Christoffersen/gi, 'Savanah Zambrano'))
+        };
+      });
     const requiredTasks = [
-      { id: "tsk-soil-followup", title: "Follow up with JJ Alaniz & Katie Lavallee on 'Hub - Supporting Your Soil Workshop' (Oct 10) to confirm all soil practices & records are certified and amended", owner: "Desi Romero, JJ Alaniz & Katie Lavallee", category: "KELLOGG", due: "Nov 12, 2026", done: false },
+      { id: "tsk-soil-followup", title: "Follow up with JJ Alaniz & Katelyn \"Katy\" Amador on 'Hub - Supporting Your Soil Workshop' (Oct 10) to confirm all soil practices & records are certified and amended", owner: "Desi Romero, JJ Alaniz & Katelyn Amador", category: "KELLOGG", due: "Nov 12, 2026", done: false },
       { id: "tsk-gardening101-followup", title: "Verify all attendance, status & form details are filled out correctly for 'Hub - Beginner Gardening 101' (Sep 26)", owner: "Desi Romero & Maria Gonzalez", category: "KELLOGG", due: "Nov 12, 2026", done: false },
-      { id: "tsk-working-lands-followup", title: "Complete post-event follow-ups from Working Lands Workshop (Oct 8–9) with Dr. Racelis's Agroecology class, UTRGV Vaquero Club & STGLC rancher mentors", owner: "Dr. Alexis Racelis, Desi Romero & Marcelino Garza", category: "BFRDP", due: "Nov 13, 2026", done: false },
+      { id: "tsk-working-lands-followup", title: "Complete post-event follow-ups from Working Lands Workshop (Oct 8–9) with Dr. Racelis's Agroecology class, UTRGV Vaquero Club & STGLC rancher mentors", owner: "Dr. Alexis Racelis & Desi Romero", category: "BFRDP", due: "Nov 13, 2026", done: false },
       { id: "tsk-photos-notes-upload", title: "Upload photos & field notes for Region One ESC School Nutrition Food Show (Sep 30) and Planta Nativa VIP Night @ Quinta Mazatlán (Oct 8)", owner: "Desi Romero & Savanah Zambrano", category: "COOL_SCHOOLS", due: "Nov 12, 2026", done: false }
     ];
     requiredTasks.reverse().forEach(req => {
@@ -1010,7 +1074,7 @@ document.addEventListener('DOMContentLoaded', () => {
         type: item.type || 'Workshop / Training',
         site: item.site || 'Hub of Prosperity Farm',
         topic: cleanText(item.topic || 'Activity Log'),
-        coworkers: Array.isArray(item.coworkers) ? item.coworkers.map(cleanText) : ['Dr. Alexis Racelis', 'Desi Romero'],
+        coworkers: cleanCoworkerArray(item.coworkers),
         story: cleanText(item.story || ''),
         bilingual: item.bilingual !== false,
         status: item.status || 'Completed',
@@ -1051,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', () => {
           type: r.type || 'Workshop / Training',
           site: r.site || defaultSite,
           topic: cleanText(r.topic || 'Kellogg Grant Activity'),
-          coworkers: Array.isArray(r.coworkers) ? r.coworkers.map(cleanText) : ['Maria Gonzalez', 'Desi Romero'],
+          coworkers: Array.isArray(r.coworkers) ? cleanCoworkerArray(r.coworkers) : ['Maria Gonzalez', 'Desi Romero'],
           story: cleanText(r.story || 'Logged via W.K. Kellogg Reporting Portal.'),
           bilingual: true,
           status: r.status || 'Completed',
@@ -1986,8 +2050,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ? `🌿 *CENTRO DE COMANDO AGROECOLOGÍA UTRGV Y HUB OF PROSPERITY — RESUMEN SEMANAL*\n`
         : `🌿 *UTRGV AGROECOLOGY & HUB COMMAND CENTER — WEEKLY TEAM DIGEST*\n`;
       const cadence = waLang === 'ES'
-        ? `\n🔄 *CADENCIA SEMANAL:*\n• Lun 8am: Operaciones Granja Hub (María, Juan y Demetrio)\n• Lun 9am: Sincronización Subvenciones Kellogg/BFRDP (Dr. Racelis, Lockman, Aisha, Annalise, Valdez)\n• Mar 9am: Bloque Docente Dr. Racelis\n• Mié 1pm: Cool Schools (Savanah Zambrano y Dr. Racelis) · 2pm Laboratorio General · 3:30pm Sprint Q\n\n📅 *EVENTOS DESTACADOS:*\n`
-        : `\n🔄 *STANDING WEEKLY CADENCE:*\n• Mon 8am: Hub Farm Ops (Maria, Juan & Demetrio)\n• Mon 9am: Grants, BFRDP & Kellogg Sync (Dr. Racelis, Lockman, Aisha, Annalise, Valdez)\n• Tue 9am: Dr. Racelis Teaching Block\n• Wed 1pm: Cool Schools (Savanah Zambrano & Dr. Racelis) · 2pm Lab All-Hands · 3:30pm Q Sprint\n\n📅 *KEY EVENTS & COVERAGE:*\n`;
+        ? `\n🔄 *CADENCIA SEMANAL:*\n• Lun 8am: Operaciones Granja Hub (María, Juan y Demetrio)\n• Lun 9am: Sincronización Subvenciones Kellogg/BFRDP (Dr. Racelis, Lockman, Aisha, Annalise, Valdez)\n• Mar 9am: Bloque Docente Dr. Racelis\n• Mié 1pm: Cool Schools (Savanah Zambrano y Dr. Racelis) · 2pm Laboratorio General\n\n📅 *EVENTOS DESTACADOS:*\n`
+        : `\n🔄 *STANDING WEEKLY CADENCE:*\n• Mon 8am: Hub Farm Ops (Maria, Juan & Demetrio)\n• Mon 9am: Grants, BFRDP & Kellogg Sync (Dr. Racelis, Lockman, Aisha, Annalise, Valdez)\n• Tue 9am: Dr. Racelis Teaching Block\n• Wed 1pm: Cool Schools (Savanah Zambrano & Dr. Racelis) · 2pm Lab All-Hands\n\n📅 *KEY EVENTS & COVERAGE:*\n`;
 
       const lines = masterCalendarEvents.slice(0, 8).map(ev => {
         const t = (waLang === 'ES' && ev.titleEs) ? ev.titleEs : ev.title;
