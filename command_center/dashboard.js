@@ -152,9 +152,9 @@ document.addEventListener('DOMContentLoaded', () => {
       site: 'Hub of Prosperity Farm',
       topic: 'Beginner Gardening 101 @ Hub of Prosperity Farm',
       coworkers: ['Desi Romero', 'Maria Gonzalez', 'Juan & Demetrio'],
-      story: 'Hands-on training covering subtropical organic bed preparation, small-space container gardening, compost application, and native pollinator strips.',
+      story: 'Hands-on training covering subtropical organic bed preparation, small-space container gardening, compost application, and native pollinator strips. [⚠️ Follow-Up Needed: Follow up to verify that all attendance records, details, and forms for Beginner Gardening 101 are filled out correctly.]',
       bilingual: true,
-      status: 'Completed',
+      status: 'Follow-Up Needed: Verify All Details & Attendance Filled Out Correctly',
       programs: ['KELLOGG', 'BFRDP', 'HUB'],
       attendees: [
         { name: 'Carlos Alvarez', location: 'Hub Plot 1A' },
@@ -190,27 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
       photos: ['../assets/sentli_transplant_workshop.png']
     },
     {
-      id: 'hist-caceres-planting',
-      date: '2026-09-28',
-      hours: 4.0,
-      type: 'Cool Schools Campus Planting / Canopy Audit',
-      site: 'J.W. Caceres Academy (Cool Schools - Donna ISD)',
-      topic: 'J.W. Caceres & M. Rivas Academy Microforest Planting & Thermal Baseline (154 Native Trees)',
-      coworkers: ['Dr. Christoffersen (Cool Schools)', 'Dr. Alexis Racelis', 'Desi Romero', 'Grad / Undergrad Cohort'],
-      story: 'Flagship Project Cool Schools deployment in Donna ISD: 154 native trees planted, baseline surface temperature audit (122.5°F exposed vs 89.1°F shaded), and soil moisture sensor installation.',
-      bilingual: true,
-      status: 'Completed',
-      programs: ['COOL_SCHOOLS', 'HUB'],
-      attendees: [
-        { name: 'Donna ISD Facilities & Science Team', location: 'J.W. Caceres Academy' },
-        { name: 'Texas Trees Foundation Crew', location: 'Donna ISD' },
-        { name: 'Samikshya Subedi', location: 'UTRGV Grad Cohort' },
-        { name: 'Roberto Reyna Oviedo', location: 'UTRGV Grad Cohort' }
-      ],
-      photoLink: '',
-      photos: []
-    },
-    {
       id: 'hist-cantu-lunch',
       date: '2026-09-29',
       hours: 1.5,
@@ -235,12 +214,12 @@ document.addEventListener('DOMContentLoaded', () => {
       date: '2026-09-30',
       hours: 5.5,
       type: 'Community Festival / CUE Outreach',
-      site: 'Partner Ranch / Off-Site',
+      site: 'South Padre Island Convention Center (Region One ESC)',
       topic: 'Region One ESC School Nutrition Food Show @ South Padre Island',
-      coworkers: ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Q / Quinn'],
-      story: 'Connected with K-12 school nutrition directors across Region One ISDs on farm-to-school local produce sourcing and Cool Schools edible schoolyard integration.',
+      coworkers: ['Dr. Alexis Racelis', 'Desi Romero', 'Visiting Scholar (Dr. Ramos)'],
+      story: 'Connected with K-12 school nutrition directors across Region One ISDs on farm-to-school local produce sourcing and Cool Schools edible schoolyard integration. Covered by Dr. Alexis Racelis, Desi Romero, and Visiting Scholar Dr. Ramos (Q / Quinn did not attend). [📸 Action Needed: Upload event photos & field notes from Desi Romero.]',
       bilingual: true,
-      status: 'Completed',
+      status: 'Follow-Up Needed: Upload Event Photos & Notes (Desi Romero)',
       programs: ['KELLOGG', 'COOL_SCHOOLS', 'HUB'],
       attendees: [
         { name: 'Region One Child Nutrition Directors', location: 'South Padre Island' },
@@ -254,14 +233,16 @@ document.addEventListener('DOMContentLoaded', () => {
       date: '2026-10-08',
       hours: 8.0,
       type: 'Field Day / Ranch Demo',
-      site: 'Partner Ranch / Off-Site',
+      site: 'Day 1: Weslaco AgriLife | Day 2: La Sarra Ranch, Santa Rosa',
       topic: 'South Texas Grazing Land Coalition: Working Lands Workshop (Weslaco & La Sarra Ranch)',
       coworkers: ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Desi Romero', 'Marcelino Garza'],
-      story: '2-day subtropical ranching & agroecology field workshop covering soil health, rotational grazing, virtual fencing, drone spraying demos, and rancher peer panels.',
+      story: '2-day subtropical ranching & agroecology field workshop covering soil health, rotational grazing, virtual fencing, drone spraying demos, and rancher peer panels. Invited all of Dr. Racelis\'s Agroecology class and the UTRGV Vaquero Club to attend, which added tremendously to the cross-generational peer dynamics between students, beginning growers, and veteran ranchers. [⚠️ Follow-Up Needed: Coordinate student/Vaquero Club & rancher mentor follow-ups from workshop connections.]',
       bilingual: true,
-      status: 'Completed',
+      status: 'Follow-Up Needed: Agroecology Class, Vaquero Club & Rancher Follow-Ups',
       programs: ['BFRDP', 'HUB'],
       attendees: [
+        { name: 'Dr. Racelis Agroecology Class Cohort', location: 'UTRGV Agroecology Course' },
+        { name: 'UTRGV Vaquero Club Members', location: 'UTRGV Student Organization' },
         { name: 'Servando Leal', location: 'South Texas Grazing Land Coalition' },
         { name: 'Travis Johnson', location: 'Santa Rosa' },
         { name: 'Stephen Obst', location: 'Raymondville' },
@@ -278,10 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
       type: 'Community Festival / CUE Outreach',
       site: 'Quinta Mazatlán (CUE)',
       topic: 'VIP Night in the Park – Planta Nativa 2026 @ Quinta Mazatlán CUE',
-      coworkers: ['Dr. Christoffersen (Cool Schools)', 'Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Grad / Undergrad Cohort'],
-      story: 'Center for Urban Ecology (CUE) & Cool Schools public showcase featuring native tree taproot demonstrations, seed giveaways, student research posters, and Miyawaki urban microforest outreach.',
+      coworkers: ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Savanah Zambrano (Grad Student)'],
+      story: 'Center for Urban Ecology (CUE) & Cool Schools public showcase featuring native tree taproot demonstrations, seed giveaways, student research posters, and Miyawaki urban microforest outreach. Represented by Dr. Alexis Racelis, Visiting Scholar Dr. Ramos, and Graduate Student Savanah Zambrano (Dr. Bradley Christoffersen attended independently on his own accord, not with Cool Schools). [📸 Action Needed: Upload photos & field notes from Planta Nativa night.]',
       bilingual: true,
-      status: 'Completed',
+      status: 'Follow-Up Needed: Upload Event Photos & Notes',
       programs: ['COOL_SCHOOLS', 'KELLOGG', 'HUB'],
       attendees: [
         { name: 'Quinta Mazatlán CUE Leadership', location: 'City of McAllen' },
@@ -295,17 +276,17 @@ document.addEventListener('DOMContentLoaded', () => {
       id: 'hist-pharr-avocado',
       date: '2026-10-10',
       hours: 4.5,
-      type: 'Community Festival / CUE Outreach',
-      site: 'MALL Mobile Trailer',
-      topic: 'City of Pharr Avocado Festival 2026 Outreach Booth',
-      coworkers: ['Desi Romero', 'Visiting Scholar (Dr. Ramos)', 'Patty', 'Grad / Undergrad Cohort'],
-      story: 'Community outreach on subtropical fruit tree resilience, backyard agroecology, SNAP/DUFB farmers market access, and beginning farmer recruitment.',
+      type: 'Lab & Cultural Visit',
+      site: 'Downtown Pharr (118 S. Cage Blvd, Pharr, TX)',
+      topic: 'City of Pharr Avocado Festival 2026 (Lab & Visiting Scholar Visit)',
+      coworkers: ['Desi Romero', 'Visiting Scholar (Dr. Ramos)'],
+      story: 'Regional cultural and agricultural festival visit in Downtown Pharr by Desi Romero and Visiting Scholar Dr. Ramos during the residency window (general lab outing, not tied to a grant deliverable; mobile trailer was not used).',
       bilingual: true,
-      status: 'Completed',
-      programs: ['KELLOGG', 'BFRDP', 'HUB'],
+      status: 'Completed (Lab Visit)',
+      programs: ['HUB'],
       attendees: [
-        { name: 'Pharr Community Families (45+ Booth Visitors)', location: 'Pharr, TX' },
-        { name: 'Carlos Alvarez', location: 'BFRDP Cohort' }
+        { name: 'Desi Romero', location: 'UTRGV Agroecology Lab' },
+        { name: 'Dr. Ramos', location: 'Visiting Scholar' }
       ],
       photoLink: '',
       photos: []
@@ -314,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 14 Cool Schools Campuses (matching campuses.js)
   const COOL_SCHOOLS_CAMPUSES = [
-    { id: "donna_jw_caceres", name: "J.W. Caceres & M. Rivas Academy", district: "Donna ISD", status: "Active Implementation", coords: [-98.0700, 26.1668], baselineCanopy: 5, targetCanopy: 30, exposedTemp: 122.5, shadedTemp: 89.1, trees: 154, runoffGal: 3200 },
+    { id: "donna_jw_caceres", name: "J.W. Caceres & M. Rivas Academy", district: "Donna ISD", status: "Baseline Data Collection", coords: [-98.0700, 26.1668], baselineCanopy: 5, targetCanopy: 30, exposedTemp: 122.5, shadedTemp: 89.1, trees: 154, runoffGal: 3200 },
     { id: "edinburg_econ", name: "Economedes High School", district: "Edinburg CISD", status: "Baseline Data Collection", coords: [-98.1363, 26.3195], baselineCanopy: 2, targetCanopy: 30, exposedTemp: 128.0, shadedTemp: 91.0, trees: 42, runoffGal: 1100 },
     { id: "mcallen_rowe", name: "Nikki Rowe High School", district: "McAllen ISD", status: "Pending Design Approval", coords: [-98.2435, 26.1823], baselineCanopy: 8, targetCanopy: 30, exposedTemp: 118.5, shadedTemp: 88.0, trees: 65, runoffGal: 1850 },
     { id: "mock_4", name: "Donna High School", district: "Donna ISD", status: "Baseline Data Collection", coords: [-98.0469, 26.1661], baselineCanopy: 4, targetCanopy: 30, exposedTemp: 124.0, shadedTemp: 90.5, trees: 30, runoffGal: 950 },
@@ -342,13 +323,13 @@ document.addEventListener('DOMContentLoaded', () => {
       cadence: "Mon 9am Grants Sync · Tue 9am Class · Wed 1pm–4pm Lab & Forestry"
     },
     {
-      initials: "BC",
-      name: "Dr. Bradley Christoffersen",
-      role: "Co-Lead, Project Cool Schools & CIT Ecophysiology",
+      initials: "SZ",
+      name: "Savanah Zambrano",
+      role: "Graduate Research Lead · Project Cool Schools & CUE Urban Forestry",
       track: "cool",
-      programs: ["🌳 Cool Schools", "🌱 Hub & Lab"],
-      focus: "Leads 14-campus Project Cool Schools microclimate modeling, sap-flow/stomatal conductance telemetry, 3D canopy shade simulations, and CUE integration.",
-      cadence: "Wed 1:00 PM Cool Schools 1-on-1 · Campus Audits"
+      programs: ["🌳 Cool Schools", "🌱 Hub & Lab", "🌾 Kellogg"],
+      focus: "Graduate student leading 14-campus Project Cool Schools canopy & microclimate fieldwork, Quinta Mazatlán CUE Planta Nativa outreach, and schoolyard microforest monitoring.",
+      cadence: "Wed 1:00 PM Cool Schools · Wed 2:00 PM Lab All-Hands"
     },
     {
       initials: "DR",
@@ -356,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
       role: "Field Trials, Sensor Telemetry & Logistics Lead",
       track: "field",
       programs: ["🌾 Kellogg", "🏛️ BFRDP", "🌳 Cool Schools", "🌱 Hub & Lab"],
-      focus: "Coordinates soil moisture & thermal sensors, cover crop & silvopasture field trials, MALL mobile lab transport, and visiting scholar logistics.",
+      focus: "Coordinates soil moisture & thermal sensors, cover crop & silvopasture field trials, Region One ESC & schoolyard deployments, and visiting scholar logistics.",
       cadence: "Daily Field Telemetry · Mon 8am Hub · Wed 2pm Lab"
     },
     {
@@ -442,12 +423,12 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     {
       initials: "VR",
-      name: "Visiting Scholar (Dr. Ramos) & Grad/Undergrad Cohort",
-      role: "Katie Lavallee, Samikshya Subedi, Roberto Reyna, Savannah Rugg, Matt Kutugata, Rico Marez",
+      name: "Visiting Scholar (Dr. Ramos), Katie Lavallee, JJ Alaniz & Grad Cohort",
+      role: "Katie Lavallee, JJ Alaniz, Savanah Zambrano, Samikshya Subedi, Roberto Reyna, Savannah Rugg, Matt Kutugata, Rico Marez",
       track: "cool",
       programs: ["🌳 Cool Schools", "🌱 Hub & Lab", "🌾 Kellogg", "🏛️ BFRDP"],
-      focus: "Conduct field sampling, tree canopy thermal audits, silvopasture heat-stress monitoring, and bilingual community workshops.",
-      cadence: "Wed 2:00 PM Lab All-Hands · Field Deployments"
+      focus: "Conduct certified soil health & amendment workshops, field sampling, tree canopy thermal audits, silvopasture heat-stress monitoring, and bilingual community workshops.",
+      cadence: "Wed 2:00 PM Lab All-Hands · Field & Hub Deployments"
     },
     {
       initials: "SP",
@@ -493,20 +474,6 @@ document.addEventListener('DOMContentLoaded', () => {
       featured: true
     },
     {
-      id: "ev-caceres-microforest",
-      category: "COOL_SCHOOLS",
-      org: "Project Cool Schools · Donna ISD & Texas Trees Foundation",
-      title: "J.W. Caceres & M. Rivas Academy Microforest Planting (154 Native Trees)",
-      titleEs: "Plantación de Microbosque Escolar en J.W. Caceres Academy (154 Árboles Nativos)",
-      dateTime: "Mon, Sep 28, 2026 @ 8:30 AM – 12:30 PM",
-      dateTimeEs: "Lunes 28 de sep de 2026 @ 8:30 AM – 12:30 PM",
-      location: "J.W. Caceres Academy, Donna ISD",
-      assigned: "Dr. Christoffersen, Dr. Racelis, Desi Romero, Grad Cohort",
-      notes: "Flagship 154-tree schoolyard microforest installation, baseline infrared surface temp capture (122.5°F exposed vs 89.1°F shaded), and sap-flow sensor setup.",
-      isDone: true,
-      featured: true
-    },
-    {
       id: "ev-scholar-arrival",
       category: "TRAVEL",
       org: "UTRGV Agroecology Lab",
@@ -529,8 +496,8 @@ document.addEventListener('DOMContentLoaded', () => {
       dateTime: "Wed, Sep 30, 2026 @ 8:30 AM – 2:00 PM",
       dateTimeEs: "Miércoles 30 de sep de 2026 @ 8:30 AM – 2:00 PM",
       location: "South Padre Island Convention Center",
-      assigned: "Dr. Alexis Racelis, Visiting Scholar, Q / Quinn",
-      notes: "120+ school nutrition booths; farm-to-school procurement outreach across South Texas ISDs.",
+      assigned: "Dr. Alexis Racelis, Desi Romero, Visiting Scholar (Dr. Ramos)",
+      notes: "120+ school nutrition booths; farm-to-school procurement outreach across South Texas ISDs. Covered by Dr. Racelis, Desi Romero & Dr. Ramos (photos & notes ready to upload).",
       isDone: true,
       featured: false
     },
@@ -544,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dateTimeEs: "Jue–Vie, 8–9 de oct de 2026 @ 8:00 AM",
       location: "Day 1: Weslaco AgriLife | Day 2: La Sarra Ranch, Santa Rosa",
       assigned: "Dr. Alexis Racelis, Desi Romero, Marcelino Garza, Visiting Scholar",
-      notes: "Screwworm updates, soil organic carbon, drone spraying demo, virtual fencing, and BFRDP rancher mentor panel.",
+      notes: "Screwworm updates, soil organic carbon, drone spraying demo, virtual fencing, and BFRDP rancher mentor panel. Invited all of Dr. Racelis's Agroecology class & the UTRGV Vaquero Club, adding rich student–rancher dynamics and follow-ups.",
       conflictBadge: "⚡ Oct 8 Split-Coverage: Daytime @ Weslaco / 6:30 PM @ Quinta Mazatlán",
       isDone: true,
       featured: true
@@ -552,29 +519,29 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: "ev-planta-nativa",
       category: "COOL_SCHOOLS",
-      org: "Quinta Mazatlán CUE & UTRGV Urban Forestry",
+      org: "Quinta Mazatlán CUE & UTRGV Agroecology",
       title: "VIP Night in the Park – Planta Nativa 2026 @ Quinta Mazatlán CUE",
       titleEs: "Noche VIP en el Parque – Planta Nativa 2026 @ Quinta Mazatlán CUE",
       dateTime: "Thu, Oct 8, 2026 @ 6:30 PM – 9:30 PM",
       dateTimeEs: "Jueves 8 de oct de 2026 @ 6:30 PM – 9:30 PM",
       location: "Quinta Mazatlán Center for Urban Ecology, McAllen, TX",
-      assigned: "Dr. Christoffersen, Dr. Racelis, Visiting Scholar, Grad Cohort",
-      notes: "Keynote by Cyrus Harp, native tree taproot demos, student poster session, and CUE Miyawaki urban microforest outreach.",
+      assigned: "Dr. Alexis Racelis, Visiting Scholar (Dr. Ramos), Savanah Zambrano (Grad Student)",
+      notes: "Keynote by Cyrus Harp, native tree taproot demos, student poster session, and CUE Miyawaki urban microforest outreach. Represented by Dr. Racelis, Dr. Ramos & Grad Student Savanah Zambrano (Dr. Christoffersen attended on his own accord, not with Cool Schools).",
       conflictBadge: "✓ Evening Event (Starts 6:30 PM after Working Lands Day 1)",
       isDone: true,
       featured: true
     },
     {
       id: "ev-pharr-avocado",
-      category: "KELLOGG",
-      org: "City of Pharr & UTRGV Agroecology",
-      title: "City of Pharr Avocado Festival 2026 Community Outreach",
-      titleEs: "Festival del Aguacate de Pharr 2026 – Módulo Agroecológico",
-      dateTime: "Sat, Oct 10, 2026 @ 2:00 PM – 11:00 PM",
-      dateTimeEs: "Sábado 10 de oct de 2026 @ 2:00 PM – 11:00 PM",
+      category: "TRAVEL",
+      org: "City of Pharr & UTRGV Agroecology Lab",
+      title: "City of Pharr Avocado Festival 2026 (Lab & Visiting Scholar Visit)",
+      titleEs: "Festival del Aguacate de Pharr 2026 – Visita del Laboratorio y Dra. Ramos",
+      dateTime: "Sat, Oct 10, 2026 @ 2:00 PM – 6:30 PM",
+      dateTimeEs: "Sábado 10 de oct de 2026 @ 2:00 PM – 6:30 PM",
       location: "Downtown Pharr, 118 S. Cage Blvd, Pharr, TX",
-      assigned: "Desi Romero, Patty, Visiting Scholar, Grad Cohort",
-      notes: "Community tabling, SNAP/DUFB market outreach, and subtropical fruit tree resilience education.",
+      assigned: "Desi Romero, Visiting Scholar (Dr. Ramos)",
+      notes: "Regional cultural & agricultural festival visit in Downtown Pharr by Desi Romero and Visiting Scholar Dr. Ramos (general lab outing, not tied to a grant deliverable; mobile trailer was not used).",
       isDone: true,
       featured: false
     },
@@ -587,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dateTime: "Thu, Nov 12, 2026 @ 9:00 AM – 1:00 PM",
       dateTimeEs: "Jueves 12 de nov de 2026 @ 9:00 AM – 1:00 PM",
       location: "Economedes HS (Edinburg) & Nikki Rowe HS (McAllen)",
-      assigned: "Dr. Christoffersen, Desi Romero, Valdez, Grad Cohort",
+      assigned: "Dr. Alexis Racelis, Desi Romero, Savanah Zambrano, Valdez",
       notes: "Collect UAV thermal orthomosaics, classroom window Green View Score (GVS) angles, and finalize Spring 2027 planting polygons.",
       isDone: false,
       featured: true
@@ -629,8 +596,8 @@ document.addEventListener('DOMContentLoaded', () => {
       dateTime: "Every Wednesday @ 1:00 PM – 4:15 PM",
       dateTimeEs: "Todos los Miércoles @ 1:00 PM – 4:15 PM",
       location: "SEEMS Forestry Lab & Agroecology Main Lab",
-      assigned: "Dr. Racelis, Dr. Christoffersen, Desi Romero, Q / Quinn, Visiting Scholar, Grad Cohort",
-      notes: "Weekly research coordination across urban forestry, soil carbon trials, and data/manuscript sprints.",
+      assigned: "Dr. Racelis, Desi Romero, Savanah Zambrano, Q / Quinn, Visiting Scholar, Grad Cohort",
+      notes: "Weekly research coordination across Cool Schools urban forestry, soil carbon trials, and data/manuscript sprints.",
       isDone: false,
       featured: false
     }
@@ -638,15 +605,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Default Team Tasks (Seeded from PROJECT_BOARD.md + Cool Schools + Kellogg/BFRDP)
   const DEFAULT_MASTER_TASKS = [
+    { id: "tsk-soil-followup", title: "Follow up with JJ Alaniz & Katie Lavallee on 'Hub - Supporting Your Soil Workshop' (Oct 10) to confirm all soil practices & records are certified and amended", owner: "Desi Romero, JJ Alaniz & Katie Lavallee", category: "KELLOGG", due: "Nov 12, 2026", done: false },
+    { id: "tsk-gardening101-followup", title: "Verify all attendance, status & form details are filled out correctly for 'Hub - Beginner Gardening 101' (Sep 26)", owner: "Desi Romero & Maria Gonzalez", category: "KELLOGG", due: "Nov 12, 2026", done: false },
+    { id: "tsk-working-lands-followup", title: "Complete post-event follow-ups from Working Lands Workshop (Oct 8–9) with Dr. Racelis's Agroecology class, UTRGV Vaquero Club & STGLC rancher mentors", owner: "Dr. Alexis Racelis, Desi Romero & Marcelino Garza", category: "BFRDP", due: "Nov 13, 2026", done: false },
+    { id: "tsk-photos-notes-upload", title: "Upload photos & field notes for Region One ESC School Nutrition Food Show (Sep 30) and Planta Nativa VIP Night @ Quinta Mazatlán (Oct 8)", owner: "Desi Romero & Savanah Zambrano", category: "COOL_SCHOOLS", due: "Nov 12, 2026", done: false },
     { id: "tsk-1", title: "Process 8-county producer GIS layer & map pre-contacted farmers to BFRDP tiers", owner: "Valdez & Dr. Racelis", category: "BFRDP", due: "Nov 12, 2026", done: false },
-    { id: "tsk-2", title: "Complete Economedes HS & Nikki Rowe HS classroom viewshed and thermal drone baseline", owner: "Dr. Christoffersen & Desi Romero", category: "COOL_SCHOOLS", due: "Nov 14, 2026", done: false },
+    { id: "tsk-2", title: "Complete Economedes HS & Nikki Rowe HS classroom viewshed and thermal drone baseline", owner: "Desi Romero, Savanah Zambrano & Dr. Racelis", category: "COOL_SCHOOLS", due: "Nov 14, 2026", done: false },
     { id: "tsk-3", title: "Draft core BFRDP evaluation narrative & finalize federal REEport supporting checklist", owner: "Dr. Lockman & Aisha", category: "BFRDP", due: "Nov 18, 2026", done: false },
     { id: "tsk-4", title: "Finalize contractor agreements for Marcelino Garza, Patty & Kitchen Table Consultants", owner: "Annalise & Aisha", category: "BFRDP", due: "Nov 15, 2026", done: false },
     { id: "tsk-5", title: "Coordinate breaking ground & drip tape layout on quarter-acre plots for Tier 1 BFRDP farmers", owner: "Juan & Demetrio, Maria Gonzalez", category: "HUB", due: "Nov 14, 2026", done: false },
-    { id: "tsk-6", title: "Log J.W. Caceres Academy 154-tree sap-flow & soil moisture telemetry into Cool Schools GIS", owner: "Dr. Christoffersen & Samikshya Subedi", category: "COOL_SCHOOLS", due: "Nov 16, 2026", done: true },
     { id: "tsk-7", title: "Sow Cowpea & Sunn Hemp nitrogen-building cover crop mix in Field 1 (NE & SW plots)", owner: "Maria Gonzalez, Juan & Demetrio", category: "HUB", due: "Completed", done: true },
     { id: "tsk-8", title: "Compile Fall 2026 Kellogg bilingual workshop attendance & SNAP/DUFB market survey metrics", owner: "Q / Quinn & Patty", category: "KELLOGG", due: "Nov 20, 2026", done: false },
-    { id: "tsk-9", title: "Coordinate Quinta Mazatlán CUE Miyawaki native seed propagation bench at UTRGV Greenhouse", owner: "Marisol Cervantes & Dr. Christoffersen", category: "COOL_SCHOOLS", due: "Nov 22, 2026", done: false },
+    { id: "tsk-9", title: "Coordinate Quinta Mazatlán CUE Miyawaki native seed propagation bench at UTRGV Greenhouse", owner: "Marisol Cervantes & Savanah Zambrano", category: "COOL_SCHOOLS", due: "Nov 22, 2026", done: false },
     { id: "tsk-10", title: "Monitor sheep thermal comfort & soil compaction in Silvopasture Zone A vs Open Pasture Zone C", owner: "Desi Romero & Roberto Reyna Oviedo", category: "HUB", due: "Ongoing Weekly", done: false }
   ];
 
@@ -718,7 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: "SEEMS Soil Ecology & Ecophysiology Analytical Labs",
       specs: "E-SCNE Carbon/Nitrogen Analyzer · LI-COR Porometers · Sap-Flow Loggers · UAV Thermal Camera",
       status: "Available",
-      custodian: "Dr. Christoffersen, Dr. Pushpa Soti & Desi Romero",
+      custodian: "Dr. Alexis Racelis, Dr. Pushpa Soti & Desi Romero",
       reservedBy: "Cool Schools Canopy Transpiration & BFRDP Soil Carbon Assays",
       link: "../campuses.html"
     }
@@ -767,19 +737,259 @@ document.addEventListener('DOMContentLoaded', () => {
     setLocalJSON('master_command_logs', masterLogs);
   }
 
-  // Clean any legacy names if present in cached events or tasks
-  masterCalendarEvents = masterCalendarEvents.map(ev => ({
-    ...ev,
-    org: cleanText(ev.org),
-    title: cleanText(ev.title),
-    assigned: cleanText(ev.assigned),
-    notes: cleanText(ev.notes)
-  }));
-  masterTasks = masterTasks.map(t => ({
-    ...t,
-    title: cleanText(t.title),
-    owner: cleanText(t.owner)
-  }));
+  function fixRelativePhotoPath(p) {
+    if (!p || typeof p !== 'string') return p || '';
+    if (p.startsWith('./W.K. Kellogg Foundation Photos/')) {
+      return '../wk_kellogg_foundation/' + p.slice(2);
+    }
+    return p;
+  }
+
+  function isExcludedActivityRecord(rec) {
+    if (!rec) return true;
+    const topicLower = (rec.topic || '').toLowerCase();
+    // 1. J.W. Caceres Microforest Planting (Sep 28) did not occur — always exclude
+    if (rec.id === 'hist-caceres-planting' || topicLower.includes('caceres')) return true;
+    // 2. Empty duplicate Beginner Gardening 101 stub (`jGPehbhYydvsKBPpcr6I` with status 'N/A' and empty story)
+    if (rec.id === 'jGPehbhYydvsKBPpcr6I' || (topicLower === 'beginner gardening 101' && (!rec.story || !rec.story.trim()) && rec.status === 'N/A')) {
+      return true;
+    }
+    return false;
+  }
+
+  // Clean any legacy names and apply event-specific overrides in cached state
+  function normalizeActivityRecord(rec) {
+    if (!rec) return rec;
+    const item = { ...rec };
+    const topicLower = (item.topic || '').toLowerCase();
+
+    if (item.photoLink) item.photoLink = fixRelativePhotoPath(item.photoLink);
+    if (Array.isArray(item.photos)) {
+      item.photos = item.photos.map(fixRelativePhotoPath);
+    }
+    if (Array.isArray(item.attendees)) {
+      // Exclude departed team members from attendee lists
+      const depRe = new RegExp('steph' + 'anie\\s*kasper|mar' + 'io\\s*fierro', 'i');
+      item.attendees = item.attendees.filter(a => !depRe.test(a?.name || '') && !depRe.test(a?.email || ''));
+    }
+
+    // 1. Oct 10: City of Pharr Avocado Festival 2026 (Lab & Visiting Scholar Visit only — no mobile trailer, no undergrads, no grant deliverable)
+    if (item.id === 'hist-pharr-avocado' || topicLower.includes('avocado')) {
+      item.id = 'hist-pharr-avocado';
+      item.date = '2026-10-10';
+      item.hours = 4.5;
+      item.type = 'Lab & Cultural Visit';
+      item.site = 'Downtown Pharr (118 S. Cage Blvd, Pharr, TX)';
+      item.topic = 'City of Pharr Avocado Festival 2026 (Lab & Visiting Scholar Visit)';
+      item.coworkers = ['Desi Romero', 'Visiting Scholar (Dr. Ramos)'];
+      if (!item.customEdited) {
+        item.story = 'Regional cultural and agricultural festival visit in Downtown Pharr by Desi Romero and Visiting Scholar Dr. Ramos during the residency window (general lab outing, not tied to a grant deliverable; mobile trailer was not used).';
+        item.status = 'Completed (Lab Visit)';
+      }
+      item.programs = ['HUB'];
+      item.attendees = [
+        { name: 'Desi Romero', location: 'UTRGV Agroecology Lab' },
+        { name: 'Dr. Ramos', location: 'Visiting Scholar' }
+      ];
+    }
+
+    // 2. Oct 10: Hub - Supporting Your Soil Workshop (Maria Gonzalez, Desi Romero, JJ Alaniz, Katie Lavallee + Follow-up on certified & amended)
+    if (topicLower.includes('supporting your soil')) {
+      item.site = 'Hub of Prosperity Farm';
+      item.coworkers = ['Maria Gonzalez', 'Desi Romero', 'JJ Alaniz', 'Katie Lavallee'];
+      if (!item.customEdited) {
+        item.status = 'Follow-Up Needed: Confirm Certified & Amended (JJ Alaniz & Katie Lavallee)';
+        const baseStory = (item.story || 'Soil health and common practices utilized at the Hub of Prosperity Farms was discussed at this workshop. Attendees brought soil from their growing space and determined their soil type through an activity.').split(' [⚠️')[0].trim();
+        item.story = `${baseStory} [⚠️ Follow-Up Needed: Follow up with JJ Alaniz & Katie Lavallee to confirm all workshop soil practices and records are certified and amended.]`;
+      }
+      item.programs = ['KELLOGG', 'HUB'];
+    }
+
+    // 3. Oct 8: South Texas Grazing Land Coalition: Working Lands Workshop (Invited Dr. Racelis's Agroecology class & Vaquero Club + Follow-ups)
+    if (item.id === 'hist-working-lands' || topicLower.includes('working lands')) {
+      item.id = 'hist-working-lands';
+      item.date = '2026-10-08';
+      item.hours = 8.0;
+      item.type = 'Field Day / Ranch Demo';
+      item.site = 'Day 1: Weslaco AgriLife | Day 2: La Sarra Ranch, Santa Rosa';
+      item.topic = 'South Texas Grazing Land Coalition: Working Lands Workshop (Weslaco & La Sarra Ranch)';
+      item.coworkers = ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Desi Romero', 'Marcelino Garza'];
+      if (!item.customEdited) {
+        item.story = '2-day subtropical ranching & agroecology field workshop covering soil health, rotational grazing, virtual fencing, drone spraying demos, and rancher peer panels. Invited all of Dr. Racelis\'s Agroecology class and the UTRGV Vaquero Club to attend, which added tremendously to the cross-generational peer dynamics between students, beginning growers, and veteran ranchers. [⚠️ Follow-Up Needed: Coordinate student/Vaquero Club & rancher mentor follow-ups from workshop connections.]';
+        item.status = 'Follow-Up Needed: Agroecology Class, Vaquero Club & Rancher Follow-Ups';
+      }
+      item.programs = ['BFRDP', 'HUB'];
+      item.attendees = [
+        { name: 'Dr. Racelis Agroecology Class Cohort', location: 'UTRGV Agroecology Course' },
+        { name: 'UTRGV Vaquero Club Members', location: 'UTRGV Student Organization' },
+        { name: 'Servando Leal', location: 'South Texas Grazing Land Coalition' },
+        { name: 'Travis Johnson', location: 'Santa Rosa' },
+        { name: 'Stephen Obst', location: 'Raymondville' },
+        { name: 'Mateo De Leon', location: 'BFRDP Tier 1 Cohort' },
+        { name: 'Ramiro Hinojosa', location: 'BFRDP Tier 2 Cohort' }
+      ];
+    }
+
+    // 4. Oct 8: VIP Night in the Park – Planta Nativa 2026 @ Quinta Mazatlán CUE (Dr. C not with Cool Schools; Savanah Zambrano is Grad Student; upload photos & notes)
+    if (item.id === 'hist-planta-nativa' || topicLower.includes('planta nativa')) {
+      item.id = 'hist-planta-nativa';
+      item.date = '2026-10-08';
+      item.hours = 3.0;
+      item.type = 'Community Festival / CUE Outreach';
+      item.site = 'Quinta Mazatlán (CUE)';
+      item.topic = 'VIP Night in the Park – Planta Nativa 2026 @ Quinta Mazatlán CUE';
+      item.coworkers = ['Dr. Alexis Racelis', 'Visiting Scholar (Dr. Ramos)', 'Savanah Zambrano (Grad Student)'];
+      if (!item.customEdited) {
+        item.story = 'Center for Urban Ecology (CUE) & Cool Schools public showcase featuring native tree taproot demonstrations, seed giveaways, student research posters, and Miyawaki urban microforest outreach. Represented by Dr. Alexis Racelis, Visiting Scholar Dr. Ramos, and Graduate Student Savanah Zambrano (Dr. Bradley Christoffersen attended independently on his own accord, not with Cool Schools). [📸 Action Needed: Upload photos & field notes from Planta Nativa night.]';
+        item.status = 'Follow-Up Needed: Upload Event Photos & Notes';
+      }
+      item.programs = ['COOL_SCHOOLS', 'KELLOGG', 'HUB'];
+    }
+
+    // 5. Sep 30: Region One ESC School Nutrition Food Show @ South Padre Island (Desi Romero attended; Q/Quinn did not attend; upload photos & notes)
+    if (item.id === 'hist-esc1-foodshow' || topicLower.includes('region one esc') || topicLower.includes('food show')) {
+      item.id = 'hist-esc1-foodshow';
+      item.date = '2026-09-30';
+      item.hours = 5.5;
+      item.type = 'Community Festival / CUE Outreach';
+      item.site = 'South Padre Island Convention Center (Region One ESC)';
+      item.topic = 'Region One ESC School Nutrition Food Show @ South Padre Island';
+      item.coworkers = ['Dr. Alexis Racelis', 'Desi Romero', 'Visiting Scholar (Dr. Ramos)'];
+      if (!item.customEdited) {
+        item.story = 'Connected with K-12 school nutrition directors across Region One ISDs on farm-to-school local produce sourcing and Cool Schools edible schoolyard integration. Covered by Dr. Alexis Racelis, Desi Romero, and Visiting Scholar Dr. Ramos (Q / Quinn did not attend). [📸 Action Needed: Upload event photos & field notes from Desi Romero.]';
+        item.status = 'Follow-Up Needed: Upload Event Photos & Notes (Desi Romero)';
+      }
+      item.programs = ['KELLOGG', 'COOL_SCHOOLS', 'HUB'];
+    }
+
+    // 6. Sep 26: Beginner Gardening 101 @ Hub of Prosperity Farm (unify `hist-gardening-101` & Firestore `Hub-Beginner Gardening 101`, flag follow-up)
+    if (item.id === 'hist-gardening-101' || topicLower.includes('beginner gardening 101')) {
+      item.id = 'hist-gardening-101';
+      item.date = '2026-09-26';
+      item.hours = 2.0;
+      item.type = 'Workshop / Training';
+      item.site = 'Hub of Prosperity Farm';
+      item.topic = 'Hub - Beginner Gardening 101 @ Hub of Prosperity Farm';
+      item.coworkers = ['Desi Romero', 'Maria Gonzalez', 'Juan & Demetrio'];
+      if (!item.customEdited) {
+        const realStory = (item.story && item.story.toLowerCase().includes('sun mapping'))
+          ? item.story.split(' [⚠️')[0].trim()
+          : 'The first farm workshop was a success with new growers in attendance interested in starting a garden in their own spaces. Discussed sun mapping, seed starting, soil preparation, organic fertilizers and pesticides, and native plant implementation; attendees started lettuce seedlings in reused paper towel rolls.';
+        item.story = `${realStory} [⚠️ Follow-Up Needed: Verify that all attendance records, certification status, and workshop details are filled out correctly.]`;
+        item.status = 'Follow-Up Needed: Verify All Details & Attendance Filled Out Correctly';
+      }
+      item.programs = ['KELLOGG', 'BFRDP', 'HUB'];
+      if (!item.photos || item.photos.length === 0) {
+        item.photos = ['../assets/beginner_gardening_101.jpg'];
+        item.photoLink = '../assets/beginner_gardening_101.jpg';
+      }
+    }
+
+    return item;
+  }
+
+  function applyRuntimeNormalizations() {
+    // 1. Normalize masterLogs, exclude removed events (J.W. Caceres planting), and deduplicate
+    const dedupMap = new Map();
+    masterLogs.forEach(raw => {
+      if (isExcludedActivityRecord(raw)) return;
+      const norm = normalizeActivityRecord(raw);
+      const key = norm.id && norm.id.startsWith('hist-') ? norm.id
+                : `${norm.date || ''}_${(norm.topic || '').toLowerCase().trim()}`;
+      dedupMap.set(key, norm);
+    });
+    masterLogs = Array.from(dedupMap.values());
+    setLocalJSON('master_command_logs', masterLogs);
+
+    // 2. Filter Pharr Avocado & excluded stubs out of wkkfReports and normalize remaining records
+    wkkfReports = wkkfReports
+      .filter(r => !isExcludedActivityRecord(r) && !(r.id === 'hist-pharr-avocado' || (r.topic || '').toLowerCase().includes('avocado')))
+      .map(r => normalizeActivityRecord(r));
+    setLocalJSON('wkkf_reports', wkkfReports);
+
+    // 2b. Filter excluded records out of coolSchoolsLogs
+    coolSchoolsLogs = coolSchoolsLogs.filter(c => !isExcludedActivityRecord(c));
+    setLocalJSON('cool_schools_logs', coolSchoolsLogs);
+
+    // 3. Normalize masterCalendarEvents (and purge J.W. Caceres planting which did not occur)
+    masterCalendarEvents = masterCalendarEvents
+      .filter(ev => !(ev.id === 'ev-caceres-microforest' || (ev.title || '').toLowerCase().includes('caceres')))
+      .map(ev => {
+        const cleaned = {
+          ...ev,
+          org: cleanText(ev.org),
+          title: cleanText(ev.title),
+          assigned: cleanText(ev.assigned),
+          notes: cleanText(ev.notes)
+        };
+        if (cleaned.id === 'ev-pharr-avocado' || (cleaned.title || '').toLowerCase().includes('avocado')) {
+          return {
+            ...cleaned,
+            category: "TRAVEL",
+            org: "City of Pharr & UTRGV Agroecology Lab",
+            title: "City of Pharr Avocado Festival 2026 (Lab & Visiting Scholar Visit)",
+            titleEs: "Festival del Aguacate de Pharr 2026 – Visita del Laboratorio y Dra. Ramos",
+            dateTime: "Sat, Oct 10, 2026 @ 2:00 PM – 6:30 PM",
+            dateTimeEs: "Sábado 10 de oct de 2026 @ 2:00 PM – 6:30 PM",
+            location: "Downtown Pharr, 118 S. Cage Blvd, Pharr, TX",
+            assigned: "Desi Romero, Visiting Scholar (Dr. Ramos)",
+            notes: "Regional cultural & agricultural festival visit in Downtown Pharr by Desi Romero and Visiting Scholar Dr. Ramos (general lab outing, not tied to a grant deliverable; mobile trailer was not used)."
+          };
+        }
+        if (cleaned.id === 'ev-working-lands' || (cleaned.title || '').toLowerCase().includes('working lands')) {
+          return {
+            ...cleaned,
+            notes: "Screwworm updates, soil organic carbon, drone spraying demo, virtual fencing, and BFRDP rancher mentor panel. Invited all of Dr. Racelis's Agroecology class & the UTRGV Vaquero Club, adding rich student–rancher dynamics and follow-ups."
+          };
+        }
+        if (cleaned.id === 'ev-planta-nativa' || (cleaned.title || '').toLowerCase().includes('planta nativa')) {
+          return {
+            ...cleaned,
+            org: "Quinta Mazatlán CUE & UTRGV Agroecology",
+            assigned: "Dr. Alexis Racelis, Visiting Scholar (Dr. Ramos), Savanah Zambrano (Grad Student)",
+            notes: "Keynote by Cyrus Harp, native tree taproot demos, student poster session, and CUE Miyawaki urban microforest outreach. Represented by Dr. Racelis, Dr. Ramos & Grad Student Savanah Zambrano (Dr. Christoffersen attended on his own accord, not with Cool Schools)."
+          };
+        }
+        if (cleaned.id === 'ev-esc1-foodshow' || (cleaned.title || '').toLowerCase().includes('region one esc')) {
+          return {
+            ...cleaned,
+            assigned: "Dr. Alexis Racelis, Desi Romero, Visiting Scholar (Dr. Ramos)",
+            notes: "120+ school nutrition booths; farm-to-school procurement outreach across South Texas ISDs. Covered by Dr. Racelis, Desi Romero & Dr. Ramos (photos & notes ready to upload)."
+          };
+        }
+        if (cleaned.id === 'ev-econ-rowe-audit') {
+          return {
+            ...cleaned,
+            assigned: "Dr. Alexis Racelis, Desi Romero, Savanah Zambrano, Valdez"
+          };
+        }
+        return cleaned;
+      });
+    setLocalJSON('master_command_events', masterCalendarEvents);
+
+    // 4. Ensure follow-up tasks exist in masterTasks and purge removed Caceres task
+    masterTasks = masterTasks
+      .filter(t => !(t.id === 'tsk-6' || (t.title || '').toLowerCase().includes('caceres')))
+      .map(t => ({
+        ...t,
+        title: cleanText(t.title),
+        owner: cleanText((t.owner || '').replace(/Dr\.\s*Christoffersen/gi, 'Savanah Zambrano'))
+      }));
+    const requiredTasks = [
+      { id: "tsk-soil-followup", title: "Follow up with JJ Alaniz & Katie Lavallee on 'Hub - Supporting Your Soil Workshop' (Oct 10) to confirm all soil practices & records are certified and amended", owner: "Desi Romero, JJ Alaniz & Katie Lavallee", category: "KELLOGG", due: "Nov 12, 2026", done: false },
+      { id: "tsk-gardening101-followup", title: "Verify all attendance, status & form details are filled out correctly for 'Hub - Beginner Gardening 101' (Sep 26)", owner: "Desi Romero & Maria Gonzalez", category: "KELLOGG", due: "Nov 12, 2026", done: false },
+      { id: "tsk-working-lands-followup", title: "Complete post-event follow-ups from Working Lands Workshop (Oct 8–9) with Dr. Racelis's Agroecology class, UTRGV Vaquero Club & STGLC rancher mentors", owner: "Dr. Alexis Racelis, Desi Romero & Marcelino Garza", category: "BFRDP", due: "Nov 13, 2026", done: false },
+      { id: "tsk-photos-notes-upload", title: "Upload photos & field notes for Region One ESC School Nutrition Food Show (Sep 30) and Planta Nativa VIP Night @ Quinta Mazatlán (Oct 8)", owner: "Desi Romero & Savanah Zambrano", category: "COOL_SCHOOLS", due: "Nov 12, 2026", done: false }
+    ];
+    requiredTasks.reverse().forEach(req => {
+      if (!masterTasks.some(t => t.id === req.id)) {
+        masterTasks.unshift(req);
+      }
+    });
+    setLocalJSON('master_command_tasks', masterTasks);
+  }
+
+  applyRuntimeNormalizations();
 
   // ========================================================
   // 6. Unified Ledger Builder & Backfill Engine
@@ -788,8 +998,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapByKey = new Map();
 
     // 1. Add master_command_logs
-    masterLogs.forEach(item => {
-      const key = `${item.date || ''}_${(item.topic || '').toLowerCase().trim()}`;
+    masterLogs.forEach(rawItem => {
+      if (isExcludedActivityRecord(rawItem)) return;
+      const item = normalizeActivityRecord(rawItem);
+      const key = item.id && item.id.startsWith('hist-') ? item.id
+                : `${item.date || ''}_${(item.topic || '').toLowerCase().trim()}`;
       mapByKey.set(key, {
         id: item.id || key,
         date: item.date || '2026-10-01',
@@ -809,21 +1022,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 2. Merge wkkf_reports from Kellogg Dashboard
-    wkkfReports.forEach(r => {
-      const key = `${r.date || ''}_${(r.topic || '').toLowerCase().trim()}`;
+    wkkfReports.forEach(rawR => {
+      if (isExcludedActivityRecord(rawR) || rawR.id === 'hist-pharr-avocado' || (rawR.topic || '').toLowerCase().includes('avocado')) {
+        return;
+      }
+      const r = normalizeActivityRecord(rawR);
+      const key = r.id && r.id.startsWith('hist-') ? r.id
+                : `${r.date || ''}_${(r.topic || '').toLowerCase().trim()}`;
       if (mapByKey.has(key)) {
         const existing = mapByKey.get(key);
         if (!existing.programs.includes('KELLOGG')) existing.programs.push('KELLOGG');
+        // Prefer real Firestore attendees & story when merging `Hub-Beginner Gardening 101`
+        if (Array.isArray(r.attendees) && r.attendees.length > existing.attendees.length) {
+          existing.attendees = r.attendees;
+        }
+        if (r.story && r.story.toLowerCase().includes('sun mapping') && !existing.customEdited) {
+          existing.story = r.story;
+        }
         if ((!existing.photos || existing.photos.length === 0) && Array.isArray(r.photos) && r.photos.length > 0) {
           existing.photos = r.photos;
         }
       } else {
+        const defaultSite = (r.topic || '').toLowerCase().startsWith('hub') ? 'Hub of Prosperity Farm' : 'Hub of Prosperity / Sentli';
         mapByKey.set(key, {
           id: r.id || key,
           date: r.date || '2026-10-01',
           hours: r.hours || 2.0,
           type: r.type || 'Workshop / Training',
-          site: r.site || 'Hub of Prosperity / Sentli',
+          site: r.site || defaultSite,
           topic: cleanText(r.topic || 'Kellogg Grant Activity'),
           coworkers: Array.isArray(r.coworkers) ? r.coworkers.map(cleanText) : ['Maria Gonzalez', 'Desi Romero'],
           story: cleanText(r.story || 'Logged via W.K. Kellogg Reporting Portal.'),
@@ -839,6 +1065,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Merge cool_schools_logs
     coolSchoolsLogs.forEach(c => {
+      if (isExcludedActivityRecord(c)) return;
       const key = `${c.date || ''}_${(c.topic || '').toLowerCase().trim()}`;
       if (!mapByKey.has(key)) {
         mapByKey.set(key, {
@@ -987,20 +1214,28 @@ document.addEventListener('DOMContentLoaded', () => {
         ? `<img src="${item.photos[0]}" class="table-thumbnail" style="width:56px; height:56px;" onclick="openLightbox('${item.photos[0]}', '${(item.topic || '').replace(/'/g, "\\'")}')" alt="Photo">`
         : '';
 
+      const isFollowUp = (item.status || '').toLowerCase().includes('follow-up');
+      const statusPillHtml = isFollowUp
+        ? `<span class="tag-pill" style="background:#fef3c7; color:#92400e; border:1px solid #f59e0b; font-weight:700;">⚠️ ${item.status}</span>`
+        : '';
+
+      const safeId = (item.id || '').replace(/'/g, "\\'");
       return `
-        <div class="feed-item">
+        <div class="feed-item" style="${isFollowUp ? 'border-left: 4px solid #f59e0b;' : ''}">
           <div class="feed-item-main">
             <div class="feed-item-header">
               <span class="feed-date">${item.date}</span>
               <span class="tag-pill" style="background:#f1f5f9; color:#334155;">${item.type || 'Event'} · ${item.hours || 2} hrs</span>
               ${renderProgramTagPills(item.programs)}
+              ${statusPillHtml}
             </div>
             <div class="feed-title">${item.topic}</div>
             <div class="feed-desc">${item.story || ''}</div>
-            <div class="feed-meta">
+            <div class="feed-meta" style="align-items:center;">
               <span>📍 ${item.site || 'Hub of Prosperity'}</span>
               <span>👥 ${attCount} Logged Attendee${attCount !== 1 ? 's' : ''}</span>
               <span>🧑‍🌾 Covered by: ${coworkersStr}</span>
+              <button type="button" class="btn btn-secondary btn-sm" style="padding:2px 8px; font-size:0.72rem; margin-left:auto;" onclick="window.openQuickEditActivity('${safeId}')">📸 Upload Photos / Edit Notes</button>
             </div>
           </div>
           ${thumbHtml}
@@ -1508,11 +1743,17 @@ document.addEventListener('DOMContentLoaded', () => {
         photoHtml = `<a href="${r.photoLink}" target="_blank" style="font-size:0.78rem; font-weight:700; color:var(--primary-mid);">📁 View Media</a>`;
       }
 
+      const safeId = (r.id || '').replace(/'/g, "\\'");
+      const isFollowUp = (r.status || '').toLowerCase().includes('follow-up');
+      const statusBadge = isFollowUp
+        ? `<div style="font-size:0.7rem; font-weight:700; color:#92400e; background:#fef3c7; border:1px solid #f59e0b; border-radius:4px; padding:2px 5px; margin-top:3px; display:inline-block;">⚠️ ${r.status}</div>`
+        : `<div style="font-size:0.72rem; color:var(--text-muted);">${r.hours || 2.0} hrs · ${r.status || 'Completed'}</div>`;
+
       return `
         <tr>
           <td>
             <strong>${r.date}</strong>
-            <div style="font-size:0.72rem; color:var(--text-muted);">${r.hours || 2.0} hrs · ${r.status || 'Completed'}</div>
+            ${statusBadge}
           </td>
           <td><div style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">${renderProgramTagPills(r.programs)}</div></td>
           <td>
@@ -1528,7 +1769,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <strong>👤 ${attCount} Logged</strong>
             <div style="font-size:0.73rem; color:var(--text-muted); max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="${attNames}">${attNames || 'Group Attendance'}</div>
           </td>
-          <td>${photoHtml}</td>
+          <td>
+            ${photoHtml}
+            <div style="margin-top:5px;">
+              <button type="button" class="btn btn-secondary btn-sm" style="padding:2px 7px; font-size:0.7rem;" onclick="window.openQuickEditActivity('${safeId}')">📸 Add/Edit</button>
+            </div>
+          </td>
         </tr>
       `;
     }).join('');
@@ -1629,14 +1875,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const daysHeader = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => `<div class="cal-day-header">${d}</div>`).join('');
       const sampleCells = [
         { day: '26 Sep', highlight: true, pills: [{ txt: '10am Hub Gardening 101', cls: 'workshop' }, { txt: '6:30pm Sentli Transplants', cls: 'workshop' }] },
-        { day: '28 Sep', highlight: true, pills: [{ txt: '8:30am Caceres 154 Trees', cls: 'cool' }, { txt: '9am Grants Sync', cls: 'meeting' }] },
+        { day: '28 Sep', highlight: false, pills: [{ txt: '8am Hub Ops · 9am Grants', cls: 'meeting' }] },
         { day: '29 Sep', highlight: false, pills: [{ txt: '10am Scholar Arrival', cls: '' }, { txt: '12pm Robert Cantu Lunch', cls: 'meeting' }] },
         { day: '30 Sep', highlight: true, pills: [{ txt: '8:30am SPI Food Show', cls: 'workshop' }, { txt: '1pm Cool Schools · 2pm Lab', cls: 'meeting' }] },
         { day: '5 Oct', highlight: false, pills: [{ txt: '8am Hub Ops · 9am Grants', cls: 'meeting' }] },
         { day: '7 Oct', highlight: false, pills: [{ txt: '1pm Cool Schools · 2pm Lab', cls: 'meeting' }] },
         { day: '8 Oct', highlight: true, pills: [{ txt: '8am Working Lands D1', cls: 'workshop' }, { txt: '6:30pm Planta Nativa CUE', cls: 'cool' }] },
         { day: '9 Oct', highlight: true, pills: [{ txt: '8am Working Lands D2 Ranch', cls: 'workshop' }] },
-        { day: '10 Oct', highlight: true, pills: [{ txt: '2pm Pharr Avocado Fest', cls: 'workshop' }] },
+        { day: '10 Oct', highlight: true, pills: [{ txt: 'Hub Soil Workshop', cls: 'workshop' }, { txt: '2pm Pharr Avocado Visit', cls: '' }] },
         { day: '14 Oct', highlight: false, pills: [{ txt: '1pm Cool Schools · 2pm Lab', cls: 'meeting' }] },
         { day: '21 Oct', highlight: false, pills: [{ txt: '1pm Cool Schools · 2pm Lab', cls: 'meeting' }] },
         { day: '29 Oct', highlight: false, pills: [{ txt: '9am Scholar Closeout', cls: '' }] },
@@ -1659,8 +1905,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="font-size:0.98rem; font-weight:800; color:var(--primary-mid); margin-bottom:0.6rem;">☀️ Fall 2026 (Current Active Window)</h4>
           <ul class="checklist-box">
             <li>✅ <strong>Sept 26:</strong> Hub Gardening 101 &amp; Sentli Transplant Workshops</li>
-            <li>✅ <strong>Sept 28:</strong> J.W. Caceres Academy 154-Tree Cool Schools Planting</li>
-            <li>✅ <strong>Oct 8–10:</strong> Working Lands Workshop, Quinta Mazatlán Planta Nativa &amp; Pharr Avocado Fest</li>
+            <li>✅ <strong>Sept 30:</strong> Region One ESC School Nutrition Food Show (SPI)</li>
+            <li>✅ <strong>Oct 8–10:</strong> Working Lands Workshop (w/ Agro Class &amp; Vaquero Club), Planta Nativa CUE &amp; Supporting Your Soil</li>
             <li>📅 <strong>Nov 12–14:</strong> Economedes/Rowe Thermal Audits &amp; BFRDP Tier 1 Plot Groundbreaking</li>
           </ul>
         </div>
@@ -1740,8 +1986,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ? `🌿 *CENTRO DE COMANDO AGROECOLOGÍA UTRGV Y HUB OF PROSPERITY — RESUMEN SEMANAL*\n`
         : `🌿 *UTRGV AGROECOLOGY & HUB COMMAND CENTER — WEEKLY TEAM DIGEST*\n`;
       const cadence = waLang === 'ES'
-        ? `\n🔄 *CADENCIA SEMANAL:*\n• Lun 8am: Operaciones Granja Hub (María, Juan y Demetrio)\n• Lun 9am: Sincronización Subvenciones Kellogg/BFRDP (Dr. Racelis, Lockman, Aisha, Annalise, Valdez)\n• Mar 9am: Bloque Docente Dr. Racelis\n• Mié 1pm: Cool Schools (Dr. Christoffersen) · 2pm Laboratorio General · 3:30pm Sprint Q\n\n📅 *EVENTOS DESTACADOS:*\n`
-        : `\n🔄 *STANDING WEEKLY CADENCE:*\n• Mon 8am: Hub Farm Ops (Maria, Juan & Demetrio)\n• Mon 9am: Grants, BFRDP & Kellogg Sync (Dr. Racelis, Lockman, Aisha, Annalise, Valdez)\n• Tue 9am: Dr. Racelis Teaching Block\n• Wed 1pm: Cool Schools (Dr. Christoffersen) · 2pm Lab All-Hands · 3:30pm Q Sprint\n\n📅 *KEY EVENTS & COVERAGE:*\n`;
+        ? `\n🔄 *CADENCIA SEMANAL:*\n• Lun 8am: Operaciones Granja Hub (María, Juan y Demetrio)\n• Lun 9am: Sincronización Subvenciones Kellogg/BFRDP (Dr. Racelis, Lockman, Aisha, Annalise, Valdez)\n• Mar 9am: Bloque Docente Dr. Racelis\n• Mié 1pm: Cool Schools (Savanah Zambrano y Dr. Racelis) · 2pm Laboratorio General · 3:30pm Sprint Q\n\n📅 *EVENTOS DESTACADOS:*\n`
+        : `\n🔄 *STANDING WEEKLY CADENCE:*\n• Mon 8am: Hub Farm Ops (Maria, Juan & Demetrio)\n• Mon 9am: Grants, BFRDP & Kellogg Sync (Dr. Racelis, Lockman, Aisha, Annalise, Valdez)\n• Tue 9am: Dr. Racelis Teaching Block\n• Wed 1pm: Cool Schools (Savanah Zambrano & Dr. Racelis) · 2pm Lab All-Hands · 3:30pm Q Sprint\n\n📅 *KEY EVENTS & COVERAGE:*\n`;
 
       const lines = masterCalendarEvents.slice(0, 8).map(ev => {
         const t = (waLang === 'ES' && ev.titleEs) ? ev.titleEs : ev.title;
@@ -2197,7 +2443,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Listen to Kellogg `wkkf_reports`
     db.collection('wkkf_reports').onSnapshot(snap => {
       const records = [];
-      snap.forEach(doc => records.push({ id: doc.id, ...doc.data() }));
+      snap.forEach(doc => {
+        const data = doc.data() || {};
+        if (doc.id === 'hist-pharr-avocado' || doc.id === 'hist-caceres-planting' || (data.topic || '').toLowerCase().includes('avocado') || (data.topic || '').toLowerCase().includes('caceres')) {
+          db.collection('wkkf_reports').doc(doc.id).delete().catch(() => {});
+          return;
+        }
+        const candidate = { id: doc.id, ...data };
+        if (isExcludedActivityRecord(candidate)) return;
+        records.push(normalizeActivityRecord(candidate));
+      });
       if (records.length > 0) {
         wkkfReports = records;
         setLocalJSON('wkkf_reports', wkkfReports);
@@ -2245,12 +2500,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Listen to `master_command_logs`
     db.collection('master_command_logs').onSnapshot(snap => {
       const liveLogs = [];
-      snap.forEach(doc => liveLogs.push({ id: doc.id, ...doc.data() }));
+      snap.forEach(doc => {
+        const candidate = { id: doc.id, ...doc.data() };
+        if (doc.id === 'hist-caceres-planting' || (candidate.topic || '').toLowerCase().includes('caceres')) {
+          db.collection('master_command_logs').doc(doc.id).delete().catch(() => {});
+          return;
+        }
+        if (isExcludedActivityRecord(candidate)) return;
+        liveLogs.push(normalizeActivityRecord(candidate));
+      });
       if (liveLogs.length > 0) {
         // Merge with historical seed logs so nothing disappears
         const byKey = new Map();
-        [...HISTORICAL_SEED_LOGS, ...liveLogs].forEach(item => {
-          const k = `${item.date}_${(item.topic || '').toLowerCase().trim()}`;
+        [...HISTORICAL_SEED_LOGS, ...liveLogs].forEach(rawItem => {
+          if (isExcludedActivityRecord(rawItem)) return;
+          const item = normalizeActivityRecord(rawItem);
+          const k = item.id && item.id.startsWith('hist-') ? item.id
+                  : `${item.date}_${(item.topic || '').toLowerCase().trim()}`;
           byKey.set(k, item);
         });
         masterLogs = Array.from(byKey.values());
@@ -2295,6 +2561,165 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   } else {
     updateSyncStatus(false, 'Local Storage Active');
+  }
+
+  // ========================================================
+  // 14b. Quick Edit / Upload Photos & Notes Modal for Existing Logs
+  // ========================================================
+  let quickEditTargetId = null;
+  let quickEditPendingFiles = [];
+  const quickEditModal = document.getElementById('quickEditActivityModal');
+  const quickEditForm = document.getElementById('quickEditActivityForm');
+  const qePhotosInput = document.getElementById('qePhotosInput');
+  const qePhotoPreview = document.getElementById('qePhotoPreview');
+
+  window.openQuickEditActivity = function(recordId) {
+    const all = getUnifiedActivityRecords();
+    const rec = all.find(r => r.id === recordId);
+    if (!rec || !quickEditModal) return;
+
+    quickEditTargetId = recordId;
+    quickEditPendingFiles = [];
+    if (qePhotosInput) qePhotosInput.value = '';
+    if (qePhotoPreview) {
+      const existingCount = Array.isArray(rec.photos) ? rec.photos.length : 0;
+      qePhotoPreview.innerHTML = existingCount > 0
+        ? `<div style="font-size:0.76rem; color:var(--primary-mid); font-weight:700;">✓ ${existingCount} existing photo(s) attached. Select more above to append.</div>`
+        : `<div style="font-size:0.76rem; color:var(--text-muted);">No photos attached yet — select photos above to upload.</div>`;
+    }
+
+    const titleEl = document.getElementById('qeTopic');
+    const siteEl = document.getElementById('qeSite');
+    const coworkersEl = document.getElementById('qeCoworkers');
+    const statusEl = document.getElementById('qeStatus');
+    const storyEl = document.getElementById('qeStory');
+
+    if (titleEl) titleEl.value = rec.topic || '';
+    if (siteEl) siteEl.value = rec.site || '';
+    if (coworkersEl) coworkersEl.value = Array.isArray(rec.coworkers) ? rec.coworkers.join(', ') : (rec.coworkers || '');
+    if (statusEl) statusEl.value = rec.status || 'Completed';
+    if (storyEl) storyEl.value = rec.story || '';
+
+    quickEditModal.classList.add('active');
+  };
+
+  if (qePhotosInput && qePhotoPreview) {
+    qePhotosInput.addEventListener('change', (e) => {
+      quickEditPendingFiles = Array.from(e.target.files || []).slice(0, 6);
+      qePhotoPreview.innerHTML = quickEditPendingFiles.length > 0
+        ? `<div style="font-size:0.78rem; font-weight:700; color:#065f46;">📸 ${quickEditPendingFiles.length} photo(s) ready to compress & save!</div>`
+        : '';
+    });
+  }
+
+  ['btnCloseQuickEditModal', 'btnCancelQuickEditModal'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn && quickEditModal) {
+      btn.addEventListener('click', () => quickEditModal.classList.remove('active'));
+    }
+  });
+
+  if (quickEditForm) {
+    quickEditForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!quickEditTargetId) return;
+
+      const saveBtn = document.getElementById('btnSaveQuickEdit');
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.textContent = '⏳ Saving Photos & Notes...';
+      }
+
+      const all = getUnifiedActivityRecords();
+      const existing = all.find(r => r.id === quickEditTargetId) || {};
+      const newPhotos = [...(Array.isArray(existing.photos) ? existing.photos : [])];
+
+      for (const file of quickEditPendingFiles) {
+        try {
+          const compressed = await compressImage(file, 960, 960, 0.65);
+          const b64 = await readFileAsDataUrl(compressed);
+          newPhotos.push(b64);
+        } catch (err) {
+          console.warn('Quick-edit photo compression warning:', err);
+        }
+      }
+
+      const updatedTopic = cleanText(document.getElementById('qeTopic')?.value.trim() || existing.topic);
+      const updatedSite = cleanText(document.getElementById('qeSite')?.value.trim() || existing.site);
+      const updatedCoworkers = (document.getElementById('qeCoworkers')?.value || '')
+        .split(',')
+        .map(s => cleanText(s.trim()))
+        .filter(Boolean);
+      const updatedStatus = document.getElementById('qeStatus')?.value.trim() || 'Completed';
+      const updatedStory = cleanText(document.getElementById('qeStory')?.value.trim() || existing.story);
+
+      const updatedRecord = {
+        ...existing,
+        id: quickEditTargetId,
+        topic: updatedTopic,
+        site: updatedSite,
+        coworkers: updatedCoworkers.length > 0 ? updatedCoworkers : existing.coworkers,
+        status: updatedStatus,
+        story: updatedStory,
+        photos: newPhotos,
+        photoLink: newPhotos[0] || existing.photoLink || '',
+        customEdited: true
+      };
+
+      // Update or insert into masterLogs
+      const mIdx = masterLogs.findIndex(m => m.id === quickEditTargetId);
+      if (mIdx >= 0) {
+        masterLogs[mIdx] = updatedRecord;
+      } else {
+        masterLogs.unshift(updatedRecord);
+      }
+      setLocalJSON('master_command_logs', masterLogs);
+
+      if (db) {
+        db.collection('master_command_logs').doc(quickEditTargetId).set({
+          ...updatedRecord,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true }).catch(() => {});
+      }
+
+      // If this record also came from wkkfReports, update it there too
+      const wIdx = wkkfReports.findIndex(w => w.id === quickEditTargetId);
+      if (wIdx >= 0) {
+        wkkfReports[wIdx] = {
+          ...wkkfReports[wIdx],
+          topic: updatedTopic,
+          site: updatedSite,
+          coworkers: updatedRecord.coworkers,
+          status: updatedStatus,
+          story: updatedStory,
+          photos: newPhotos,
+          photoLink: updatedRecord.photoLink,
+          customEdited: true
+        };
+        setLocalJSON('wkkf_reports', wkkfReports);
+        if (db) {
+          db.collection('wkkf_reports').doc(quickEditTargetId).set({
+            topic: updatedTopic,
+            site: updatedSite,
+            coworkers: updatedRecord.coworkers,
+            status: updatedStatus,
+            story: updatedStory,
+            photos: newPhotos,
+            photoLink: updatedRecord.photoLink,
+            customEdited: true,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true }).catch(() => {});
+        }
+      }
+
+      if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = '💾 Save Photos & Notes';
+      }
+      quickEditModal.classList.remove('active');
+      refreshAllMetricsAndViews();
+      showToast(`Updated "${updatedTopic}" with ${newPhotos.length} photo(s) & notes!`);
+    });
   }
 
   // ========================================================
