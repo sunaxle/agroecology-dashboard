@@ -57,6 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .trim();
   }
 
+  // Local (America/Chicago) calendar date as YYYY-MM-DD — avoids UTC rolling to tomorrow after 6 PM
+  function localISODate(d = new Date()) {
+    const p = (n) => String(n).padStart(2, "0");
+    return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+  }
+
   function cleanCoworkerArray(arr) {
     if (!Array.isArray(arr)) return ['Dr. Alexis Racelis', 'Desi Romero'];
     const excludeRe = /katie\s*lavallee|^katie$|^q\s*\/\s*quinn$|^q$|marcelino(\s*garza)?|^patty$|christoffersen|lockman|aisha|annalise|valdez|pushpa|soti|carlo\s*moreno/i;
@@ -1414,21 +1420,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // ========================================================
   const uDateInput = document.getElementById('u-date');
   if (uDateInput && !uDateInput.value) {
-    uDateInput.value = new Date().toISOString().split('T')[0];
+    uDateInput.value = localISODate();
   }
 
   const btnLogToday = document.getElementById('btnLogToday');
   const btnLogYesterday = document.getElementById('btnLogYesterday');
   if (btnLogToday && uDateInput) {
     btnLogToday.addEventListener('click', () => {
-      uDateInput.value = new Date().toISOString().split('T')[0];
+      uDateInput.value = localISODate();
     });
   }
   if (btnLogYesterday && uDateInput) {
     btnLogYesterday.addEventListener('click', () => {
       const d = new Date();
       d.setDate(d.getDate() - 1);
-      uDateInput.value = d.toISOString().split('T')[0];
+      uDateInput.value = localISODate(d);
     });
   }
 
@@ -1621,10 +1627,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const submitBtn = document.getElementById('btnSubmitUniversalLog');
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Syncing Across Grants...';
+        submitBtn.textContent = 'Saving…';
       }
 
-      const dateVal = document.getElementById('u-date')?.value || new Date().toISOString().split('T')[0];
+      const dateVal = document.getElementById('u-date')?.value || localISODate();
       const hoursVal = parseFloat(document.getElementById('u-hours')?.value || '2.0') || 2.0;
       const typeVal = document.getElementById('u-type')?.value || 'Workshop / Training';
       const siteVal = document.getElementById('u-site')?.value || 'Hub of Prosperity Farm';
@@ -1829,7 +1835,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (progBox) progBox.style.display = 'none';
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = '🚀 Log Event & Sync Across Selected Programs';
+        submitBtn.textContent = 'Save event';
       }
       document.getElementById('u-topic').value = '';
       document.getElementById('u-story').value = '';
@@ -1844,7 +1850,11 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.u-cohort-chk:checked').forEach(c => { c.checked = false; });
 
       refreshAllMetricsAndViews();
-      showToast(`Logged "${topicVal}"! Routed to: ${programs.join(', ')}${cohortUpdatedCount ? ` (+${hoursVal} hrs added to ${cohortUpdatedCount} BFRDP farmer records)` : ''}.`);
+      if (typeof window.ccShowSaveReceipt === 'function') {
+        window.ccShowSaveReceipt({ id: masterEntry.id, topic: topicVal, programs, cohortUpdatedCount, hours: hoursVal, cloud: !!db });
+      } else {
+        showToast(`Logged "${topicVal}"! Routed to: ${programs.join(', ')}${cohortUpdatedCount ? ` (+${hoursVal} hrs added to ${cohortUpdatedCount} BFRDP farmer records)` : ''}.`);
+      }
     });
   }
 
@@ -1852,7 +1862,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnClearLoggerForm && universalLoggerForm) {
     btnClearLoggerForm.addEventListener('click', () => {
       universalLoggerForm.reset();
-      if (uDateInput) uDateInput.value = new Date().toISOString().split('T')[0];
+      if (uDateInput) uDateInput.value = localISODate();
       uSelectedPhotos = [];
       renderUPhotoPreviews();
     });
@@ -1973,7 +1983,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `Master_Agroecology_Command_Workbook_${new Date().toISOString().split('T')[0]}.csv`;
+      a.download = `Master_Agroecology_Command_Workbook_${localISODate()}.csv`;
       a.click();
       showToast('Exported Master Activity Workbook CSV!');
     });
@@ -2679,7 +2689,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (activeProfileRecordId && document.getElementById('event-profile-view')?.classList.contains('active')) {
       renderEventProfilePage(activeProfileRecordId);
     }
+    // Notify UX enhancement layer (ux_enhancements.js) that data changed
+    document.dispatchEvent(new CustomEvent('cc:refreshed'));
   }
+
+  // Read-only data accessors for ux_enhancements.js (Needs Attention strip, etc.)
+  window.ccData = {
+    getRecords: () => getUnifiedActivityRecords(),
+    getTasks: () => masterTasks,
+    getEvents: () => masterCalendarEvents
+  };
 
   // ========================================================
   // 14. Live Firestore Listeners (`kellogg-dashboard`)

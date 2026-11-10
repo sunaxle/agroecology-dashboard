@@ -7,6 +7,7 @@
   <script src="staff_gate.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="polish.css">
   <!-- Firebase Cloud Realtime Sync (Shared kellogg-dashboard Project) -->
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -32,39 +33,37 @@
       <li>
         <a href="#pulse" class="nav-link active" data-target="pulse-view">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-          Executive Pulse &amp; Roll-Up
+          Today
         </a>
       </li>
       <li>
         <a href="#logger" class="nav-link" data-target="logger-view">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-          Universal "Log Once" Logger
-          <span class="nav-badge-pill">AUTO-SYNC</span>
+          Log Event
         </a>
       </li>
       <li>
         <a href="#calendar" class="nav-link" data-target="calendar-view">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-          Master Calendar &amp; Coverage
+          Calendar
         </a>
       </li>
       <li>
         <a href="#coworkers" class="nav-link" data-target="coworkers-view">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-          Coworkers, Tasks &amp; Bandwidth
+          Team &amp; Tasks
         </a>
       </li>
       <li>
         <a href="#cool-schools" class="nav-link" data-target="cool-schools-view">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-          Cool Schools &amp; Urban Forestry
-          <span class="nav-badge-pill">14 ISDs</span>
+          Cool Schools
         </a>
       </li>
       <li>
         <a href="#assets" class="nav-link" data-target="assets-view">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-          Shared Sites, Fleet &amp; Assets
+          Sites &amp; Equipment
         </a>
       </li>
     </ul>
@@ -82,41 +81,11 @@
   <!-- Main Workspace -->
   <main class="main-content">
 
-    <!-- Top Command Banner -->
-    <div class="top-command-banner">
-      <div class="command-banner-left">
-        <h2>🌍 Master Agroecology &amp; Hub of Prosperity Command Center</h2>
-        <p>Unified cross-grant operations, "Log Once, Count Everywhere" reporting, 14-campus Cool Schools forestry, and coworker coordination.</p>
-      </div>
-      <div class="command-banner-actions">
-        <button class="btn btn-gold" id="btnQuickJumpLogger">➕ Log Workshop / Field Event</button>
-        <button class="btn btn-secondary" id="btnSyncBackfillAll" style="background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.3);">🔄 Sync &amp; Backfill Past Events into Ledger</button>
-      </div>
-    </div>
-
-    <!-- Top Hero KPI Stat Bar -->
-    <div class="hero-stat-banner">
-      <div class="stat-card accent-gold">
-        <div class="stat-label">Active Grant &amp; Lab Portfolio</div>
-        <div class="stat-value">$6.25M+</div>
-        <div class="stat-subtext">Kellogg · BFRDP · Cool Schools · CUE · CIT · SOAR</div>
-      </div>
-      <div class="stat-card accent-teal">
-        <div class="stat-label">Total Events &amp; Logs</div>
-        <div class="stat-value" id="heroTotalEventsCount">0</div>
-        <div class="stat-subtext" id="heroTotalEventsSub">Aggregated across Kellogg, Whiteboard &amp; Hub</div>
-      </div>
-      <div class="stat-card accent-forest">
-        <div class="stat-label">People &amp; Farmers Reached</div>
-        <div class="stat-value" id="heroTotalPeopleCount">0</div>
-        <div class="stat-subtext" id="heroTotalPeopleSub">Workshops + BFRDP Cohort + Cool Schools</div>
-      </div>
-      <div class="stat-card accent-purple">
-        <div class="stat-label">Overall Deliverables Progress</div>
-        <div class="stat-value" id="heroOverallProgressPct">0%</div>
-        <div class="stat-subtext" id="heroOverallProgressSub">Avg across Kellogg, BFRDP &amp; Cool Schools</div>
-      </div>
-    </div>
+    <!-- Needs Attention Strip (rendered by ux_enhancements.js) -->
+    <section id="ccAttentionStrip" class="cc-attention" aria-label="Needs attention"></section>
+    <!-- Hidden hooks kept for dashboard.js bindings -->
+    <button type="button" id="btnSyncBackfillAll" hidden></button>
+    <button type="button" id="btnQuickJumpLogger" hidden></button>
 
     <!-- =========================================================
          VIEW 1: EXECUTIVE PULSE & PROGRAM ROLL-UP (#pulse-view)
@@ -124,12 +93,8 @@
     <section id="pulse-view" class="view-section active">
       <div class="view-header">
         <div class="view-header-title">
-          <h2>Executive Pulse &amp; 4-Pillar Program Roll-Up</h2>
-          <p>Real-time synchronization with W.K. Kellogg Foundation, USDA-NIFA BFRDP, Project Cool Schools, and Hub of Prosperity operations.</p>
-        </div>
-        <div class="header-action-group">
-          <button class="btn btn-secondary btn-sm" id="btnPulseBackfill">🔄 Sync &amp; Backfill Past Events into Ledger</button>
-          <button class="btn btn-primary btn-sm" onclick="window.switchCommandView('logger-view')">📝 Open Universal Logger</button>
+          <h2>Program Overview</h2>
+          <p>Where each grant stands, plus the latest logged activity across all programs.</p>
         </div>
       </div>
 
@@ -164,7 +129,7 @@
           </div>
           <div class="prog-progress-wrap">
             <div class="prog-progress-header">
-              <span>Checklist Completion (`wkkf_meta/checklist`)</span>
+              <span>Deliverables checklist</span>
               <span id="pulseKelloggPct">0%</span>
             </div>
             <div class="prog-progress-track">
@@ -205,7 +170,7 @@
           </div>
           <div class="prog-progress-wrap">
             <div class="prog-progress-header">
-              <span>Pillar Execution (`bfrdp_data/checklist`)</span>
+              <span>Pillar execution</span>
               <span id="pulseBfrdpPct">0%</span>
             </div>
             <div class="prog-progress-track">
@@ -246,7 +211,7 @@
           </div>
           <div class="prog-progress-wrap">
             <div class="prog-progress-header">
-              <span>Cool Schools &amp; CUE Milestones (`cool_schools_data/checklist`)</span>
+              <span>Cool Schools &amp; CUE milestones</span>
               <span id="pulseCoolPct">58%</span>
             </div>
             <div class="prog-progress-track">
@@ -309,8 +274,8 @@
       <div class="card-panel">
         <div class="panel-header">
           <div>
-            <h3>Unified Live Activity &amp; Impact Feed</h3>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Automatically merges records from Kellogg (`wkkf_reports`), Completed Residency Whiteboard Events, Cool Schools Audits, and Master Command Logs.</p>
+            <h3>Recent Activity</h3>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Every logged workshop, field day, and outreach event across all programs.</p>
           </div>
           <div class="filter-pills-bar" id="pulseFeedFilters">
             <button class="filter-pill active" data-prog="ALL">All Programs</button>
@@ -333,8 +298,8 @@
     <section id="logger-view" class="view-section">
       <div class="view-header">
         <div class="view-header-title">
-          <h2>Universal "Log Once, Count Everywhere" Activity Logger</h2>
-          <p>Log any workshop, campus planting, farmer consult, or field day once — automatically routes to Kellogg, BFRDP, Cool Schools, and Master Workbooks.</p>
+          <h2>Log an Event</h2>
+          <p>Log a workshop, field day, planting, or consult once. It's copied to every program you check below.</p>
         </div>
         <div class="header-action-group">
           <span id="loggerDraftBadge" class="tag-pill tag-kellogg" style="display:none;">💾 Draft Auto-Saved</span>
@@ -344,10 +309,9 @@
 
       <div class="log-once-explainer">
         <div>
-          <h4>⚡ How "Log Once, Count Everywhere" Works</h4>
-          <p>Snap photos, record attendees or check in BFRDP cohort farmers, describe what was taught/discussed, tag the coworkers who covered it, and check which grants/programs it counts toward. One submission updates every linked dashboard automatically!</p>
+          <h4>How it works</h4>
+          <p>Fill in what happened, who covered it, and who attended. Checking a BFRDP cohort farmer adds the hours to their record automatically.</p>
         </div>
-        <span class="tag-pill tag-bfrdp" style="font-size:0.8rem; padding:6px 12px;">✓ Multi-Grant Cloud Router Active</span>
       </div>
 
       <div class="logger-layout-grid">
@@ -528,21 +492,21 @@
 
             <!-- Row 7: Automatic Program Routing Checkboxes ("Where Does This Count?") -->
             <div class="form-group">
-              <label>Automatic Program Routing ("Where Does This Count?") *</label>
+              <label>Which programs does this count toward? *</label>
               <div class="routing-cards-grid">
                 <label class="routing-card-label">
-                  <input type="checkbox" id="route-kellogg" checked>
+                  <input type="checkbox" id="route-kellogg">
                   <div class="routing-card-text">
                     <strong>🌾 W.K. Kellogg Foundation</strong>
-                    <span>Writes to `wkkf_reports` in Firestore + `localStorage` so it auto-populates Kellogg's Reporting Workbook, Calendar &amp; Compiled Report.</span>
+                    <span>Appears in Kellogg's reporting workbook, calendar &amp; compiled report.</span>
                   </div>
                 </label>
 
                 <label class="routing-card-label">
-                  <input type="checkbox" id="route-bfrdp" checked>
+                  <input type="checkbox" id="route-bfrdp">
                   <div class="routing-card-text">
                     <strong>🏛️ USDA-NIFA BFRDP</strong>
-                    <span>Updates checked BFRDP cohort hours in `bfrdp_data/cohort` &amp; appends new farmer attendees to `bfrdp_data/contacts`.</span>
+                    <span>Adds hours to checked cohort farmers &amp; new attendees to the 8-county contact list.</span>
                   </div>
                 </label>
 
@@ -550,7 +514,7 @@
                   <input type="checkbox" id="route-cool">
                   <div class="routing-card-text">
                     <strong>🌳 Project Cool Schools &amp; Urban Forestry</strong>
-                    <span>Writes to `cool_schools_logs` &amp; updates campus microforest outreach and canopy audit metrics.</span>
+                    <span>Counts toward campus microforest outreach &amp; canopy audit metrics.</span>
                   </div>
                 </label>
 
@@ -558,15 +522,15 @@
                   <input type="checkbox" id="route-hub" checked>
                   <div class="routing-card-text">
                     <strong>🌱 Hub of Prosperity &amp; Lab Operations</strong>
-                    <span>Always writes to `master_command_logs` and updates the unified Master Activity Workbook below.</span>
+                    <span>Always saved to the master activity ledger.</span>
                   </div>
                 </label>
               </div>
             </div>
 
-            <div style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1rem;">
-              <button type="button" class="btn btn-secondary" id="btnClearLoggerForm">Reset Form</button>
-              <button type="submit" class="btn btn-primary" id="btnSubmitUniversalLog" style="padding:0.7rem 1.5rem; font-size:0.92rem;">🚀 Log Event &amp; Sync Across Selected Programs</button>
+            <div class="logger-submit-bar" style="display:flex; justify-content:flex-end; gap:0.75rem; margin-top:1rem;">
+              <button type="button" class="btn btn-secondary" id="btnClearLoggerForm">Reset</button>
+              <button type="submit" class="btn btn-primary" id="btnSubmitUniversalLog" style="padding:0.7rem 1.5rem; font-size:0.92rem;">Save event</button>
             </div>
 
           </form>
@@ -577,7 +541,7 @@
           <div class="panel-header">
             <div>
               <h3>Master Activity Workbook Grid (<span id="workbookRecordCount">0 Records</span>)</h3>
-              <p style="font-size:0.8rem; color:var(--text-muted);">Live unified ledger across `master_command_logs`, `wkkf_reports`, `cool_schools_logs`, and verified residency events.</p>
+              <p style="font-size:0.8rem; color:var(--text-muted);">Every logged activity across Kellogg, BFRDP, Cool Schools, and the Hub.</p>
             </div>
             <div class="header-action-group">
               <select id="workbookFilterProgram" class="form-control" style="padding:0.38rem 0.65rem; font-size:0.8rem;">
@@ -750,7 +714,7 @@
         <div class="panel-header">
           <div>
             <h3>Interactive Team Task &amp; Action Board (<span id="taskBoardCount">0 Open</span>)</h3>
-            <p style="font-size:0.8rem; color:var(--text-muted);">Synced with `master_command_tasks` in Firestore &amp; seeded from `PROJECT_BOARD.md` + Cool Schools &amp; BFRDP sprints.</p>
+            <p style="font-size:0.8rem; color:var(--text-muted);">Shared team to-dos across all programs. Check off when done.</p>
           </div>
           <div class="filter-pills-bar" id="taskCategoryFilters">
             <button class="filter-pill active" data-taskcat="ALL">All Tasks</button>
@@ -789,7 +753,7 @@
       <!-- Cool Schools Progress Bar -->
       <div class="card-panel" style="padding: 1.1rem 1.35rem;">
         <div class="prog-progress-header" style="margin-bottom:0.4rem;">
-          <span style="font-weight:800; color:var(--text-primary);">Project Cool Schools &amp; CUE Deliverables Execution (`cool_schools_data/checklist`)</span>
+          <span style="font-weight:800; color:var(--text-primary);">Project Cool Schools &amp; CUE deliverables</span>
           <span id="coolSchoolsMasterPct" style="font-weight:800; color:var(--primary-mid);">0%</span>
         </div>
         <div class="prog-progress-track" style="height:10px;">
@@ -1157,5 +1121,6 @@
   </div>
 
   <script src="dashboard.js"></script>
+  <script src="ux_enhancements.js"></script>
 </body>
 </html>
