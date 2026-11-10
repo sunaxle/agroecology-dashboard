@@ -622,13 +622,14 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: "tsk-10", title: "Monitor sheep thermal comfort & soil compaction in Silvopasture Zone A vs Open Pasture Zone C", owner: "Desi Romero & Roberto Reyna Oviedo", category: "HUB", due: "Ongoing Weekly", done: false }
   ];
 
-  // Default Shared Physical Infrastructure & Fleet Assets
+  // Default Shared Physical Infrastructure & Fleet Assets (Audited UTRGV Leverage Values)
   const DEFAULT_SHARED_ASSETS = [
     {
       id: "asset-hub-farm",
       icon: "🌱",
-      name: "Hub of Prosperity Living Lab (5 Acres)",
-      specs: "15 Quarter-Acre Incubator Plots · High Tunnel · Silvopasture Zones A–C · Saturday Market Pavilion",
+      name: "Hub of Prosperity Living Lab (2.5 Active Acres)",
+      specs: "3707 W. University Dr., Edinburg · 8 Incubator Plots · 20 Community Plots · Shade House ($10K) · 20' Storage ($7K) · BFR Tool Library ($6.5K) · Drip Stock ($4.5K) · Apiary & Mobile Coop ($4.3K)",
+      estValue: "$500,000 Land + $32,300 Site Assets",
       status: "Available",
       custodian: "Maria Gonzalez, Juan & Demetrio",
       reservedBy: "Tier 1 BFRDP Cohort & Weekly Saturday Market (8am–12pm)",
@@ -638,7 +639,8 @@ document.addEventListener('DOMContentLoaded', () => {
       id: "asset-mall-trailer",
       icon: "🚌",
       name: "Mobile Agroecology Learning Lab (MALL)",
-      specs: "24' Enclosed Teaching Trailer · Onboard Generator · Digital Microscopes · Bilingual Display Canopy",
+      specs: "24' Custom Wrapped Dual-Axle Trailer · Onboard Generator · Full Electrical · Custom Cabinets & Serving Window",
+      estValue: "$37,000",
       status: "Available",
       custodian: "Desi Romero",
       reservedBy: "Donna ISD & McAllen CUE Schoolyard Outreach",
@@ -647,8 +649,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: "asset-fleet-trucks",
       icon: "🛻",
-      name: "Transport Fleet (2024 Ford F-250 & F-150)",
-      specs: "2024 Ford F-250 Super Duty Tow Rig (MALL / Trailer Hitch) & Ford F-150 Field Work Truck",
+      name: "Transport Fleet (2024 Ford F-250 & Ford F-150)",
+      specs: "2024 Ford F-250 Super Duty Tow Rig ($58,642) & 2013–14 Ford F-150 Field Work Truck ($14,500)",
+      estValue: "$73,142",
       status: "Reserved / In Field",
       custodian: "Desi Romero & Juan",
       reservedBy: "Desi Romero — Cool Schools Sensor Audit (Economedes HS)",
@@ -657,8 +660,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: "asset-tractors",
       icon: "🚜",
-      name: "Tractors & Field Machinery",
-      specs: "John Deere 3038E Compact Utility Tractor · JD 455 No-Till Drill · BCS 853 Walk-Behind Tractor",
+      name: "Tractors, No-Till Drill & Field Machinery",
+      specs: "John Deere 3038E Tractor ($29,635) · JD 455 Grain/No-Till Drill ($28,500) · BCS Walk-Behind Suite ($9,500) · Implements ($6,800) · Jang Seeder, Flame Weeder & Wood Chipper ($6,500)",
+      estValue: "$80,935",
       status: "Available",
       custodian: "Juan & Demetrio",
       reservedBy: "Field 1 Bed Prep & BFRDP Plot Groundbreaking",
@@ -668,7 +672,8 @@ document.addEventListener('DOMContentLoaded', () => {
       id: "asset-washpack",
       icon: "❄️",
       name: "Integrated Post-Harvest Wash-Pack & CoolBot Hub",
-      specs: "40' Insulated Container · Dual-Zone CoolBot Cold Storage · Stainless Wash Sinks · 2,500-Gal Rainwater Roof",
+      specs: "40' Container ($5,500) · Dual-AC CoolBot Cold Storage ($3,500) · Rain-Capturing Shade Roof ($2,500) · 2,500-Gal Water Cistern ($2,500)",
+      estValue: "$14,000",
       status: "Available",
       custodian: "Maria Gonzalez & Bianca Nunez",
       reservedBy: "Friday Harvest Wash & Saturday Farm Stand Prep",
@@ -677,8 +682,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: "asset-greenhouse",
       icon: "🏡",
-      name: "UTRGV Certified Organic Garden & Greenhouse",
-      specs: "7,500 sq ft Evaporative-Cooled Structure · 15 Raised Teaching Beds · Native Tree Propagation Tables",
+      name: "UTRGV Certified Organic Garden, Greenhouse & Nursery",
+      specs: "Campus Greenhouse ($45,000) · Shaded High Tunnel ($6,500) · Native Tree Nursery ($1,500) · 4 Certified Organic Bean Tunnels & Mower ($300)",
+      estValue: "$53,300",
       status: "Available",
       custodian: "Bianca Nunez",
       reservedBy: "Cool Schools Native Saplings & Dining Hall Greens",
@@ -687,12 +693,107 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       id: "asset-seems-lab",
       icon: "🔬",
-      name: "SEEMS Soil Ecology & Ecophysiology Analytical Labs",
-      specs: "E-SCNE Carbon/Nitrogen Analyzer · LI-COR Porometers · Sap-Flow Loggers · UAV Thermal Camera",
+      name: "E-SCNE Soil Ecology & Analytical Laboratories",
+      specs: "E-SCNE Rms 1.364, 1.408 & 2.478 · E-36L2 Growth/Ultrasonic Chamber ($29,770) · Dual C/N Soil Analyzers ($18,428) · Lab Workstations ($1,962)",
+      estValue: "$50,160",
       status: "Available",
       custodian: "Dr. Alexis Racelis, Dr. Pushpa Soti & Desi Romero",
       reservedBy: "Cool Schools Canopy Transpiration & BFRDP Soil Carbon Assays",
       link: "../campuses.html"
+    }
+  ];
+
+  // Strategic Pending Assets & Infrastructure Pipeline for Next-Stage Hub Services
+  const DEFAULT_PENDING_ASSETS = [
+    {
+      id: "pa-gap-washpack",
+      priority: "P1 · High",
+      name: "GAP-Compliant Stainless Wash-Pack Upgrade (3-Bay Sink, Root Barrel Washer, Greens Spinner & Legal-for-Trade Scales)",
+      cost: 11500,
+      impact: "Unlocks USDA Harmonized GAP food-safety compliance so Hub & BFRDP beginning farmers can sell directly to Region One ESC school cafeterias and UTRGV Campus Dining.",
+      grant: "Kellogg / USDA BFRDP",
+      status: "Pending Funding"
+    },
+    {
+      id: "pa-solar-coolbot",
+      priority: "P1 · High",
+      name: "Off-Grid Solar Array + LiFePO4 Battery Backup for 40' CoolBot Cold Storage",
+      cost: 14500,
+      impact: "Prevents total crop spoilage during RGV summer grid outages/storms and cuts monthly cold-storage electricity OPEX at 3707 W. University Dr.",
+      grant: "Kellogg / Sustainability",
+      status: "Pending Funding"
+    },
+    {
+      id: "pa-dump-trailer",
+      priority: "P1 · High",
+      name: "16' Heavy-Duty Hydraulic Dump & Equipment Flatbed Trailer (14,000 lb GVWR)",
+      cost: 9800,
+      impact: "Protects the custom $37K MALL classroom trailer from heavy wear while hauling bulk municipal compost, woodchips, JD/BCS machinery, and 15-gal Cool Schools trees behind the F-250.",
+      grant: "Hub / Cool Schools / BFRDP",
+      status: "Quote Requested"
+    },
+    {
+      id: "pa-visitor-ada",
+      priority: "P1 · High",
+      name: "ADA Handwashing / Restroom Station, Shaded Teaching Pavilion & Bilingual Interpretive Signage",
+      cost: 18500,
+      impact: "Essential food-safety (GAP) and visitor requirement for hosting 30+ person bilingual workshops, K-12 field trips, and weekly Saturday Farm Stand crowds.",
+      grant: "W.K. Kellogg / Hub",
+      status: "Pending Funding"
+    },
+    {
+      id: "pa-shade-aluminet",
+      priority: "P2 · Medium-High",
+      name: "Hurricane-Rated Retractable 50% Aluminet Shade Systems for Incubator Plots",
+      cost: 12000,
+      impact: "Extends marketable leafy greens, brassica, and heirloom tomato harvest windows by 6–8 weeks into extreme 100°F+ RGV late spring & early fall heat.",
+      grant: "USDA BFRDP",
+      status: "Pending Funding"
+    },
+    {
+      id: "pa-lorawan-sensors",
+      priority: "P2 · Medium-High",
+      name: "LoRaWAN Wireless Soil Moisture, Salinity (EC) & Canopy Microclimate Base Station + 20 Nodes",
+      cost: 8400,
+      impact: "Automates continuous real-time irrigation & heat-stress telemetry across Hub incubator plots and Cool Schools campuses without manual daily probing.",
+      grant: "Cool Schools / Hub Lab",
+      status: "Quote Requested"
+    },
+    {
+      id: "pa-flail-subsoiler",
+      priority: "P2 · Medium-High",
+      name: "PTO Flail Mower & Single-Shank Subsoiler / Keyline Ripper (for JD 3038E)",
+      cost: 7900,
+      impact: "Cleanly terminates high-biomass summer Cowpea/Sunn Hemp cover crops into mulch and fractures compacted RGV clay hardpan for deep stormwater infiltration.",
+      grant: "USDA BFRDP / Hub",
+      status: "Pending Funding"
+    },
+    {
+      id: "pa-asp-compost",
+      priority: "P2 · Medium",
+      name: "Aerated Static Pile (ASP) Forced-Air Composting System & Rotary Trommel Screener",
+      cost: 7200,
+      impact: "Produces NICS-certified organic compost on-site in 35 days, supporting certified soil amendment workshops and cutting the $16K/yr external input spend.",
+      grant: "Kellogg / Hub",
+      status: "Pending Funding"
+    },
+    {
+      id: "pa-seeder-line",
+      priority: "P3 · Medium",
+      name: "Batch Potting Soil Mixer & Vacuum Tray Seeder Line (Campus Greenhouse & Sentli)",
+      cost: 6800,
+      impact: "Multiplies Bianca Nunez's greenhouse plug capacity for BFRDP grower seedling distribution, Sentli workshops, and native tree propagation.",
+      grant: "Kellogg / Cool Schools",
+      status: "Pending Funding"
+    },
+    {
+      id: "pa-snap-pos",
+      priority: "P3 · Quick Win",
+      name: "Wireless Cellular SNAP / Double Up Food Bucks EBT Terminal + Glass-Door Market Merchandiser",
+      cost: 4200,
+      impact: "Expands Saturday Farm Stand sales and low-income SNAP/DUFB match redemption while keeping eggs and washed greens cold during 95°F market mornings.",
+      grant: "W.K. Kellogg",
+      status: "Grant Budgeted"
     }
   ];
 
@@ -732,6 +833,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let masterCalendarEvents = getLocalJSON('master_command_events', DEFAULT_MASTER_EVENTS);
   let masterTasks = getLocalJSON('master_command_tasks', DEFAULT_MASTER_TASKS);
   let sharedAssets = getLocalJSON('master_command_assets', DEFAULT_SHARED_ASSETS);
+  let pendingAssets = getLocalJSON('master_command_pending_assets', DEFAULT_PENDING_ASSETS);
 
   // Ensure initial seed of masterLogs if empty so the dashboard immediately feels rich & populated
   if (!masterLogs || masterLogs.length === 0) {
@@ -937,19 +1039,27 @@ document.addEventListener('DOMContentLoaded', () => {
     coolSchoolsLogs = coolSchoolsLogs.filter(c => !isExcludedActivityRecord(c));
     setLocalJSON('cool_schools_logs', coolSchoolsLogs);
 
-    // 2c. Normalize cached sharedAssets so Bianca Nunez replaces Marisol Cervantes & Patty is removed
+    // 2c. Normalize cached sharedAssets so Bianca Nunez replaces Marisol Cervantes, Patty is removed, and audited estValue/specs populate
+    const defaultAssetById = new Map(DEFAULT_SHARED_ASSETS.map(d => [d.id, d]));
     sharedAssets = sharedAssets.map(a => {
       const cust = stripRemovedCoworkersText(a.custodian || '');
+      const def = defaultAssetById.get(a.id) || {};
+      const merged = {
+        ...a,
+        name: def.name || a.name,
+        specs: def.specs || a.specs,
+        estValue: def.estValue || a.estValue || ''
+      };
       if (a.id === 'asset-greenhouse' || (a.name || '').toLowerCase().includes('greenhouse')) {
-        return { ...a, custodian: 'Bianca Nunez' };
+        return { ...merged, custodian: 'Bianca Nunez' };
       }
       if (a.id === 'asset-washpack') {
-        return { ...a, custodian: 'Maria Gonzalez & Bianca Nunez' };
+        return { ...merged, custodian: 'Maria Gonzalez & Bianca Nunez' };
       }
       if (a.id === 'asset-mall-trailer') {
-        return { ...a, custodian: 'Desi Romero' };
+        return { ...merged, custodian: 'Desi Romero' };
       }
-      return { ...a, custodian: cust || 'Agroecology Team' };
+      return { ...merged, custodian: cust || 'Agroecology Team' };
     });
     setLocalJSON('master_command_assets', sharedAssets);
 
@@ -2359,6 +2469,9 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.innerHTML = sharedAssets.map((asset, idx) => {
       const statusCls = asset.status === 'Available' ? 'status-available' :
                         asset.status === 'Maintenance' ? 'status-maintenance' : 'status-reserved';
+      const valBadge = asset.estValue
+        ? `<div style="margin-top:3px;"><span class="tag-pill tag-kellogg" style="font-size:0.7rem;">💰 Est. Value: ${asset.estValue}</span></div>`
+        : '';
       return `
         <div class="asset-card">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
@@ -2367,6 +2480,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <div>
                 <h3 style="font-size:0.98rem; font-weight:800; color:var(--text-primary);">${asset.name}</h3>
                 <span style="font-size:0.75rem; color:var(--text-muted); font-weight:600;">Custodian: ${asset.custodian}</span>
+                ${valBadge}
               </div>
             </div>
             <span class="asset-status-badge ${statusCls}">${asset.status}</span>
@@ -2416,6 +2530,90 @@ document.addEventListener('DOMContentLoaded', () => {
           showToast(`Updated reservation for ${sharedAssets[idx].name}!`);
         }
       });
+    });
+  }
+
+  function renderPendingAssetsTable() {
+    const tbody = document.getElementById('pendingAssetsTableBody');
+    const totalEl = document.getElementById('assetsPendingTotal');
+    const subEl = document.getElementById('assetsPendingCountSub');
+    const badgeEl = document.getElementById('pendingAssetsBadge');
+    if (!tbody) return;
+
+    const totalPendingCost = pendingAssets.reduce((sum, item) => sum + (Number(item.cost) || 0), 0);
+    if (totalEl) totalEl.textContent = `$${totalPendingCost.toLocaleString()}`;
+    if (subEl) subEl.textContent = `${pendingAssets.length} high-impact upgrades to expand Hub services`;
+    if (badgeEl) badgeEl.textContent = `${pendingAssets.length} Pending Items`;
+
+    tbody.innerHTML = pendingAssets.map((item, idx) => {
+      const pBadgeCls = (item.priority || '').startsWith('P1') ? 'tag-kellogg'
+                      : (item.priority || '').startsWith('P2') ? 'tag-bfrdp' : 'tag-cool';
+      return `
+        <tr>
+          <td style="white-space:nowrap;"><span class="tag-pill ${pBadgeCls}">${item.priority || 'P2 · Medium'}</span></td>
+          <td style="font-weight:700; color:var(--text-primary); max-width:260px;">${item.name}</td>
+          <td style="font-weight:800; color:var(--primary-mid); white-space:nowrap;">$${(Number(item.cost) || 0).toLocaleString()}</td>
+          <td style="font-size:0.8rem; color:var(--text-secondary); max-width:340px;">${item.impact}</td>
+          <td style="font-size:0.78rem; font-weight:700; color:var(--text-primary); white-space:nowrap;">${item.grant || 'Hub / Multi-Grant'}</td>
+          <td style="min-width:165px;">
+            <select class="form-control pending-asset-status-sel" data-idx="${idx}" style="padding:0.3rem 0.5rem; font-size:0.75rem;">
+              <option value="Pending Funding" ${item.status === 'Pending Funding' ? 'selected' : ''}>🟡 Pending Funding</option>
+              <option value="Quote Requested" ${item.status === 'Quote Requested' ? 'selected' : ''}>🔵 Quote Requested</option>
+              <option value="Grant Budgeted" ${item.status === 'Grant Budgeted' ? 'selected' : ''}>🟣 Grant Budgeted</option>
+              <option value="Approved / Ordered" ${item.status === 'Approved / Ordered' ? 'selected' : ''}>🟢 Approved / Ordered</option>
+            </select>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    tbody.querySelectorAll('.pending-asset-status-sel').forEach(sel => {
+      sel.addEventListener('change', () => {
+        const idx = parseInt(sel.getAttribute('data-idx'), 10);
+        if (pendingAssets[idx]) {
+          pendingAssets[idx].status = sel.value;
+          setLocalJSON('master_command_pending_assets', pendingAssets);
+          if (db) {
+            db.collection('master_command_assets').doc('pending').set({
+              items: pendingAssets,
+              updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true }).catch(() => {});
+          }
+          showToast(`Updated "${pendingAssets[idx].name}" status to ${sel.value}`);
+        }
+      });
+    });
+  }
+
+  const addPendingAssetForm = document.getElementById('addPendingAssetForm');
+  if (addPendingAssetForm) {
+    addPendingAssetForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = cleanText(document.getElementById('paName')?.value.trim() || '');
+      const cost = parseFloat(document.getElementById('paCost')?.value) || 0;
+      const impact = cleanText(document.getElementById('paImpact')?.value.trim() || '');
+      const grant = cleanText(document.getElementById('paGrant')?.value.trim() || 'Hub / Multi-Grant');
+      if (!name || !cost) return;
+
+      pendingAssets.unshift({
+        id: 'pa-' + Date.now(),
+        priority: 'P1 · High',
+        name,
+        cost,
+        impact,
+        grant,
+        status: 'Pending Funding'
+      });
+      setLocalJSON('master_command_pending_assets', pendingAssets);
+      if (db) {
+        db.collection('master_command_assets').doc('pending').set({
+          items: pendingAssets,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true }).catch(() => {});
+      }
+      addPendingAssetForm.reset();
+      renderPendingAssetsTable();
+      showToast(`Added "${name}" ($${cost.toLocaleString()}) to Pending Asset Pipeline!`);
     });
   }
 
@@ -3365,6 +3563,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderMasterCalendar();
   renderCoolSchoolsCampusesGrid();
   renderSharedAssetsGrid();
+  renderPendingAssetsTable();
   refreshAllMetricsAndViews();
 
   // Open directly to an Event Profile Page if URL hash has `#event=<id>`

@@ -897,13 +897,78 @@
     <section id="assets-view" class="view-section">
       <div class="view-header">
         <div class="view-header-title">
-          <h2>🚜 Shared Sites, Fleet &amp; Equipment Scheduler</h2>
-          <p>Coordinate availability and field reservations across the Hub of Prosperity, MALL Mobile Lab, trucks, tractors, wash-pack cold storage, and SEEMS labs.</p>
+          <h2>🚜 Shared Sites, Fleet, Capital Valuation &amp; Pending Asset Pipeline</h2>
+          <p>Audited land &amp; capital equipment leverage (`$840,837` combined), live fleet/site reservations, and strategic pending acquisitions for the Hub of Prosperity.</p>
         </div>
       </div>
 
-      <div class="assets-grid" id="sharedAssetsGrid">
+      <!-- Capital & Land Valuation Summary Strip -->
+      <div class="hero-stat-banner" style="margin-bottom: 1.35rem;">
+        <div class="stat-card accent-forest">
+          <div class="stat-label">Hub Land Value (2.5 Ac Active)</div>
+          <div class="stat-value">$500,000</div>
+          <div class="stat-subtext">3707 W. University Dr. (~$200K/ac corridor frontage)</div>
+        </div>
+        <div class="stat-card accent-teal">
+          <div class="stat-label">Current Equipment &amp; Facilities</div>
+          <div class="stat-value" id="assetsCurrentEquipTotal">$340,837</div>
+          <div class="stat-subtext">$287.8K Hub/Fleet/Lab + $53K Campus Greenhouse</div>
+        </div>
+        <div class="stat-card accent-gold">
+          <div class="stat-label">Total Land + Asset Leverage</div>
+          <div class="stat-value" id="assetsCombinedLeverage">$840,837</div>
+          <div class="stat-subtext">Plus ~$234,695/yr annual Hub operational investment</div>
+        </div>
+        <div class="stat-card accent-purple">
+          <div class="stat-label">Pending Capital Pipeline</div>
+          <div class="stat-value" id="assetsPendingTotal">$100,800</div>
+          <div class="stat-subtext" id="assetsPendingCountSub">10 high-impact upgrades to expand Hub services</div>
+        </div>
+      </div>
+
+      <div class="assets-grid" id="sharedAssetsGrid" style="margin-bottom: 1.5rem;">
         <!-- Populated dynamically by dashboard.js -->
+      </div>
+
+      <!-- Pending Assets & Strategic Infrastructure Wishlist -->
+      <div class="card-panel">
+        <div class="panel-header">
+          <div>
+            <h3>🛠️ Pending Asset &amp; Infrastructure Pipeline (Next-Stage Hub Services)</h3>
+            <p style="font-size:0.8rem; color:var(--text-muted);">Recommended equipment &amp; facility acquisitions to unlock Harmonized GAP food safety, institutional farm-to-school sales, off-grid cold storage resilience, and automated telemetry.</p>
+          </div>
+          <span class="tag-pill tag-kellogg" id="pendingAssetsBadge">10 Pending Items</span>
+        </div>
+
+        <div class="workbook-table-wrap">
+          <table class="workbook-table">
+            <thead>
+              <tr>
+                <th>Priority</th>
+                <th>Pending Asset / Infrastructure Item</th>
+                <th>Est. Cost</th>
+                <th>Hub Service Unlocked &amp; Operational Impact</th>
+                <th>Potential Funding / Alignment</th>
+                <th>Acquisition Status</th>
+              </tr>
+            </thead>
+            <tbody id="pendingAssetsTableBody">
+              <!-- Populated dynamically by dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Inline Form to Add New Pending Asset Need -->
+        <form id="addPendingAssetForm" style="margin-top:1.1rem; padding-top:1rem; border-top:1px solid var(--border-light);">
+          <label style="font-size:0.78rem; font-weight:800; color:var(--text-secondary); display:block; margin-bottom:0.45rem;">➕ Add New Pending Equipment or Infrastructure Need</label>
+          <div style="display:grid; grid-template-columns: 1.4fr 120px 1.6fr 1fr auto; gap:0.5rem;">
+            <input type="text" id="paName" class="form-control" placeholder="Asset / Equipment Name *" required style="padding:0.48rem 0.65rem; font-size:0.8rem;">
+            <input type="number" id="paCost" class="form-control" placeholder="Est. $ *" min="100" step="100" required style="padding:0.48rem 0.65rem; font-size:0.8rem;">
+            <input type="text" id="paImpact" class="form-control" placeholder="How it helps the Hub & growers *" required style="padding:0.48rem 0.65rem; font-size:0.8rem;">
+            <input type="text" id="paGrant" class="form-control" placeholder="Target Grant / Source" value="Hub / Multi-Grant" style="padding:0.48rem 0.65rem; font-size:0.8rem;">
+            <button type="submit" class="btn btn-primary btn-sm">+ Add Item</button>
+          </div>
+        </form>
       </div>
     </section>
 
