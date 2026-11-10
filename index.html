@@ -8,6 +8,7 @@
   <meta name="description" content="Official website and research portal for Dr. Alexis Racelis and the UTRGV Agroecology & Resilient Food Systems Laboratory in the School of Earth, Environmental, and Marine Sciences (SEEMS) and School of Integrative Biological and Chemical Sciences." />
   
   <!-- Stylesheets -->
+  <script src="command_center/staff_gate.js"></script>
   <link rel="stylesheet" href="home.css" />
   <link rel="icon" type="image/png" href="assets/utrgv-agroecology.png" />
 </head>
@@ -52,7 +53,7 @@
         </ul>
 
         <div class="nav-actions">
-          <a href="command_center/dashboard.html" class="btn btn-accent">🧭 Command Center</a>
+          <a href="command_center/dashboard.html" class="btn btn-accent" data-staff-only="inline-flex" style="display: none;">🧭 Command Center</a>
           <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button>
         </div>
       </nav>
@@ -75,7 +76,7 @@
           </p>
 
           <div class="hero-cta-group">
-            <a href="command_center/dashboard.html" class="btn btn-accent">🧭 Master Command Center</a>
+            <a href="command_center/dashboard.html" class="btn btn-accent" data-staff-only="inline-flex" style="display: none;">🧭 Master Command Center</a>
             <a href="#research" class="btn btn-outline-white">Explore Research Themes 🔬</a>
             <a href="#portal" class="btn btn-outline-white">Digital Tools & GIS Maps 🚀</a>
           </div>
@@ -984,7 +985,7 @@
       <div class="portal-grid" id="portalGrid">
 
         <!-- Master Operations & Team Command Center -->
-        <div class="portal-card" data-category="grants" style="border: 2px solid var(--accent-gold); background: linear-gradient(135deg, rgba(6,78,59,0.06), rgba(245,158,11,0.08));">
+        <div class="portal-card" data-category="grants" data-staff-only="flex" style="display: none; border: 2px solid var(--accent-gold); background: linear-gradient(135deg, rgba(6,78,59,0.06), rgba(245,158,11,0.08));">
           <div class="portal-card-header">
             <div class="portal-card-icon">🧭</div>
             <span class="portal-category-tag" style="background: var(--accent-gold); color: #064e3b; font-weight: 700;">#1 Overarching Hub</span>
@@ -1537,7 +1538,7 @@
         <div class="footer-col">
           <h5>Key Dashboards</h5>
           <ul class="footer-links">
-            <li><a href="command_center/dashboard.html">🧭 Master Command Center</a></li>
+            <li data-staff-only="list-item" style="display: none;"><a href="command_center/dashboard.html">🧭 Master Command Center</a></li>
             <li><a href="campuses.html">🌳 Project Cool Schools</a></li>
             <li><a href="wk_kellogg_foundation/dashboard.html">WKKF Grant Portal</a></li>
             <li><a href="bfrdp_grant/dashboard.html">USDA BFRDP Grant Portal</a></li>

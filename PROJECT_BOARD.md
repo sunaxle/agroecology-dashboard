@@ -68,5 +68,5 @@
 - **Desiderio "Desi" Romero:** Technical trials, field data & residency coordination (AI: `data_analyst`, `systems_engineer`)
 - **Maria Gonzalez, Juan & Demetrio:** Hub farm operations, plot prep & Tier 1 farmer incubation (AI: `farmer_agent`, `agribusiness_manager`)
 - **Dr. Bradley Christoffersen:** Project Cool Schools (14-campus canopy) & urban forestry trials (AI: `research_botanist`)
-- **Q / Quinn:** Research sprint tracking, PR graphics & outreach media (AI: `media_pr_coordinator`, `outreach_agent`)
-- **Marisol Cervantes:** Certified Organic Greenhouse & campus raised beds (AI: `knowledge_tracker`)
+- **Quinn:** Bilingual event & recruitment flyers, website updates, graphics & outreach media (AI: `media_pr_coordinator`, `outreach_agent`)
+- **Bianca Nunez:** Certified Organic Greenhouse & campus raised beds (AI: `knowledge_tracker`)

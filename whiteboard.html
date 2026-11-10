@@ -739,6 +739,7 @@
       }
     }
   </style>
+  <script src="command_center/staff_gate.js"></script>
 </head>
 <body>
 
@@ -748,7 +749,7 @@
       <div class="header-top">
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <span class="badge-sub">UTRGV Agroecology & Hub of Prosperity</span>
-          <a href="command_center/dashboard.html" style="font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:700; color:#faf7f2; background:var(--primary); padding:3px 10px; border-radius:3px; text-decoration:none;">🧭 Master Command Center →</a>
+          <a href="command_center/dashboard.html" data-staff-only="inline-block" style="display:none; font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:700; color:#faf7f2; background:var(--primary); padding:3px 10px; border-radius:3px; text-decoration:none;">🧭 Master Command Center →</a>
           <a href="campuses.html" style="font-family:'Source Sans 3',sans-serif; font-size:11px; font-weight:600; color:var(--primary-dark); background:var(--primary-light); padding:3px 8px; border-radius:3px; text-decoration:none; border:1px solid var(--border-rule);">🌳 Cool Schools</a>
         </div>
         <div style="display:flex; align-items:center; gap:8px;">
@@ -808,7 +809,7 @@
         <button class="team-filter-chip" data-member="Maria">Maria (Farm)</button>
         <button class="team-filter-chip" data-member="Christoffersen">Cool Schools</button>
         <button class="team-filter-chip" data-member="Juan">Juan &amp; Demetrio</button>
-        <button class="team-filter-chip" data-member="Q">Q</button>
+        <button class="team-filter-chip" data-member="Quinn">Quinn</button>
       </div>
 
       <div class="info-banner" id="cardsInfoBanner">
@@ -879,7 +880,7 @@
           <div class="cal-day-cell event-highlight residency-window" style="border-left:3px solid var(--accent-warm);">
             <div class="day-num-row"><span style="color:var(--accent-warm);">30</span><span class="day-badge" style="background:var(--accent-warm); color:white;">FOOD SHOW</span></div>
             <div class="cal-pill pill-workshop" title="Region One ESC Food Show @ South Padre Island">8:30am–2pm Food Show (SPI)</div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team</div>
           </div>
 
           <!-- Oct 1: RSVP Due -->
@@ -910,7 +911,7 @@
           <!-- Oct 7: Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>7</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team</div>
           </div>
 
           <!-- Oct 8: Working Lands Workshop Day 1 & VIP Planta Nativa Night -->
@@ -949,7 +950,7 @@
           <!-- Oct 14: Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>14</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team</div>
           </div>
 
           <!-- Oct 15 -->
@@ -977,7 +978,7 @@
           <!-- Oct 21: Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>21</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team</div>
           </div>
 
           <!-- Oct 22 -->
@@ -1005,7 +1006,7 @@
           <!-- Oct 28: Wed recurring -->
           <div class="cal-day-cell residency-window">
             <div class="day-num-row"><span>28</span></div>
-            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team · 3:30pm Q</div>
+            <div class="cal-pill pill-meeting" style="font-size:8px; opacity:0.95;">1pm Tree · 2pm Team</div>
           </div>
 
           <!-- Oct 29: Departure -->
@@ -1124,7 +1125,7 @@
         </div>
         <div class="form-group">
           <label>Team Assigned / Cobertura (Split Coverage)</label>
-          <input type="text" id="itemAssigned" placeholder="e.g. Desi, Maria, Dr. Racelis, Q">
+          <input type="text" id="itemAssigned" placeholder="e.g. Desi, Maria, Dr. Racelis, Quinn">
         </div>
         <div class="form-group">
           <label>Notes / Links</label>
@@ -1376,23 +1377,6 @@
         order: 8
       },
       {
-        id: "rec-wed-q",
-        category: "MEETING",
-        org: "Agroecology Lab",
-        title: "Every Wednesday: 1-1 Q Meeting",
-        titleEs: "Todos los Miércoles: Reunión 1-a-1 con Q",
-        dateTime: "Every Wed (Todos los Miércoles) @ 3:30 PM – 4:15 PM",
-        dateTimeEs: "Todos los Miércoles @ 3:30 PM – 4:15 PM",
-        location: "Agroecology Lab / Office",
-        host: "Q & Dr. Alexis Racelis",
-        assigned: "Q & Dr. Alexis Racelis",
-        assignedEs: "Q y Dr. Alexis Racelis",
-        notes: "Dedicated 1-on-1 sprint coordination, project data workflows, and priority alignment.",
-        notesEs: "Coordinación 1-a-1 de sprints de investigación, flujo de datos y alineación de prioridades.",
-        featured: false,
-        order: 9
-      },
-      {
         id: "trv-3",
         category: "TRAVEL",
         org: "Airport Transit",
@@ -1414,7 +1398,9 @@
     function getStoredEvents() {
       const stored = localStorage.getItem("agroecology_whiteboard_events");
       if (stored) {
-        try { return JSON.parse(stored); } catch(e) { return DEFAULT_EVENTS; }
+        try {
+          return JSON.parse(stored).filter(ev => ev && ev.id !== "rec-wed-q");
+        } catch(e) { return DEFAULT_EVENTS; }
       }
       return DEFAULT_EVENTS;
     }
@@ -1458,7 +1444,7 @@
         { key: "maria", display: "Maria" },
         { key: "christoffersen", display: "Dr. Christoffersen (Cool Schools)" },
         { key: "juan", display: "Juan & Demetrio" },
-        { key: "q", display: "Q" },
+        { key: "quinn", display: "Quinn" },
         { key: "scholar", display: isEs ? "Académica Invitada" : "Visiting Scholar" }
       ];
 
@@ -1793,8 +1779,7 @@
           `• Lunes 8:00 AM: Reunión de Campo Hub of Prosperity (María, Juan, Demetrio y equipo de campo)\n` +
           `• Martes 9:00 AM – 12:30 PM: Clase del Dr. Alexis Racelis\n` +
           `• Miércoles 1:00 PM: 1-1 Proyecto Forestal (Project Cool Schools)\n` +
-          `• Miércoles 2:00 PM: Reunión General del Laboratorio de Agroecología\n` +
-          `• Miércoles 3:30 PM: 1-1 con Q\n\n` +
+          `• Miércoles 2:00 PM: Reunión General del Laboratorio de Agroecología\n\n` +
           `✈️ *LOGÍSTICA Y VIAJES:*\n` +
           `• Mar 29 sep @ 10:00 AM: Llegada de académico y bienvenida en HRL (Desi)\n` +
           `• Jue 29 oct @ 9:00 AM: Salida y traslado al aeropuerto (Desi)\n\n` +
@@ -1826,8 +1811,7 @@
           `• Mondays @ 8:00 AM: Hub Farm Operations Meeting (Maria, Juan, Demetrio & Farm Crew)\n` +
           `• Tuesdays @ 9:00 AM – 12:30 PM: Dr. Racelis Class / Teaching\n` +
           `• Wednesdays @ 1:00 PM: 1-1 Tree & Cool Schools Meeting (Dr. Christoffersen)\n` +
-          `• Wednesdays @ 2:00 PM: Agroecology Lab Team Meeting\n` +
-          `• Wednesdays @ 3:30 PM: 1-1 Q Meeting\n\n` +
+          `• Wednesdays @ 2:00 PM: Agroecology Lab Team Meeting\n\n` +
           `✈️ *KEY TRAVEL & LOGISTICS:*\n` +
           `• Tue Sep 29 @ 10:00 AM: Visiting Scholar Arrival & Pickup (Desi)\n` +
           `• Thu Oct 29 @ 9:00 AM: Airport Departure (Desi)\n\n` +

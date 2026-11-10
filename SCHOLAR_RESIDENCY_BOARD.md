@@ -121,9 +121,6 @@
 * **2:00 PM - 3:15 PM: Agroecology General Team Meeting**  
   * *Lead:* Dr. Alexis Racelis & All Lab Members  
   * *Focus:* Core lab all-hands, student researcher tracking, research trial updates & visiting scholar check-in.
-* **3:30 PM - 4:15 PM: 1-1 Q Meeting**  
-  * *Lead:* Q & Dr. Alexis Racelis  
-  * *Focus:* Dedicated 1-on-1 research progress and project sprint coordination.
 
 ---
 

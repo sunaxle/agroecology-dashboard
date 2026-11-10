@@ -22,11 +22,11 @@ This living document maps out the operational boundaries, time budgets, and huma
 * **Cognitive Load / Primary Focus:** Maintaining experimental rigor in the field (Silvopasture trials, cover crop rotations) and coordinating cross-site workshops.
 * **AI Support:** `research_botanist`, `data_analyst`, `systems_engineer`. (AI processes the raw data from sensors and soil tests to generate actionable trial reports).
 
-### Q / Quinn
-* **Role:** Research Sprint Coordinator, Media & Communications Lead
-* **Core Zone of Genius:** Research sprint tracking, bilingual recruitment graphics, data workflows, and W.K. Kellogg/Hub promotional assets.
-* **Cognitive Load / Primary Focus:** Weekly 1-on-1 sprint alignment with Dr. Racelis, recruitment PR, and deliverable tracking.
-* **AI Support:** `curriculum_developer`, `outreach_agent`, `media_pr_coordinator`.
+### Quinn
+* **Role:** Flyers, Website, Graphics & Outreach Media Lead
+* **Core Zone of Genius:** Bilingual recruitment & workshop flyers, website design/updates, visual branding, and W.K. Kellogg / BFRDP / Cool Schools / Hub promotional assets.
+* **Cognitive Load / Primary Focus:** Designing outreach flyers, maintaining web presence, and producing visual communications across grant programs.
+* **AI Support:** `outreach_agent`, `media_pr_coordinator`.
 
 ### Maria Gonzalez
 * **Role:** Hub of Prosperity Farm Manager

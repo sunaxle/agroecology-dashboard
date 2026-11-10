@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>USDA BFRDP Project Dashboard | Subtropical Agroecology Enterprises</title>
+  <script src="../command_center/staff_gate.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dashboard.css">
 </head>
@@ -12,8 +13,11 @@
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-header">
-      <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;">
-        <a href="../command_center/dashboard.html" style="display: inline-block; font-size: 0.8rem; font-weight: 700; color: #064e3b; text-decoration: none; background: #34d399; padding: 6px 10px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">🧭 Master Command Center →</a>
+      <div data-staff-only="flex" style="display: none; flex-direction: column; gap: 6px; margin-bottom: 10px;">
+        <div style="display: flex; gap: 5px; align-items: stretch;">
+          <a href="../command_center/dashboard.html" style="flex: 1; display: inline-block; font-size: 0.78rem; font-weight: 700; color: #064e3b; text-decoration: none; background: #34d399; padding: 6px 10px; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">← Staff Command Center</a>
+          <button type="button" data-staff-lock-btn title="Preview Partner View (Lock Staff Bar)" style="border: 1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.25); color: #d8f3dc; border-radius: 6px; padding: 0 8px; cursor: pointer; font-size: 0.76rem;">🔒</button>
+        </div>
         <a href="../index.html" class="portal-back-link" style="margin-bottom: 0;">← Main Agroecology Portal</a>
       </div>
       <span class="sidebar-badge">USDA-NIFA · BFRDP</span>
@@ -71,8 +75,8 @@
       </li>
     </ul>
 
-    <div class="sidebar-footer">
-      <p>Related Dashboards:</p>
+    <div class="sidebar-footer" data-staff-only="block" style="display: none;">
+      <p>Staff Quick Switch:</p>
       <p>🧭 <a href="../command_center/dashboard.html" style="font-weight: 700; color: #6ee7b7;">Master Command Center</a></p>
       <p>🌾 <a href="../wk_kellogg_foundation/dashboard.html">W.K. Kellogg Grant Dashboard</a></p>
       <p>🌳 <a href="../campuses.html">Project Cool Schools</a></p>
