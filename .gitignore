@@ -1,0 +1,48 @@
+# OS & Editor Artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.agents/
+
+# Secrets & Environment
+.env
+.env.*
+.firebase/
+
+# Executed Grant Agreements, Federal NOAs, & Confidential Office Docs
+*.pdf
+*.docx
+*.xlsx
+*.xlsm
+*.heic
+*.HEIC
+
+# Explicit Grant & Internal Data Directories (Never Publish to GitHub Pages)
+wk_kellogg_foundation/*.pdf
+data_dumps/
+usda_reports/
+KPI_Reports/
+asset_reports/
+hub_of_prosperity/
+excel_photo/
+google_apps_script/
+
+# Producer CRM, Letters of Support, & Internal Financial / Strategy Notes
+*crm*.csv
+letters_of_support_tracker.csv
+mock_intake.json
+donors_data.js
+financial_metrics.md
+grant_proposals.md
+compliance_log.md
+farm_operations.md
+operational_manual.md
+livestock_management.md
+career_capabilities.md
+personal_learning_tracker.md
+engineering_log.md
+agroecology_strategy.md
+CUE_Vision_Board.md
+table2.txt
+table45.txt
